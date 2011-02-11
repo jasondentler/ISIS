@@ -8,7 +8,7 @@
     <ProjectGuid>{941D3AA3-C624-4A52-A74A-CE6BCD6C5239}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.CommandExecutor</RootNamespace>
+    <RootNamespace>ISIS</RootNamespace>
     <AssemblyName>ISIS.CommandExecutor</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ncqrs">
+      <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDepartmentCommandExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
+      <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
+      <Name>ISIS.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Domain\ISIS.Domain.csproj">
+      <Project>{B41F5BCE-042F-4631-B6CF-3461E4D1AF2E}</Project>
+      <Name>ISIS.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
