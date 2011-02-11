@@ -6,10 +6,6 @@ namespace ISIS
     public class Department : AggregateRootMappedByConvention 
     {
 
-        private Department()
-        {
-        }
-
         public Department(string name)
         {
             var e = new DepartmentCreatedEvent()

@@ -1,32 +1,28 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Ncqrs.Eventing.Sourcing;
+﻿using System.Linq;
+using Ncqrs.Spec;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests
 {
     [TestFixture]
-    public class when_a_new_department_is_created : DepartmentFixture
+    public class when_a_new_department_is_created : AutoMappedCommandTestFixture<CreateDepartmentCommand>
     {
 
-        protected override IEnumerable<SourcedEvent> Given()
-        {
-            // No previous history
-            ExpectedEventCount = 1;
-            return base.Given();
-        }
+        private const string DepartmentName = "Biology";
 
-        protected override void When()
+        protected override CreateDepartmentCommand WhenExecutingCommand()
         {
-            AggregateRoot = new Department(Name);
+            return new CreateDepartmentCommand()
+                       {
+                           Name = DepartmentName
+                       };
         }
 
         [Test]
         public void then_it_should_create_a_new_DepartmentCreatedEvent()
         {
-            var firstEvent = PublishedEvents.First() as DepartmentCreatedEvent;
-            Assert.That(firstEvent, Is.Not.Null);
-            Assert.That(firstEvent.Name, Is.EqualTo(Name));
+            var firstEvent = (DepartmentCreatedEvent) PublishedEvents.First();
+            Assert.That(firstEvent.Name, Is.EqualTo(DepartmentName));
         }
 
         [Test]
@@ -34,6 +30,7 @@ namespace ISIS.DomainTests
         {
             Assert.That(PublishedEvents.Count(), Is.EqualTo(1));
         }
+
 
     }
 }
