@@ -1,15 +1,14 @@
 ﻿using System.Linq;
-using Ncqrs.Spec;
 using NUnit.Framework;
 
-namespace ISIS.DomainTests
+namespace ISIS.DomainTests.DepartmentTests
 {
     [TestFixture]
-    public class when_a_new_department_is_created : AutoMappedCommandTestFixture<CreateDepartmentCommand>
+    public class when_a_new_department_is_created : CommandFixture<CreateDepartmentCommand, Department>
     {
 
         private const string DepartmentName = "Biology";
-
+        
         protected override CreateDepartmentCommand WhenExecutingCommand()
         {
             return new CreateDepartmentCommand()
@@ -30,6 +29,7 @@ namespace ISIS.DomainTests
         {
             Assert.That(PublishedEvents.Count(), Is.EqualTo(1));
         }
+
 
 
     }

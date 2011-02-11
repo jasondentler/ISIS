@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeDefaultSubjectCommand.cs" />
     <Compile Include="CreateDepartmentCommand.cs" />
+    <Compile Include="CommandMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

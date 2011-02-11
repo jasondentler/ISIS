@@ -6,6 +6,6 @@ namespace ISIS
     {
 
         public string Name { get; set; }
-
+        
     }
 }
