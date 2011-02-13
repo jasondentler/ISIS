@@ -46,6 +46,7 @@
     <Compile Include="CommandServiceExtensions.cs" />
     <Compile Include="DepartmentMapping.cs" />
     <Compile Include="ICommandMapping.cs" />
+    <Compile Include="MappingExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

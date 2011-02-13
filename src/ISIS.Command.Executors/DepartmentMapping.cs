@@ -1,7 +1,9 @@
 ﻿using System;
+using Ncqrs;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
+using Ncqrs.Domain.Storage;
 
 namespace ISIS
 {
@@ -12,7 +14,7 @@ namespace ISIS
             Map.Command<CreateDepartmentCommand>()
                 .ToAggregateRoot<Department>()
                 .CreateNew(cmd => new Department(cmd.Name))
-                .StoreIn((cmd, department) => { throw new NotImplementedException(); })
+                .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
             Map.Command<ChangeDefaultSubjectCommand>()
