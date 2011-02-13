@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ISIS.DomainTests.Environment;
+using Ncqrs;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
+using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing.Sourcing;
+using Ncqrs.Eventing.Storage;
 using Ncqrs.Spec;
 
 namespace ISIS.DomainTests
@@ -15,26 +19,33 @@ namespace ISIS.DomainTests
         where TCommand : ICommand
         where TAggregateRoot : AggregateRoot 
     {
+        protected CommandFixture()
+        {
+            EnsureConfiguredEnvironment();
+        }
 
         protected IAggregateRootCreationStrategy CreationStrategy { get; set; }
         protected TAggregateRoot AggregateRoot { get; set; }
-        protected Guid eventSourceId { get; set; }
+        protected Guid EventSourceId { get; private set; }
 
         protected override void SetupDependencies()
         {
-            long sequence = 0;
+            EventSourceId = Guid.NewGuid();
 
-            CreationStrategy = new SimpleAggregateRootCreationStrategy();
-            eventSourceId = Guid.NewGuid();
             var history = Given();
-            AggregateRoot = CreationStrategy.CreateAggregateRoot<TAggregateRoot>();
-
             if (!history.Any()) return;
 
-            foreach (var @event in history)
-                @event.ClaimEvent(eventSourceId, ++sequence);
+            var eventStore = (TestEventStore)NcqrsEnvironment.Get<IEventStore>();
+            var repo = NcqrsEnvironment.Get<IDomainRepository>();
 
-            AggregateRoot.InitializeFromHistory(history);
+            eventStore.Setup(EventSourceId, history);
+            AggregateRoot = repo.GetById<TAggregateRoot>(EventSourceId);
+        }
+
+        private static void EnsureConfiguredEnvironment()
+        {
+            if(!NcqrsEnvironment.IsConfigured)
+                NcqrsEnvironment.Configure(new TestEnvironmentConfiguration());
         }
 
         protected virtual IEnumerable<ISourcedEvent> Given()
@@ -42,10 +53,10 @@ namespace ISIS.DomainTests
             return new SourcedEvent[0];
         }
 
-
         protected override ICommandExecutor<TCommand> BuildCommandExecutor()
         {
-            return CommandMapping.Get<TCommand>();
+            var cmdService = (TestCommandService) NcqrsEnvironment.Get<ICommandService>();
+            return cmdService.GetCommandExecutor<TCommand>();
         }
 
     }

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA74B308-33FD-43C4-9C43-AAEA479FA990}</ProjectGuid>
+    <ProjectGuid>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.DomainTests</RootNamespace>
-    <AssemblyName>ISIS.DomainTests</AssemblyName>
+    <RootNamespace>ISIS</RootNamespace>
+    <AssemblyName>ISIS.Command.Executors</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,13 +34,6 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.Spec">
-      <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,24 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandFixture.cs" />
-    <Compile Include="DepartmentTests\when_a_default_subject_is_changed.cs" />
-    <Compile Include="Environment\NullEventBus.cs" />
-    <Compile Include="Environment\TestEnvironmentConfiguration.cs" />
-    <Compile Include="Environment\TestEventStore.cs" />
+    <Compile Include="CommandServiceExtensions.cs" />
+    <Compile Include="DepartmentMapping.cs" />
+    <Compile Include="ICommandMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
-    <Compile Include="SimpleCommandFixture.cs" />
-    <Compile Include="Environment\TestCommandService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ISIS.Command.Executors\ISIS.Command.Executors.csproj">
-      <Project>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</Project>
-      <Name>ISIS.Command.Executors</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
       <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
       <Name>ISIS.Command</Name>
@@ -75,10 +56,6 @@
     <ProjectReference Include="..\ISIS.Domain\ISIS.Domain.csproj">
       <Project>{B41F5BCE-042F-4631-B6CF-3461E4D1AF2E}</Project>
       <Name>ISIS.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
-      <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
-      <Name>ISIS.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

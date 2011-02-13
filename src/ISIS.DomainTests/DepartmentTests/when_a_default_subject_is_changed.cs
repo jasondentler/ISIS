@@ -6,27 +6,24 @@ using NUnit.Framework;
 namespace ISIS.DomainTests.DepartmentTests
 {
     [TestFixture]
-    public class when_a_default_subject_is_changed : CommandFixture<ChangeDefaultSubjectCommand, Department>
+    public class when_a_default_subject_is_changed :
+        SimpleCommandFixture<ChangeDefaultSubjectCommand, Department, DepartmentCreatedEvent>
     {
 
         protected override IEnumerable<ISourcedEvent> Given()
         {
-            return new[] {new DepartmentCreatedEvent {Name = "Biology"}};
+            return new[] { new DepartmentCreatedEvent { Name = "Biology" } };
         }
 
         protected override ChangeDefaultSubjectCommand WhenExecutingCommand()
         {
             return new ChangeDefaultSubjectCommand()
                        {
-                           DefaultSubject = "BIOL"
+                           DefaultSubject = "BIOL",
+                           DepartmentId = EventSourceId
                        };
         }
 
-        [Test]
-        public void it_should_do_nothing_more()
-        {
-            Assert.That(PublishedEvents.Count(), Is.EqualTo(1));
-        }
 
     }
 }

@@ -4,7 +4,8 @@ using NUnit.Framework;
 namespace ISIS.DomainTests.DepartmentTests
 {
     [TestFixture]
-    public class when_a_new_department_is_created : CommandFixture<CreateDepartmentCommand, Department>
+    public class when_a_new_department_is_created : 
+        SimpleCommandFixture<CreateDepartmentCommand, Department, DepartmentCreatedEvent>
     {
 
         private const string DepartmentName = "Biology";
@@ -23,13 +24,6 @@ namespace ISIS.DomainTests.DepartmentTests
             var firstEvent = (DepartmentCreatedEvent) PublishedEvents.First();
             Assert.That(firstEvent.Name, Is.EqualTo(DepartmentName));
         }
-
-        [Test]
-        public void it_should_do_nothing_more()
-        {
-            Assert.That(PublishedEvents.Count(), Is.EqualTo(1));
-        }
-
 
 
     }

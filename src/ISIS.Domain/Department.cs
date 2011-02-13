@@ -25,7 +25,7 @@ namespace ISIS
 
         public void ChangeDepartmentDefaultSubject(string subject)
         {
-            throw new NotImplementedException();
+        throw new NotImplementedException();
         }
 
     }
