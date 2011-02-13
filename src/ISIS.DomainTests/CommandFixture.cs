@@ -35,7 +35,7 @@ namespace ISIS.DomainTests
             var history = Given();
             if (!history.Any()) return;
 
-            var eventStore = (TestEventStore)NcqrsEnvironment.Get<IEventStore>();
+            var eventStore = (TestEventStoreWrapper)NcqrsEnvironment.Get<IEventStore>();
             var repo = NcqrsEnvironment.Get<IDomainRepository>();
 
             eventStore.Setup(EventSourceId, history);

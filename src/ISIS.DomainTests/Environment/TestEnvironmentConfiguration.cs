@@ -21,7 +21,7 @@ namespace ISIS.DomainTests.Environment
             _factories = new Dictionary<Type, Func<object>>();
             _instances = new Dictionary<Type, object>();
 
-            _factories[typeof(IEventStore)] = () => new TestEventStore();
+            _factories[typeof(IEventStore)] = () => new SimpleTestEventStoreWrapper<InMemoryEventStore>();
             _factories[typeof (IEventBus)] = () => new NullEventBus();
             _factories[typeof(IAggregateRootCreationStrategy)] = () => new SimpleAggregateRootCreationStrategy();
             _factories[typeof (IDomainRepository)] =
