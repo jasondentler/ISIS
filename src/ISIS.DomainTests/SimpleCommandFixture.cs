@@ -14,6 +14,11 @@ namespace ISIS.DomainTests
 
     {
 
+        protected TEvent TheEvent
+        {
+            get { return (TEvent) PublishedEvents.Single(); }
+        }
+
         [Test]
         public void it_should_not_throw()
         {

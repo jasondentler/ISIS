@@ -20,7 +20,7 @@ namespace ISIS
             Map.Command<ChangeDefaultSubjectCommand>()
                 .ToAggregateRoot<Department>()
                 .WithId(cmd => cmd.DepartmentId)
-                .ToCallOn((cmd, department) => department.ChangeDepartmentDefaultSubject(cmd.DefaultSubject))
+                .ToCallOn((cmd, department) => department.ChangeDefaultSubject(cmd.DefaultSubject))
                 .RegisterWith(commandService);
         }
     }

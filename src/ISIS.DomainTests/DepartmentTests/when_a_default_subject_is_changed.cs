@@ -7,7 +7,7 @@ namespace ISIS.DomainTests.DepartmentTests
 {
     [TestFixture]
     public class when_a_default_subject_is_changed :
-        SimpleCommandFixture<ChangeDefaultSubjectCommand, Department, DepartmentCreatedEvent>
+        SimpleCommandFixture<ChangeDefaultSubjectCommand, Department, DepartmentDefaultSubjectChangedEvent>
     {
 
         protected override IEnumerable<ISourcedEvent> Given()
@@ -22,6 +22,12 @@ namespace ISIS.DomainTests.DepartmentTests
                            DefaultSubject = "BIOL",
                            DepartmentId = EventSourceId
                        };
+        }
+
+        [Test]
+        public void it_has_correct_new_default_department()
+        {
+            Assert.That(TheEvent.NewDefaultSubject, Is.EqualTo(ExecutedCommand.DefaultSubject));
         }
 
 

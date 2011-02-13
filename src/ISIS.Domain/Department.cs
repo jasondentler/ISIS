@@ -19,13 +19,21 @@ namespace ISIS
             ApplyEvent(e);
         }
 
-        protected void OnDepartmentCreated(DepartmentCreatedEvent e)
+        protected void OnCreated(DepartmentCreatedEvent e)
         {
         }
 
-        public void ChangeDepartmentDefaultSubject(string subject)
+        public void ChangeDefaultSubject(string subject)
         {
-        throw new NotImplementedException();
+            var e = new DepartmentDefaultSubjectChangedEvent()
+                        {
+                            NewDefaultSubject = subject
+                        };
+            ApplyEvent(e);
+        }
+
+        protected void OnDefaultSubjectChanged(DepartmentDefaultSubjectChangedEvent e)
+        {
         }
 
     }
