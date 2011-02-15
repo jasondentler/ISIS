@@ -51,6 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandFixture.cs" />
+    <Compile Include="CourseTests\when_an_approval_number_is_assigned_after_a_CIP.cs" />
+    <Compile Include="CourseTests\when_a_CIP_is_assigned_after_an_approval_number.cs" />
+    <Compile Include="CourseTests\when_an_approval_number_is_assigned.cs" />
+    <Compile Include="CourseTests\when_a_CIP_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_new_course_is_created.cs" />
     <Compile Include="Environment\FakeEventSource.cs" />
     <Compile Include="Environment\NullEventBus.cs" />

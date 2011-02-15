@@ -14,6 +14,17 @@ namespace ISIS
                 .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
+            Map.Command<AssignCIPCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.AssignCIPNumber(cmd.CIP))
+                .RegisterWith(commandService);
+
+            Map.Command<AssignApprovalNumberCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.AssignApprovalNumber(cmd.ApprovalNumber))
+                .RegisterWith(commandService);
         }
     }
 }

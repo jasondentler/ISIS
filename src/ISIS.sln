@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.DomainTests", "ISIS.Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Command.Executors", "ISIS.Command.Executors\ISIS.Command.Executors.csproj", "{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Validation", "ISIS.Validation\ISIS.Validation.csproj", "{70F1993B-2329-44A5-82F1-BC3DAB36B38F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F1993B-2329-44A5-82F1-BC3DAB36B38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F1993B-2329-44A5-82F1-BC3DAB36B38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F1993B-2329-44A5-82F1-BC3DAB36B38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F1993B-2329-44A5-82F1-BC3DAB36B38F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
