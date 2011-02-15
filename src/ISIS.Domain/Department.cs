@@ -1,5 +1,4 @@
-﻿using System;
-using Ncqrs.Domain;
+﻿using Ncqrs.Domain;
 
 namespace ISIS
 {
@@ -23,18 +22,6 @@ namespace ISIS
         {
         }
 
-        public void ChangeDefaultSubject(string subject)
-        {
-            var e = new DepartmentDefaultSubjectChangedEvent()
-                        {
-                            NewDefaultSubject = subject
-                        };
-            ApplyEvent(e);
-        }
-
-        protected void OnDefaultSubjectChanged(DepartmentDefaultSubjectChangedEvent e)
-        {
-        }
 
     }
 

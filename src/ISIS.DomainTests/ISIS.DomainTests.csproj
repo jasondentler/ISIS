@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandFixture.cs" />
-    <Compile Include="DepartmentTests\when_a_default_subject_is_changed.cs" />
+    <Compile Include="CourseTests\when_a_new_course_is_created.cs" />
     <Compile Include="Environment\FakeEventSource.cs" />
     <Compile Include="Environment\NullEventBus.cs" />
     <Compile Include="Environment\SimpleTestEventStoreWrapper.cs" />

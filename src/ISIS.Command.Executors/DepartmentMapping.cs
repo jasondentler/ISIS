@@ -1,9 +1,6 @@
-﻿using System;
-using Ncqrs;
-using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
-using Ncqrs.Domain.Storage;
 
 namespace ISIS
 {
@@ -17,11 +14,6 @@ namespace ISIS
                 .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
-            Map.Command<ChangeDefaultSubjectCommand>()
-                .ToAggregateRoot<Department>()
-                .WithId(cmd => cmd.DepartmentId)
-                .ToCallOn((cmd, department) => department.ChangeDefaultSubject(cmd.DefaultSubject))
-                .RegisterWith(commandService);
         }
     }
 }

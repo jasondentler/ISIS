@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace ISIS.DomainTests.DepartmentTests
 {
@@ -21,8 +20,7 @@ namespace ISIS.DomainTests.DepartmentTests
         [Test]
         public void then_it_should_create_a_new_DepartmentCreatedEvent()
         {
-            var firstEvent = (DepartmentCreatedEvent) PublishedEvents.First();
-            Assert.That(firstEvent.Name, Is.EqualTo(DepartmentName));
+            Assert.That(TheEvent.Name, Is.EqualTo(DepartmentName));
         }
 
 
