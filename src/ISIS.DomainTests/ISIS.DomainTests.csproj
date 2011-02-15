@@ -59,6 +59,7 @@
     <Compile Include="Environment\TestEventStoreWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
+    <Compile Include="SectionTests\when_a_new_section_is_created.cs" />
     <Compile Include="SimpleCommandFixture.cs" />
     <Compile Include="Environment\TestCommandService.cs" />
     <Compile Include="TermTests\when_a_new_term_is_created.cs" />
@@ -84,6 +85,7 @@
       <Name>ISIS.Events</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

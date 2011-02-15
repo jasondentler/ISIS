@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CreateCourseCommand.cs" />
     <Compile Include="CreateDepartmentCommand.cs" />
+    <Compile Include="CreateSectionCommand.cs" />
     <Compile Include="CreateTermCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

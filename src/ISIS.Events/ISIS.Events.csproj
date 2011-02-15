@@ -46,6 +46,7 @@
     <Compile Include="CourseCreatedEvent.cs" />
     <Compile Include="DepartmentCreatedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectionCreatedEvent.cs" />
     <Compile Include="TermCreatedEvent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
