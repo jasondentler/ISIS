@@ -10,9 +10,8 @@ namespace ISIS
         {
         }
 
-        public Section(Guid courseId, string sectionNumber)
+        public Section(Guid courseId, Guid termId, string sectionNumber)
         {
-            
         }
 
     }

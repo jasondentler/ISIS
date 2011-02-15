@@ -61,6 +61,7 @@
     <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
     <Compile Include="SimpleCommandFixture.cs" />
     <Compile Include="Environment\TestCommandService.cs" />
+    <Compile Include="TermTests\when_a_new_term_is_created.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
