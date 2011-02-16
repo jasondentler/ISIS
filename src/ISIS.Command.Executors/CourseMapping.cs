@@ -10,7 +10,7 @@ namespace ISIS
         {
             Map.Command<CreateCourseCommand>()
                 .ToAggregateRoot<Course>()
-                .CreateNew(cmd => new Course(cmd.Subject, cmd.CourseNumber, cmd.Title))
+                .CreateNew(cmd => new Course(cmd.Rubric, cmd.CourseNumber, cmd.Title))
                 .StoreInDomainRepository()
                 .RegisterWith(commandService);
 

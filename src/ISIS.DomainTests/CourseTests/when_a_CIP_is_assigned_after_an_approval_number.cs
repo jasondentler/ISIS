@@ -16,7 +16,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
-                                 Subject = "BIOL",
+                                 Rubric = "BIOL",
                                  Number = "2302",
                                  Title = "Anatomy & Physiology II"
                              };

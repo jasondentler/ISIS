@@ -56,16 +56,10 @@
     <Compile Include="CourseTests\when_an_approval_number_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_CIP_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_new_course_is_created.cs" />
-    <Compile Include="Environment\FakeEventSource.cs" />
-    <Compile Include="Environment\NullEventBus.cs" />
-    <Compile Include="Environment\SimpleTestEventStoreWrapper.cs" />
-    <Compile Include="Environment\TestEnvironmentConfiguration.cs" />
-    <Compile Include="Environment\TestEventStoreWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
     <Compile Include="SectionTests\when_a_new_section_is_created.cs" />
     <Compile Include="SimpleCommandFixture.cs" />
-    <Compile Include="Environment\TestCommandService.cs" />
     <Compile Include="TermTests\when_a_new_term_is_created.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +81,10 @@
     <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
       <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
       <Name>ISIS.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Tests\ISIS.Tests.csproj">
+      <Project>{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}</Project>
+      <Name>ISIS.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,40 +1,53 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using ISIS.Validation;
 using Ncqrs.Commanding.ServiceModel;
 
 namespace ISIS
 {
     public static class CommandServiceExtensions
     {
-
-        public static void Configure(this CommandService commandService, ICommandMapping commandMapping)
+        public static CommandService Configure(this CommandService commandService)
         {
-            commandMapping.MapCommands(commandService);
+            return commandService.MapCommands().AddInterceptors();
         }
 
-        public static void Configure(this CommandService commandService, params Type[] commandMappingTypes)
+        public static CommandService MapCommands(this CommandService commandService, ICommandMapping commandMapping)
+        {
+            commandMapping.MapCommands(commandService);
+            return commandService;
+        }
+
+        public static CommandService MapCommands(this CommandService commandService, params Type[] commandMappingTypes)
         {
             foreach (var commandMappingType in commandMappingTypes)
             {
                 var commandMapping = (ICommandMapping) Activator.CreateInstance(commandMappingType);
-                commandService.Configure(commandMapping);
+                commandService.MapCommands(commandMapping);
             }
+            return commandService;
         }
 
-        public static void Configure(this CommandService commandService, Assembly assembly)
+        public static CommandService MapCommands(this CommandService commandService, Assembly assembly)
         {
             var types = assembly.GetTypes()
                 .Where(t => typeof (ICommandMapping).IsAssignableFrom(t)
                             && t.IsClass && !t.IsAbstract)
                 .ToArray();
-            commandService.Configure(types);
+            return commandService.MapCommands(types);
         }
 
-        public static void Configure(this CommandService commandService)
+        public static CommandService MapCommands(this CommandService commandService)
         {
-            commandService.Configure(Assembly.GetExecutingAssembly());
+            return commandService.MapCommands(Assembly.GetExecutingAssembly());
         }
 
+        public static CommandService AddInterceptors(this CommandService commandService)
+        {
+            var validatorInterceptor = new ValidationCommandInterceptor();
+            commandService.AddInterceptor(validatorInterceptor);
+            return commandService;
+        }
     }
 }

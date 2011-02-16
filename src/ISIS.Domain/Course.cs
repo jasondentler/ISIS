@@ -16,17 +16,17 @@ namespace ISIS
         /// <summary>
         /// Creates a new course section
         /// </summary>
-        /// <param name="subject">Course subject. For example: BIOL</param>
+        /// <param name="rubric">Course subject. For example: BIOL</param>
         /// <param name="number">4-digit course number. For example: 2302</param>
         /// <param name="title">Course title</param>
         /// <example>new Course("BIOL","2302","Anatomy and Physiology 1");</example>
-        public Course(string subject,
+        public Course(string rubric,
             string number,
             string title)
         {
             var e = new CourseCreatedEvent()
                         {
-                            Subject = subject,
+                            Rubric = rubric,
                             Number = number,
                             Title = title
                         };

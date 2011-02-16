@@ -8,7 +8,7 @@ namespace ISIS.DomainTests.CourseTests
         SimpleCommandFixture<CreateCourseCommand, Course, CourseCreatedEvent>
     {
 
-        private const string SubjectName = "BIOL";
+        private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
         private const string Title = "Introductory Biology";
 
@@ -16,7 +16,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             return new CreateCourseCommand()
                        {
-                           Subject = SubjectName,
+                           Rubric = Rubric,
                            CourseNumber = CourseNumber,
                            Title = Title
                        };
@@ -25,7 +25,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_create_a_new_CourseCreatedEvent()
         {
-            Assert.That(TheEvent.Subject, Is.EqualTo(SubjectName));
+            Assert.That(TheEvent.Rubric, Is.EqualTo(Rubric));
             Assert.That(TheEvent.Number, Is.EqualTo(CourseNumber));
             Assert.That(TheEvent.Title, Is.EqualTo(Title));
         }
