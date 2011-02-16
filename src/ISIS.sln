@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Command.Executors.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Tests", "ISIS.Tests\ISIS.Tests.csproj", "{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Web", "ISIS.Web\ISIS.Web.csproj", "{90191C9C-035B-4A74-95AF-B48DA06BB304}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90191C9C-035B-4A74-95AF-B48DA06BB304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90191C9C-035B-4A74-95AF-B48DA06BB304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90191C9C-035B-4A74-95AF-B48DA06BB304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90191C9C-035B-4A74-95AF-B48DA06BB304}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
