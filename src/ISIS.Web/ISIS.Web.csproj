@@ -139,8 +139,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Schedule\Models\" />
-    <Folder Include="Areas\Schedule\Views\Course\" />
-    <Folder Include="Areas\Schedule\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Schedule\Views\Web.config" />
@@ -158,6 +156,10 @@
       <Project>{F7039764-F60F-4CD7-A2E8-68F989E55036}</Project>
       <Name>ISIS.Denormalizers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ISIS.ReadModel\ISIS.ReadModel.csproj">
+      <Project>{7922BC22-5D9B-40E9-992E-95AE0793E1BA}</Project>
+      <Name>ISIS.ReadModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
       <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>
       <Name>ISIS.Validation</Name>
@@ -165,6 +167,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Course\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Course\Add.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

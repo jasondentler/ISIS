@@ -33,6 +33,7 @@ namespace ISIS.Web
             
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            ConfigureNcqrs();
         }
 
         protected void ConfigureNcqrs()

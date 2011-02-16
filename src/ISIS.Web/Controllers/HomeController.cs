@@ -11,8 +11,12 @@ namespace ISIS.Web.Controllers
 
         public RedirectToRouteResult Index()
         {
-            return this.RedirectToAction<CourseController>(
-                c => c.Index());
+            return RedirectToRoute(new
+                                       {
+                                           area = "Schedule",
+                                           controller = "Course",
+                                           action = "Index"
+                                       });
         }
 
     }

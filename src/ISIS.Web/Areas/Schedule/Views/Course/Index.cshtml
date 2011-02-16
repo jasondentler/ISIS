@@ -1,0 +1,17 @@
+﻿@model IEnumerable<dynamic>
+@using ISIS.Web.Areas.Schedule.Controllers
+@using Microsoft.Web.Mvc
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Courses</h2>
+
+<ul>
+@foreach (var course in Model)
+{
+    <li>@course.Rubric @course.Number : @course.Title</li>
+}
+</ul>
+
+@(Html.ActionLink<CourseController>(c => c.Add(), "Create A New Course"))

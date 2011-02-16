@@ -1,4 +1,7 @@
 ﻿using System.Web.Mvc;
+using Ncqrs;
+using Ncqrs.Commanding.ServiceModel;
+using MvcContrib;
 
 namespace ISIS.Web.Areas.Schedule.Controllers
 {
@@ -7,9 +10,23 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         //
         // GET: /Schedule/Course/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            var courseList = new CourseList();
+            return View(courseList.All(orderBy: "Rubric, Number, Title", limit: 200));
+        }
+
+        [HttpGet]
+        public ViewResult Add()
+        {
+            return View(new CreateCourseCommand());
+        }
+
+        [HttpPost]
+        public RedirectToRouteResult Add(CreateCourseCommand command)
+        {
+            NcqrsEnvironment.Get<ICommandService>().Execute(command);
+            return this.RedirectToAction(c => c.Index());
         }
 
     }

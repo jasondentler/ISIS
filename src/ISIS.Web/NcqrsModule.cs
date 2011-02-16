@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -9,7 +6,6 @@ using Ncqrs.Eventing.Storage;
 using Ncqrs.Eventing.Storage.SQL;
 using Ninject.Modules;
 using Ninject;
-using Ncqrs;
 
 
 namespace ISIS.Web
@@ -19,9 +15,9 @@ namespace ISIS.Web
     {
         public override void Load()
         {
-
+            var eventStoreConnectionString = ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString;
             Kernel.Bind<IEventStore>()
-                .To<MsSqlServerEventStore>()
+                .ToMethod(ctx => new MsSqlServerEventStore(eventStoreConnectionString))
                 .InSingletonScope();
 
             Kernel.Bind<IEventBus>()
@@ -41,7 +37,12 @@ namespace ISIS.Web
                 .InSingletonScope();
 
             Kernel.Bind<ICommandService>()
-                .ToMethod(ctx => new CommandService().Configure())
+                .ToMethod(ctx =>
+                              {
+                                  var cs = new CommandService();
+                                  cs.Configure();
+                                  return cs;
+                              })
                 .InSingletonScope();
 
         }
