@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignApprovalNumberCommandValidator.cs" />
+    <Compile Include="AssignCIPCommandValidator.cs" />
     <Compile Include="CreateCourseCommandValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationCommandInterceptor.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 using FluentValidation;
+using Ncqrs;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 
@@ -10,6 +11,8 @@ namespace ISIS.Validation
 {
     public class ValidationCommandInterceptor : ICommandServiceInterceptor 
     {
+
+        private static readonly ILog Log = Ncqrs.LogManager.GetLogger(typeof (ValidationCommandInterceptor));
 
         private readonly ConcurrentDictionary<Type, IValidator> _validatorMap;
 
@@ -62,9 +65,12 @@ namespace ISIS.Validation
         private static IValidator CreateValidator(Type commandType)
         {
             var validatorType = SearchValidatorType(commandType);
-            return validatorType == null
-                       ? null
-                       : (IValidator) Activator.CreateInstance(validatorType);
+            if (validatorType == null)
+            {
+                Log.WarnFormat("No validator for {0}", commandType);
+                return null;
+            }
+            return (IValidator) Activator.CreateInstance(validatorType);
         }
 
     }

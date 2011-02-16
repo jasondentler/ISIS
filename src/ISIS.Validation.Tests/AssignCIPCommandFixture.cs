@@ -1,0 +1,46 @@
+﻿using FluentValidation;
+using NUnit.Framework;
+
+namespace ISIS.Validation.Tests
+{
+    [TestFixture]
+    public class AssignCIPCommandFixture : ValidationFixture<AssignCIPCommand>
+    {
+        protected override AbstractValidator<AssignCIPCommand> CreateValidator()
+        {
+            return new AssignCIPCommandValidator();
+        }
+
+        [Test]
+        public void CIP_must_be_6_digits_long()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CIP = "12345"
+            }, cmd => cmd.CIP);
+        }
+
+        [Test]
+        public void CIP_must_be_all_numbers()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CIP = "12345A"
+            }, cmd => cmd.CIP);
+        }
+
+        [Test]
+        public void CIP_must_not_contain_punctuation()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CIP = "12.345"
+            }, cmd => cmd.CIP);
+        }
+
+
+
+
+
+    }
+}

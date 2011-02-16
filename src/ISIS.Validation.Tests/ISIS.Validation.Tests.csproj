@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignApprovalNumberCommandFixture.cs" />
+    <Compile Include="AssignCIPCommandFixture.cs" />
     <Compile Include="CreateCourseCommandFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseFixture.cs" />
