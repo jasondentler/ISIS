@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Ncqrs.Config.Ninject;
+using Ninject;
 
 namespace ISIS.Web
 {
@@ -32,5 +34,12 @@ namespace ISIS.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
+
+        protected void ConfigureNcqrs()
+        {
+            var kernel = new StandardKernel(new NcqrsModule());
+            Ncqrs.NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
+        }
+
     }
 }

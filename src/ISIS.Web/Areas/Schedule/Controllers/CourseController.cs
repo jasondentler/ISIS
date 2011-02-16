@@ -9,7 +9,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
 
         public ActionResult Index()
         {
-            return Content("Nothing to see here. Move along.");
+            return View();
         }
 
     }
