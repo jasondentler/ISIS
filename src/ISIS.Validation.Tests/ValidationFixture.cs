@@ -8,10 +8,11 @@ using NUnit.Framework;
 namespace ISIS.Validation.Tests
 {
 
-    public abstract class ValidationFixture<T>  : BaseFixture
+    public abstract class ValidationFixture<T> : BaseFixture
     {
 
         protected abstract AbstractValidator<T> CreateValidator();
+        protected abstract T GetValidInstance();
 
         private static ValidationFailure GetFailure(ValidationResult result, string propertyName)
         {
@@ -50,7 +51,13 @@ namespace ISIS.Validation.Tests
                     .ToArray());
             Assert.That(result.IsValid, Is.True, errors);
         }
-       
+
+        [Test]
+        public void Valid_instance_works()
+        {
+            AssertIsValid(GetValidInstance());
+        }
+
     }
 
 }

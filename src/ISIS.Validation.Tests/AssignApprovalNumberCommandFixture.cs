@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 using NUnit.Framework;
 
 namespace ISIS.Validation.Tests
@@ -9,6 +10,15 @@ namespace ISIS.Validation.Tests
         protected override AbstractValidator<AssignApprovalNumberCommand> CreateValidator()
         {
             return new AssignApprovalNumberCommandValidator();
+        }
+
+        protected override AssignApprovalNumberCommand GetValidInstance()
+        {
+            return new AssignApprovalNumberCommand()
+                       {
+                           ApprovalNumber = "1234567890",
+                           CourseId = Guid.NewGuid()
+                       };
         }
 
         [Test]
@@ -36,6 +46,15 @@ namespace ISIS.Validation.Tests
             {
                 ApprovalNumber = "12.3456789"
             }, cmd => cmd.ApprovalNumber);
+        }
+
+        [Test]
+        public void CourseId_must_be_specified()
+        {
+            GetFailure(new AssignApprovalNumberCommand()
+            {
+                CourseId = default(Guid)
+            }, cmd => cmd.CourseId);
         }
 
 

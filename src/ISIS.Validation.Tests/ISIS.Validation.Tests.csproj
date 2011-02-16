@@ -37,17 +37,9 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.5.9.10348\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.5.9.10348\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework, Version=1.0.4000.25744, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.5.9.10348\lib\pnunit.framework.dll</HintPath>
+      <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,15 +52,21 @@
   <ItemGroup>
     <Compile Include="AssignApprovalNumberCommandFixture.cs" />
     <Compile Include="AssignCIPCommandFixture.cs" />
+    <Compile Include="CreateSectionCommandFixture.cs" />
+    <Compile Include="CreateTermCommandFixture.cs" />
+    <Compile Include="CreateDepartmentCommandFixture.cs" />
     <Compile Include="CreateCourseCommandFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BaseFixture.cs" />
     <Compile Include="ValidationFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
       <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
       <Name>ISIS.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Tests\ISIS.Tests.csproj">
+      <Project>{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}</Project>
+      <Name>ISIS.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
       <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>

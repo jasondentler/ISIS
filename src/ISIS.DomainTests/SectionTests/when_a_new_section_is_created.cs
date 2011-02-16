@@ -18,7 +18,7 @@ namespace ISIS.DomainTests.SectionTests
                        {
                            CourseId = CourseId,
                            TermId = TermId,
-                           SectionNumber = SectionNumber
+                           Number = SectionNumber
                        };
         }
 

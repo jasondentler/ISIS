@@ -8,7 +8,7 @@ namespace ISIS
 
         public Guid CourseId { get; set; }
         public Guid TermId { get; set; }
-        public string SectionNumber { get; set; }
+        public string Number { get; set; }
 
     }
 }

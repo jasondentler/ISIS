@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 
 namespace ISIS.Validation
 {
@@ -12,6 +13,10 @@ namespace ISIS.Validation
             RuleFor(cmd => cmd.ApprovalNumber)
                 .Matches(@"^\d{10}$")
                 .WithMessage("Approval number must be 10 digits long");
+
+            RuleFor(cmd => cmd.CourseId)
+                .NotEqual(default(Guid))
+                .WithMessage("You must specify a course");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 using NUnit.Framework;
 
 namespace ISIS.Validation.Tests
@@ -9,6 +10,15 @@ namespace ISIS.Validation.Tests
         protected override AbstractValidator<AssignCIPCommand> CreateValidator()
         {
             return new AssignCIPCommandValidator();
+        }
+
+        protected override AssignCIPCommand GetValidInstance()
+        {
+            return new AssignCIPCommand()
+                       {
+                           CIP = "123456",
+                           CourseId = Guid.NewGuid()
+                       };
         }
 
         [Test]
@@ -38,8 +48,14 @@ namespace ISIS.Validation.Tests
             }, cmd => cmd.CIP);
         }
 
-
-
+        [Test]
+        public void CourseId_must_be_specified()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CourseId = default(Guid)
+            }, cmd => cmd.CourseId);
+        }
 
 
     }

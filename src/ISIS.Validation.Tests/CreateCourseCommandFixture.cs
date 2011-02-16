@@ -11,6 +11,16 @@ namespace ISIS.Validation.Tests
             return new CreateCourseCommandValidator();
         }
 
+        protected override CreateCourseCommand GetValidInstance()
+        {
+            return new CreateCourseCommand()
+                       {
+                           Rubric = "BIOL",
+                           CourseNumber = "1234",
+                           Title = "Introduction to Frog Dissection"
+                       };
+        }
+
         [Test]
         public void Rubric_must_be_4_characters_long()
         {
@@ -72,17 +82,6 @@ namespace ISIS.Validation.Tests
                            {
                                Title = ""
                            }, cmd => cmd.Title);
-        }
-
-        [Test]
-        public void Valid_course_works()
-        {
-            AssertIsValid(new CreateCourseCommand()
-                              {
-                                  Rubric = "BIOL",
-                                  CourseNumber = "1234",
-                                  Title = "Introduction to Frog Dissection"
-                              });
         }
 
     }
