@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ncqrs;
-using Ncqrs.Eventing.Sourcing;
 using WebMatrix.Data;
 
 namespace ISIS.Infrastructure
 {
-    public abstract class Denormalizer<TEvent, TEntity, TPrimaryKey> : IDenormalizer<TEvent>
-        where TEvent : ISourcedEvent
+    public abstract class Denormalizer<TEntity, TPrimaryKey> : IDenormalizer
         where TEntity : Entity, new()
     {
 
         private static readonly ILog Log =
-            Ncqrs.LogManager.GetLogger(typeof (Denormalizer<TEvent, TEntity, TPrimaryKey>));
+            Ncqrs.LogManager.GetLogger(typeof (Denormalizer<TEntity, TPrimaryKey>));
 
-        public abstract void Handle(TEvent evnt);
+        protected Denormalizer()
+        {
+            Log.DebugFormat("Creating denormalizer {0}", GetType());
+        }
+
         protected abstract IEnumerable<ColumnInformation> GetDataColumns();
 
         public virtual void Setup()

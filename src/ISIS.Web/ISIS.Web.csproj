@@ -39,6 +39,10 @@
     <Reference Include="FluentValidation.Mvc">
       <HintPath>..\packages\FluentValidation.MVC3.2.0.0.0\lib\NET4\FluentValidation.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ncqrs\Framework\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\mvccontrib\Dependencies\Microsoft.Web.Mvc.dll</HintPath>

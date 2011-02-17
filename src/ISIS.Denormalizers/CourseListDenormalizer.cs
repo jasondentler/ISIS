@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using ISIS.Infrastructure;
+using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace ISIS
 {
-    public class CourseListDenormalizer
-        : Denormalizer<CourseCreatedEvent, CourseList, Guid>
+    public class CourseListDenormalizer : Denormalizer<CourseList, Guid>, 
+        IEventHandler<CourseCreatedEvent>
     {
 
         protected override IEnumerable<ColumnInformation> GetDataColumns()
@@ -15,7 +16,7 @@ namespace ISIS
             yield return new ColumnInformation<string>("Title");
         }
         
-        public override void Handle(CourseCreatedEvent evnt)
+        public void Handle(CourseCreatedEvent evnt)
         {
             var tbl = new CourseList();
             tbl.Insert(new

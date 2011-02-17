@@ -1,7 +1,4 @@
-﻿using Ncqrs.Eventing.ServiceModel.Bus;
-using Ncqrs.Eventing.Sourcing;
-
-namespace ISIS.Infrastructure
+﻿namespace ISIS.Infrastructure
 {
 
     public interface IDenormalizer
@@ -12,10 +9,4 @@ namespace ISIS.Infrastructure
 
     }
 
-    public interface IDenormalizer<T> : IDenormalizer, IEventHandler<T>
-        where T : ISourcedEvent 
-    {
-
-
-    }
 }
