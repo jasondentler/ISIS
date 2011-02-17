@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoNotCloseConnectionProvider.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="when_a_course_is_created.cs" />
     <Compile Include="DenormalizerFixture.cs" />

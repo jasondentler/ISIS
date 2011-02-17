@@ -8,7 +8,6 @@ namespace ISIS.Denormalizers.Tests
         public void Setup()
         {
             var cfg = NHibernateReadModel.NHibernateModule.Configuration;
-            var sessionFactory = NHibernateReadModel.NHibernateModule.SessionFactory;
             TearDown();
 
             var export = new SchemaExport(cfg);
@@ -17,10 +16,7 @@ namespace ISIS.Denormalizers.Tests
 
         public void TearDown()
         {
-            var cfg = NHibernateReadModel.NHibernateModule.Configuration;
-            var sessionFactory = NHibernateReadModel.NHibernateModule.SessionFactory;
-            var export = new SchemaExport(cfg);
-            export.Drop(false, true);
+            DoNotCloseConnectionProvider.CloseDatabase();
         }
 
     }
