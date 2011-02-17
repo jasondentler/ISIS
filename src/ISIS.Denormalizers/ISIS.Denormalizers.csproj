@@ -45,11 +45,9 @@
     <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ColumnInformation.cs" />
     <Compile Include="CourseListDenormalizer.cs" />
-    <Compile Include="Infrastructure\Denormalizer.cs" />
+    <Compile Include="Denormalizer.cs" />
     <Compile Include="EventBusExtensions.cs" />
-    <Compile Include="Infrastructure\IDenormalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

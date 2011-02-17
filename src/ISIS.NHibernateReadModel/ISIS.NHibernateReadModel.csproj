@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7883AE22-9E8D-4B81-A685-6632230D12D5}</ProjectGuid>
+    <ProjectGuid>{5C5F73F7-24A8-4910-9730-A0E51D190A45}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.Denormalizers.Tests</RootNamespace>
-    <AssemblyName>ISIS.Denormalizers.Tests</AssemblyName>
+    <RootNamespace>ISIS.NHibernateReadModel</RootNamespace>
+    <AssemblyName>ISIS.NHibernateReadModel</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,12 +31,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ncqrs">
-      <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.1.3.42154\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.2.5.1\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.1.0.1\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\packages\NHibernate.3.0.0.4000\lib\Remotion.Data.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,30 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="when_a_course_is_created.cs" />
-    <Compile Include="DenormalizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="SessionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ISIS.Denormalizers\ISIS.Denormalizers.csproj">
-      <Project>{F7039764-F60F-4CD7-A2E8-68F989E55036}</Project>
-      <Name>ISIS.Denormalizers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
-      <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
-      <Name>ISIS.Events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ISIS.ReadModel\ISIS.ReadModel.csproj">
       <Project>{7922BC22-5D9B-40E9-992E-95AE0793E1BA}</Project>
       <Name>ISIS.ReadModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ISIS.Tests\ISIS.Tests.csproj">
-      <Project>{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}</Project>
-      <Name>ISIS.Tests</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

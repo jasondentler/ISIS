@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using ISIS.Infrastructure;
 
 namespace ISIS.ReadModel.Installer
 {

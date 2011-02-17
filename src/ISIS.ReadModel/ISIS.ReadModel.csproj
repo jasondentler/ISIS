@@ -43,9 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseList.cs" />
-    <Compile Include="Massive.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="IReadRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IRepositoryFactory.cs" />
+    <Compile Include="PageOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

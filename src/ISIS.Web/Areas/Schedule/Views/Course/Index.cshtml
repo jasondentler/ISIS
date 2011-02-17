@@ -1,4 +1,4 @@
-﻿@model IEnumerable<dynamic>
+﻿@model PageOf<CourseList>
 @using ISIS.Web.Areas.Schedule.Controllers
 @using Microsoft.Web.Mvc
 @{
@@ -8,7 +8,7 @@
 <h2>Courses</h2>
 
 <ul>
-@foreach (var course in Model)
+@foreach (var course in Model.Results)
 {
     <li>@course.Rubric @course.Number : @course.Title</li>
 }
