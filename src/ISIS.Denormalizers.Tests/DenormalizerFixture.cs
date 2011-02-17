@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ncqrs;
+using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
@@ -22,13 +22,18 @@ namespace ISIS.Denormalizers.Tests
         protected TEvent TheEvent { get; private set; }
         protected IReadRepository Repository { get; private set; }
         
-        protected override void OnTestSetup()
+        protected override void  OnFixtureSetup()
         {
+            base.OnFixtureSetup();
+            new DatabaseHelper().Setup();
+
             EventSourceId = Guid.NewGuid();
-            var factory = NcqrsEnvironment.Get<IRepositoryFactory>();
+            var factory = new RepositoryFactory();
+            Repository = factory.CreateRepository();
             var denormalizer = CreateDenormalizer(factory);
             var history = Given();
             TheEvent = WhenHandling();
+            TryClaim(TheEvent);
             ApplyHistory(denormalizer, history);
             try
             {
@@ -38,6 +43,12 @@ namespace ISIS.Denormalizers.Tests
             {
                 CaughException = exception;
             }
+        }
+
+        protected override void OnFixtureTearDown()
+        {
+            new DatabaseHelper().TearDown();
+            base.OnFixtureTearDown();
         }
 
         private void TryClaim(ISourcedEvent @event)

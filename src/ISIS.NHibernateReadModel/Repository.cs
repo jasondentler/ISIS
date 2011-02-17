@@ -69,7 +69,8 @@ namespace ISIS.NHibernateReadModel
 
         public T Single<T>(object id) where T : IEntity
         {
-            return _session.Transact(() => _session.Get<T>(id));
+            var retval = _session.Transact(() => _session.Get<T>(id));
+            return retval;
         }
 
         public void Dispose()

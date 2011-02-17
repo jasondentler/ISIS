@@ -6,6 +6,18 @@ namespace ISIS
     public abstract class BaseFixture
     {
 
+        static BaseFixture()
+        {
+            log4net.Config.XmlConfigurator.Configure();
+        }
+
+        protected readonly ILog Log;
+
+        protected BaseFixture()
+        {
+            Log = LogManager.GetLogger(GetType());
+        }
+
         [TestFixtureSetUp]
         public void FixtureSetup()
         {

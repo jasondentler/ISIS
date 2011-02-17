@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Ncqrs.Eventing;
+﻿using System.Collections.Generic;
 using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
 
