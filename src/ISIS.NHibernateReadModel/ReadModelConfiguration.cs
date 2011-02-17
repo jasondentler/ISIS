@@ -15,10 +15,10 @@ using NHibernate.Cfg.MappingSchema;
 
 namespace ISIS.NHibernateReadModel
 {
-    public static class NHibernateModule
+    public static class ReadModelConfiguration
     {
 
-        static NHibernateModule()
+        static ReadModelConfiguration()
         {
             Configuration = new Configuration().Configure();
             Configuration.AddDeserializedMapping(GetMapping(), null);

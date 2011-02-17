@@ -13,7 +13,7 @@
     <RootNamespace>ISIS.Web</RootNamespace>
     <AssemblyName>ISIS.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,11 +94,13 @@
   <ItemGroup>
     <Compile Include="Areas\Schedule\Controllers\CourseController.cs" />
     <Compile Include="Areas\Schedule\ScheduleAreaRegistration.cs" />
+    <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="NcqrsModule.cs" />
+    <Compile Include="NHibernateModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

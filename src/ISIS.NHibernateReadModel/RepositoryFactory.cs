@@ -9,7 +9,7 @@ namespace ISIS.NHibernateReadModel
 
         public RepositoryFactory()
         {
-            _sessionFactory = NHibernateModule.SessionFactory;
+            _sessionFactory = ReadModelConfiguration.SessionFactory;
         }
 
         public IRepository CreateRepository()

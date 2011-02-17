@@ -7,7 +7,7 @@ namespace ISIS.Denormalizers.Tests
 
         public void Setup()
         {
-            var cfg = NHibernateReadModel.NHibernateModule.Configuration;
+            var cfg = NHibernateReadModel.ReadModelConfiguration.Configuration;
             TearDown();
 
             var export = new SchemaExport(cfg);

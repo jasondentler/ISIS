@@ -33,13 +33,15 @@ namespace ISIS.Web
             
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-            ConfigureNcqrs();
+            ConfigureInjection();
         }
 
-        protected void ConfigureNcqrs()
+        protected void ConfigureInjection()
         {
-            var kernel = new StandardKernel(new NcqrsModule());
+            var kernel = new StandardKernel(new NcqrsModule(), new NHibernateModule());
             Ncqrs.NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
+            var controllerFactory = new NinjectControllerFactory(kernel);
+            ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }
 
     }

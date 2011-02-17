@@ -21,7 +21,7 @@ namespace ISIS.Web
                 .InSingletonScope();
 
             Kernel.Bind<IEventBus>()
-                .ToMethod(ctx => new InProcessEventBus().RegisterDenormalizers())
+                .ToMethod(ctx => new InProcessEventBus().RegisterDenormalizers(Kernel))
                 .InSingletonScope();
 
             Kernel.Bind<IAggregateRootCreationStrategy>()

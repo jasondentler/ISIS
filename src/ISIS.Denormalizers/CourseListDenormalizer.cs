@@ -6,16 +6,16 @@ namespace ISIS
         Denormalizer, 
         IEventHandler<CourseCreatedEvent>
     {
-        
-        public CourseListDenormalizer(IRepositoryFactory repositoryFactory)
-            : base(repositoryFactory)
+        private readonly IRepository _repository;
+
+        public CourseListDenormalizer(IRepository repository)
         {
+            _repository = repository;
         }
 
         public void Handle(CourseCreatedEvent evnt)
         {
-            using (var repo = OpenRepository())
-                repo.Insert(new CourseList()
+                _repository.Insert(new CourseList()
                                 {
                                     Number = evnt.Number,
                                     Id = evnt.EventSourceId,

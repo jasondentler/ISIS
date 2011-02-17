@@ -11,7 +11,7 @@ namespace ISIS.Denormalizers.Tests
 
         protected override CourseListDenormalizer CreateDenormalizer(IRepositoryFactory factory)
         {
-            return new CourseListDenormalizer(factory);
+            return new CourseListDenormalizer(factory.CreateRepository());
         }
 
         protected override IEnumerable<ISourcedEvent> Given()
