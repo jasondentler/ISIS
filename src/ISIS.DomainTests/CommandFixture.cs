@@ -7,7 +7,7 @@ using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Domain.Storage;
-using Ncqrs.Eventing.Sourcing;
+using Ncqrs.Eventing;
 using Ncqrs.Eventing.Storage;
 using Ncqrs.Spec;
 
@@ -26,19 +26,25 @@ namespace ISIS.DomainTests
         protected IAggregateRootCreationStrategy CreationStrategy { get; set; }
         protected TAggregateRoot AggregateRoot { get; set; }
         protected Guid EventSourceId { get; private set; }
+        protected Guid CommandId { get; private set; }
 
         protected override void SetupDependencies()
         {
             EventSourceId = Guid.NewGuid();
+            CommandId = Guid.NewGuid();
 
-            var history = Given();
+            var history = GivenUncommittedEvents();
             if (!history.Any()) return;
 
-            var eventStore = (TestEventStoreWrapper)NcqrsEnvironment.Get<IEventStore>();
-            var repo = NcqrsEnvironment.Get<IDomainRepository>();
-
+            var eventStore = (TestEventStoreWrapper) NcqrsEnvironment.Get<IEventStore>();
             eventStore.Setup(EventSourceId, history);
-            AggregateRoot = repo.GetById<TAggregateRoot>(EventSourceId);
+
+            var factory = NcqrsEnvironment.Get<IUnitOfWorkFactory>() ?? new UnitOfWorkFactory();
+            using (var uow = factory.CreateUnitOfWork(CommandId))
+            {
+                AggregateRoot = (TAggregateRoot)UnitOfWorkContext.Current.GetById(typeof(TAggregateRoot), EventSourceId, null);
+                uow.Accept();
+            }
         }
 
         private static void EnsureConfiguredEnvironment()
@@ -47,17 +53,27 @@ namespace ISIS.DomainTests
                 NcqrsEnvironment.Configure(new TestEnvironmentConfiguration());
         }
 
-        protected virtual IEnumerable<ISourcedEvent> Given()
+        protected virtual IEnumerable<object> Given()
         {
-            return new SourcedEvent[0];
+            return new object[0];
         }
 
-        protected override ICommandExecutor<TCommand> BuildCommandExecutor()
+        protected virtual IEnumerable<UncommittedEvent> GivenUncommittedEvents()
         {
-            var cmdService = (TestCommandService) NcqrsEnvironment.Get<ICommandService>();
-            return cmdService.GetCommandExecutor<TCommand>();
+            long sequence = 0;
+            return Given().Select(evnt => new UncommittedEvent(
+                                              Guid.NewGuid(), EventSourceId,
+                                              sequence++, 0, DateTime.Now,
+                                              evnt, new Version(0, 0, 0, 0)));
         }
 
+        protected override ICommandExecutor<ICommand> BuildCommandExecutor()
+        {
+            var cmdService = (TestCommandService)NcqrsEnvironment.Get<ICommandService>();
+            var realExecutor = cmdService.GetCommandExecutor<TCommand>();
+            return new WrappedCommandExecutor<TCommand>(realExecutor);
+        }
+        
     }
 
 }

@@ -87,5 +87,19 @@ namespace ISIS
             _approvalNumber = @event.ApprovalNumber;
         }
 
+        public void ChangeCourseTitle(string newTitle)
+        {
+            var e = new CourseTitleChangedEvent()
+                        {
+                            NewTitle = newTitle
+                        };
+            ApplyEvent(e);
+        }
+
+        protected void OnCourseTitleChanged(CourseTitleChangedEvent @event)
+        {
+            
+        }
+
     }
 }

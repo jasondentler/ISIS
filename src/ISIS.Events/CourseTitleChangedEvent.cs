@@ -2,9 +2,9 @@
 
 namespace ISIS
 {
-    public class CourseCIPAssignedEvent 
+    public class CourseTitleChangedEvent 
     {
         public Guid CourseId { get; set; }
-        public string CIP { get; set; }
+        public string NewTitle { get; set; }
     }
 }

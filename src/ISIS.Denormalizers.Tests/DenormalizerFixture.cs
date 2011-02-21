@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Sourcing;
@@ -9,12 +10,16 @@ namespace ISIS.Denormalizers.Tests
 {
     public abstract class DenormalizerFixture<TDenormalizer, TEvent>
         : BaseFixture
-        where TDenormalizer : Denormalizer, IEventHandler<TEvent>
-        where TEvent : ISourcedEvent
+        where TDenormalizer : IDenormalizer, IEventHandler<TEvent>
     {
 
         protected abstract TDenormalizer CreateDenormalizer(IRepositoryFactory factory);
-        protected abstract IEnumerable<ISourcedEvent> Given();
+        protected virtual IEnumerable<object> Given()
+        {
+            return new object[0];    
+        }
+
+
         protected abstract TEvent WhenHandling();
 
         protected Guid EventSourceId { get; private set; }
@@ -33,11 +38,14 @@ namespace ISIS.Denormalizers.Tests
             var denormalizer = CreateDenormalizer(factory);
             var history = Given();
             TheEvent = WhenHandling();
-            TryClaim(TheEvent);
             ApplyHistory(denormalizer, history);
             try
             {
-                denormalizer.Handle(TheEvent);
+                var evnt = new PublishableEvent(Guid.NewGuid(),
+                                     DateTime.Now, new Version(0, 0, 0, 0),
+                                     EventSourceId, history.Count(),
+                                     Guid.NewGuid(), TheEvent);
+                denormalizer.Handle(new PublishedEvent<TEvent>(evnt));
             }
             catch (Exception exception)
             {
@@ -50,22 +58,15 @@ namespace ISIS.Denormalizers.Tests
             new DatabaseHelper().TearDown();
             base.OnFixtureTearDown();
         }
-
-        private void TryClaim(ISourcedEvent @event)
-        {
-            if (@event.EventSourceId == default(Guid))
-                @event.ClaimEvent(EventSourceId, 0);
-        }
-
-        private void ApplyHistory(TDenormalizer denormalizer, IEnumerable<ISourcedEvent> history)
+        
+        private void ApplyHistory(TDenormalizer denormalizer, IEnumerable<object> history)
         {
             foreach (var evnt in history)
                 ApplyHistory(denormalizer, evnt);
         }
 
-        private void ApplyHistory(TDenormalizer denormalizer, ISourcedEvent evnt)
+        private void ApplyHistory(TDenormalizer denormalizer, object evnt)
         {
-            TryClaim(evnt);
             var handlerInterface = typeof (IEventHandler<>)
                 .MakeGenericType(evnt.GetType());
             if (!handlerInterface.IsAssignableFrom(typeof(TDenormalizer)))

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AssignApprovalNumberCommand.cs" />
     <Compile Include="AssignCIPCommand.cs" />
+    <Compile Include="ChangeCourseTitleCommand.cs" />
     <Compile Include="CreateCourseCommand.cs" />
     <Compile Include="CreateDepartmentCommand.cs" />
     <Compile Include="CreateSectionCommand.cs" />

@@ -26,9 +26,6 @@ namespace ISIS
             _factories[typeof(IAggregateRootCreationStrategy)] = () => new SimpleAggregateRootCreationStrategy();
             _factories[typeof (IDomainRepository)] =
                 () => new DomainRepository(
-                          NcqrsEnvironment.Get<IEventStore>(),
-                          NcqrsEnvironment.Get<IEventBus>(),
-                          null,
                           NcqrsEnvironment.Get<IAggregateRootCreationStrategy>());
             _factories[typeof (ICommandService)] =
                 () =>

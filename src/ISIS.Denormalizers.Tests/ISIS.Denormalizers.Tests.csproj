@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PublishableEvent.cs" />
+    <Compile Include="when_a_course_title_is_changed.cs" />
     <Compile Include="DoNotCloseConnectionProvider.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="when_a_course_is_created.cs" />

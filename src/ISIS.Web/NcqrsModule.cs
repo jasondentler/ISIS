@@ -30,10 +30,7 @@ namespace ISIS.Web
 
             Kernel.Bind<IDomainRepository>()
                 .ToMethod(ctx =>
-                          new DomainRepository(Kernel.Get<IEventStore>(),
-                                               Kernel.Get<IEventBus>(),
-                                               null,
-                                               Kernel.Get<IAggregateRootCreationStrategy>()))
+                          new DomainRepository(Kernel.Get<IAggregateRootCreationStrategy>()))
                 .InSingletonScope();
 
             Kernel.Bind<ICommandService>()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ncqrs.Eventing;
 using Ncqrs.Eventing.Sourcing;
 using Ncqrs.Eventing.Storage;
 
@@ -16,35 +17,22 @@ namespace ISIS
             _wrappedEventStore = eventStoreConstructor();
         }
 
-        public IEnumerable<ISourcedEvent> GetAllEvents(Guid id)
+        public CommittedEventStream ReadFrom(Guid id, long minVersion, long maxVersion)
         {
-            return _wrappedEventStore.GetAllEvents(id);
+            return _wrappedEventStore.ReadFrom(id, minVersion, maxVersion);
         }
 
-        public IEnumerable<ISourcedEvent> GetAllEventsSinceVersion(Guid id, long version)
+        public void Store(UncommittedEventStream eventStream)
         {
-            return _wrappedEventStore.GetAllEventsSinceVersion(id, version);
+            _wrappedEventStore.Store(eventStream);
         }
 
-        public void Save(IEventSource source)
+        public void Setup(Guid eventSourceId, IEnumerable<UncommittedEvent> events)
         {
-            _wrappedEventStore.Save(source);
-        }
-
-        //private void Save(IEnumerable<ISourcedEvent> events)
-        //{
-        //    bool claim = events.Any(e => e.EventSequence != 0);
-        //    foreach (var @event in events)
-        //    {
-        //        if (claim)
-        //            @event.ClaimEvent(_eventSourceId, _events.Count + 1);
-        //        _events.Enqueue(@event);
-        //    }
-        //}
-
-        public void Setup(Guid eventSourceId, IEnumerable<ISourcedEvent> events)
-        {
-            Save(new FakeEventSource(eventSourceId, events));
+            var strm = new UncommittedEventStream(Guid.NewGuid());
+            foreach (var evnt in events)
+                strm.Append(evnt);
+            Store(strm);
         }
 
         public void Clear()

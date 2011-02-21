@@ -44,9 +44,13 @@ namespace ISIS
         private static void RegisterHandlerFactory<TEvent>(this InProcessEventBus eventBus, Func<IEventHandler<TEvent>> handlerFactory)
             where TEvent : IEvent
         {
-            var eventDataType = typeof(TEvent);
-            Action<IEvent> handler = evnt => handlerFactory().Handle((TEvent)evnt);
-            eventBus.RegisterHandler(eventDataType, handler);
+            //var eventDataType = typeof(TEvent);
+            //Action<IPublishableEvent> handler = evnt =>
+            //                             {
+            //                                 var publishedEvent = new PublishedEvent<TEvent>(evnt);
+            //                                 handlerFactory().Handle((TEvent) evnt
+            //                             })
+            //eventBus.RegisterHandler(eventDataType, handler);
         }
 
 

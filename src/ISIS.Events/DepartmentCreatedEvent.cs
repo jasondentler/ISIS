@@ -1,10 +1,11 @@
-﻿using Ncqrs.Eventing.Sourcing;
+﻿using System;
 
 namespace ISIS
 {
-    public class DepartmentCreatedEvent : SourcedEvent
+    public class DepartmentCreatedEvent 
     {
 
+        public Guid DepartmentId { get; set; }
         public string Name { get; set; }
         
     }

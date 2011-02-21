@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Ncqrs.Eventing;
 using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
 
@@ -13,7 +14,7 @@ namespace ISIS.DomainTests.CourseTests
         private const string ApprovalNumber = "1234567890";
 
 
-        protected override IEnumerable<ISourcedEvent> Given()
+        protected override IEnumerable<object> Given()
         {
             yield return new CourseCreatedEvent()
                              {
@@ -47,14 +48,16 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_publish_a_new_CourseCIPAssignedEvent()
         {
-            var TheEvent = PublishedEvents.OfType<CourseCIPAssignedEvent>().Single();
+            var eventStream = PublishedEvents.Select(pe => pe.Payload);
+            var TheEvent = eventStream.OfType<CourseCIPAssignedEvent>().Single();
             Assert.That(TheEvent.CIP, Is.EqualTo(ApprovalNumber.Substring(0, 6)));
         }
 
         [Test]
         public void then_it_should_create_a_new_CourseApprovalNumberAssignedEvent()
         {
-            var TheEvent = PublishedEvents.OfType<CourseApprovalNumberAssignedEvent>().Single();
+            var eventStream = PublishedEvents.Select(pe => pe.Payload);
+            var TheEvent = eventStream.OfType<CourseApprovalNumberAssignedEvent>().Single();
             Assert.That(TheEvent.ApprovalNumber, Is.EqualTo(ApprovalNumber));
         }
 

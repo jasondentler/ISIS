@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests.CourseTests
@@ -12,7 +11,7 @@ namespace ISIS.DomainTests.CourseTests
         private const string CIP = "123456";
 
 
-        protected override IEnumerable<ISourcedEvent> Given()
+        protected override IEnumerable<object> Given()
         {
             yield return new CourseCreatedEvent()
                              {

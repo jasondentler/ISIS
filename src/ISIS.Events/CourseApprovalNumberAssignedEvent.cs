@@ -1,9 +1,10 @@
-﻿using Ncqrs.Eventing.Sourcing;
+﻿using System;
 
 namespace ISIS
 {
-    public class CourseApprovalNumberAssignedEvent : SourcedEvent
+    public class CourseApprovalNumberAssignedEvent
     {
+        public Guid CourseId { get; set; }
         public string ApprovalNumber { get; set; }
     }
 }

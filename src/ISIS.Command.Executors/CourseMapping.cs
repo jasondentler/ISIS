@@ -1,4 +1,5 @@
-﻿using Ncqrs.Commanding.CommandExecution;
+﻿using System.Diagnostics;
+using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
 
@@ -17,7 +18,12 @@ namespace ISIS
             Map.Command<AssignCIPCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
-                .ToCallOn((cmd, course) => course.AssignCIPNumber(cmd.CIP))
+                .ToCallOn((cmd, course) =>
+                              {
+                                  Debug.WriteLine(cmd.CommandIdentifier);
+                                  Debug.WriteLine(course.EventSourceId);
+                                  course.AssignCIPNumber(cmd.CIP);
+                              })
                 .RegisterWith(commandService);
 
             Map.Command<AssignApprovalNumberCommand>()
@@ -25,6 +31,13 @@ namespace ISIS
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.AssignApprovalNumber(cmd.ApprovalNumber))
                 .RegisterWith(commandService);
+
+            Map.Command<ChangeCourseTitleCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.ChangeCourseTitle(cmd.NewTitle))
+                .RegisterWith(commandService);
         }
+
     }
 }

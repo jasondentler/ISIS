@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Ncqrs.Commanding;
 using Ncqrs.Domain;
-using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests
@@ -10,13 +9,12 @@ namespace ISIS.DomainTests
         : CommandFixture<TCommand, TAggregateRoot>
         where TCommand : ICommand
         where TAggregateRoot : AggregateRoot
-        where TEvent : ISourcedEvent
 
     {
 
         protected TEvent TheEvent
         {
-            get { return (TEvent) PublishedEvents.Single(); }
+            get { return (TEvent) PublishedEvents.Single().Payload; }
         }
 
         [Test]
@@ -34,7 +32,7 @@ namespace ISIS.DomainTests
         [Test]
         public void it_should_publish_correct_event_type()
         {
-            Assert.That(PublishedEvents.Single(), Is.InstanceOf<TEvent>());
+            Assert.That(PublishedEvents.Single().Payload, Is.InstanceOf<TEvent>());
         }
 
     }

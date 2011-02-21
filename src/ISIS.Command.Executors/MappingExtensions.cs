@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Ncqrs;
-using Ncqrs.Commanding;
+﻿using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Domain;
-using Ncqrs.Domain.Storage;
 
 namespace ISIS
 {
@@ -20,7 +14,8 @@ namespace ISIS
             where TCommand : ICommand
             where TAggregateRoot : AggregateRoot
         {
-            return mapping.StoreIn((cmd, aggregate) => NcqrsEnvironment.Get<IDomainRepository>().Save(aggregate));
+            return mapping.StoreIn(
+                (cmd, aggregate) => UnitOfWorkContext.Current.Accept());
         }
 
     }
