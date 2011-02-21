@@ -15,9 +15,9 @@ namespace ISIS.Denormalizers.Tests
         private const string NewTitle = "Introduction to Biology";
 
 
-        protected override CourseListDenormalizer CreateDenormalizer(IRepositoryFactory factory)
+        protected override CourseListDenormalizer CreateDenormalizer()
         {
-            return new CourseListDenormalizer(factory.CreateRepository());
+            return new CourseListDenormalizer();
         }
 
         protected override IEnumerable<object> Given()
@@ -45,7 +45,7 @@ namespace ISIS.Denormalizers.Tests
             var row = Repository.Single<CourseList>(EventSourceId);
             var e = TheEvent;
 
-            Assert.That(row.Id, Is.EqualTo(e.CourseId));
+            Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(Rubric));
             Assert.That(row.Number, Is.EqualTo(CourseNumber));
             Assert.That(row.Title, Is.EqualTo(e.NewTitle));

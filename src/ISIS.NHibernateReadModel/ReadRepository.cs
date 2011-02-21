@@ -4,37 +4,13 @@ using System.Linq.Expressions;
 
 namespace ISIS.NHibernateReadModel
 {
-    public class Repository : IRepository
+    public class ReadRepository : IReadRepository
     {
         private readonly ISession _session;
 
-        public Repository(ISession session)
+        public ReadRepository(ISession session)
         {
             _session = session;
-        }
-
-        public void Insert<T>(T entity) where T : IEntity
-        {
-            _session.Transact(() => _session.Save(entity));
-        }
-
-        public void Update<T>(T entity) where T : IEntity
-        {
-            _session.Transact(() => _session.Update(entity));
-        }
-
-        public void Delete<T>(T entity) where T : IEntity
-        {
-            _session.Transact(() => _session.Delete(entity));
-        }
-
-        public void Delete<T, TId>(TId id) where T : IEntity
-        {
-            _session.Transact(() =>
-                                  {
-                                      var entity = _session.Load<T>(id);
-                                      _session.Delete(entity);
-                                  });
         }
 
         public PageOf<T> All<T>(int pageSize, long pageNumber) where T : class, IEntity

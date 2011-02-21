@@ -10,9 +10,9 @@ namespace ISIS.Denormalizers.Tests
         : DenormalizerFixture<CourseListDenormalizer, CourseCreatedEvent>
     {
 
-        protected override CourseListDenormalizer CreateDenormalizer(IRepositoryFactory factory)
+        protected override CourseListDenormalizer CreateDenormalizer()
         {
-            return new CourseListDenormalizer(factory.CreateRepository());
+            return new CourseListDenormalizer();
         }
 
         protected override CourseCreatedEvent WhenHandling()
@@ -32,7 +32,7 @@ namespace ISIS.Denormalizers.Tests
             var row = Repository.Single<CourseList>(EventSourceId);
             var e = TheEvent;
 
-            Assert.That(row.Id, Is.EqualTo(e.CourseId));
+            Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(e.Rubric));
             Assert.That(row.Number, Is.EqualTo(e.Number));
             Assert.That(row.Title, Is.EqualTo(e.Title));

@@ -1,36 +1,43 @@
 ﻿using System;
+using System.Data;
+using System.Linq.Expressions;
+using AutoMapper;
+using FluentDML.Dialect;
 using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace ISIS
 {
     public class CourseListDenormalizer : 
-        IDenormalizer, 
+        Denormalizer<CourseList>, 
         IEventHandler<CourseCreatedEvent>,
         IEventHandler<CourseTitleChangedEvent>
     {
-        private readonly IRepository _repository;
-
-        public CourseListDenormalizer(IRepository repository)
+        
+        public CourseListDenormalizer(IDialect db, Func<IDbConnection> connectionFactory) 
+            : base(db, connectionFactory)
         {
-            _repository = repository;
+            Mapper.CreateMap<CourseCreatedEvent, CourseList>();
+            Mapper.CreateMap<CourseTitleChangedEvent, CourseList>()
+                .ForMember(c => c.Number, mo => mo.Ignore())
+                .ForMember(c => c.Rubric, mo => mo.Ignore());
+           
+            Mapper.AssertConfigurationIsValid();
+        }
+
+        protected override Expression<Func<CourseList, object>> GetId()
+        {
+            return GetId(c => c.CourseId);
         }
 
         public void Handle(IPublishedEvent<CourseCreatedEvent> evnt)
         {
-            _repository.Insert(new CourseList()
-            {
-                Number = evnt.Payload.Number,
-                Id = evnt.Payload.CourseId,
-                Rubric = evnt.Payload.Rubric,
-                Title = evnt.Payload.Title
-            });
+            Upsert(evnt);
         }
 
         public void Handle(IPublishedEvent<CourseTitleChangedEvent> evnt)
         {
-            var course = _repository.Single<CourseList>(evnt.EventIdentifier);
-            course.Title = evnt.Payload.NewTitle;
-            _repository.Update(course);
+            Upsert(evnt);
         }
+
     }
 }

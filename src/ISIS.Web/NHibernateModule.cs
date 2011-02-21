@@ -13,20 +13,13 @@ namespace ISIS.Web
             Kernel.Bind<ISessionFactory>()
                 .ToConstant(ReadModelConfiguration.SessionFactory);
 
-            Kernel.Bind<IRepositoryFactory>()
-                .To<RepositoryFactory>()
-                .InSingletonScope();
-
             Kernel.Bind<ISession>()
                 .ToMethod(ctx => Kernel.Get<ISessionFactory>().OpenSession())
                 .InRequestScope();
 
-            Kernel.Bind<IRepository>()
-                .To<Repository>()
-                .InRequestScope();
-
             Kernel.Bind<IReadRepository>()
-                .ToMethod(ctx => ctx.Kernel.Get<IRepository>());
+                .To<ReadRepository>()
+                .InRequestScope();
 
         }
 

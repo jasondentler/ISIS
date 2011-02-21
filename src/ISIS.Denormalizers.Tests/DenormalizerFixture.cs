@@ -4,6 +4,7 @@ using System.Linq;
 using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Sourcing;
+using NHibernate;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests
@@ -13,7 +14,7 @@ namespace ISIS.Denormalizers.Tests
         where TDenormalizer : IDenormalizer, IEventHandler<TEvent>
     {
 
-        protected abstract TDenormalizer CreateDenormalizer(IRepositoryFactory factory);
+        protected abstract TDenormalizer CreateDenormalizer();
         protected virtual IEnumerable<object> Given()
         {
             return new object[0];    
@@ -21,11 +22,12 @@ namespace ISIS.Denormalizers.Tests
 
 
         protected abstract TEvent WhenHandling();
+        private ISession session;
+        protected IReadRepository Repository { get; private set; }
 
         protected Guid EventSourceId { get; private set; }
         protected Exception CaughException { get; private set; }
         protected TEvent TheEvent { get; private set; }
-        protected IReadRepository Repository { get; private set; }
         
         protected override void  OnFixtureSetup()
         {
@@ -33,9 +35,7 @@ namespace ISIS.Denormalizers.Tests
             new DatabaseHelper().Setup();
 
             EventSourceId = Guid.NewGuid();
-            var factory = new RepositoryFactory();
-            Repository = factory.CreateRepository();
-            var denormalizer = CreateDenormalizer(factory);
+            var denormalizer = CreateDenormalizer();
             var history = Given();
             TheEvent = WhenHandling();
             ApplyHistory(denormalizer, history);
@@ -51,10 +51,12 @@ namespace ISIS.Denormalizers.Tests
             {
                 CaughException = exception;
             }
+            BuildReadRepository();
         }
 
         protected override void OnFixtureTearDown()
         {
+            session.Dispose();
             new DatabaseHelper().TearDown();
             base.OnFixtureTearDown();
         }
@@ -71,8 +73,18 @@ namespace ISIS.Denormalizers.Tests
                 .MakeGenericType(evnt.GetType());
             if (!handlerInterface.IsAssignableFrom(typeof(TDenormalizer)))
                 throw new Exception(string.Format("{0} can't handle {1}", typeof (TDenormalizer), evnt.GetType()));
-            var d = denormalizer as dynamic;
-            d.Handle(evnt);
+            var publishedEvent = new PublishedEvent<TEvent>(
+                new PublishableEvent(Guid.NewGuid(), DateTime.Now,
+                                     new Version(0, 0, 0, 0),
+                                     EventSourceId, 0,
+                                     Guid.NewGuid(), evnt));
+            denormalizer.Handle(publishedEvent);
+        }
+
+        private void BuildReadRepository()
+        {
+            session = ReadModelConfiguration.SessionFactory.OpenSession();
+            Repository = new ReadRepository(session);
         }
 
         [Test]

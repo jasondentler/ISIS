@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\lib\FluentDML\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentDML">
+      <HintPath>..\..\lib\FluentDML\FluentDML.dll</HintPath>
+    </Reference>
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
@@ -49,9 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseListDenormalizer.cs" />
+    <Compile Include="Denormalizer.cs" />
     <Compile Include="IDenormalizer.cs" />
     <Compile Include="EventBusExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnexpectedNumberOfRowsAffectedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
