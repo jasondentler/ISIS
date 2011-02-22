@@ -35,7 +35,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_create_a_new_CourseTitleChangedEvent()
         {
-            Assert.That(TheEvent.NewTitle, Is.EqualTo(NewTitle));
+            Assert.That(TheEvent.Title, Is.EqualTo(NewTitle));
         }
 
 

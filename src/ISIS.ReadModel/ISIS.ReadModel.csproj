@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseList.cs" />
+    <Compile Include="IdAttribute.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IReadRepository.cs" />
     <Compile Include="PageOf.cs" />

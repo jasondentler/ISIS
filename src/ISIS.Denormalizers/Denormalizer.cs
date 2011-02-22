@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
 using System.Linq.Expressions;
 using FluentDML.Dialect;
+using log4net;
 using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace ISIS
@@ -12,12 +12,12 @@ namespace ISIS
         where TEntity : IEntity
     {
 
-        private readonly Func<IDbConnection> _connectionFactory;
+        private static readonly ILog Log = LogManager.GetLogger(typeof (Denormalizer<TEntity>));
+
         protected IDialect Db { get; private set; }
 
-        protected Denormalizer(IDialect db, Func<IDbConnection> connectionFactory)
+        protected Denormalizer(IDialect db)
         {
-            _connectionFactory = connectionFactory;
             Db = db;
         }
 
@@ -40,7 +40,7 @@ namespace ISIS
             var cmd = Db.Upsert<TEntity>()
                 .MapFrom(publishedEvent.Payload)
                 .WithId(GetId());
-            ExecuteSingle(cmd);
+            Execute(cmd, rowsAffect => rowsAffect > 0 && rowsAffect <= 2);
         }
 
         protected void Update<TEvent>(IPublishedEvent<TEvent> publishedEvent)
@@ -71,19 +71,24 @@ namespace ISIS
 
         protected virtual IDbConnection GetReadModelConnection()
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["ReadModel"]
-                .ConnectionString;
-            var conn = _connectionFactory();
-            conn.ConnectionString = connectionString;
-            return conn;
+            return Db.GetConnection("ReadModel");
         }
 
-        protected virtual void Execute(IDbCommand command, Func<long, bool> correctNumberOfRowsUpdated)
+        protected virtual void Execute(IDbCommand command, Func<long, bool> correctNumberOfRowsAffected)
         {
             if (command == null)
                 throw new NullReferenceException();
-            if (correctNumberOfRowsUpdated == null)
+            if (correctNumberOfRowsAffected == null)
                 throw new NullReferenceException();
+
+            if (Log.IsDebugEnabled)
+            {
+                Log.Debug(command.CommandText);
+                foreach (IDbDataParameter param in command.Parameters)
+                {
+                    Log.DebugFormat("{0} = {1}", param.ParameterName, param.Value);
+                }
+            }
 
             using (var conn = GetReadModelConnection())
             {
@@ -93,8 +98,9 @@ namespace ISIS
                     command.Connection = conn;
                     command.Transaction = tx;
                     var rowsAffected = command.ExecuteNonQuery();
-                    if (!correctNumberOfRowsUpdated(rowsAffected))
+                    if (!correctNumberOfRowsAffected(rowsAffected))
                     {
+                        Log.Debug("Incorrect number of rows affected. Rolling back transaction");
                         tx.Rollback();
                         throw new UnexpectedNumberOfRowsAffectedException(command, rowsAffected);
                     }
@@ -103,9 +109,6 @@ namespace ISIS
                 conn.Close();
             }
         }
-
-
-
 
     }
 

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
-using Ncqrs.Eventing.Sourcing;
 using NHibernate;
+using Ninject;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests
@@ -20,7 +20,7 @@ namespace ISIS.Denormalizers.Tests
             return new object[0];    
         }
 
-
+        protected IKernel Kernel;
         protected abstract TEvent WhenHandling();
         private ISession session;
         protected IReadRepository Repository { get; private set; }
@@ -31,6 +31,7 @@ namespace ISIS.Denormalizers.Tests
         
         protected override void  OnFixtureSetup()
         {
+            Kernel = new StandardKernel(new DenormalizerModule());
             base.OnFixtureSetup();
             new DatabaseHelper().Setup();
 
@@ -73,12 +74,18 @@ namespace ISIS.Denormalizers.Tests
                 .MakeGenericType(evnt.GetType());
             if (!handlerInterface.IsAssignableFrom(typeof(TDenormalizer)))
                 throw new Exception(string.Format("{0} can't handle {1}", typeof (TDenormalizer), evnt.GetType()));
-            var publishedEvent = new PublishedEvent<TEvent>(
-                new PublishableEvent(Guid.NewGuid(), DateTime.Now,
-                                     new Version(0, 0, 0, 0),
-                                     EventSourceId, 0,
-                                     Guid.NewGuid(), evnt));
-            denormalizer.Handle(publishedEvent);
+
+            var publishableEvent = new PublishableEvent(Guid.NewGuid(), DateTime.Now,
+                                                        new Version(0, 0, 0, 0),
+                                                        EventSourceId, 0,
+                                                        Guid.NewGuid(), evnt);
+
+            var eventType = evnt.GetType();
+            var publishedEventType = typeof (PublishedEvent<>).MakeGenericType(eventType);
+            dynamic publishedEvent = Activator.CreateInstance(publishedEventType, new[] {publishableEvent});
+
+            var d = denormalizer as dynamic;
+            d.Handle(publishedEvent);
         }
 
         private void BuildReadRepository()

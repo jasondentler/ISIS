@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq.Expressions;
 using AutoMapper;
 using FluentDML.Dialect;
@@ -13,8 +12,8 @@ namespace ISIS
         IEventHandler<CourseTitleChangedEvent>
     {
         
-        public CourseListDenormalizer(IDialect db, Func<IDbConnection> connectionFactory) 
-            : base(db, connectionFactory)
+        public CourseListDenormalizer(IDialect db)
+            : base(db)
         {
             Mapper.CreateMap<CourseCreatedEvent, CourseList>();
             Mapper.CreateMap<CourseTitleChangedEvent, CourseList>()

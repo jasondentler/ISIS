@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentDML">
+      <HintPath>..\..\lib\FluentDML\FluentDML.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentDML.NHibernateAdapter">
+      <HintPath>..\..\lib\FluentDML\FluentDML.NHibernateAdapter.dll</HintPath>
+    </Reference>
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
@@ -41,13 +47,16 @@
     <Reference Include="NHibernate.ByteCode.Castle">
       <HintPath>..\..\lib\nhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ncqrs\Extensions\Ncqrs.Config.Ninject\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,9 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DenormalizerModule.cs" />
     <Compile Include="PublishableEvent.cs" />
     <Compile Include="when_a_course_title_is_changed.cs" />
-    <Compile Include="DoNotCloseConnectionProvider.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="when_a_course_is_created.cs" />
     <Compile Include="DenormalizerFixture.cs" />

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Ncqrs.Eventing.Sourcing;
+using Ninject;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests
@@ -17,13 +17,14 @@ namespace ISIS.Denormalizers.Tests
 
         protected override CourseListDenormalizer CreateDenormalizer()
         {
-            return new CourseListDenormalizer();
+            return Kernel.Get<CourseListDenormalizer>();
         }
 
         protected override IEnumerable<object> Given()
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = Rubric,
                                  Number = CourseNumber,
                                  Title = Title
@@ -35,7 +36,8 @@ namespace ISIS.Denormalizers.Tests
         {
             return new CourseTitleChangedEvent()
                        {
-                           NewTitle = NewTitle
+                           CourseId = EventSourceId,
+                           Title = NewTitle
                        };
         }
 
@@ -48,7 +50,7 @@ namespace ISIS.Denormalizers.Tests
             Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(Rubric));
             Assert.That(row.Number, Is.EqualTo(CourseNumber));
-            Assert.That(row.Title, Is.EqualTo(e.NewTitle));
+            Assert.That(row.Title, Is.EqualTo(e.Title));
         }
 
     }

@@ -91,7 +91,7 @@ namespace ISIS
         {
             var e = new CourseTitleChangedEvent()
                         {
-                            NewTitle = newTitle
+                            Title = newTitle
                         };
             ApplyEvent(e);
         }

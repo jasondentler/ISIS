@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using ConfOrm;
@@ -33,6 +34,7 @@ namespace ISIS.NHibernateReadModel
             var orm = new ObjectRelationalMapper();
             var mapper = new Mapper(orm, new CoolPatternsAppliersHolder(orm));
 
+            orm.Patterns.Poids.Add(IsId);
             orm.Patterns.PoidStrategies.Add(new AssignedPoidPattern());
             
             var domainClasses = typeof (IEntity).Assembly.GetTypes()
@@ -47,19 +49,15 @@ namespace ISIS.NHibernateReadModel
             var mapping = mapper.CompileMappingFor(domainClasses);
             return mapping;
         }
-
-        private class UseNotLaze<TApplyTo> : IPatternApplier<Type, TApplyTo> 
-            where TApplyTo : IEntityAttributesMapper
+        
+        private static bool IsId(MemberInfo subject)
         {
-            public bool Match(Type subject)
-            {
-                return true;
-            }
-
-            public void Apply(Type subject, TApplyTo applyTo)
-            {
-                applyTo.Lazy(false);
-            }
+            var name = subject.Name;
+            return subject.GetCustomAttributes(typeof (IdAttribute), true).Any()
+                   || name.Equals("id", StringComparison.InvariantCultureIgnoreCase)
+                   || name.Equals("poid", StringComparison.InvariantCultureIgnoreCase)
+                   || (name.StartsWith(subject.DeclaringType.Name)
+                       && name.Equals(subject.DeclaringType.Name + "id", StringComparison.InvariantCultureIgnoreCase));
         }
 
     }
