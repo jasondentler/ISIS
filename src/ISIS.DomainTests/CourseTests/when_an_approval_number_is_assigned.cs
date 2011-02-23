@@ -18,6 +18,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = "BIOL",
                                  Number = "2302",
                                  Title = "Anatomy & Physiology II"
@@ -50,6 +51,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             var eventStream = PublishedEvents.Select(pe => pe.Payload);
             var TheEvent = eventStream.OfType<CourseCIPAssignedEvent>().Single();
+            Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.CIP, Is.EqualTo(ApprovalNumber.Substring(0, 6)));
         }
 
@@ -58,6 +60,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             var eventStream = PublishedEvents.Select(pe => pe.Payload);
             var TheEvent = eventStream.OfType<CourseApprovalNumberAssignedEvent>().Single();
+            Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.ApprovalNumber, Is.EqualTo(ApprovalNumber));
         }
 

@@ -12,7 +12,7 @@ namespace ISIS
         where TEntity : IEntity
     {
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof (Denormalizer<TEntity>));
+        protected static readonly ILog Log = LogManager.GetLogger("ISIS.Denormalizer`1[[" + typeof (TEntity) + "]]");
 
         protected IDialect Db { get; private set; }
 

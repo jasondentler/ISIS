@@ -15,6 +15,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = "BIOL",
                                  Number = "2302",
                                  Title = "Anatomy & Physiology II"
@@ -33,6 +34,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_create_a_new_CourseCIPAssignedEvent()
         {
+            Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.CIP, Is.EqualTo(CIP));
         }
 

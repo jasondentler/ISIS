@@ -17,6 +17,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = Rubric,
                                  Number = CourseNumber,
                                  Title = Title
@@ -35,6 +36,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_create_a_new_CourseTitleChangedEvent()
         {
+            Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.Title, Is.EqualTo(NewTitle));
         }
 

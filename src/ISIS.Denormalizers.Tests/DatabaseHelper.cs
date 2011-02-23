@@ -9,14 +9,12 @@ namespace ISIS.Denormalizers.Tests
         {
             var cfg = NHibernateReadModel.ReadModelConfiguration.Configuration;
             var export = new SchemaExport(cfg);
+            export.Drop(false, true);
             export.Create(false, true);
         }
 
         public void TearDown()
         {
-            var cfg = NHibernateReadModel.ReadModelConfiguration.Configuration;
-            var export = new SchemaExport(cfg);
-            export.Drop(false, true);
         }
 
     }

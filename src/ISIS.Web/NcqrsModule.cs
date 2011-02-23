@@ -1,4 +1,8 @@
 ﻿using System.Configuration;
+using FluentDML.Dialect;
+using FluentDML.Mapping;
+using FluentDML.NHibernateAdapter;
+using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -15,6 +19,10 @@ namespace ISIS.Web
     {
         public override void Load()
         {
+
+            Kernel.Bind<IUniqueIdentifierGenerator>()
+                .To<GuidCombGenerator>();
+
             var eventStoreConnectionString = ConfigurationManager.ConnectionStrings["EventStore"].ConnectionString;
             Kernel.Bind<IEventStore>()
                 .ToMethod(ctx => new MsSqlServerEventStore(eventStoreConnectionString))
@@ -41,6 +49,18 @@ namespace ISIS.Web
                                   return cs;
                               })
                 .InSingletonScope();
+
+            Kernel.Bind<IMapMaker>()
+                .ToMethod(ctx => ctx.Kernel.Get<NHibernateMapMaker>());
+
+            Kernel.Bind<Map>()
+                .ToMethod(ctx => ctx.Kernel.Get<IMapMaker>().MakeMap())
+                .InSingletonScope();
+
+            Kernel.Bind<IDialect>()
+                .ToMethod(ctx => new MsSqlDialect(ctx.Kernel.Get<Map>()))
+                .InSingletonScope();
+
 
         }
     }

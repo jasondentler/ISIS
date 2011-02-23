@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Ncqrs.Eventing;
-using Ncqrs.Eventing.Sourcing;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests.CourseTests
@@ -17,12 +15,14 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = "BIOL",
                                  Number = "2302",
                                  Title = "Anatomy & Physiology II"
                              };
             yield return new CourseCIPAssignedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  CIP = "123456"
                              };
         }

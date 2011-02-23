@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests.CourseTests
@@ -25,6 +25,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void then_it_should_create_a_new_CourseCreatedEvent()
         {
+            Assert.That(TheEvent.CourseId, Is.Not.EqualTo(default(Guid)));
             Assert.That(TheEvent.Rubric, Is.EqualTo(Rubric));
             Assert.That(TheEvent.Number, Is.EqualTo(CourseNumber));
             Assert.That(TheEvent.Title, Is.EqualTo(Title));

@@ -15,12 +15,14 @@ namespace ISIS.DomainTests.CourseTests
         {
             yield return new CourseCreatedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  Rubric = "BIOL",
                                  Number = "2302",
                                  Title = "Anatomy & Physiology II"
                              };
             yield return new CourseApprovalNumberAssignedEvent()
                              {
+                                 CourseId = EventSourceId,
                                  ApprovalNumber = "1234567890"
                              };
         }

@@ -26,6 +26,7 @@ namespace ISIS
         {
             var e = new CourseCreatedEvent()
                         {
+                            CourseId = EventSourceId,
                             Rubric = rubric,
                             Number = number,
                             Title = title
@@ -48,6 +49,7 @@ namespace ISIS
 
             var e = new CourseCIPAssignedEvent()
                         {
+                            CourseId = EventSourceId,
                             CIP = cip
                         };
             ApplyEvent(e);
@@ -70,12 +72,14 @@ namespace ISIS
 
             var approvalNumberEvent = new CourseApprovalNumberAssignedEvent()
             {
+                CourseId = EventSourceId,
                 ApprovalNumber = approvalNumber
             };
             ApplyEvent(approvalNumberEvent);
 
             var CIPEvent = new CourseCIPAssignedEvent()
                                {
+                                   CourseId = EventSourceId,
                                    CIP = approvalNumber.Substring(0, 6)
                                };
             ApplyEvent(CIPEvent);
@@ -91,6 +95,7 @@ namespace ISIS
         {
             var e = new CourseTitleChangedEvent()
                         {
+                            CourseId = EventSourceId,
                             Title = newTitle
                         };
             ApplyEvent(e);

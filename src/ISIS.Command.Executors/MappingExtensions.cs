@@ -15,7 +15,7 @@ namespace ISIS
             where TAggregateRoot : AggregateRoot
         {
             return mapping.StoreIn(
-                (cmd, aggregate) => UnitOfWorkContext.Current.Accept());
+                (cmd, aggregate) => { });
         }
 
     }
