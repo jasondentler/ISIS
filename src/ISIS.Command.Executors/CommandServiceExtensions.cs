@@ -10,7 +10,7 @@ namespace ISIS
     {
         public static CommandService Configure(this CommandService commandService)
         {
-            return commandService.MapCommands().AddInterceptors();
+            return commandService.MapCommands();
         }
 
         public static CommandService MapCommands(this CommandService commandService, ICommandMapping commandMapping)
@@ -43,11 +43,5 @@ namespace ISIS
             return commandService.MapCommands(Assembly.GetExecutingAssembly());
         }
 
-        public static CommandService AddInterceptors(this CommandService commandService)
-        {
-            var validatorInterceptor = new ValidationCommandInterceptor();
-            commandService.AddInterceptor(validatorInterceptor);
-            return commandService;
-        }
     }
 }

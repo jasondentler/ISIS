@@ -11,6 +11,7 @@ namespace ISIS.Validation
         public AssignCIPCommandValidator()
         {
             RuleFor(cmd => cmd.CIP)
+                .NotEmpty()
                 .Matches(@"^\d{6}$")
                 .WithMessage("CIP must be 6 digits long");
 

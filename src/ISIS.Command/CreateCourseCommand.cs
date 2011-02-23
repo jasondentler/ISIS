@@ -1,4 +1,5 @@
-﻿using Ncqrs.Commanding;
+﻿using System.ComponentModel.DataAnnotations;
+using Ncqrs.Commanding;
 
 namespace ISIS
 {
@@ -7,7 +8,10 @@ namespace ISIS
     {
 
         public string Rubric { get; set; }
+
+        [Display(Name = "Course Number")]
         public string CourseNumber { get; set; }
+
         public string Title { get; set; }
 
     }

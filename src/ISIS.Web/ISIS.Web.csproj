@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Areas\Schedule\Controllers\CourseController.cs" />
     <Compile Include="Areas\Schedule\ScheduleAreaRegistration.cs" />
+    <Compile Include="ValidatorModule.cs" />
     <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -111,6 +112,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\themes\start\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Content\themes\start\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\start\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Content\themes\start\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Content\themes\start\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Content\themes\start\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Content\themes\start\images\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Content\themes\start\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Content\themes\start\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\themes\start\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Content\themes\start\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\themes\start\jquery-ui.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
@@ -127,6 +145,7 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\acc.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -164,6 +183,10 @@
     <Content Include="Areas\Schedule\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ACC.Web\ACC.Web.csproj">
+      <Project>{8D7551E1-33A6-494B-852B-70617187691F}</Project>
+      <Name>ACC.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ISIS.Command.Executors\ISIS.Command.Executors.csproj">
       <Project>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</Project>
       <Name>ISIS.Command.Executors</Name>
@@ -212,6 +235,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Schedule\Views\Course\ChangeTitle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Course\AssignCIP.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Schedule\Views\Course\AssignApprovalNumber.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -22,6 +22,24 @@ namespace ISIS.Validation.Tests
         }
 
         [Test]
+        public void CIP_must_not_be_null()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CIP = null
+            }, cmd => cmd.CIP);
+        }
+
+        [Test]
+        public void CIP_must_not_be_empty()
+        {
+            GetFailure(new AssignCIPCommand()
+            {
+                CIP = ""
+            }, cmd => cmd.CIP);
+        }
+
+        [Test]
         public void CIP_must_be_6_digits_long()
         {
             GetFailure(new AssignCIPCommand()

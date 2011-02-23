@@ -4,14 +4,14 @@
 @{
     ViewBag.Title = "Courses";
 }
+<div id="commandBar">
+    @(Html.ActionLink<CourseController>(c => c.Add(), "Create A New Course"))
+</div>
 
-<h2>Courses</h2>
-
+<h2>@ViewBag.Title</h2>
 <ul>
-@foreach (var course in Model.Results)
-{
-    <li>@(Html.ActionLink<CourseController>(c => c.Details(course.CourseId), string.Format("{0} {1} : {2}", course.Rubric, course.Number, course.Title)))</li>
-}
+    @foreach (var course in Model.Results)
+    {
+        <li>@(Html.ActionLink<CourseController>(c => c.Details(course.CourseId), course.ToString()))</li>
+    }
 </ul>
-
-@(Html.ActionLink<CourseController>(c => c.Add(), "Create A New Course"))

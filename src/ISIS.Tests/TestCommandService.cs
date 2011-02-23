@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using ISIS.Validation;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.ServiceModel;
@@ -9,6 +10,11 @@ namespace ISIS
 
     public class TestCommandService : CommandService 
     {
+
+        public TestCommandService()
+        {
+            AddInterceptor(new ValidationCommandInterceptor());
+        }
 
         private readonly ConcurrentDictionary<Type, object> _executors = new ConcurrentDictionary<Type, object>();
 

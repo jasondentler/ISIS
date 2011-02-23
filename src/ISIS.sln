@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Denormalizers.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.NHibernateReadModel", "ISIS.NHibernateReadModel\ISIS.NHibernateReadModel.csproj", "{5C5F73F7-24A8-4910-9730-A0E51D190A45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACC.Web", "ACC.Web\ACC.Web.csproj", "{8D7551E1-33A6-494B-852B-70617187691F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,16 @@ Global
 		{5C5F73F7-24A8-4910-9730-A0E51D190A45}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5C5F73F7-24A8-4910-9730-A0E51D190A45}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5C5F73F7-24A8-4910-9730-A0E51D190A45}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8D7551E1-33A6-494B-852B-70617187691F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

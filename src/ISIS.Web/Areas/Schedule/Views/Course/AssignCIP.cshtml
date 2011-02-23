@@ -1,0 +1,37 @@
+﻿@model ISIS.AssignCIPCommand
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+
+@{
+    ViewBag.Title = "Assign CIP";
+}
+
+<div id="commandBar">
+    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Course"))
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Assign CIP (Classification of Instructional Programs)</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CIP)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CIP)
+            @Html.ValidationMessageFor(model => model.CIP)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+

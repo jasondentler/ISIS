@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using Ncqrs;
+using ACC.Web;
+using ACC.Web.ModelState;
 using Ncqrs.Commanding.ServiceModel;
 using MvcContrib;
 
@@ -34,33 +35,81 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return View(_repository.Single<CourseDetails>(id));
         }
 
-        [HttpGet]
+        [HttpGet, ImportModelState]
         public ViewResult Add()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ExportModelState]
         public RedirectToRouteResult Add(CreateCourseCommand command)
         {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.Add());
+
             _commandService.Execute(command);
             return this.RedirectToAction(c => c.Index(1));
         }
 
-        [HttpGet]
+        [HttpGet, ImportModelState]
         public ViewResult ChangeTitle(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
             return View(new ChangeCourseTitleCommand()
-                            {
-                                CourseId = id,
-                                NewTitle = course.Title
-                            });
+            {
+                CourseId = id,
+                NewTitle = course.Title
+            });
         }
 
-        [HttpPost]
+        [HttpPost, ExportModelState]
         public RedirectToRouteResult ChangeTitle(ChangeCourseTitleCommand command)
         {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.ChangeTitle(command.CourseId));
+
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
+        [HttpGet, ImportModelState]
+        public ViewResult AssignCIP(Guid id)
+        {
+            var course = _repository.Single<CourseDetails>(id);
+            return View(new AssignCIPCommand()
+            {
+                CourseId = id,
+                CIP = course.CIP
+            });
+        }
+
+        [HttpPost, ExportModelState]
+        public RedirectToRouteResult AssignCIP(AssignCIPCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.AssignCIP(command.CourseId));
+
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
+        [HttpGet, ImportModelState]
+        public ViewResult AssignApprovalNumber(Guid id)
+        {
+            var course = _repository.Single<CourseDetails>(id);
+            return View(new AssignApprovalNumberCommand()
+            {
+                CourseId = id,
+                ApprovalNumber = course.ApprovalNumber
+            });
+        }
+
+        [HttpPost, Command, ExportModelState]
+        public RedirectToRouteResult AssignApprovalNumber(AssignApprovalNumberCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.AssignApprovalNumber(command.CourseId));
+
             _commandService.Execute(command);
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }

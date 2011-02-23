@@ -11,6 +11,7 @@ namespace ISIS.Validation
         public AssignApprovalNumberCommandValidator()
         {
             RuleFor(cmd => cmd.ApprovalNumber)
+                .NotEmpty()
                 .Matches(@"^\d{10}$")
                 .WithMessage("Approval number must be 10 digits long");
 

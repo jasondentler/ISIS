@@ -2,6 +2,7 @@
 using FluentDML.Dialect;
 using FluentDML.Mapping;
 using FluentDML.NHibernateAdapter;
+using ISIS.Validation;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain.Storage;
@@ -41,11 +42,18 @@ namespace ISIS.Web
                           new DomainRepository(Kernel.Get<IAggregateRootCreationStrategy>()))
                 .InSingletonScope();
 
+            Kernel.Bind<ICommandServiceInterceptor>()
+                .To<ValidationCommandInterceptor>()
+                .InSingletonScope();
+
             Kernel.Bind<ICommandService>()
                 .ToMethod(ctx =>
                               {
                                   var cs = new CommandService();
                                   cs.Configure();
+                                  var interceptors = ctx.Kernel.GetAll<ICommandServiceInterceptor>();
+                                  foreach (var interceptor in interceptors)
+                                      cs.AddInterceptor(interceptor);
                                   return cs;
                               })
                 .InSingletonScope();

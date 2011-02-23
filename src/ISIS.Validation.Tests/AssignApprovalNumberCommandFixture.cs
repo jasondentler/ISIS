@@ -22,6 +22,24 @@ namespace ISIS.Validation.Tests
         }
 
         [Test]
+        public void Approval_number_must_not_be_null()
+        {
+            GetFailure(new AssignApprovalNumberCommand()
+            {
+                ApprovalNumber = null
+            }, cmd => cmd.ApprovalNumber);
+        }
+
+        [Test]
+        public void Approval_number_must_be_empty()
+        {
+            GetFailure(new AssignApprovalNumberCommand()
+            {
+                ApprovalNumber = ""
+            }, cmd => cmd.ApprovalNumber);
+        }
+
+        [Test]
         public void Approval_number_must_be_10_digits_long()
         {
             GetFailure(new AssignApprovalNumberCommand()

@@ -5,7 +5,11 @@
     ViewBag.Title = "Change Course Title";
 }
 
-<h2>Change Course Title</h2>
+<div id="commandBar">
+    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Details"))
+</div>
+
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -27,8 +31,4 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Details"))
-</div>
 

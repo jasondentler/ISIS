@@ -71,3 +71,8 @@ textarea
 {
 	padding-bottom: 1em;
 }
+
+#commandBar
+{
+	padding: 4px 4px;
+}

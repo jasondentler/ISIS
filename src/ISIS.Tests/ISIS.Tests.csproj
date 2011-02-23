@@ -65,6 +65,10 @@
       <Project>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</Project>
       <Name>ISIS.Command.Executors</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
+      <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>
+      <Name>ISIS.Validation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

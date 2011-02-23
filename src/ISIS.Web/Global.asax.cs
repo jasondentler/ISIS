@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Attributes;
+using FluentValidation.Mvc;
 using Ncqrs.Config.Ninject;
 using Ninject;
 
@@ -36,14 +38,21 @@ namespace ISIS.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             ConfigureInjection();
+            ConfigureModelValidation();
         }
 
         protected void ConfigureInjection()
         {
-            var kernel = new StandardKernel(new NcqrsModule(), new NHibernateModule());
+            var kernel = new StandardKernel(new ValidatorModule(), new NcqrsModule(), new NHibernateModule());
             Ncqrs.NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
             var controllerFactory = new NinjectControllerFactory(kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+        }
+
+        protected void ConfigureModelValidation()
+        {
+
+
         }
 
     }

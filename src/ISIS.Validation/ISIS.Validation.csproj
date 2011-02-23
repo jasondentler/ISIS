@@ -55,6 +55,7 @@
     <Compile Include="CreateCourseCommandValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationCommandInterceptor.cs" />
+    <Compile Include="ValidatorFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

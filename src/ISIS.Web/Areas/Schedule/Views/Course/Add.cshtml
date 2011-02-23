@@ -4,6 +4,10 @@
     ViewBag.Title = "Create A New Course";
 }
 
+<div id="commandBar">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
 <h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
@@ -40,8 +44,4 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
