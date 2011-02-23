@@ -54,6 +54,7 @@
     <Compile Include="ModelState\ImportModelStateFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\ValidationExceptionHandler.cs" />
+    <Compile Include="ViewAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

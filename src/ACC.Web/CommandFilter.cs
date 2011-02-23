@@ -13,9 +13,6 @@ namespace ACC.Web
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            var ex = filterContext.Exception;
-            if (ex == null)
-                return;
             HandleValidationException(filterContext);
             HandleInvalidStateException(filterContext);
             ExportModelState(filterContext);

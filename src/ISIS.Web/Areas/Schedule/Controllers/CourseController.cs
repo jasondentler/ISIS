@@ -19,9 +19,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             _commandService = commandService;
         }
 
-        //
-        // GET: /Schedule/Course/
-
+        [HttpGet, View]
         public ViewResult Index(int pageNumber = 1)
         {
             return View(_repository.All<CourseList>(pageNumber, 20,
@@ -29,19 +27,19 @@ namespace ISIS.Web.Areas.Schedule.Controllers
                                                     course => course.Number));
         }
 
-        [HttpGet]
+        [HttpGet, View]
         public ViewResult Details(Guid id)
         {
             return View(_repository.Single<CourseDetails>(id));
         }
 
-        [HttpGet, ImportModelState]
+        [HttpGet, View]
         public ViewResult Add()
         {
             return View();
         }
 
-        [HttpPost, ExportModelState]
+        [HttpPost, Command]
         public RedirectToRouteResult Add(CreateCourseCommand command)
         {
             if (!ModelState.IsValid)
@@ -51,7 +49,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Index(1));
         }
 
-        [HttpGet, ImportModelState]
+        [HttpGet, View]
         public ViewResult ChangeTitle(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
@@ -62,7 +60,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             });
         }
 
-        [HttpPost, ExportModelState]
+        [HttpPost, Command]
         public RedirectToRouteResult ChangeTitle(ChangeCourseTitleCommand command)
         {
             if (!ModelState.IsValid)
@@ -72,7 +70,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
-        [HttpGet, ImportModelState]
+        [HttpGet, View]
         public ViewResult AssignCIP(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
@@ -83,7 +81,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             });
         }
 
-        [HttpPost, ExportModelState]
+        [HttpPost, Command]
         public RedirectToRouteResult AssignCIP(AssignCIPCommand command)
         {
             if (!ModelState.IsValid)
@@ -93,7 +91,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
-        [HttpGet, ImportModelState]
+        [HttpGet, View]
         public ViewResult AssignApprovalNumber(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
@@ -104,7 +102,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             });
         }
 
-        [HttpPost, Command, ExportModelState]
+        [HttpPost, Command]
         public RedirectToRouteResult AssignApprovalNumber(AssignApprovalNumberCommand command)
         {
             if (!ModelState.IsValid)
