@@ -1,17 +1,16 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using NUnit.Framework;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 {
     [TestFixture]
     public class when_a_course_is_created
-        : DenormalizerFixture<CourseListDenormalizer, CourseCreatedEvent>
+        : DenormalizerFixture<CourseDetailsDenormalizer, CourseCreatedEvent>
     {
 
-        protected override CourseListDenormalizer CreateDenormalizer()
+        protected override CourseDetailsDenormalizer CreateDenormalizer()
         {
-            return Kernel.Get<CourseListDenormalizer>();
+            return Kernel.Get<CourseDetailsDenormalizer>();
         }
 
         protected override CourseCreatedEvent WhenHandling()
@@ -22,7 +21,7 @@ namespace ISIS.Denormalizers.Tests
         [Test]
         public void it_inserts_a_row()
         {
-            var row = Repository.Single<CourseList>(EventSourceId);
+            var row = Repository.Single<CourseDetails>(EventSourceId);
             var e = TheEvent;
             Assert.That(row, Is.Not.Null);
             Assert.That(e, Is.Not.Null);
@@ -30,6 +29,8 @@ namespace ISIS.Denormalizers.Tests
             Assert.That(row.Rubric, Is.EqualTo(e.Rubric));
             Assert.That(row.Number, Is.EqualTo(e.Number));
             Assert.That(row.Title, Is.EqualTo(e.Title));
+            Assert.That(row.ApprovalNumber, Is.EqualTo(null));
+            Assert.That(row.CIP, Is.EqualTo(null));
         }
 
     }

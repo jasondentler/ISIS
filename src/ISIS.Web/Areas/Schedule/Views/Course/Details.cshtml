@@ -1,0 +1,31 @@
+﻿@model ISIS.CourseDetails
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Course Details</legend>
+
+    <div class="display-label">Rubric</div>
+    <div class="display-field">@Model.Rubric</div>
+
+    <div class="display-label">Number</div>
+    <div class="display-field">@Model.Number</div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title @(Html.ActionLink<CourseController>(c => c.ChangeTitle(Model.CourseId), "Change"))</div>
+
+    <div class="display-label">CIP</div>
+    <div class="display-field">@(Model.CIP ?? "Unassigned")</div>
+
+    <div class="display-label">ApprovalNumber</div>
+    <div class="display-field">@(Model.ApprovalNumber ?? "Unassigned")</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

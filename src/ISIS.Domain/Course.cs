@@ -24,13 +24,7 @@ namespace ISIS
             string number,
             string title)
         {
-            var e = new CourseCreatedEvent()
-                        {
-                            CourseId = EventSourceId,
-                            Rubric = rubric,
-                            Number = number,
-                            Title = title
-                        };
+            var e = new CourseCreatedEvent(EventSourceId, rubric, number, title);
             ApplyEvent(e);
         }
 
@@ -47,11 +41,7 @@ namespace ISIS
             if (!string.IsNullOrWhiteSpace(_approvalNumber))
                 throw new InvalidStateException("Your attempt to assign a CIP failed because the course already has an approval number.");
 
-            var e = new CourseCIPAssignedEvent()
-                        {
-                            CourseId = EventSourceId,
-                            CIP = cip
-                        };
+            var e = new CourseCIPAssignedEvent(EventSourceId, cip);
             ApplyEvent(e);
         }
 
@@ -70,19 +60,13 @@ namespace ISIS
             if (!string.IsNullOrWhiteSpace(_cip))
                 throw new InvalidStateException("Your attempt to assign an approval number failed because the course already has a CIP code.");
 
-            var approvalNumberEvent = new CourseApprovalNumberAssignedEvent()
-            {
-                CourseId = EventSourceId,
-                ApprovalNumber = approvalNumber
-            };
+            var approvalNumberEvent = new CourseApprovalNumberAssignedEvent(EventSourceId, approvalNumber);
+
             ApplyEvent(approvalNumberEvent);
 
-            var CIPEvent = new CourseCIPAssignedEvent()
-                               {
-                                   CourseId = EventSourceId,
-                                   CIP = approvalNumber.Substring(0, 6)
-                               };
-            ApplyEvent(CIPEvent);
+            var cip = approvalNumber.Substring(0, 6);
+            var cipEvent = new CourseCIPAssignedEvent(EventSourceId, cip);
+            ApplyEvent(cipEvent);
 
         }
 

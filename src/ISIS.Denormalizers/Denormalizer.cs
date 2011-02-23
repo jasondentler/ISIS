@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq.Expressions;
+using AutoMapper;
 using FluentDML.Dialect;
 using log4net;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -21,6 +22,11 @@ namespace ISIS
             Db = db;
         }
 
+        protected IMappingExpression<TEvent, TEntity> CreateMap<TEvent>()
+        {
+            return Mapper.CreateMap<TEvent, TEntity>();
+        }
+
         protected abstract Expression<Func<TEntity, object>> GetId();
 
         protected Expression<Func<TEntity, object>> GetId(Expression<Func<TEntity, object>> expression)
@@ -30,6 +36,7 @@ namespace ISIS
 
         protected void Insert<TEvent>(IPublishedEvent<TEvent> publishedEvent)
         {
+            Log.DebugFormat("Inserting into {0} from {1}", typeof(TEntity), typeof(TEvent));
             var cmd = Db.Insert<TEntity>()
                 .MapFrom(publishedEvent.Payload);
             ExecuteSingle(cmd);
@@ -37,6 +44,7 @@ namespace ISIS
 
         protected void Upsert<TEvent>(IPublishedEvent<TEvent> publishedEvent)
         {
+            Log.DebugFormat("Inserting into {0} from {1}", typeof(TEntity), typeof(TEvent));
             var cmd = Db.Upsert<TEntity>()
                 .MapFrom(publishedEvent.Payload)
                 .WithId(GetId());
@@ -45,6 +53,7 @@ namespace ISIS
 
         protected void Update<TEvent>(IPublishedEvent<TEvent> publishedEvent)
         {
+            Log.DebugFormat("Updating {0} from {1}", typeof(TEntity), typeof(TEvent));
             var cmd = Db.Update<TEntity>()
                 .MapFrom(publishedEvent.Payload)
                 .WithId(GetId());
@@ -53,6 +62,7 @@ namespace ISIS
 
         protected void DeleteSingle(Expression<Func<TEntity, bool>> predicate)
         {
+            Log.DebugFormat("Deleting {0}", typeof(TEntity));
             var cmd = Db.Delete<TEntity>()
                 .Where(predicate)
                 .ToCommand();

@@ -10,7 +10,7 @@
 <ul>
 @foreach (var course in Model.Results)
 {
-    <li>@course.Rubric @course.Number : @course.Title</li>
+    <li>@(Html.ActionLink<CourseController>(c => c.Details(course.CourseId), string.Format("{0} {1} : {2}", course.Rubric, course.Number, course.Title)))</li>
 }
 </ul>
 

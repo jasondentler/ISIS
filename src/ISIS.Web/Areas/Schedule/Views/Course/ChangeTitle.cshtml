@@ -1,0 +1,34 @@
+﻿@model ISIS.ChangeCourseTitleCommand
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+@{
+    ViewBag.Title = "Change Course Title";
+}
+
+<h2>Change Course Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Change Course Title</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewTitle)
+            @Html.ValidationMessageFor(model => model.NewTitle)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Details"))
+</div>
+

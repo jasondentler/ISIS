@@ -15,13 +15,7 @@ namespace ISIS.DomainTests.CourseTests
 
         protected override IEnumerable<object> Given()
         {
-            yield return new CourseCreatedEvent()
-                             {
-                                 CourseId = EventSourceId,
-                                 Rubric = Rubric,
-                                 Number = CourseNumber,
-                                 Title = Title
-                             };
+            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber, Title);
         }
 
         protected override ChangeCourseTitleCommand WhenExecutingCommand()

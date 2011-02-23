@@ -1,8 +1,7 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using NUnit.Framework;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS.Denormalizers.Tests.CourseListTests
 {
     [TestFixture]
     public class when_a_course_is_created

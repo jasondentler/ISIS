@@ -2,7 +2,7 @@
 using Ninject;
 using NUnit.Framework;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS.Denormalizers.Tests.CourseListTests
 {
     [TestFixture]
     public class when_a_course_title_is_changed

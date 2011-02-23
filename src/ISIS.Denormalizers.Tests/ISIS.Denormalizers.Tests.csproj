@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDetailsTests\when_a_course_is_assigned_a_CIP.cs" />
+    <Compile Include="CourseDetailsTests\when_a_course_is_assigned_an_approval_number.cs" />
+    <Compile Include="CourseDetailsTests\when_a_course_is_created.cs" />
+    <Compile Include="CourseDetailsTests\when_a_course_title_is_changed.cs" />
+    <Compile Include="CourseListTests\when_a_course_is_created.cs" />
+    <Compile Include="CourseListTests\when_a_course_title_is_changed.cs" />
     <Compile Include="DenormalizerModule.cs" />
     <Compile Include="PublishableEvent.cs" />
     <Compile Include="when_a_course_title_is_changed.cs" />

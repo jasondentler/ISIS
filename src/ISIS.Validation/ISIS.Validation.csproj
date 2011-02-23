@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AssignApprovalNumberCommandValidator.cs" />
     <Compile Include="AssignCIPCommandValidator.cs" />
+    <Compile Include="ChangeCourseTitleCommandValidator.cs" />
     <Compile Include="CreateSectionCommandValidator.cs" />
     <Compile Include="CreateTermCommandValidator.cs" />
     <Compile Include="CreateDepartmentCommandValidator.cs" />

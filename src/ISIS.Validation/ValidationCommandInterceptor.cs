@@ -40,6 +40,8 @@ namespace ISIS.Validation
         private void Validate(Type commandType, ICommand command)
         {
             var validator = GetValidator(commandType);
+            if (validator == null)
+                throw new NullReferenceException(string.Format("No validator for {0}", commandType));
             var result = validator.Validate(command);
             if (!result.IsValid)
                 throw new ValidationException(result.Errors);

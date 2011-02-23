@@ -13,13 +13,7 @@ namespace ISIS.DomainTests.CourseTests
 
         protected override IEnumerable<object> Given()
         {
-            yield return new CourseCreatedEvent()
-                             {
-                                 CourseId = EventSourceId,
-                                 Rubric = "BIOL",
-                                 Number = "2302",
-                                 Title = "Anatomy & Physiology II"
-                             };
+            yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302", "Anatomy & Physiology II");
         }
 
         protected override AssignCIPCommand WhenExecutingCommand()
