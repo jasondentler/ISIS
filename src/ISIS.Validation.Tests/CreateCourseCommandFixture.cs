@@ -17,7 +17,7 @@ namespace ISIS.Validation.Tests
                        {
                            Rubric = "BIOL",
                            CourseNumber = "1234",
-                           Title = "Introduction to Frog Dissection"
+                           Title = "Cuttin' up frogs"
                        };
         }
 
@@ -79,9 +79,18 @@ namespace ISIS.Validation.Tests
         public void Title_cant_be_empty()
         {
             GetFailure(new CreateCourseCommand()
-                           {
-                               Title = ""
-                           }, cmd => cmd.Title);
+            {
+                Title = ""
+            }, cmd => cmd.Title);
+        }
+
+        [Test]
+        public void Title_cant_be_over_30_characters()
+        {
+            GetFailure(new CreateCourseCommand()
+            {
+                Title = "123456789012345678901234567890!"
+            }, cmd => cmd.Title);
         }
 
     }

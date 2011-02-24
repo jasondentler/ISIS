@@ -18,9 +18,12 @@ namespace ISIS.Web
 
             DataAnnotationsModelValidatorProvider
                 .AddImplicitRequiredAttributeForValueTypes = false;
-
+            ModelValidatorProviders.Providers.Clear();
             ModelValidatorProviders.Providers.Add(
                 new FluentValidationModelValidatorProvider(Kernel.Get<IValidatorFactory>()));
+
+            ModelMetadataProviders.Current = new FluentValidationModelMetadataProvider(
+                Kernel.Get<IValidatorFactory>());
 
         }
     }

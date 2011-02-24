@@ -38,7 +38,6 @@ namespace ISIS.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             ConfigureInjection();
-            ConfigureModelValidation();
         }
 
         protected void ConfigureInjection()
@@ -49,11 +48,6 @@ namespace ISIS.Web
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }
 
-        protected void ConfigureModelValidation()
-        {
-
-
-        }
 
     }
 }

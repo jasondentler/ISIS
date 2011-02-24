@@ -76,3 +76,8 @@ textarea
 {
 	padding: 4px 4px;
 }
+
+input[type=text], select option
+{
+	font-family: 'Courier New' , Courier, monospace;
+}
