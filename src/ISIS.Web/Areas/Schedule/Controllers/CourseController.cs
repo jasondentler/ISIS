@@ -10,6 +10,8 @@ namespace ISIS.Web.Areas.Schedule.Controllers
     public class CourseController : Controller
     {
 
+        public const string Message = "Message";
+
         private readonly IReadRepository _repository;
         private readonly ICommandService _commandService;
 
@@ -38,10 +40,23 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         {
             var query = new LookupCourseQuery(rubric, courseNumber);
             var results = _repository.Execute(query);
-            if (results.LongCount() != 1)
-                return this.RedirectToAction(c => c.Index(1));
-            var course = results.Single();
-            return this.RedirectToAction(c => c.Details(course.CourseId));
+            var resultCount = results.LongCount();
+
+            switch (resultCount)
+            {
+                case 0:
+                    TempData[Message] = "Unable to lookup course by rubric and course number. No courses found.";
+                    return this.RedirectToAction(c => c.Index(1));
+                case 1:
+                    var course = results.Single();
+                    return this.RedirectToAction(c => c.Details(course.CourseId));
+                default:
+                    TempData[Message] =
+                        string.Format("Unable to lookup course by rubric and course number. {0} courses found.",
+                                      resultCount);
+                    return this.RedirectToAction(c => c.Index(1));
+            }
+
         }
 
         [HttpGet, View]
@@ -57,18 +72,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
                 return this.RedirectToAction(c => c.Add());
 
             _commandService.Execute(command);
-            return this.RedirectToAction(c => c.AddFollowUp(command.Rubric, command.CourseNumber, command.Title));
-        }
-
-        [HttpGet, View]
-        public ViewResult AddFollowUp(string rubric, string courseNumber, string title)
-        {
-            return View(new CourseList()
-                            {
-                                Rubric = rubric,
-                                Number = courseNumber,
-                                Title = title
-                            });
+            return this.RedirectToAction(c => c.LookupDetails(command.Rubric, command.CourseNumber));
         }
 
         [HttpGet, View]
@@ -133,6 +137,29 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             _commandService.Execute(command);
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
+
+        [HttpGet, View]
+        public ViewResult ChangeLongTitle(Guid id)
+        {
+            var course = _repository.Single<CourseDetails>(id);
+            return View(new ChangeCourseLongTitleCommand()
+                            {
+                                CourseId = id,
+                                NewLongTitle = course.LongTitle
+                            });
+        }
+
+        [HttpPost, Command]
+        public RedirectToRouteResult ChangeLongTitle(ChangeCourseLongTitleCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.ChangeLongTitle(command.CourseId));
+
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
+
 
     }
 }

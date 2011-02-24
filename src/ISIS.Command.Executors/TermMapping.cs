@@ -11,7 +11,6 @@ namespace ISIS
             Map.Command<CreateTermCommand>()
                 .ToAggregateRoot<Term>()
                 .CreateNew(cmd => new Term(cmd.Name))
-                .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
         }

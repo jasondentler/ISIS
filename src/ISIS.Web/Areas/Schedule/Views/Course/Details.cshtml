@@ -6,6 +6,7 @@
 }
 <div id="commandBar">
     @(Html.ActionLink<CourseController>(c => c.ChangeTitle(Model.CourseId), "Change Title"))
+    @(Html.ActionLink<CourseController>(c => c.ChangeLongTitle(Model.CourseId), "Change Long Title"))
     @(Html.ActionLink<CourseController>(c => c.AssignCIP(Model.CourseId), "Set CIP"))
     @(Html.ActionLink<CourseController>(c => c.AssignApprovalNumber(Model.CourseId), "Set Approval Number"))
     @Html.ActionLink("Back to List", "Index")
@@ -17,13 +18,16 @@
     <legend>Course Details</legend>
 
     <div class="display-label">@Html.LabelFor(m => m.Rubric)</div>
-    <div class="display-field">@Model.Rubric</div>
+    <div class="display-field">@Html.DisplayFor(m => m.Rubric)</div>
 
     <div class="display-label">@Html.LabelFor(m => m.Number)</div>
-    <div class="display-field">@Model.Number</div>
+    <div class="display-field">@Html.DisplayFor(m => m.Number)</div>
 
     <div class="display-label">@Html.LabelFor(m => m.Title)</div>
-    <div class="display-field">@Model.Title</div>
+    <div class="display-field">@Html.DisplayFor(m => m.Title)</div>
+
+    <div class="display-label">@Html.LabelFor(m => m.LongTitle)</div>
+    <div class="display-field">@Html.DisplayFor(m => m.LongTitle)</div>
 
     <div class="display-label">@Html.LabelFor(m => m.CIP)</div>
     <div class="display-field">@(Model.CIP ?? "Unassigned")  </div>

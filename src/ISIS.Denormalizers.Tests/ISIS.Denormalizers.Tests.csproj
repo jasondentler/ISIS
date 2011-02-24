@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\FluentDML\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentDML">
       <HintPath>..\..\lib\FluentDML\FluentDML.dll</HintPath>
     </Reference>
@@ -64,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDetailsTests\when_a_course_long_title_is_changed.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_is_assigned_a_CIP.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_is_assigned_an_approval_number.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_is_created.cs" />

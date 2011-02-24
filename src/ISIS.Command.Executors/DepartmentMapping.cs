@@ -11,7 +11,6 @@ namespace ISIS
             Map.Command<CreateDepartmentCommand>()
                 .ToAggregateRoot<Department>()
                 .CreateNew(cmd => new Department(cmd.Name))
-                .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
         }

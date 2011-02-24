@@ -53,6 +53,7 @@
     <Compile Include="AssignApprovalNumberCommandFixture.cs" />
     <Compile Include="AssignCIPCommandFixture.cs" />
     <Compile Include="ChangeCourseTitleCommandFixture.cs" />
+    <Compile Include="ChangeCourseLongTitleCommandFixture.cs" />
     <Compile Include="CreateSectionCommandFixture.cs" />
     <Compile Include="CreateTermCommandFixture.cs" />
     <Compile Include="CreateDepartmentCommandFixture.cs" />

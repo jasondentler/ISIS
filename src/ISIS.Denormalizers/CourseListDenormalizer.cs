@@ -15,7 +15,8 @@ namespace ISIS
         public CourseListDenormalizer(IDialect db)
             : base(db)
         {
-            CreateMap<CourseCreatedEvent>();
+            CreateMap<CourseCreatedEvent>()
+                .ForMember(c => c.Title, mo => mo.Ignore());
             CreateMap<CourseTitleChangedEvent>()
                 .ForMember(c => c.Number, mo => mo.Ignore())
                 .ForMember(c => c.Rubric, mo => mo.Ignore());

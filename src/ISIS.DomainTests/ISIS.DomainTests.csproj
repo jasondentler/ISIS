@@ -51,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandFixture.cs" />
-    <Compile Include="CourseTests\when_a_course_title_is_changed.cs" />
+    <Compile Include="CourseTests\when_a_course_title_is_changed_and_long_title_doesnt_match.cs" />
+    <Compile Include="CourseTests\when_a_course_long_title_is_changed.cs" />
+    <Compile Include="CourseTests\when_a_course_title_is_changed_and_long_title_matches.cs" />
     <Compile Include="CourseTests\when_an_approval_number_is_assigned_after_a_CIP.cs" />
     <Compile Include="CourseTests\when_a_CIP_is_assigned_after_an_approval_number.cs" />
     <Compile Include="CourseTests\when_an_approval_number_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_CIP_is_assigned.cs" />
-    <Compile Include="CourseTests\when_a_new_course_is_created.cs" />
+    <Compile Include="CourseTests\when_a_course_is_created.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
     <Compile Include="SectionTests\when_a_new_section_is_created.cs" />

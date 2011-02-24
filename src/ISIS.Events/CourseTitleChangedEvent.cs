@@ -4,7 +4,13 @@ namespace ISIS
 {
     public class CourseTitleChangedEvent 
     {
-        public Guid CourseId { get; set; }
-        public string Title { get; set; }
+        public CourseTitleChangedEvent(Guid courseId, string title)
+        {
+            CourseId = courseId;
+            Title = title;
+        }
+
+        public Guid CourseId { get; private set; }
+        public string Title { get; private set; }
     }
 }

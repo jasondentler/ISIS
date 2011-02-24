@@ -16,7 +16,7 @@ namespace ISIS.Denormalizers.Tests
 
         protected override CourseCreatedEvent WhenHandling()
         {
-            return new CourseCreatedEvent(EventSourceId, "BIOL", "2302", "Anatomy & Physiology 2");
+            return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace ISIS.Denormalizers.Tests
             Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(e.Rubric));
             Assert.That(row.Number, Is.EqualTo(e.Number));
-            Assert.That(row.Title, Is.EqualTo(e.Title));
+            Assert.That(row.Title, Is.EqualTo(null));
         }
 
     }

@@ -11,7 +11,6 @@ namespace ISIS.Denormalizers.Tests.CourseListTests
 
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
-        private const string Title = "Introductory Biology";
         private const string NewTitle = "Introduction to Biology";
 
 
@@ -22,16 +21,12 @@ namespace ISIS.Denormalizers.Tests.CourseListTests
 
         protected override IEnumerable<object> Given()
         {
-            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber, Title);
+            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
         protected override CourseTitleChangedEvent WhenHandling()
         {
-            return new CourseTitleChangedEvent()
-                       {
-                           CourseId = EventSourceId,
-                           Title = NewTitle
-                       };
+            return new CourseTitleChangedEvent(EventSourceId, NewTitle);
         }
 
         [Test]

@@ -11,7 +11,6 @@ namespace ISIS
             Map.Command<CreateSectionCommand>()
                 .ToAggregateRoot<Section>()
                 .CreateNew(cmd => new Section(cmd.CourseId, cmd.TermId, cmd.Number))
-                .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
         }

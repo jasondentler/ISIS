@@ -50,6 +50,14 @@ namespace ISIS.Validation.Tests
         }
 
 
+        [Test]
+        public void Title_cant_be_over_30_characters()
+        {
+            GetFailure(new ChangeCourseTitleCommand()
+            {
+                NewTitle = "123456789012345678901234567890!"
+            }, cmd => cmd.NewTitle);
+        }
 
     }
 }

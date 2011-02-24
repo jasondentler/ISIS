@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Ninject;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 {
     [TestFixture]
-    public class when_a_course_title_is_changed
-        : DenormalizerFixture<CourseDetailsDenormalizer, CourseTitleChangedEvent>
+    public class when_a_course_long_title_is_changed
+        : DenormalizerFixture<CourseDetailsDenormalizer, CourseLongTitleChangedEvent>
     {
 
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
-        private const string NewTitle = "Introduction to Biology";
-
+        private const string NewLongTitle = "Introduction to Biology";
 
         protected override CourseDetailsDenormalizer CreateDenormalizer()
         {
@@ -24,9 +24,9 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
-        protected override CourseTitleChangedEvent WhenHandling()
+        protected override CourseLongTitleChangedEvent WhenHandling()
         {
-            return new CourseTitleChangedEvent(EventSourceId, NewTitle);
+            return new CourseLongTitleChangedEvent(EventSourceId, NewLongTitle);
         }
 
         [Test]
@@ -38,8 +38,8 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(Rubric));
             Assert.That(row.Number, Is.EqualTo(CourseNumber));
-            Assert.That(row.Title, Is.EqualTo(e.Title));
-            Assert.That(row.LongTitle, Is.EqualTo(null));
+            Assert.That(row.Title, Is.EqualTo(null));
+            Assert.That(row.LongTitle, Is.EqualTo(NewLongTitle));
             Assert.That(row.ApprovalNumber, Is.EqualTo(null));
             Assert.That(row.CIP, Is.EqualTo(null));
         }

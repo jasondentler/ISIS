@@ -9,6 +9,12 @@
 </div>
 
 <h2>@ViewBag.Title</h2>
+
+@if (TempData.ContainsKey(CourseController.Message))
+{
+    <div class="validation-summary-errors"><ul><li>@TempData[CourseController.Message]</li></ul></div>
+}
+
 <ul>
     @foreach (var course in Model.Results)
     {

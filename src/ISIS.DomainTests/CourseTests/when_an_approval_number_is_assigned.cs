@@ -14,7 +14,7 @@ namespace ISIS.DomainTests.CourseTests
 
         protected override IEnumerable<object> Given()
         {
-            yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302", "Anatomy & Physiology II");
+            yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
         protected override AssignApprovalNumberCommand WhenExecutingCommand()

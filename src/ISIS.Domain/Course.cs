@@ -8,6 +8,8 @@ namespace ISIS
 
         private string _cip;
         private string _approvalNumber;
+        private string _title;
+        private string _longTitle;
 
         private Course()
         {
@@ -24,8 +26,9 @@ namespace ISIS
             string number,
             string title)
         {
-            var e = new CourseCreatedEvent(EventSourceId, rubric, number, title);
-            ApplyEvent(e);
+            ApplyEvent(new CourseCreatedEvent(EventSourceId, rubric, number));
+            ApplyEvent(new CourseTitleChangedEvent(EventSourceId, title));
+            ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, title));
         }
 
         protected void OnCourseCreated(CourseCreatedEvent @event)
@@ -67,7 +70,6 @@ namespace ISIS
             var cip = approvalNumber.Substring(0, 6);
             var cipEvent = new CourseCIPAssignedEvent(EventSourceId, cip);
             ApplyEvent(cipEvent);
-
         }
 
         protected void OnApprovalNumberAssigned(CourseApprovalNumberAssignedEvent @event)
@@ -77,17 +79,24 @@ namespace ISIS
 
         public void ChangeCourseTitle(string newTitle)
         {
-            var e = new CourseTitleChangedEvent()
-                        {
-                            CourseId = EventSourceId,
-                            Title = newTitle
-                        };
-            ApplyEvent(e);
+            if (_title == _longTitle)
+                ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, newTitle));
+            ApplyEvent(new CourseTitleChangedEvent(EventSourceId, newTitle));
         }
 
         protected void OnCourseTitleChanged(CourseTitleChangedEvent @event)
         {
-            
+            _title = @event.Title;
+        }
+
+        public void ChangeCourseLongTitle(string newLongTitle)
+        {
+            ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, newLongTitle));
+        }
+
+        protected void OnCourseLongTitleChanged(CourseLongTitleChangedEvent @event)
+        {
+            _longTitle = @event.LongTitle;
         }
 
     }

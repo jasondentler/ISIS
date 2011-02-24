@@ -12,18 +12,12 @@ namespace ISIS
             Map.Command<CreateCourseCommand>()
                 .ToAggregateRoot<Course>()
                 .CreateNew(cmd => new Course(cmd.Rubric, cmd.CourseNumber, cmd.Title))
-                .StoreInDomainRepository()
                 .RegisterWith(commandService);
 
             Map.Command<AssignCIPCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
-                .ToCallOn((cmd, course) =>
-                              {
-                                  Debug.WriteLine(cmd.CommandIdentifier);
-                                  Debug.WriteLine(course.EventSourceId);
-                                  course.AssignCIPNumber(cmd.CIP);
-                              })
+                .ToCallOn((cmd, course) => course.AssignCIPNumber(cmd.CIP))
                 .RegisterWith(commandService);
 
             Map.Command<AssignApprovalNumberCommand>()
@@ -37,6 +31,13 @@ namespace ISIS
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.ChangeCourseTitle(cmd.NewTitle))
                 .RegisterWith(commandService);
+
+            Map.Command<ChangeCourseLongTitleCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.ChangeCourseLongTitle(cmd.NewLongTitle))
+                .RegisterWith(commandService);
+
         }
 
     }

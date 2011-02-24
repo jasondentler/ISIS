@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using NHibernate;
@@ -31,6 +32,7 @@ namespace ISIS.Denormalizers.Tests
         
         protected override void  OnFixtureSetup()
         {
+            Mapper.Reset();
             Kernel = new StandardKernel(new DenormalizerModule());
             base.OnFixtureSetup();
             new DatabaseHelper().Setup();

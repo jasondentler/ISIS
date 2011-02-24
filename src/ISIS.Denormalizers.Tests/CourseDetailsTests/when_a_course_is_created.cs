@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System;
+using Ninject;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests.CourseDetailsTests
@@ -15,7 +16,7 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 
         protected override CourseCreatedEvent WhenHandling()
         {
-            return new CourseCreatedEvent(EventSourceId, "BIOL", "2302", "Anatomy & Physiology 2");
+            return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
         [Test]
@@ -28,7 +29,8 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             Assert.That(row.CourseId, Is.EqualTo(e.CourseId));
             Assert.That(row.Rubric, Is.EqualTo(e.Rubric));
             Assert.That(row.Number, Is.EqualTo(e.Number));
-            Assert.That(row.Title, Is.EqualTo(e.Title));
+            Assert.That(row.Title, Is.EqualTo(null));
+            Assert.That(row.LongTitle, Is.EqualTo(null));
             Assert.That(row.ApprovalNumber, Is.EqualTo(null));
             Assert.That(row.CIP, Is.EqualTo(null));
         }

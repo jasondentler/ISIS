@@ -11,7 +11,6 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
-        private const string Title = "Introductory Biology";
         private const string CIP = "1234567890";
 
         protected override CourseDetailsDenormalizer CreateDenormalizer()
@@ -21,7 +20,7 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 
         protected override IEnumerable<object> Given()
         {
-            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber, Title);
+            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
         protected override CourseCIPAssignedEvent WhenHandling()
@@ -39,7 +38,8 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             Assert.That(row.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(row.Rubric, Is.EqualTo(Rubric));
             Assert.That(row.Number, Is.EqualTo(CourseNumber));
-            Assert.That(row.Title, Is.EqualTo(Title));
+            Assert.That(row.Title, Is.EqualTo(null));
+            Assert.That(row.LongTitle, Is.EqualTo(null));
             Assert.That(row.ApprovalNumber, Is.EqualTo(null));
             Assert.That(row.CIP, Is.EqualTo(CIP));
         }
