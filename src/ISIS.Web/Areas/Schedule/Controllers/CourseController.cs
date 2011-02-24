@@ -159,6 +159,27 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
+        [HttpGet, View]
+        public ViewResult ChangeDescription(Guid id)
+        {
+            var course = _repository.Single<CourseDetails>(id);
+            return View(new ChangeCourseDescriptionCommand()
+            {
+                CourseId = id,
+                NewDescription = course.Description
+            });
+        }
+
+        [HttpPost, Command]
+        public RedirectToRouteResult ChangeDescription(ChangeCourseDescriptionCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.ChangeDescription(command.CourseId));
+
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
 
 
     }

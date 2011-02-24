@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
 
@@ -36,6 +35,12 @@ namespace ISIS
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.ChangeCourseLongTitle(cmd.NewLongTitle))
+                .RegisterWith(commandService);
+
+            Map.Command<ChangeCourseDescriptionCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.ChangeDescription(cmd.NewDescription))
                 .RegisterWith(commandService);
 
         }

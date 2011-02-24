@@ -99,5 +99,14 @@ namespace ISIS
             _longTitle = @event.LongTitle;
         }
 
+        public void ChangeDescription(string newDescription)
+        {
+            ApplyEvent(new CourseDescriptionChangedEvent(EventSourceId, newDescription));
+        }
+
+        protected void OnCourseDescriptionChanged(CourseDescriptionChangedEvent @event)
+        {
+        }
+
     }
 }

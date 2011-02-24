@@ -11,6 +11,7 @@ namespace ISIS
         IEventHandler<CourseCreatedEvent>,
         IEventHandler<CourseTitleChangedEvent>,
         IEventHandler<CourseLongTitleChangedEvent>,
+        IEventHandler<CourseDescriptionChangedEvent>,
         IEventHandler<CourseCIPAssignedEvent>,
         IEventHandler<CourseApprovalNumberAssignedEvent>
     {
@@ -21,6 +22,7 @@ namespace ISIS
             CreateMap<CourseCreatedEvent>()
                 .ForMember(c => c.Title, mo => mo.Ignore())
                 .ForMember(c => c.LongTitle, mo => mo.Ignore())
+                .ForMember(c => c.Description, mo => mo.Ignore())
                 .ForMember(c => c.CIP, mo => mo.Ignore())
                 .ForMember(c => c.ApprovalNumber, mo => mo.Ignore());
 
@@ -28,6 +30,7 @@ namespace ISIS
                 .ForMember(c => c.Rubric, mo => mo.Ignore())
                 .ForMember(c => c.Number, mo => mo.Ignore())
                 .ForMember(c => c.LongTitle, mo => mo.Ignore())
+                .ForMember(c => c.Description, mo => mo.Ignore())
                 .ForMember(c => c.CIP, mo => mo.Ignore())
                 .ForMember(c => c.ApprovalNumber, mo => mo.Ignore());
 
@@ -35,6 +38,15 @@ namespace ISIS
                 .ForMember(c => c.Rubric, mo => mo.Ignore())
                 .ForMember(c => c.Number, mo => mo.Ignore())
                 .ForMember(c => c.Title, mo => mo.Ignore())
+                .ForMember(c => c.Description, mo => mo.Ignore())
+                .ForMember(c => c.CIP, mo => mo.Ignore())
+                .ForMember(c => c.ApprovalNumber, mo => mo.Ignore());
+
+            CreateMap<CourseDescriptionChangedEvent>()
+                .ForMember(c => c.Rubric, mo => mo.Ignore())
+                .ForMember(c => c.Number, mo => mo.Ignore())
+                .ForMember(c => c.Title, mo => mo.Ignore())
+                .ForMember(c => c.LongTitle, mo => mo.Ignore())
                 .ForMember(c => c.CIP, mo => mo.Ignore())
                 .ForMember(c => c.ApprovalNumber, mo => mo.Ignore());
 
@@ -43,6 +55,7 @@ namespace ISIS
                 .ForMember(c => c.Number, mo => mo.Ignore())
                 .ForMember(c => c.Title, mo => mo.Ignore())
                 .ForMember(c => c.LongTitle, mo => mo.Ignore())
+                .ForMember(c => c.Description, mo => mo.Ignore())
                 .ForMember(c => c.ApprovalNumber, mo => mo.Ignore());
 
             CreateMap<CourseApprovalNumberAssignedEvent>()
@@ -50,6 +63,7 @@ namespace ISIS
                 .ForMember(c => c.Number, mo => mo.Ignore())
                 .ForMember(c => c.Title, mo => mo.Ignore())
                 .ForMember(c => c.LongTitle, mo => mo.Ignore())
+                .ForMember(c => c.Description, mo => mo.Ignore())
                 .ForMember(c => c.CIP, mo => mo.Ignore());
            
             Mapper.AssertConfigurationIsValid();
@@ -81,6 +95,11 @@ namespace ISIS
         }
 
         public void Handle(IPublishedEvent<CourseLongTitleChangedEvent> evnt)
+        {
+            Upsert(evnt);
+        }
+
+        public void Handle(IPublishedEvent<CourseDescriptionChangedEvent> evnt)
         {
             Upsert(evnt);
         }

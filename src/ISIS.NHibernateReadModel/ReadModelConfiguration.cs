@@ -34,9 +34,11 @@ namespace ISIS.NHibernateReadModel
             var orm = new ObjectRelationalMapper();
             var mapper = new Mapper(orm, new CoolPatternsAppliersHolder(orm));
 
+            mapper.AddPropertyPattern(IsLongString, p => p.Length(4001));
+
             orm.Patterns.Poids.Add(IsId);
             orm.Patterns.PoidStrategies.Add(new AssignedPoidPattern());
-            
+
             var domainClasses = typeof (IEntity).Assembly.GetTypes()
                 .Where(t => t.IsClass && !t.IsAbstract)
                 .Where(t => typeof (IEntity).IsAssignableFrom(t))
@@ -58,6 +60,29 @@ namespace ISIS.NHibernateReadModel
                    || name.Equals("poid", StringComparison.InvariantCultureIgnoreCase)
                    || (name.StartsWith(subject.DeclaringType.Name)
                        && name.Equals(subject.DeclaringType.Name + "id", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private static bool IsStringMember(MemberInfo m)
+        {
+            switch (m.MemberType)
+            {
+                case MemberTypes.Property:
+                    var p = (PropertyInfo) m;
+                    return p.PropertyType == typeof (string);
+                case MemberTypes.Field:
+                    var f = (FieldInfo) m;
+                    return f.FieldType == typeof (string);
+                default:
+                    return false;
+            }
+        }
+
+        private static bool IsLongString(MemberInfo m)
+        {
+            if (!IsStringMember(m))
+                return false;
+            return m.Name.ToLowerInvariant().EndsWith("description")
+                   || m.Name.ToLowerInvariant().Contains("long");
         }
 
     }

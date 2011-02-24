@@ -17,11 +17,13 @@ namespace ISIS
 
         [Display(Name="Long Title")]
         public string LongTitle { get; set; }
-        
+
+        public string Description { get; set; }
+
         public string CIP { get; set; }
 
         [Display(Name = "Approval Number")]
         public string ApprovalNumber { get; set; }
-        
+
     }
 }

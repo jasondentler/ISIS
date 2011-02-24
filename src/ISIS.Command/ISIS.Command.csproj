@@ -48,6 +48,7 @@
     <Compile Include="AssignCIPCommand.cs" />
     <Compile Include="ChangeCourseLongTitleCommand.cs" />
     <Compile Include="ChangeCourseTitleCommand.cs" />
+    <Compile Include="ChangeCourseDescriptionCommand.cs" />
     <Compile Include="CreateCourseCommand.cs" />
     <Compile Include="CreateDepartmentCommand.cs" />
     <Compile Include="CreateSectionCommand.cs" />

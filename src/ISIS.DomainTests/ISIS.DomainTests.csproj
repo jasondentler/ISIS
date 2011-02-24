@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandFixture.cs" />
+    <Compile Include="CourseTests\when_a_course_description_is_changed.cs" />
     <Compile Include="CourseTests\when_a_course_title_is_changed_and_long_title_doesnt_match.cs" />
     <Compile Include="CourseTests\when_a_course_long_title_is_changed.cs" />
     <Compile Include="CourseTests\when_a_course_title_is_changed_and_long_title_matches.cs" />
