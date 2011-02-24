@@ -67,6 +67,12 @@ textarea
     display: none;
 }
 
+.display-label
+{
+	color: #003366;
+	font-weight: bold;
+}
+
 .display-field
 {
 	padding-bottom: 1em;
