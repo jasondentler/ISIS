@@ -1,0 +1,14 @@
+﻿@model ISIS.CourseList
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+@{
+    ViewBag.Title = "Created course";
+}
+<div id="commandBar">
+    @Html.ActionLink("Back to List", "Index")
+    @(Html.ActionLink<CourseController>(c => c.LookupDetails(Model.Rubric, Model.Number), "Go to course details"))
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+<p>Your new course, @Model.ToString(), was created successfully.</p>

@@ -1,7 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using FluentValidation.Attributes;
-using FluentValidation.Mvc;
 using Ncqrs.Config.Ninject;
 using Ninject;
 

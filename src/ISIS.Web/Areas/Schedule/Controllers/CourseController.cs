@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using ACC.Web;
-using ACC.Web.ModelState;
 using Ncqrs.Commanding.ServiceModel;
 using MvcContrib;
 
@@ -33,6 +33,17 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return View(_repository.Single<CourseDetails>(id));
         }
 
+        [HttpGet]
+        public RedirectToRouteResult LookupDetails(string rubric, string courseNumber)
+        {
+            var query = new LookupCourseQuery(rubric, courseNumber);
+            var results = _repository.Execute(query);
+            if (results.LongCount() != 1)
+                return this.RedirectToAction(c => c.Index(1));
+            var course = results.Single();
+            return this.RedirectToAction(c => c.Details(course.CourseId));
+        }
+
         [HttpGet, View]
         public ViewResult Add()
         {
@@ -46,7 +57,18 @@ namespace ISIS.Web.Areas.Schedule.Controllers
                 return this.RedirectToAction(c => c.Add());
 
             _commandService.Execute(command);
-            return this.RedirectToAction(c => c.Index(1));
+            return this.RedirectToAction(c => c.AddFollowUp(command.Rubric, command.CourseNumber, command.Title));
+        }
+
+        [HttpGet, View]
+        public ViewResult AddFollowUp(string rubric, string courseNumber, string title)
+        {
+            return View(new CourseList()
+                            {
+                                Rubric = rubric,
+                                Number = courseNumber,
+                                Title = title
+                            });
         }
 
         [HttpGet, View]

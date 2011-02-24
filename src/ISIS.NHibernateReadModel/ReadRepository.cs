@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NHibernate;
 using System.Linq.Expressions;
 
@@ -47,6 +48,24 @@ namespace ISIS.NHibernateReadModel
         {
             var retval = _session.Transact(() => _session.Get<T>(id));
             return retval;
+        }
+
+        public IEnumerable<TElement> Execute<TElement>(IListQuery<TElement> query)
+        {
+            return BuildQuery(query).List<TElement>();
+        }
+
+        public TResult Execute<TResult>(ISingleQuery<TResult> query)
+        {
+            return BuildQuery(query).UniqueResult<TResult>();
+        }
+
+        private NHibernate.IQuery BuildQuery(IQuery query)
+        {
+            var nhQuery = _session.GetNamedQuery(query.QueryName);
+            foreach (var param in query.GetParameters())
+                nhQuery.SetParameter(param.Key, param.Value);
+            return nhQuery;
         }
 
         public void Dispose()

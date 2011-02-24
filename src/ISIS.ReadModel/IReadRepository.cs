@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace ISIS
@@ -18,6 +19,8 @@ namespace ISIS
 
         T Single<T>(object id) where T : IEntity;
 
+        IEnumerable<TElement> Execute<TElement>(IListQuery<TElement> query);
+        TResult Execute<TResult>(ISingleQuery<TResult> query);
 
     }
 
