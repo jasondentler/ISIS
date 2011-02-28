@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using FluentDML.ReadModel;
 using ISIS.NHibernateReadModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using NHibernate;

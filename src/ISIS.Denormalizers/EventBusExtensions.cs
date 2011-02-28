@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Ncqrs.Eventing;
+﻿using System.Reflection;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ninject;
 
