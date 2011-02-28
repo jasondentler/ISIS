@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -6,7 +7,7 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_a_course_is_created : 
-        CommandFixture<CreateCourseCommand, Course>
+        DomainFixture<CreateCourseCommand>
     {
 
         private Guid CourseId = Guid.NewGuid();
@@ -14,15 +15,21 @@ namespace ISIS.DomainTests.CourseTests
         private const string CourseNumber = "1301";
         private const string Title = "Introductory Biology";
 
-        protected override CreateCourseCommand WhenExecutingCommand()
+
+        protected override IEnumerable<object> GivenEvents()
+        {
+            return new object[0];
+        }
+
+        protected override CreateCourseCommand WhenExecuting()
         {
             return new CreateCourseCommand()
-                       {
-                           CourseId = CourseId,
-                           Rubric = Rubric,
-                           CourseNumber = CourseNumber,
-                           Title = Title
-                       };
+            {
+                CourseId = CourseId,
+                Rubric = Rubric,
+                CourseNumber = CourseNumber,
+                Title = Title
+            };
         }
 
         [Test]

@@ -7,25 +7,25 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_a_course_title_is_changed_and_long_title_matches : 
-        CommandFixture<ChangeCourseTitleCommand, Course>
+        DomainFixture<ChangeCourseTitleCommand>
     {
 
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
         private const string NewTitle = "Introduction to Biology";
 
-        protected override IEnumerable<object> Given()
+        protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
-        protected override ChangeCourseTitleCommand WhenExecutingCommand()
+        protected override ChangeCourseTitleCommand WhenExecuting()
         {
             return new ChangeCourseTitleCommand()
-                       {
-                           CourseId = EventSourceId,
-                           NewTitle = NewTitle
-                       };
+            {
+                CourseId = EventSourceId,
+                NewTitle = NewTitle
+            };
         }
 
         [Test]

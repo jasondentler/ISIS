@@ -5,24 +5,23 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_a_CIP_is_assigned : 
-        SimpleCommandFixture<AssignCIPCommand, Course, CourseCIPAssignedEvent>
+        SimpleDomainFixture<AssignCIPCommand, CourseCIPAssignedEvent>
     {
 
         private const string CIP = "123456";
 
-
-        protected override IEnumerable<object> Given()
+        protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
-        protected override AssignCIPCommand WhenExecutingCommand()
+        protected override AssignCIPCommand WhenExecuting()
         {
             return new AssignCIPCommand()
-                       {
-                           CourseId = EventSourceId,
-                           CIP = CIP
-                       };
+            {
+                CourseId = EventSourceId,
+                CIP = CIP
+            };
         }
 
         [Test]

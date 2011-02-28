@@ -1,25 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ncqrs.Spec;
 using NUnit.Framework;
 
 namespace ISIS.DomainTests.SectionTests
 {
     [TestFixture]
     public class when_a_new_section_is_created : 
-        SimpleCommandFixture<CreateSectionCommand, Section, SectionCreatedEvent>
+        OneEventTestFixture<CreateSectionCommand, SectionCreatedEvent>
     {
 
         private readonly Guid CourseId = Guid.NewGuid();
         private readonly Guid TermId = Guid.NewGuid();
         private const string SectionNumber = "01";
 
-        protected override CreateSectionCommand WhenExecutingCommand()
+        protected override IEnumerable<object> GivenEvents()
+        {
+            return new object[0];
+        }
+
+        protected override CreateSectionCommand WhenExecuting()
         {
             return new CreateSectionCommand()
-                       {
-                           CourseId = CourseId,
-                           TermId = TermId,
-                           Number = SectionNumber
-                       };
+            {
+                CourseId = CourseId,
+                TermId = TermId,
+                Number = SectionNumber
+            };
         }
 
         [Test]

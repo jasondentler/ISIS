@@ -1,20 +1,28 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Ncqrs.Spec;
+using NUnit.Framework;
 
 namespace ISIS.DomainTests.DepartmentTests
 {
     [TestFixture]
     public class when_a_new_department_is_created : 
-        SimpleCommandFixture<CreateDepartmentCommand, Department, DepartmentCreatedEvent>
+        OneEventTestFixture<CreateDepartmentCommand, DepartmentCreatedEvent>
     {
 
         private const string DepartmentName = "Biology";
-        
-        protected override CreateDepartmentCommand WhenExecutingCommand()
+
+        protected override IEnumerable<object> GivenEvents()
+        {
+            return new object[0];
+        }
+
+        protected override CreateDepartmentCommand WhenExecuting()
         {
             return new CreateDepartmentCommand()
-                       {
-                           Name = DepartmentName
-                       };
+            {
+                Name = DepartmentName
+            };
         }
 
         [Test]

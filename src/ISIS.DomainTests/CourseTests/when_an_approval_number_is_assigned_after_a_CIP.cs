@@ -5,33 +5,26 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_an_approval_number_is_assigned_after_a_CIP : 
-        CommandFixture<AssignApprovalNumberCommand, Course>
+        ExceptionTestFixture<AssignApprovalNumberCommand, InvalidStateException>
     {
 
-        private const string ApprovalNumber = "123456";
+        private const string ApprovalNumber = "1234567890";
 
 
-        protected override IEnumerable<object> Given()
+        protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
             yield return new CourseCIPAssignedEvent(EventSourceId, "123456");
         }
 
-        protected override AssignApprovalNumberCommand WhenExecutingCommand()
+        protected override AssignApprovalNumberCommand WhenExecuting()
         {
             return new AssignApprovalNumberCommand()
-                       {
-                           CourseId = EventSourceId,
-                           ApprovalNumber = ApprovalNumber
-                       };
+            {
+                CourseId = EventSourceId,
+                ApprovalNumber = ApprovalNumber
+            };
         }
-
-        [Test]
-        public void then_it_should_throw_InvalidStateException()
-        {
-            Assert.That(CaughtException, Is.InstanceOf<InvalidStateException>());
-        }
-
-
+        
     }
 }

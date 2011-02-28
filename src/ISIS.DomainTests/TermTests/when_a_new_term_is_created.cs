@@ -1,20 +1,27 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using Ncqrs.Spec;
+using NUnit.Framework;
 
 namespace ISIS.DomainTests.TermTests
 {
     [TestFixture]
     public class when_a_new_term_is_created : 
-        SimpleCommandFixture<CreateTermCommand, Term, TermCreatedEvent>
+        OneEventTestFixture<CreateTermCommand, TermCreatedEvent>
     {
 
         private const string TermName = "Spring 2010";
 
-        protected override CreateTermCommand WhenExecutingCommand()
+        protected override IEnumerable<object> GivenEvents()
+        {
+            return new object[0];
+        }
+
+        protected override CreateTermCommand WhenExecuting()
         {
             return new CreateTermCommand()
-                       {
-                           Name = TermName
-                       };
+            {
+                Name = TermName
+            };
         }
 
         [Test]

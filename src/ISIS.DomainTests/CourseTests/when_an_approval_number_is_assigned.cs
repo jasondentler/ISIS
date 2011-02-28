@@ -6,24 +6,24 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_an_approval_number_is_assigned : 
-        CommandFixture<AssignApprovalNumberCommand, Course>
+        DomainFixture<AssignApprovalNumberCommand>
     {
 
         private const string ApprovalNumber = "1234567890";
 
 
-        protected override IEnumerable<object> Given()
+        protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
-        protected override AssignApprovalNumberCommand WhenExecutingCommand()
+        protected override AssignApprovalNumberCommand WhenExecuting()
         {
             return new AssignApprovalNumberCommand()
-                       {
-                           CourseId = EventSourceId,
-                           ApprovalNumber = ApprovalNumber
-                       };
+            {
+                CourseId = EventSourceId,
+                ApprovalNumber = ApprovalNumber
+            };
         }
 
         [Test]

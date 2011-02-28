@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandFixture.cs" />
+    <Compile Include="DomainFixture.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="CourseTests\when_a_course_description_is_changed.cs" />
     <Compile Include="CourseTests\when_a_course_title_is_changed_and_long_title_doesnt_match.cs" />
     <Compile Include="CourseTests\when_a_course_long_title_is_changed.cs" />
@@ -60,12 +61,12 @@
     <Compile Include="CourseTests\when_an_approval_number_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_CIP_is_assigned.cs" />
     <Compile Include="CourseTests\when_a_course_is_created.cs" />
+    <Compile Include="ExceptionTestFixture.cs" />
+    <Compile Include="SimpleDomainFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DepartmentTests\when_a_new_department_is_created.cs" />
     <Compile Include="SectionTests\when_a_new_section_is_created.cs" />
-    <Compile Include="SimpleCommandFixture.cs" />
     <Compile Include="TermTests\when_a_new_term_is_created.cs" />
-    <Compile Include="WrappedCommandExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\ISIS.Tests\ISIS.Tests.csproj">
       <Project>{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E}</Project>
       <Name>ISIS.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
+      <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>
+      <Name>ISIS.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

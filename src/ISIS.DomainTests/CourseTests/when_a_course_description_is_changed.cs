@@ -5,25 +5,25 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_a_course_description_is_changed : 
-        SimpleCommandFixture<ChangeCourseDescriptionCommand, Course, CourseDescriptionChangedEvent>
+        SimpleDomainFixture<ChangeCourseDescriptionCommand, CourseDescriptionChangedEvent>
     {
 
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
         private const string Description = "My very very very very very very very very very very long introduction to biology title goes here";
 
-        protected override IEnumerable<object> Given()
+        protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
-        protected override ChangeCourseDescriptionCommand WhenExecutingCommand()
+        protected override ChangeCourseDescriptionCommand WhenExecuting()
         {
             return new ChangeCourseDescriptionCommand()
-                       {
-                           CourseId = EventSourceId,
-                           NewDescription = Description
-                       };
+            {
+                CourseId = EventSourceId,
+                NewDescription = Description
+            };
         }
 
         [Test]
