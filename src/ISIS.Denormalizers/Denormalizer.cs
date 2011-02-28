@@ -31,7 +31,7 @@ namespace ISIS
 
         protected void Upsert<TEvent>(IPublishedEvent<TEvent> publishedEvent)
         {
-            Log.DebugFormat("Inserting into {0} from {1}", typeof(TEntity), typeof(TEvent));
+            Log.DebugFormat("Upserting into {0} from {1}", typeof(TEntity), typeof(TEvent));
             Upsert(publishedEvent.Payload);
         }
 
