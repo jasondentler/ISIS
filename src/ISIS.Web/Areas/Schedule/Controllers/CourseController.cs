@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using ACC.Web;
+using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using MvcContrib;
 
@@ -35,34 +36,16 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return View(_repository.Single<CourseDetails>(id));
         }
 
-        [HttpGet]
-        public RedirectToRouteResult LookupDetails(string rubric, string courseNumber)
-        {
-            var query = new LookupCourseQuery(rubric, courseNumber);
-            var results = _repository.Execute(query);
-            var resultCount = results.LongCount();
-
-            switch (resultCount)
-            {
-                case 0:
-                    TempData[Message] = "Unable to lookup course by rubric and course number. No courses found.";
-                    return this.RedirectToAction(c => c.Index(1));
-                case 1:
-                    var course = results.Single();
-                    return this.RedirectToAction(c => c.Details(course.CourseId));
-                default:
-                    TempData[Message] =
-                        string.Format("Unable to lookup course by rubric and course number. {0} courses found.",
-                                      resultCount);
-                    return this.RedirectToAction(c => c.Index(1));
-            }
-
-        }
-
         [HttpGet, View]
         public ViewResult Add()
         {
-            return View();
+            var identifierGenerator = NcqrsEnvironment.Get<IUniqueIdentifierGenerator>();
+            var courseId = identifierGenerator.GenerateNewId();
+            var cmd = new CreateCourseCommand()
+                          {
+                              CourseId = courseId
+                          };
+            return View(cmd);
         }
 
         [HttpPost, Command]
@@ -72,7 +55,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
                 return this.RedirectToAction(c => c.Add());
 
             _commandService.Execute(command);
-            return this.RedirectToAction(c => c.LookupDetails(command.Rubric, command.CourseNumber));
+            return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
         [HttpGet, View]

@@ -49,12 +49,8 @@
     <Compile Include="IEntity.cs" />
     <Compile Include="IListQuery.cs" />
     <Compile Include="IReadRepository.cs" />
-    <Compile Include="LookupCourseQuery.cs" />
     <Compile Include="PageOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LookupCourseQuery.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

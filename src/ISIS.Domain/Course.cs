@@ -1,4 +1,5 @@
-﻿using Ncqrs.Domain;
+﻿using System;
+using Ncqrs.Domain;
 
 namespace ISIS
 {
@@ -22,9 +23,12 @@ namespace ISIS
         /// <param name="number">4-digit course number. For example: 2302</param>
         /// <param name="title">Course title</param>
         /// <example>new Course("BIOL","2302","Anatomy and Physiology 1");</example>
-        public Course(string rubric,
+        public Course(
+            Guid EventSourceId,
+            string rubric,
             string number,
             string title)
+            : base(EventSourceId)
         {
             ApplyEvent(new CourseCreatedEvent(EventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(EventSourceId, title));

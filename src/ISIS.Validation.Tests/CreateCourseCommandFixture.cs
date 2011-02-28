@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 using NUnit.Framework;
 
 namespace ISIS.Validation.Tests
@@ -15,12 +16,23 @@ namespace ISIS.Validation.Tests
         {
             return new CreateCourseCommand()
                        {
+                           CourseId = Guid.NewGuid(),
                            Rubric = "BIOL",
                            CourseNumber = "1234",
                            Title = "Cuttin' up frogs"
                        };
         }
 
+        [Test]
+        public void CourseId_must_not_be_default_guid()
+        {
+            GetFailure(new CreateCourseCommand()
+            {
+                CourseId = default(Guid)
+            }, cmd => cmd.CourseId);
+        }
+
+        
         [Test]
         public void Rubric_must_be_4_characters_long()
         {

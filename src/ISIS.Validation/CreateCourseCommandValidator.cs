@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using System;
 
 namespace ISIS.Validation
 {
@@ -10,6 +11,10 @@ namespace ISIS.Validation
     {
         public CreateCourseCommandValidator()
         {
+            RuleFor(cmd => cmd.CourseId)
+                .NotEqual(default(Guid))
+                .WithMessage("You must supply a valid course id.");
+
             RuleFor(cmd => cmd.Rubric)
                 .NotEmpty()
                 .Matches(@"^[A-Z]{4}$")

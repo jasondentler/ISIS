@@ -9,6 +9,7 @@ namespace ISIS.DomainTests.CourseTests
         CommandFixture<CreateCourseCommand, Course>
     {
 
+        private Guid CourseId = Guid.NewGuid();
         private const string Rubric = "BIOL";
         private const string CourseNumber = "1301";
         private const string Title = "Introductory Biology";
@@ -17,6 +18,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             return new CreateCourseCommand()
                        {
+                           CourseId = CourseId,
                            Rubric = Rubric,
                            CourseNumber = CourseNumber,
                            Title = Title
@@ -34,7 +36,7 @@ namespace ISIS.DomainTests.CourseTests
         {
             var TheEvent = PublishedEvents.Select(pe => pe.Payload)
                 .OfType<CourseCreatedEvent>().Single();
-            Assert.That(TheEvent.CourseId, Is.Not.EqualTo(default(Guid)));
+            Assert.That(TheEvent.CourseId, Is.EqualTo(CourseId));
             Assert.That(TheEvent.Rubric, Is.EqualTo(Rubric));
             Assert.That(TheEvent.Number, Is.EqualTo(CourseNumber));
         }
