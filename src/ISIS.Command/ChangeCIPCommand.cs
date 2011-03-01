@@ -3,7 +3,7 @@ using Ncqrs.Commanding;
 
 namespace ISIS
 {
-    public class AssignCIPCommand : CommandBase
+    public class ChangeCIPCommand : CommandBase
     {
 
         public Guid CourseId { get;  set; }

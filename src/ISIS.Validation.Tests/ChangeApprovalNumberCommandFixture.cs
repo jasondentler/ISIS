@@ -5,16 +5,16 @@ using NUnit.Framework;
 namespace ISIS.Validation.Tests
 {
     [TestFixture]
-    public class AssignApprovalNumberCommandFixture : ValidationFixture<AssignApprovalNumberCommand>
+    public class ChangeApprovalNumberCommandFixture : ValidationFixture<ChangeApprovalNumberCommand>
     {
-        protected override AbstractValidator<AssignApprovalNumberCommand> CreateValidator()
+        protected override AbstractValidator<ChangeApprovalNumberCommand> CreateValidator()
         {
-            return new AssignApprovalNumberCommandValidator();
+            return new ChangeApprovalNumberCommandValidator();
         }
 
-        protected override AssignApprovalNumberCommand GetValidInstance()
+        protected override ChangeApprovalNumberCommand GetValidInstance()
         {
-            return new AssignApprovalNumberCommand()
+            return new ChangeApprovalNumberCommand()
                        {
                            ApprovalNumber = "1234567890",
                            CourseId = Guid.NewGuid()
@@ -24,7 +24,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void Approval_number_must_not_be_null()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 ApprovalNumber = null
             }, cmd => cmd.ApprovalNumber);
@@ -33,7 +33,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void Approval_number_must_be_empty()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 ApprovalNumber = ""
             }, cmd => cmd.ApprovalNumber);
@@ -42,7 +42,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void Approval_number_must_be_10_digits_long()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 ApprovalNumber = "123456"
             }, cmd => cmd.ApprovalNumber);
@@ -51,7 +51,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void Approval_number_must_be_all_numbers()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 ApprovalNumber = "123456789A"
             }, cmd => cmd.ApprovalNumber);
@@ -60,7 +60,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void Approval_number_must_not_contain_punctuation()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 ApprovalNumber = "12.3456789"
             }, cmd => cmd.ApprovalNumber);
@@ -69,7 +69,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CourseId_must_be_specified()
         {
-            GetFailure(new AssignApprovalNumberCommand()
+            GetFailure(new ChangeApprovalNumberCommand()
             {
                 CourseId = default(Guid)
             }, cmd => cmd.CourseId);

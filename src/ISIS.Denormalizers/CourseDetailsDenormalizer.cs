@@ -11,8 +11,8 @@ namespace ISIS
         IEventHandler<CourseTitleChangedEvent>,
         IEventHandler<CourseLongTitleChangedEvent>,
         IEventHandler<CourseDescriptionChangedEvent>,
-        IEventHandler<CourseCIPAssignedEvent>,
-        IEventHandler<CourseApprovalNumberAssignedEvent>
+        IEventHandler<CourseCIPChangedEvent>,
+        IEventHandler<CourseApprovalNumberChangedEvent>
     {
         
         public CourseDetailsDenormalizer(IDialect db)
@@ -22,8 +22,8 @@ namespace ISIS
             CreateMap<CourseTitleChangedEvent>();
             CreateMap<CourseLongTitleChangedEvent>();
             CreateMap<CourseDescriptionChangedEvent>();
-            CreateMap<CourseCIPAssignedEvent>();
-            CreateMap<CourseApprovalNumberAssignedEvent>();
+            CreateMap<CourseCIPChangedEvent>();
+            CreateMap<CourseApprovalNumberChangedEvent>();
         }
 
         protected override Expression<Func<CourseDetails, object>> GetId()
@@ -41,12 +41,12 @@ namespace ISIS
             Upsert(evnt);
         }
 
-        public void Handle(IPublishedEvent<CourseCIPAssignedEvent> evnt)
+        public void Handle(IPublishedEvent<CourseCIPChangedEvent> evnt)
         {
             Upsert(evnt);
         }
 
-        public void Handle(IPublishedEvent<CourseApprovalNumberAssignedEvent> evnt)
+        public void Handle(IPublishedEvent<CourseApprovalNumberChangedEvent> evnt)
         {
             Upsert(evnt);
         }

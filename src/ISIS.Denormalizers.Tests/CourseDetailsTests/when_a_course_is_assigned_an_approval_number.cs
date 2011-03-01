@@ -6,7 +6,7 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 {
     [TestFixture]
     public class when_a_course_is_assigned_an_approval_number
-        : DenormalizerFixture<CourseDetailsDenormalizer, CourseApprovalNumberAssignedEvent>
+        : DenormalizerFixture<CourseDetailsDenormalizer, CourseApprovalNumberChangedEvent>
     {
 
         private const string Rubric = "BIOL";
@@ -23,9 +23,9 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
-        protected override CourseApprovalNumberAssignedEvent WhenHandling()
+        protected override CourseApprovalNumberChangedEvent WhenHandling()
         {
-            return new CourseApprovalNumberAssignedEvent(EventSourceId, ApprovalNumber);
+            return new CourseApprovalNumberChangedEvent(EventSourceId, ApprovalNumber);
         }
 
         [Test]

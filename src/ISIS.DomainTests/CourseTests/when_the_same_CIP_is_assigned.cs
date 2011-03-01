@@ -4,8 +4,8 @@ using NUnit.Framework;
 namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
-    public class when_a_CIP_is_assigned : 
-        SimpleDomainFixture<ChangeCIPCommand, CourseCIPChangedEvent>
+    public class when_the_same_CIP_is_assigned : 
+        DomainFixture<ChangeCIPCommand>
     {
 
         private const string CIP = "123456";
@@ -13,6 +13,7 @@ namespace ISIS.DomainTests.CourseTests
         protected override IEnumerable<object> GivenEvents()
         {
             yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
+            yield return new CourseCIPChangedEvent(EventSourceId, CIP);
         }
 
         protected override ChangeCIPCommand WhenExecuting()
@@ -25,12 +26,16 @@ namespace ISIS.DomainTests.CourseTests
         }
 
         [Test]
-        public void then_it_should_create_a_new_CourseCIPAssignedEvent()
+        public void it_should_do_nothing()
         {
-            Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
-            Assert.That(TheEvent.CIP, Is.EqualTo(CIP));
+            Assert.That(PublishedEvents, Is.Empty);
         }
 
+        [Test]
+        public void it_should_not_throw()
+        {
+            Assert.That(CaughtException, Is.Null);
+        }
 
     }
 }

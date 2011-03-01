@@ -13,13 +13,13 @@ namespace ISIS
                 .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title))
                 .RegisterWith(commandService);
 
-            Map.Command<AssignCIPCommand>()
+            Map.Command<ChangeCIPCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
-                .ToCallOn((cmd, course) => course.AssignCIPNumber(cmd.CIP))
+                .ToCallOn((cmd, course) => course.AssignCIP(cmd.CIP))
                 .RegisterWith(commandService);
 
-            Map.Command<AssignApprovalNumberCommand>()
+            Map.Command<ChangeApprovalNumberCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.AssignApprovalNumber(cmd.ApprovalNumber))

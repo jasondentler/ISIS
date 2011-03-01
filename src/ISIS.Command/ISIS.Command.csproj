@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignApprovalNumberCommand.cs" />
-    <Compile Include="AssignCIPCommand.cs" />
+    <Compile Include="ChangeApprovalNumberCommand.cs" />
+    <Compile Include="ChangeCIPCommand.cs" />
     <Compile Include="ChangeCourseLongTitleCommand.cs" />
     <Compile Include="ChangeCourseTitleCommand.cs" />
     <Compile Include="ChangeCourseDescriptionCommand.cs" />

@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseTests\when_the_same_approval_number_is_assigned.cs" />
+    <Compile Include="CourseTests\when_the_same_CIP_is_assigned.cs" />
+    <Compile Include="CourseTests\when_the_same_CIP_is_assigned_after_an_approval_number.cs" />
     <Compile Include="CourseTests\when_a_course_title_command_doesnt_change_title.cs" />
     <Compile Include="CourseTests\when_a_course_long_title_command_doesnt_change_long_title.cs" />
     <Compile Include="CourseTests\when_an_inactive_course_is_deactivated.cs" />

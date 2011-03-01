@@ -44,8 +44,8 @@
     <Compile Include="CourseActivatedEvent.cs" />
     <Compile Include="CourseDescriptionChangedEvent.cs" />
     <Compile Include="CourseLongTitleChangedEvent.cs" />
-    <Compile Include="CourseApprovalNumberAssignedEvent.cs" />
-    <Compile Include="CourseCIPAssignedEvent.cs" />
+    <Compile Include="CourseApprovalNumberChangedEvent.cs" />
+    <Compile Include="CourseCIPChangedEvent.cs" />
     <Compile Include="CourseCreatedEvent.cs" />
     <Compile Include="CourseTitleChangedEvent.cs" />
     <Compile Include="DepartmentCreatedEvent.cs" />

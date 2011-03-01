@@ -4,7 +4,7 @@ using Ncqrs.Commanding;
 
 namespace ISIS
 {
-    public class AssignApprovalNumberCommand : CommandBase 
+    public class ChangeApprovalNumberCommand : CommandBase 
     {
 
         public Guid CourseId { get; set; }

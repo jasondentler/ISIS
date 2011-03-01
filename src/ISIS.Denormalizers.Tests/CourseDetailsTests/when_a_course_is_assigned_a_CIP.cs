@@ -6,7 +6,7 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
 {
     [TestFixture]
     public class when_a_course_is_assigned_a_CIP
-        : DenormalizerFixture<CourseDetailsDenormalizer, CourseCIPAssignedEvent>
+        : DenormalizerFixture<CourseDetailsDenormalizer, CourseCIPChangedEvent>
     {
 
         private const string Rubric = "BIOL";
@@ -23,9 +23,9 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
-        protected override CourseCIPAssignedEvent WhenHandling()
+        protected override CourseCIPChangedEvent WhenHandling()
         {
-            return new CourseCIPAssignedEvent(EventSourceId, CIP);
+            return new CourseCIPChangedEvent(EventSourceId, CIP);
         }
 
         [Test]

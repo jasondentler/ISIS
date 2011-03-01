@@ -6,9 +6,9 @@ namespace ISIS.Validation
     /// <summary>
     /// Validation rules for AssignApprovalNumberCommand
     /// </summary>
-    public class AssignApprovalNumberCommandValidator : AbstractValidator<AssignApprovalNumberCommand>
+    public class ChangeApprovalNumberCommandValidator : AbstractValidator<ChangeApprovalNumberCommand>
     {
-        public AssignApprovalNumberCommandValidator()
+        public ChangeApprovalNumberCommandValidator()
         {
             RuleFor(cmd => cmd.ApprovalNumber)
                 .NotEmpty()

@@ -2,10 +2,10 @@
 
 namespace ISIS
 {
-    public class CourseCIPAssignedEvent 
+    public class CourseCIPChangedEvent 
     {
 
-        public CourseCIPAssignedEvent(Guid courseId, string cip)
+        public CourseCIPChangedEvent(Guid courseId, string cip)
         {
             CourseId = courseId;
             CIP = cip;

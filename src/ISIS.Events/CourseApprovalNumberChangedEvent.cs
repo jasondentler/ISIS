@@ -2,15 +2,15 @@
 
 namespace ISIS
 {
-    public class CourseApprovalNumberAssignedEvent
+    public class CourseApprovalNumberChangedEvent
     {
 
-        private CourseApprovalNumberAssignedEvent()
+        private CourseApprovalNumberChangedEvent()
         {
             
         }
 
-        public CourseApprovalNumberAssignedEvent(Guid courseId, string approvalNumber)
+        public CourseApprovalNumberChangedEvent(Guid courseId, string approvalNumber)
         {
             CourseId = courseId;
             ApprovalNumber = approvalNumber;

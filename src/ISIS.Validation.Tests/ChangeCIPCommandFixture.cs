@@ -5,16 +5,16 @@ using NUnit.Framework;
 namespace ISIS.Validation.Tests
 {
     [TestFixture]
-    public class AssignCIPCommandFixture : ValidationFixture<AssignCIPCommand>
+    public class ChangeCIPCommandFixture : ValidationFixture<ChangeCIPCommand>
     {
-        protected override AbstractValidator<AssignCIPCommand> CreateValidator()
+        protected override AbstractValidator<ChangeCIPCommand> CreateValidator()
         {
-            return new AssignCIPCommandValidator();
+            return new ChangeCIPCommandValidator();
         }
 
-        protected override AssignCIPCommand GetValidInstance()
+        protected override ChangeCIPCommand GetValidInstance()
         {
-            return new AssignCIPCommand()
+            return new ChangeCIPCommand()
                        {
                            CIP = "123456",
                            CourseId = Guid.NewGuid()
@@ -24,7 +24,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CIP_must_not_be_null()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CIP = null
             }, cmd => cmd.CIP);
@@ -33,7 +33,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CIP_must_not_be_empty()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CIP = ""
             }, cmd => cmd.CIP);
@@ -42,7 +42,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CIP_must_be_6_digits_long()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CIP = "12345"
             }, cmd => cmd.CIP);
@@ -51,7 +51,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CIP_must_be_all_numbers()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CIP = "12345A"
             }, cmd => cmd.CIP);
@@ -60,7 +60,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CIP_must_not_contain_punctuation()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CIP = "12.345"
             }, cmd => cmd.CIP);
@@ -69,7 +69,7 @@ namespace ISIS.Validation.Tests
         [Test]
         public void CourseId_must_be_specified()
         {
-            GetFailure(new AssignCIPCommand()
+            GetFailure(new ChangeCIPCommand()
             {
                 CourseId = default(Guid)
             }, cmd => cmd.CourseId);

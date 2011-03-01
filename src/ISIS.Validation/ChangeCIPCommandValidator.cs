@@ -3,12 +3,10 @@ using FluentValidation;
 
 namespace ISIS.Validation
 {
-    /// <summary>
-    /// Validation rules for AssignCIPCommand
-    /// </summary>
-    public class AssignCIPCommandValidator : AbstractValidator<AssignCIPCommand>
+
+    public class ChangeCIPCommandValidator : AbstractValidator<ChangeCIPCommand>
     {
-        public AssignCIPCommandValidator()
+        public ChangeCIPCommandValidator()
         {
             RuleFor(cmd => cmd.CIP)
                 .NotEmpty()

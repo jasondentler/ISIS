@@ -52,16 +52,22 @@ namespace ISIS
         /// Assigns a classification of instructional programs (CIP) code to a course
         /// </summary>
         /// <param name="cip">Classification of Instructional Programs code without punctuation. For CIP 11.0701, pass 110701</param>
-        public void AssignCIPNumber(string cip)
+        public void AssignCIP(string cip)
         {
-            if (!string.IsNullOrWhiteSpace(_approvalNumber))
-                throw new InvalidStateException("Your attempt to assign a CIP failed because the course already has an approval number.");
+            if (_cip != cip)
+            {
+                var cipEvent = new CourseCIPChangedEvent(EventSourceId, cip);
+                ApplyEvent(cipEvent);
+            }
 
-            var e = new CourseCIPAssignedEvent(EventSourceId, cip);
-            ApplyEvent(e);
+            if (!string.IsNullOrEmpty(_approvalNumber))
+            {
+                var approvalNumberEvent = new CourseApprovalNumberChangedEvent(EventSourceId, null);
+                ApplyEvent(approvalNumberEvent);
+            }
         }
 
-        protected void OnCourseCIPAssigned(CourseCIPAssignedEvent @event)
+        protected void OnCourseCIPAssigned(CourseCIPChangedEvent @event)
         {
             _cip = @event.CIP;
         }
@@ -73,19 +79,19 @@ namespace ISIS
         /// <remarks>ACGM: http://www.thecb.state.tx.us/AAR/UndergraduateEd/WorkforceEd/acgm.htm </remarks>
         public void AssignApprovalNumber(string approvalNumber)
         {
-            if (!string.IsNullOrWhiteSpace(_cip))
-                throw new InvalidStateException("Your attempt to assign an approval number failed because the course already has a CIP code.");
 
-            var approvalNumberEvent = new CourseApprovalNumberAssignedEvent(EventSourceId, approvalNumber);
+            if (approvalNumber == _approvalNumber)
+                return;
 
+            var approvalNumberEvent = new CourseApprovalNumberChangedEvent(EventSourceId, approvalNumber);
             ApplyEvent(approvalNumberEvent);
 
             var cip = approvalNumber.Substring(0, 6);
-            var cipEvent = new CourseCIPAssignedEvent(EventSourceId, cip);
+            var cipEvent = new CourseCIPChangedEvent(EventSourceId, cip);
             ApplyEvent(cipEvent);
         }
 
-        protected void OnApprovalNumberAssigned(CourseApprovalNumberAssignedEvent @event)
+        protected void OnApprovalNumberAssigned(CourseApprovalNumberChangedEvent @event)
         {
             _approvalNumber = @event.ApprovalNumber;
         }

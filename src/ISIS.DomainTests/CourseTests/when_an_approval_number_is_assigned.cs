@@ -6,7 +6,7 @@ namespace ISIS.DomainTests.CourseTests
 {
     [TestFixture]
     public class when_an_approval_number_is_assigned : 
-        DomainFixture<AssignApprovalNumberCommand>
+        DomainFixture<ChangeApprovalNumberCommand>
     {
 
         private const string ApprovalNumber = "1234567890";
@@ -17,9 +17,9 @@ namespace ISIS.DomainTests.CourseTests
             yield return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
-        protected override AssignApprovalNumberCommand WhenExecuting()
+        protected override ChangeApprovalNumberCommand WhenExecuting()
         {
-            return new AssignApprovalNumberCommand()
+            return new ChangeApprovalNumberCommand()
             {
                 CourseId = EventSourceId,
                 ApprovalNumber = ApprovalNumber
@@ -42,7 +42,7 @@ namespace ISIS.DomainTests.CourseTests
         public void then_it_should_publish_a_new_CourseCIPAssignedEvent()
         {
             var eventStream = PublishedEvents.Select(pe => pe.Payload);
-            var TheEvent = eventStream.OfType<CourseCIPAssignedEvent>().Single();
+            var TheEvent = eventStream.OfType<CourseCIPChangedEvent>().Single();
             Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.CIP, Is.EqualTo(ApprovalNumber.Substring(0, 6)));
         }
@@ -51,7 +51,7 @@ namespace ISIS.DomainTests.CourseTests
         public void then_it_should_create_a_new_CourseApprovalNumberAssignedEvent()
         {
             var eventStream = PublishedEvents.Select(pe => pe.Payload);
-            var TheEvent = eventStream.OfType<CourseApprovalNumberAssignedEvent>().Single();
+            var TheEvent = eventStream.OfType<CourseApprovalNumberChangedEvent>().Single();
             Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
             Assert.That(TheEvent.ApprovalNumber, Is.EqualTo(ApprovalNumber));
         }

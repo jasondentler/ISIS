@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignApprovalNumberCommandFixture.cs" />
-    <Compile Include="AssignCIPCommandFixture.cs" />
+    <Compile Include="ChangeApprovalNumberCommandFixture.cs" />
+    <Compile Include="ChangeCIPCommandFixture.cs" />
     <Compile Include="ChangeCourseTitleCommandFixture.cs" />
     <Compile Include="ChangeCourseLongTitleCommandFixture.cs" />
     <Compile Include="ChangeCourseDescriptionCommandFixture.cs" />

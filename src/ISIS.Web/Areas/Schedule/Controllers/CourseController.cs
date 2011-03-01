@@ -82,7 +82,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         public ViewResult AssignCIP(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
-            return View(new AssignCIPCommand()
+            return View(new ChangeCIPCommand()
             {
                 CourseId = id,
                 CIP = course.CIP
@@ -90,7 +90,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         }
 
         [HttpPost, Command]
-        public RedirectToRouteResult AssignCIP(AssignCIPCommand command)
+        public RedirectToRouteResult AssignCIP(ChangeCIPCommand command)
         {
             if (!ModelState.IsValid)
                 return this.RedirectToAction(c => c.AssignCIP(command.CourseId));
@@ -103,7 +103,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         public ViewResult AssignApprovalNumber(Guid id)
         {
             var course = _repository.Single<CourseDetails>(id);
-            return View(new AssignApprovalNumberCommand()
+            return View(new ChangeApprovalNumberCommand()
             {
                 CourseId = id,
                 ApprovalNumber = course.ApprovalNumber
@@ -111,7 +111,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         }
 
         [HttpPost, Command]
-        public RedirectToRouteResult AssignApprovalNumber(AssignApprovalNumberCommand command)
+        public RedirectToRouteResult AssignApprovalNumber(ChangeApprovalNumberCommand command)
         {
             if (!ModelState.IsValid)
                 return this.RedirectToAction(c => c.AssignApprovalNumber(command.CourseId));
