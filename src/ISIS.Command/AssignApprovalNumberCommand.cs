@@ -6,6 +6,7 @@ namespace ISIS
 {
     public class AssignApprovalNumberCommand : CommandBase 
     {
+
         public Guid CourseId { get; set; }
 
         [Display(Name = "Approval Number")]

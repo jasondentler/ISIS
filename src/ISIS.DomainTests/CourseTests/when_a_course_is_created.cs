@@ -35,7 +35,7 @@ namespace ISIS.DomainTests.CourseTests
         [Test]
         public void it_should_do_no_more()
         {
-            Assert.That(PublishedEvents.Count(), Is.EqualTo(3));
+            Assert.That(PublishedEvents.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -64,6 +64,14 @@ namespace ISIS.DomainTests.CourseTests
                 .OfType<CourseLongTitleChangedEvent>().Single();
             Assert.That(TheEvent.CourseId, Is.Not.EqualTo(default(Guid)));
             Assert.That(TheEvent.LongTitle, Is.EqualTo(Title));
+        }
+
+        [Test]
+        public void then_it_should_create_a_new_CourseActivatedEvent()
+        {
+            var TheEvent = PublishedEvents.Select(pe => pe.Payload)
+                .OfType<CourseActivatedEvent>().Single();
+            Assert.That(TheEvent.CourseId, Is.Not.EqualTo(default(Guid)));
         }
 
 

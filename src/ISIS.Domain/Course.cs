@@ -7,10 +7,17 @@ namespace ISIS
     public class Course : AggregateRootMappedByConvention
     {
 
+        public enum Statuses
+        {
+            Active,
+            Inactive
+        }
+
         private string _cip;
         private string _approvalNumber;
         private string _title;
         private string _longTitle;
+        private Statuses _status;
 
         private Course()
         {
@@ -19,20 +26,22 @@ namespace ISIS
         /// <summary>
         /// Creates a new course section
         /// </summary>
+        /// <param name="eventSourceId">Course id</param>
         /// <param name="rubric">Course subject. For example: BIOL</param>
         /// <param name="number">4-digit course number. For example: 2302</param>
         /// <param name="title">Course title</param>
-        /// <example>new Course("BIOL","2302","Anatomy and Physiology 1");</example>
+        /// <example>new Course(Guid.NewGuid(), "BIOL","2302","Anatomy and Physiology 1");</example>
         public Course(
-            Guid EventSourceId,
+            Guid eventSourceId,
             string rubric,
             string number,
             string title)
-            : base(EventSourceId)
+            : base(eventSourceId)
         {
-            ApplyEvent(new CourseCreatedEvent(EventSourceId, rubric, number));
-            ApplyEvent(new CourseTitleChangedEvent(EventSourceId, title));
-            ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, title));
+            ApplyEvent(new CourseCreatedEvent(eventSourceId, rubric, number));
+            ApplyEvent(new CourseTitleChangedEvent(eventSourceId, title));
+            ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, title));
+            ApplyEvent(new CourseActivatedEvent(eventSourceId));
         }
 
         protected void OnCourseCreated(CourseCreatedEvent @event)
@@ -83,6 +92,8 @@ namespace ISIS
 
         public void ChangeCourseTitle(string newTitle)
         {
+            if (_title == newTitle)
+                return;
             if (_title == _longTitle)
                 ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, newTitle));
             ApplyEvent(new CourseTitleChangedEvent(EventSourceId, newTitle));
@@ -95,6 +106,8 @@ namespace ISIS
 
         public void ChangeCourseLongTitle(string newLongTitle)
         {
+            if (_longTitle == newLongTitle)
+                return;
             ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, newLongTitle));
         }
 
@@ -110,6 +123,28 @@ namespace ISIS
 
         protected void OnCourseDescriptionChanged(CourseDescriptionChangedEvent @event)
         {
+        }
+
+        public void Activate()
+        {
+            if (_status != Statuses.Active)
+                ApplyEvent(new CourseActivatedEvent(EventSourceId));
+        }
+
+        protected void OnCourseActivated(CourseActivatedEvent @event)
+        {
+            _status = Statuses.Active;
+        }
+
+        public void Deactivate()
+        {
+            if (_status != Statuses.Inactive)
+                ApplyEvent(new CourseDeactivatedEvent(EventSourceId));
+        }
+
+        protected void OnCourseDeactivated(CourseDeactivatedEvent @event)
+        {
+            _status = Statuses.Inactive;
         }
 
     }

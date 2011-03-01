@@ -6,9 +6,10 @@ namespace ISIS
 {
     public class ChangeCourseDescriptionCommand : CommandBase
     {
-        public Guid CourseId { get; set; }
+
+        public Guid CourseId { get;  set; }
 
         [Display(Name = "New Description")]
-        public string NewDescription { get; set; }
+        public string NewDescription { get;  set; }
     }
 }

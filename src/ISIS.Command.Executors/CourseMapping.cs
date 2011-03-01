@@ -43,6 +43,18 @@ namespace ISIS
                 .ToCallOn((cmd, course) => course.ChangeDescription(cmd.NewDescription))
                 .RegisterWith(commandService);
 
+            Map.Command<ActivateCourseCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.Activate())
+                .RegisterWith(commandService);
+
+            Map.Command<DeactivateCourseCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.Deactivate())
+                .RegisterWith(commandService);
+
         }
 
     }
