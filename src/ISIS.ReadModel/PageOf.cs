@@ -5,7 +5,7 @@ namespace ISIS
     public class PageOf<T>
     {
 
-        public PageOf(long entityCount, long pageNumber, int pageSize, IEnumerable<T> results)
+        public PageOf(long entityCount, int pageNumber, int pageSize, IEnumerable<T> results)
         {
             EntityCount = entityCount;
             PageNumber = pageNumber;
@@ -14,15 +14,16 @@ namespace ISIS
         }
 
         public long EntityCount { get; private set; }
-        public long PageNumber { get; private set; }
+        public int PageNumber { get; private set; }
         public int PageSize { get; private set; }
         public IEnumerable<T> Results { get; private set; }
-        public long PageCount
+        public int PageCount
         {
             get
             {
-                var remainder = EntityCount%PageSize;
-                return (EntityCount - remainder)/PageSize + (remainder%1);
+                var remainder = (int)EntityCount%PageSize;
+                var wholePages =  ((int)EntityCount - remainder)/PageSize;
+                return wholePages + (remainder == 0 ? 0 : 1);
             }
         }
 

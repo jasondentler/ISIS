@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.NHibernateReadModel", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACC.Web", "ACC.Web\ACC.Web.csproj", "{8D7551E1-33A6-494B-852B-70617187691F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.ReadModel.Tests", "ISIS.ReadModel.Tests\ISIS.ReadModel.Tests.csproj", "{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -193,6 +195,16 @@ Global
 		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8D7551E1-33A6-494B-852B-70617187691F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8D7551E1-33A6-494B-852B-70617187691F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,5 +215,6 @@ Global
 		{1CDD9625-778D-40E4-A698-E3E32F1E9477} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 		{AA5DBD4E-15DE-4767-998D-1AC2DE529E9E} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 		{7883AE22-9E8D-4B81-A685-6632230D12D5} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
+		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 	EndGlobalSection
 EndGlobal

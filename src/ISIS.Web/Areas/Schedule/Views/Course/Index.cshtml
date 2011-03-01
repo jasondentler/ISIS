@@ -21,3 +21,15 @@
         <li>@(Html.ActionLink<CourseController>(c => c.Details(course.CourseId), course.ToString()))</li>
     }
 </ul>
+
+@if (Model.PageCount > 1)
+{
+    <ul class="pageNumbers">
+    @for (var i = 1; i <= Model.PageCount; i++)
+    {
+        <li class="pageNumber">
+            @(i == Model.PageNumber ? new HtmlString(i.ToString()) : Html.ActionLink<CourseController>(c => c.Index(i), i.ToString()))
+        </li>
+    }
+    </ul>
+}

@@ -22,9 +22,9 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         }
 
         [HttpGet, View]
-        public ViewResult Index(int pageNumber = 1)
+        public ViewResult Index(int? pageNumber)
         {
-            return View(_repository.All<CourseList>(pageNumber, 20,
+            return View(_repository.All<CourseList>(25, pageNumber ?? 1,
                                                     course => course.Rubric,
                                                     course => course.Number));
         }
@@ -162,7 +162,41 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
+        [HttpGet, View]
+        public ViewResult Activate(Guid id)
+        {
+            return View(new ActivateCourseCommand()
+            {
+                CourseId = id
+            });
+        }
 
+        [HttpPost, Command]
+        public RedirectToRouteResult Activate(ActivateCourseCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.Activate(command.CourseId));
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
+        [HttpGet, View]
+        public ViewResult Deactivate(Guid id)
+        {
+            return View(new DeactivateCourseCommand()
+            {
+                CourseId = id
+            });
+        }
+
+        [HttpPost, Command]
+        public RedirectToRouteResult Deactivate(DeactivateCourseCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.Deactivate(command.CourseId));
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
 
     }
 }

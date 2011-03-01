@@ -87,3 +87,13 @@ input[type=text], select option
 {
 	font-family: 'Courier New' , Courier, monospace;
 }
+
+.pageNumbers
+{
+	list-style-type: none;
+}
+
+.pageNumbers li
+{
+	display: inline;
+}

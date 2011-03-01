@@ -10,6 +10,8 @@
     @(Html.ActionLink<CourseController>(c => c.ChangeDescription(Model.CourseId), "Change Description"))
     @(Html.ActionLink<CourseController>(c => c.AssignCIP(Model.CourseId), "Set CIP"))
     @(Html.ActionLink<CourseController>(c => c.AssignApprovalNumber(Model.CourseId), "Set Approval Number"))
+    @(Html.ActionLink<CourseController>(c => c.Activate(Model.CourseId), "Activate"))
+    @(Html.ActionLink<CourseController>(c => c.Deactivate(Model.CourseId), "Deactivate"))
     @Html.ActionLink("Back to List", "Index")
 </div>
 

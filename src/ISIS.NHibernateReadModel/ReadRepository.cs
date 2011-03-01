@@ -14,13 +14,13 @@ namespace ISIS.NHibernateReadModel
             _session = session;
         }
 
-        public PageOf<T> All<T>(int pageSize, long pageNumber) where T : class, IEntity
+        public PageOf<T> All<T>(int pageSize, int pageNumber) where T : class, IEntity
         {
             var query = _session.QueryOver<T>();
             return _session.Transact(() => PageQuery(query, pageSize, pageNumber));
         }
 
-        public PageOf<T> All<T>(int pageSize, long pageNumber, params Expression<Func<T, object>>[] orderBys) where T : class, IEntity
+        public PageOf<T> All<T>(int pageSize, int pageNumber, params Expression<Func<T, object>>[] orderBys) where T : class, IEntity
         {
             var query = _session.QueryOver<T>();
             foreach (var orderBy in orderBys)
@@ -28,7 +28,7 @@ namespace ISIS.NHibernateReadModel
             return _session.Transact(() => PageQuery(query, pageSize, pageNumber));
         }
 
-        public PageOf<T> All<T>(int pageSize, long pageNumber, bool descending, Expression<Func<T, object>> orderBy) where T : class, IEntity
+        public PageOf<T> All<T>(int pageSize, int pageNumber, bool descending, Expression<Func<T, object>> orderBy) where T : class, IEntity
         {
             if (!descending)
                 return All(pageSize, pageNumber, orderBy);
@@ -37,9 +37,11 @@ namespace ISIS.NHibernateReadModel
             return _session.Transact(() => PageQuery(query, pageSize, pageNumber));
         }
 
-        private static PageOf<T> PageQuery<T>(IQueryOver<T, T> query, int pageSize, long pageNumber) where T:class, IEntity
+        private static PageOf<T> PageQuery<T>(IQueryOver<T, T> query, int pageSize, int pageNumber) where T:class, IEntity
         {
-            var results = query.Future();
+            var skip = (pageNumber - 1)*pageSize;
+            var take = pageSize;
+            var results = query.Skip(skip).Take(take).Future();
             var count = query.ToRowCountInt64Query().FutureValue<long>();
             return new PageOf<T>(count.Value, pageNumber, pageSize, results);
         }

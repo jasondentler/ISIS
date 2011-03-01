@@ -1,0 +1,28 @@
+﻿@model ISIS.ActivateCourseCommand
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+@{
+    ViewBag.Title = "Activate Course";
+}
+
+<div id="commandBar">
+    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Details"))
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Activate Course</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <p>Do you really want to activate this course?</p>
+
+        <p>
+            <input type="submit" value="Activate" />
+        </p>
+    </fieldset>
+}
+
