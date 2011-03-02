@@ -198,5 +198,23 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
+        [HttpGet, View]
+        public ViewResult MakePending(Guid id)
+        {
+            return View(new MakeCoursePendingCommand()
+            {
+                CourseId = id
+            });
+        }
+
+        [HttpPost, Command]
+        public RedirectToRouteResult MakePending(MakeCoursePendingCommand command)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.MakePending(command.CourseId));
+            _commandService.Execute(command);
+            return this.RedirectToAction(c => c.Details(command.CourseId));
+        }
+
     }
 }
