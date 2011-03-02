@@ -13,7 +13,8 @@ namespace ISIS
         IEventHandler<CourseDescriptionChangedEvent>,
         IEventHandler<CourseCIPChangedEvent>,
         IEventHandler<CourseApprovalNumberChangedEvent>,
-        IEventHandler<CourseActivatedEvent>
+        IEventHandler<CourseActivatedEvent>,
+        IEventHandler<CourseDeactivatedEvent>
     {
         
         public CourseDetailsDenormalizer(IDialect db)
@@ -32,6 +33,15 @@ namespace ISIS
         protected override Expression<Func<CourseDetails, object>> GetId()
         {
             return GetId(c => c.CourseId);
+        }
+
+        private void SetStatus(Guid courseId, CourseStatuses status)
+        {
+            var cmd = Upsert()
+                .Set(c => c.Status, status)
+                .Where(c => c.CourseId == courseId)
+                .ToCommand();
+            Execute(cmd);
         }
 
         public void Handle(IPublishedEvent<CourseCreatedEvent> evnt)
@@ -66,12 +76,12 @@ namespace ISIS
 
         public void Handle(IPublishedEvent<CourseActivatedEvent> evnt)
         {
-            var courseId = evnt.Payload.CourseId;
-            var cmd = Upsert()
-                .Set(c => c.Status, CourseStatuses.Active)
-                .Where(c => c.CourseId == courseId)
-                .ToCommand();
-            Execute(cmd);
+            SetStatus(evnt.Payload.CourseId, CourseStatuses.Active);
+        }
+
+        public void Handle(IPublishedEvent<CourseDeactivatedEvent> evnt)
+        {
+            SetStatus(evnt.Payload.CourseId, CourseStatuses.Inactive);
         }
     }
 }
