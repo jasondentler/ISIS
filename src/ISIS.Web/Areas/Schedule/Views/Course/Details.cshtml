@@ -35,6 +35,9 @@
     <div class="display-label">@Html.LabelFor(m => m.Description)</div>
     <div class="display-field">@(Model.Description ?? "No description set")</div>
 
+    <div class="display-label">@Html.LabelFor(m => m.Status)</div>
+    <div class="display-field">@Html.DisplayFor(m => m.Status)</div>
+
     <div class="display-label">@Html.LabelFor(m => m.CIP)</div>
     <div class="display-field">@(Model.CIP ?? "Unassigned")  </div>
 
