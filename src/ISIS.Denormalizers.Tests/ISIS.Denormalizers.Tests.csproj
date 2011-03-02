@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseDetailsTests\when_a_course_is_made_pending.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_is_deactivated.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_is_activated.cs" />
     <Compile Include="CourseDetailsTests\when_a_course_description_is_changed.cs" />

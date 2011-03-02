@@ -14,7 +14,8 @@ namespace ISIS
         IEventHandler<CourseCIPChangedEvent>,
         IEventHandler<CourseApprovalNumberChangedEvent>,
         IEventHandler<CourseActivatedEvent>,
-        IEventHandler<CourseDeactivatedEvent>
+        IEventHandler<CourseDeactivatedEvent>,
+        IEventHandler<CourseMadePendingEvent>
     {
         
         public CourseDetailsDenormalizer(IDialect db)
@@ -82,6 +83,11 @@ namespace ISIS
         public void Handle(IPublishedEvent<CourseDeactivatedEvent> evnt)
         {
             SetStatus(evnt.Payload.CourseId, CourseStatuses.Inactive);
+        }
+
+        public void Handle(IPublishedEvent<CourseMadePendingEvent> evnt)
+        {
+            SetStatus(evnt.Payload.CourseId, CourseStatuses.Pending);
         }
     }
 }

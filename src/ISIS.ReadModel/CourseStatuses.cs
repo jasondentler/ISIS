@@ -4,7 +4,8 @@
     {
 
         Active,
-        Inactive
+        Inactive,
+        Pending
 
     }
 }
