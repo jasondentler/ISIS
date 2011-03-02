@@ -1,0 +1,28 @@
+﻿@model ISIS.MakeCourseObsoleteCommand
+@using Microsoft.Web.Mvc;
+@using ISIS.Web.Areas.Schedule.Controllers;
+@{
+    ViewBag.Title = "Make Course Obsolete";
+}
+
+<div id="commandBar">
+    @(Html.ActionLink<CourseController>(c => c.Details(Model.CourseId), "Back to Details"))
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Make Course Obsolete</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <p>Do you really want to make this course obsolete?</p>
+
+        <p>
+            <input type="submit" value="Make It Obsolete" />
+        </p>
+    </fieldset>
+}
+

@@ -13,6 +13,7 @@
     @(Html.ActionLink<CourseController>(c => c.Activate(Model.CourseId), "Activate"))
     @(Html.ActionLink<CourseController>(c => c.Deactivate(Model.CourseId), "Deactivate"))
     @(Html.ActionLink<CourseController>(c => c.MakePending(Model.CourseId), "Make Pending"))
+    @(Html.ActionLink<CourseController>(c => c.MakeObsolete(Model.CourseId), "Make Obsolete"))
     @Html.ActionLink("Back to List", "Index")
 </div>
 
