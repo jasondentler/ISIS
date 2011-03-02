@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7922BC22-5D9B-40E9-992E-95AE0793E1BA}</ProjectGuid>
+    <ProjectGuid>{27FD4F3E-AE4E-466F-BD3B-E7D71555DAEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ISIS</RootNamespace>
-    <AssemblyName>ISIS.ReadModel</AssemblyName>
+    <AssemblyName>ISIS.SetValidation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,32 +31,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ncqrs">
+      <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\lib\ncqrs\Extensions\Ncqrs.Config.Ninject\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Schedule\CourseDetails.cs" />
-    <Compile Include="Schedule\CourseList.cs" />
-    <Compile Include="Schedule\CourseSet.cs" />
-    <Compile Include="Schedule\CourseStatuses.cs" />
-    <Compile Include="IdAttribute.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IListQuery.cs" />
-    <Compile Include="IReadRepository.cs" />
-    <Compile Include="PageOf.cs" />
+    <Compile Include="ISetValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schedule\LookupCourseSet.cs" />
+    <Compile Include="Schedule\CourseSetValidator.cs" />
+    <Compile Include="SetValidationCommandInterceptor.cs" />
+    <Compile Include="SetValidationException.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Schedule\LookupCourseSet.xml" />
+    <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
+      <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
+      <Name>ISIS.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.ReadModel\ISIS.ReadModel.csproj">
+      <Project>{7922BC22-5D9B-40E9-992E-95AE0793E1BA}</Project>
+      <Name>ISIS.ReadModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

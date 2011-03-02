@@ -85,6 +85,7 @@
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DenormalizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\CourseSetTests\when_a_course_is_created.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Denormalizers\ISIS.Denormalizers.csproj">

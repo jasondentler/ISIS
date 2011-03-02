@@ -2,7 +2,6 @@
 using FluentDML.Dialect;
 using FluentDML.Mapping;
 using FluentDML.NHibernateAdapter;
-using ISIS.Validation;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain.Storage;

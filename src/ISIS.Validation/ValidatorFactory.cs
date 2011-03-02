@@ -5,7 +5,7 @@ using System.Reflection;
 using FluentValidation;
 using Ncqrs;
 
-namespace ISIS.Validation
+namespace ISIS
 {
     public class ValidatorFactory : IValidatorFactory
     {

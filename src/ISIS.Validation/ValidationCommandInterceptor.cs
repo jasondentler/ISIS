@@ -1,10 +1,9 @@
 ﻿using System;
 using FluentValidation;
-using ISIS.Schedule;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 
-namespace ISIS.Validation
+namespace ISIS
 {
     public class ValidationCommandInterceptor : ICommandServiceInterceptor 
     {

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F7039764-F60F-4CD7-A2E8-68F989E55036}</ProjectGuid>
+    <ProjectGuid>{C420E744-448E-4885-BE19-0A328F56E027}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ISIS</RootNamespace>
-    <AssemblyName>ISIS.Denormalizers</AssemblyName>
+    <AssemblyName>ISIS.SetValidation.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,49 +31,56 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\..\lib\FluentDML\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentDML">
-      <HintPath>..\..\lib\FluentDML\FluentDML.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ncqrs\Framework\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Spec">
+      <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\..\lib\ncqrs\Extensions\Ncqrs.Config.Ninject\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Schedule\CourseSetDenormalizer.cs" />
-    <Compile Include="Schedule\CourseDetailsDenormalizer.cs" />
-    <Compile Include="Schedule\CourseListDenormalizer.cs" />
-    <Compile Include="DbCommandExtensions.cs" />
-    <Compile Include="Denormalizer.cs" />
-    <Compile Include="EventBusExtensions.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="SetValidationFailureFixture.cs" />
+    <Compile Include="SetValidationSuccessFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\CourseSetValidatorTests\when_validating_a_duplicate_coursecreatedcommand.cs" />
+    <Compile Include="Schedule\CourseSetValidatorTests\when_validating_a_unique_coursecreatedcommand.cs" />
+    <Compile Include="SetValidationTestFixture.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
-      <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
-      <Name>ISIS.Events</Name>
+    <ProjectReference Include="..\ISIS.Command.Executors\ISIS.Command.Executors.csproj">
+      <Project>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</Project>
+      <Name>ISIS.Command.Executors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
+      <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
+      <Name>ISIS.Command</Name>
     </ProjectReference>
     <ProjectReference Include="..\ISIS.ReadModel\ISIS.ReadModel.csproj">
       <Project>{7922BC22-5D9B-40E9-992E-95AE0793E1BA}</Project>
       <Name>ISIS.ReadModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.SetValidation\ISIS.SetValidation.csproj">
+      <Project>{27FD4F3E-AE4E-466F-BD3B-E7D71555DAEC}</Project>
+      <Name>ISIS.SetValidation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
+      <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>
+      <Name>ISIS.Validation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

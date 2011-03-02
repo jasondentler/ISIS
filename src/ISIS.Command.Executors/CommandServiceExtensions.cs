@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using ISIS.Validation;
 using Ncqrs.Commanding.ServiceModel;
 
 namespace ISIS

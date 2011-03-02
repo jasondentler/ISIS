@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using ISIS.Validation;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.ServiceModel;

@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using FluentValidation;
 using FluentValidation.Mvc;
-using ISIS.Validation;
 using Ninject;
 using Ninject.Modules;
 

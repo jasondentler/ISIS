@@ -11,6 +11,7 @@ namespace ISIS.Schedule
     {
         public CreateCourseCommandValidator()
         {
+
             RuleFor(cmd => cmd.CourseId)
                 .NotEqual(default(Guid))
                 .WithMessage("You must supply a valid course id.");

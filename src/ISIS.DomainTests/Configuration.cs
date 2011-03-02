@@ -1,5 +1,4 @@
-﻿using ISIS.Validation;
-using Ncqrs;
+﻿using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Config;
 

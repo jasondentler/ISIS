@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using ISIS.Schedule;
-using ISIS.Validation;
 using Ncqrs;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
