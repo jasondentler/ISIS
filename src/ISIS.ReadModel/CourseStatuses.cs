@@ -5,7 +5,8 @@
 
         Active,
         Inactive,
-        Pending
+        Pending,
+        Obsolete
 
     }
 }
