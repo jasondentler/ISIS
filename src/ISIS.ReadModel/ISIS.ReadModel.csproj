@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CourseDetails.cs" />
     <Compile Include="CourseList.cs" />
+    <Compile Include="CourseStatuses.cs" />
     <Compile Include="IdAttribute.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IListQuery.cs" />

@@ -12,13 +12,16 @@ namespace ISIS
         IEventHandler<CourseLongTitleChangedEvent>,
         IEventHandler<CourseDescriptionChangedEvent>,
         IEventHandler<CourseCIPChangedEvent>,
-        IEventHandler<CourseApprovalNumberChangedEvent>
+        IEventHandler<CourseApprovalNumberChangedEvent>,
+        IEventHandler<CourseActivatedEvent>
     {
         
         public CourseDetailsDenormalizer(IDialect db)
             : base(db)
         {
-            CreateMap<CourseCreatedEvent>();
+            CreateMap<CourseCreatedEvent>()
+                .ForMember(c => c.Status, mo => mo.UseValue(CourseStatuses.Active));
+
             CreateMap<CourseTitleChangedEvent>();
             CreateMap<CourseLongTitleChangedEvent>();
             CreateMap<CourseDescriptionChangedEvent>();
@@ -61,5 +64,14 @@ namespace ISIS
             Upsert(evnt);
         }
 
+        public void Handle(IPublishedEvent<CourseActivatedEvent> evnt)
+        {
+            var courseId = evnt.Payload.CourseId;
+            var cmd = Upsert()
+                .Set(c => c.Status, CourseStatuses.Active)
+                .Where(c => c.CourseId == courseId)
+                .ToCommand();
+            Execute(cmd);
+        }
     }
 }

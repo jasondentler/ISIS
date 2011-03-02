@@ -1,5 +1,4 @@
-﻿using System;
-using Ninject;
+﻿using Ninject;
 using NUnit.Framework;
 
 namespace ISIS.Denormalizers.Tests.CourseDetailsTests
@@ -33,6 +32,7 @@ namespace ISIS.Denormalizers.Tests.CourseDetailsTests
             Assert.That(row.LongTitle, Is.EqualTo(null));
             Assert.That(row.ApprovalNumber, Is.EqualTo(null));
             Assert.That(row.CIP, Is.EqualTo(null));
+            Assert.That(row.Status, Is.EqualTo(CourseStatuses.Active));
         }
 
     }

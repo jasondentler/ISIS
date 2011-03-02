@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="CourseDetailsDenormalizer.cs" />
     <Compile Include="CourseListDenormalizer.cs" />
+    <Compile Include="DbCommandExtensions.cs" />
     <Compile Include="Denormalizer.cs" />
     <Compile Include="EventBusExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

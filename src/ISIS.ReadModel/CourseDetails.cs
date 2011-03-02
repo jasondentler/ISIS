@@ -25,5 +25,7 @@ namespace ISIS
         [Display(Name = "Approval Number")]
         public string ApprovalNumber { get; set; }
 
+        public CourseStatuses Status { get; set; }
+
     }
 }

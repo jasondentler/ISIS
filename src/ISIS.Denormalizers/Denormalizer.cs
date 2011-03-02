@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using FluentDML;
 using FluentDML.Dialect;
 using log4net;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -40,8 +41,7 @@ namespace ISIS
             Log.DebugFormat("Updating {0} from {1}", typeof(TEntity), typeof(TEvent));
             Update(publishedEvent.Payload);
         }
-
-
+        
     }
 
 }
