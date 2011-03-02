@@ -49,6 +49,7 @@
     <Compile Include="ChangeCourseLongTitleCommand.cs" />
     <Compile Include="ChangeCourseTitleCommand.cs" />
     <Compile Include="ChangeCourseDescriptionCommand.cs" />
+    <Compile Include="MakeCourseObsoleteCommand.cs" />
     <Compile Include="CreateCourseCommand.cs" />
     <Compile Include="CreateDepartmentCommand.cs" />
     <Compile Include="CreateSectionCommand.cs" />

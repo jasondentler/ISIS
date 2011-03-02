@@ -11,7 +11,8 @@ namespace ISIS
         {
             Active,
             Inactive,
-            Pending
+            Pending,
+            Obsolete
         }
 
         private string _cip;
@@ -164,6 +165,17 @@ namespace ISIS
         protected void OnCourseMadePending(CourseMadePendingEvent @event)
         {
             _status = Statuses.Pending;
+        }
+
+        public void MakeObsolete()
+        {
+            if (_status != Statuses.Obsolete)
+                ApplyEvent(new CourseMadeObsoleteEvent(EventSourceId));
+        }
+
+        protected void OnCourseMadeObsolete(CourseMadeObsoleteEvent @event)
+        {
+            _status = Statuses.Obsolete;
         }
     }
 }
