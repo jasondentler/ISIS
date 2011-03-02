@@ -55,6 +55,7 @@
     <Compile Include="CreateTermCommand.cs" />
     <Compile Include="ActivateCourseCommand.cs" />
     <Compile Include="DeactivateCourseCommand.cs" />
+    <Compile Include="MakeCoursePendingCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

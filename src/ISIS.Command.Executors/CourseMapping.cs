@@ -55,6 +55,12 @@ namespace ISIS
                 .ToCallOn((cmd, course) => course.Deactivate())
                 .RegisterWith(commandService);
 
+            Map.Command<MakeCoursePendingCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.MakePending())
+                .RegisterWith(commandService);
+
         }
 
     }

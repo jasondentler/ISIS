@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseTests\when_a_pending_course_is_made_pending.cs" />
+    <Compile Include="CourseTests\when_a_course_is_made_pending.cs" />
     <Compile Include="CourseTests\when_the_same_approval_number_is_assigned.cs" />
     <Compile Include="CourseTests\when_the_same_CIP_is_assigned.cs" />
     <Compile Include="CourseTests\when_the_same_CIP_is_assigned_after_an_approval_number.cs" />

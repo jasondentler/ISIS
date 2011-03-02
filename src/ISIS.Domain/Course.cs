@@ -10,7 +10,8 @@ namespace ISIS
         public enum Statuses
         {
             Active,
-            Inactive
+            Inactive,
+            Pending
         }
 
         private string _cip;
@@ -153,5 +154,16 @@ namespace ISIS
             _status = Statuses.Inactive;
         }
 
+
+        public void MakePending()
+        {
+            if (_status != Statuses.Pending)
+                ApplyEvent(new CourseMadePendingEvent(EventSourceId));
+        }
+
+        protected void OnCourseMadePending(CourseMadePendingEvent @event)
+        {
+            _status = Statuses.Pending;
+        }
     }
 }

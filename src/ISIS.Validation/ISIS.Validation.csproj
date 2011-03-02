@@ -51,6 +51,7 @@
     <Compile Include="ChangeCourseDescriptionCommandValidator.cs" />
     <Compile Include="ChangeCourseTitleCommandValidator.cs" />
     <Compile Include="ChangeCourseLongTitleCommandValidator.cs" />
+    <Compile Include="MakeCoursePendingCommandValidator.cs" />
     <Compile Include="DeactivateCourseCommandValidator.cs" />
     <Compile Include="ActivateCourseCommandValidator.cs" />
     <Compile Include="CreateSectionCommandValidator.cs" />
