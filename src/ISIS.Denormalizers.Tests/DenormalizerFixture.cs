@@ -9,7 +9,7 @@ using NHibernate;
 using Ninject;
 using NUnit.Framework;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS
 {
     public abstract class DenormalizerFixture<TDenormalizer, TEvent>
         : BaseFixture

@@ -43,9 +43,9 @@
     <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDetails.cs" />
-    <Compile Include="CourseList.cs" />
-    <Compile Include="CourseStatuses.cs" />
+    <Compile Include="Schedule\CourseDetails.cs" />
+    <Compile Include="Schedule\CourseList.cs" />
+    <Compile Include="Schedule\CourseStatuses.cs" />
     <Compile Include="IdAttribute.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IListQuery.cs" />

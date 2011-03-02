@@ -6,7 +6,7 @@ using NHibernate.Cfg;
 using Ninject;
 using Ninject.Modules;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS
 {
     public class DenormalizerModule : NinjectModule 
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Ncqrs.Commanding;
 
-namespace ISIS.DomainTests
+namespace ISIS
 {
     public abstract class ExceptionTestFixture<TCommand, TException>
         : Ncqrs.Spec.ExceptionTestFixture<TCommand, TException>

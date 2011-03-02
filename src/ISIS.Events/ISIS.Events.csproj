@@ -40,21 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Copy of CourseActivatedEvent.cs" />
-    <Compile Include="CourseMadePendingEvent.cs" />
-    <Compile Include="CourseDeactivatedEvent.cs" />
-    <Compile Include="CourseActivatedEvent.cs" />
-    <Compile Include="CourseDescriptionChangedEvent.cs" />
-    <Compile Include="CourseLongTitleChangedEvent.cs" />
-    <Compile Include="CourseApprovalNumberChangedEvent.cs" />
-    <Compile Include="CourseCIPChangedEvent.cs" />
-    <Compile Include="CourseCreatedEvent.cs" />
-    <Compile Include="CourseTitleChangedEvent.cs" />
-    <Compile Include="DepartmentCreatedEvent.cs" />
+    <Compile Include="Schedule\CourseMadeObsoleteEvent.cs" />
+    <Compile Include="Schedule\CourseMadePendingEvent.cs" />
+    <Compile Include="Schedule\CourseDeactivatedEvent.cs" />
+    <Compile Include="Schedule\CourseActivatedEvent.cs" />
+    <Compile Include="Schedule\CourseDescriptionChangedEvent.cs" />
+    <Compile Include="Schedule\CourseLongTitleChangedEvent.cs" />
+    <Compile Include="Schedule\CourseApprovalNumberChangedEvent.cs" />
+    <Compile Include="Schedule\CourseCIPChangedEvent.cs" />
+    <Compile Include="Schedule\CourseCreatedEvent.cs" />
+    <Compile Include="Schedule\CourseTitleChangedEvent.cs" />
+    <Compile Include="Schedule\DepartmentCreatedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SectionCreatedEvent.cs" />
-    <Compile Include="TermCreatedEvent.cs" />
+    <Compile Include="Schedule\SectionCreatedEvent.cs" />
+    <Compile Include="Schedule\TermCreatedEvent.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

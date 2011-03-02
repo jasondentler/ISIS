@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ISIS.Validation
+namespace ISIS
 {
     public class MissingCommandValidatorException : Exception
     {

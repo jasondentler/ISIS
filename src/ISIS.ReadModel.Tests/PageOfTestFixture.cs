@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace ISIS.ReadModel.Tests
+namespace ISIS
 {
     [TestFixture]
     public class PageOfTestFixture : BaseFixture

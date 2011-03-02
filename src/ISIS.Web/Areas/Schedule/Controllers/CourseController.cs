@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using ACC.Web;
+using ISIS.Schedule;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using MvcContrib;

@@ -1,6 +1,6 @@
 ﻿using NHibernate.Tool.hbm2ddl;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS
 {
     public class DatabaseHelper
     {

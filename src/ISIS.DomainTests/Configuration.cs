@@ -3,7 +3,7 @@ using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Config;
 
-namespace ISIS.DomainTests
+namespace ISIS
 {
     public class Configuration : IEnvironmentConfiguration 
     {

@@ -8,7 +8,7 @@
     <ProjectGuid>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.Validation</RootNamespace>
+    <RootNamespace>ISIS</RootNamespace>
     <AssemblyName>ISIS.Validation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -46,19 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeApprovalNumberCommandValidator.cs" />
-    <Compile Include="ChangeCIPCommandValidator.cs" />
-    <Compile Include="ChangeCourseDescriptionCommandValidator.cs" />
-    <Compile Include="ChangeCourseTitleCommandValidator.cs" />
-    <Compile Include="ChangeCourseLongTitleCommandValidator.cs" />
-    <Compile Include="MakeCourseObsoleteCommandValidator.cs" />
-    <Compile Include="MakeCoursePendingCommandValidator.cs" />
-    <Compile Include="DeactivateCourseCommandValidator.cs" />
-    <Compile Include="ActivateCourseCommandValidator.cs" />
-    <Compile Include="CreateSectionCommandValidator.cs" />
-    <Compile Include="CreateTermCommandValidator.cs" />
-    <Compile Include="CreateDepartmentCommandValidator.cs" />
-    <Compile Include="CreateCourseCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeApprovalNumberCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeCIPCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseDescriptionCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseTitleCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseLongTitleCommandValidator.cs" />
+    <Compile Include="Schedule\MakeCourseObsoleteCommandValidator.cs" />
+    <Compile Include="Schedule\MakeCoursePendingCommandValidator.cs" />
+    <Compile Include="Schedule\DeactivateCourseCommandValidator.cs" />
+    <Compile Include="Schedule\ActivateCourseCommandValidator.cs" />
+    <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
+    <Compile Include="Schedule\CreateTermCommandValidator.cs" />
+    <Compile Include="Schedule\CreateDepartmentCommandValidator.cs" />
+    <Compile Include="Schedule\CreateCourseCommandValidator.cs" />
     <Compile Include="MissingCommandValidatorException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationCommandInterceptor.cs" />

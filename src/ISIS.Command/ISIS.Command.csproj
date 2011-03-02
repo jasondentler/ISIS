@@ -44,19 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeApprovalNumberCommand.cs" />
-    <Compile Include="ChangeCIPCommand.cs" />
-    <Compile Include="ChangeCourseLongTitleCommand.cs" />
-    <Compile Include="ChangeCourseTitleCommand.cs" />
-    <Compile Include="ChangeCourseDescriptionCommand.cs" />
-    <Compile Include="MakeCourseObsoleteCommand.cs" />
-    <Compile Include="CreateCourseCommand.cs" />
-    <Compile Include="CreateDepartmentCommand.cs" />
-    <Compile Include="CreateSectionCommand.cs" />
-    <Compile Include="CreateTermCommand.cs" />
-    <Compile Include="ActivateCourseCommand.cs" />
-    <Compile Include="DeactivateCourseCommand.cs" />
-    <Compile Include="MakeCoursePendingCommand.cs" />
+    <Compile Include="Schedule\ChangeApprovalNumberCommand.cs" />
+    <Compile Include="Schedule\ChangeCIPCommand.cs" />
+    <Compile Include="Schedule\ChangeCourseLongTitleCommand.cs" />
+    <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
+    <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
+    <Compile Include="Schedule\MakeCourseObsoleteCommand.cs" />
+    <Compile Include="Schedule\CreateCourseCommand.cs" />
+    <Compile Include="Schedule\CreateDepartmentCommand.cs" />
+    <Compile Include="Schedule\CreateSectionCommand.cs" />
+    <Compile Include="Schedule\CreateTermCommand.cs" />
+    <Compile Include="Schedule\ActivateCourseCommand.cs" />
+    <Compile Include="Schedule\DeactivateCourseCommand.cs" />
+    <Compile Include="Schedule\MakeCoursePendingCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,7 +8,7 @@
     <ProjectGuid>{7883AE22-9E8D-4B81-A685-6632230D12D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.Denormalizers.Tests</RootNamespace>
+    <RootNamespace>ISIS</RootNamespace>
     <AssemblyName>ISIS.Denormalizers.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -68,23 +68,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDetailsTests\when_a_course_is_made_obsolete.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_made_pending.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_deactivated.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_activated.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_description_is_changed.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_long_title_is_changed.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_assigned_a_CIP.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_assigned_an_approval_number.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_is_created.cs" />
-    <Compile Include="CourseDetailsTests\when_a_course_title_is_changed.cs" />
-    <Compile Include="CourseListTests\when_a_course_is_created.cs" />
-    <Compile Include="CourseListTests\when_a_course_title_is_changed.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_made_obsolete.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_made_pending.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_deactivated.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_activated.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_description_is_changed.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_long_title_is_changed.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_assigned_a_CIP.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_assigned_an_approval_number.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_created.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_title_is_changed.cs" />
+    <Compile Include="Schedule\CourseListTests\when_a_course_is_created.cs" />
+    <Compile Include="Schedule\CourseListTests\when_a_course_title_is_changed.cs" />
     <Compile Include="DenormalizerModule.cs" />
     <Compile Include="PublishableEvent.cs" />
-    <Compile Include="when_a_course_title_is_changed.cs" />
     <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="when_a_course_is_created.cs" />
     <Compile Include="DenormalizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

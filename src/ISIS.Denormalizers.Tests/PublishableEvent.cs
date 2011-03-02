@@ -1,7 +1,7 @@
 ﻿using System;
 using Ncqrs.Eventing.ServiceModel.Bus;
 
-namespace ISIS.Denormalizers.Tests
+namespace ISIS
 {
     public class PublishableEvent : IPublishableEvent 
     {

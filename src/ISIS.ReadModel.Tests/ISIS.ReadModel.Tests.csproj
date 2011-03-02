@@ -8,7 +8,7 @@
     <ProjectGuid>{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.ReadModel.Tests</RootNamespace>
+    <RootNamespace>ISIS</RootNamespace>
     <AssemblyName>ISIS.ReadModel.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

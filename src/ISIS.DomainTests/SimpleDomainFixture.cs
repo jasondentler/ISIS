@@ -1,7 +1,7 @@
 ﻿using Ncqrs.Commanding;
 using Ncqrs.Spec;
 
-namespace ISIS.DomainTests
+namespace ISIS
 {
     public abstract class SimpleDomainFixture<TCommand, TEvent>
         : OneEventTestFixture<TCommand, TEvent>
