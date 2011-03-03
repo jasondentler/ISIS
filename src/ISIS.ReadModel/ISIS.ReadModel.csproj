@@ -56,7 +56,7 @@
     <Compile Include="Schedule\LookupCourseSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Schedule\LookupCourseSet.xml" />
+    <EmbeddedResource Include="Schedule\LookupCourseSet.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

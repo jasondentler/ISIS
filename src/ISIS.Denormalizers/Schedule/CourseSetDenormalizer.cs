@@ -6,7 +6,7 @@ using Ncqrs.Eventing.ServiceModel.Bus;
 namespace ISIS.Schedule
 {
     public class CourseSetDenormalizer : 
-        Denormalizer<CourseList>, 
+        Denormalizer<CourseSet>, 
         IEventHandler<CourseCreatedEvent>
     {
 
@@ -16,7 +16,7 @@ namespace ISIS.Schedule
             CreateMap<CourseCreatedEvent>();
         }
 
-        protected override Expression<Func<CourseList, object>> GetId()
+        protected override Expression<Func<CourseSet, object>> GetId()
         {
             return GetId(c => c.CourseId);
         }

@@ -45,6 +45,10 @@ namespace ISIS.Web
                 .To<ValidationCommandInterceptor>()
                 .InSingletonScope();
 
+            Kernel.Bind<ICommandServiceInterceptor>()
+                .To<SetValidationCommandInterceptor>()
+                .InSingletonScope();
+
             Kernel.Bind<ICommandService>()
                 .ToMethod(ctx =>
                               {

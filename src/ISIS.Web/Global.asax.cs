@@ -40,7 +40,13 @@ namespace ISIS.Web
 
         protected void ConfigureInjection()
         {
-            var kernel = new StandardKernel(new ValidatorModule(), new NcqrsModule(), new NHibernateModule());
+            var kernel = new StandardKernel(
+                new KernelModule(),
+                new ValidatorModule(),
+                new SetValidatorModule(),
+                new NcqrsModule(),
+                new NHibernateModule());
+
             Ncqrs.NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
             var controllerFactory = new NinjectControllerFactory(kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);

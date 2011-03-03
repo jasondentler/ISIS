@@ -15,7 +15,9 @@ namespace ISIS
 
         protected override void Given()
         {
-            var kernel = new StandardKernel();
+            var kernel = new StandardKernel(new SetValidatorModule());
+            var repo = new ReadRepositoryFake(GivenQueryResults());
+            kernel.Bind<IReadRepository>().ToConstant(repo);
             var interceptor = new SetValidationCommandInterceptor(kernel);
             var cfg = new Configuration(interceptor);
             cfg.Push();

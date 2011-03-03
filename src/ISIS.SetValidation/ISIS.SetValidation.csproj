@@ -51,6 +51,7 @@
     <Compile Include="Schedule\CourseSetValidator.cs" />
     <Compile Include="SetValidationCommandInterceptor.cs" />
     <Compile Include="SetValidationException.cs" />
+    <Compile Include="SetValidatorModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">

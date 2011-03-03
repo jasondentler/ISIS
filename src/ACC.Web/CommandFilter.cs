@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using ACC.Web.ModelState;
 using FluentValidation;
@@ -14,8 +13,20 @@ namespace ACC.Web
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             HandleValidationException(filterContext);
+            HandleSetValidationException(filterContext);
             HandleInvalidStateException(filterContext);
             ExportModelState(filterContext);
+        }
+
+        private void HandleSetValidationException(ActionExecutedContext filterContext)
+        {
+            var setException = filterContext.Exception as SetValidationException;
+            if (setException == null)
+                return;
+            AddExceptionToModelErrors(filterContext, setException);
+
+            RedirectToGet(filterContext);
+            filterContext.ExceptionHandled = true;
         }
 
         private void HandleValidationException(ActionExecutedContext filterContext)
@@ -34,9 +45,7 @@ namespace ACC.Web
             var stateException = filterContext.Exception as InvalidStateException;
             if (stateException == null)
                 return;
-            var validationError = new ValidationException(new[] {new ValidationFailure("", stateException.Message)});
-            new Validation.ValidationExceptionHandler()
-                .AddToModel(filterContext, validationError);
+            AddExceptionToModelErrors(filterContext, stateException);
             RedirectToGet(filterContext);
             filterContext.ExceptionHandled = true;
         }
@@ -51,6 +60,14 @@ namespace ACC.Web
         {
             var filter = new ExportModelStateFilter();
             filter.OnActionExecuted(filterContext);
+        }
+
+        private void AddExceptionToModelErrors(ActionExecutedContext filterContext, Exception exception)
+        {
+            var validationFailure = new ValidationFailure("", exception.Message);
+            var validationException = new ValidationException(new[] { validationFailure });
+            new Validation.ValidationExceptionHandler()
+                .AddToModel(filterContext, validationException);
         }
 
     }

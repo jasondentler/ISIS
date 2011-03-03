@@ -31,8 +31,11 @@ namespace ISIS
         {
             var genericType = typeof (ISetValidator<>);
             var specificType = genericType.MakeGenericType(commandType);
+            dynamic dynamicCommand = command;
             dynamic setValidator = _kernel.TryGet(specificType);
-            setValidator.Validate(command);
+            if (setValidator == null)
+                return;
+            setValidator.Validate(dynamicCommand);
         }
 
     }

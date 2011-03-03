@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="ReadRepositoryFake.cs" />
     <Compile Include="SetValidationFailureFixture.cs" />
     <Compile Include="SetValidationSuccessFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

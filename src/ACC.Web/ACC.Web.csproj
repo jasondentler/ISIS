@@ -64,6 +64,10 @@
       <Project>{B41F5BCE-042F-4631-B6CF-3461E4D1AF2E}</Project>
       <Name>ISIS.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ISIS.SetValidation\ISIS.SetValidation.csproj">
+      <Project>{27FD4F3E-AE4E-466F-BD3B-E7D71555DAEC}</Project>
+      <Name>ISIS.SetValidation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
