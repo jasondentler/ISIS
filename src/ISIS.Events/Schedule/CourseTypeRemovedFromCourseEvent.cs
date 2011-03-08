@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace ISIS.Schedule
 {
-    public class CourseTypeAddedToCourseEvent
+    public class CourseTypeRemovedFromCourseEvent
     {
         public Guid CourseId { get; private set; }
-        public CourseTypes TypeAdded { get; private set; }
+        public CourseTypes TypeRemoved { get; private set; }
         public IEnumerable<CourseTypes> CurrentTypes { get; private set; }
 
-        private CourseTypeAddedToCourseEvent()
+        private CourseTypeRemovedFromCourseEvent()
         {
         }
 
-        public CourseTypeAddedToCourseEvent(Guid courseId, CourseTypes type, IEnumerable<CourseTypes> currentTypes)
+        public CourseTypeRemovedFromCourseEvent(Guid courseId, CourseTypes type, IEnumerable<CourseTypes> currentTypes)
         {
             CourseId = courseId;
-            TypeAdded = type;
+            TypeRemoved = type;
             CurrentTypes = currentTypes;
         }
     }

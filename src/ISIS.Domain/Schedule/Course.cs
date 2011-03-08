@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ncqrs.Domain;
 
 namespace ISIS.Schedule
@@ -184,16 +185,38 @@ namespace ISIS.Schedule
             _status = Statuses.Obsolete;
         }
 
-        protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
-        {
-            _types.Add(@event.Type);
-        }
-
         public void AddCourseType(CourseTypes type)
         {
             if (!_types.Contains(type))
-                ApplyEvent(new CourseTypeAddedToCourseEvent(EventSourceId, type));
+                ApplyEvent(new CourseTypeAddedToCourseEvent(
+                               EventSourceId,
+                               type,
+                               _types.Union(new[] {type})));
         }
-        
+
+        protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
+        {
+            _types.Add(@event.TypeAdded);
+        }
+
+        public void RemoveCourseType(CourseTypes type)
+        {
+            if (!_types.Contains(type)) return;
+            
+            if (_types.Count == 1)
+                throw new InvalidStateException(
+                    "Your attempt to remove the course type failed because it's the last one. Each course must have at least one course type.");
+
+            ApplyEvent(new CourseTypeRemovedFromCourseEvent(
+                           EventSourceId,
+                           type,
+                           _types.Except(new[] {type})));
+        }
+
+        protected void OnCourseTypeRemovedFromCourse(CourseTypeRemovedFromCourseEvent @event)
+        {
+            _types.Remove(@event.TypeRemoved);
+        }
+    
     }
 }

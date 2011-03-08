@@ -97,3 +97,8 @@ input[type=text], select option
 {
 	display: inline;
 }
+
+.enumList
+{
+	list-style-type: none;
+}

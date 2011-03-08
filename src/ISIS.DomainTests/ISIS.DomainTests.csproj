@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\CourseTests\when_removing_the_last_course_type.cs" />
+    <Compile Include="Schedule\CourseTests\when_removing_a_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_adding_an_existing_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_a_course_is_created_with_duplicate_course_types.cs" />
     <Compile Include="Schedule\CourseTests\when_adding_a_course_type.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="Schedule\CourseTests\when_a_course_is_made_obsolete.cs" />
     <Compile Include="Schedule\CourseTests\when_a_pending_course_is_made_pending.cs" />
     <Compile Include="Schedule\CourseTests\when_a_course_is_made_pending.cs" />
+    <Compile Include="Schedule\CourseTests\when_removing_a_nonexistent_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_the_same_approval_number_is_assigned.cs" />
     <Compile Include="Schedule\CourseTests\when_the_same_CIP_is_assigned.cs" />
     <Compile Include="Schedule\CourseTests\when_the_same_CIP_is_assigned_after_an_approval_number.cs" />

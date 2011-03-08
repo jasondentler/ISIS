@@ -88,10 +88,21 @@ namespace ISIS.Schedule.CourseTests
         {
             var events = PublishedEvents.Select(pe => pe.Payload)
                 .OfType<CourseTypeAddedToCourseEvent>();
-            var courseTypes = events.Select(e => e.Type);
+            var courseTypes = events.Select(e => e.TypeAdded);
             Assert.That(events.Count(), Is.EqualTo(2));
             Assert.That(courseTypes, Contains.Item(CourseTypes.ACAD));
             Assert.That(courseTypes, Contains.Item(CourseTypes.NF));
+        }
+
+        [Then]
+        public void then_the_last_CourseTypeAddedEvent_should_contain_all_course_types()
+        {
+            var lastEvent = PublishedEvents.Select(pe => pe.Payload)
+                .OfType<CourseTypeAddedToCourseEvent>()
+                .Last();
+            Assert.That(lastEvent.CurrentTypes.Count(), Is.EqualTo(2));
+            Assert.That(lastEvent.CurrentTypes, Contains.Item(CourseTypes.ACAD));
+            Assert.That(lastEvent.CurrentTypes, Contains.Item(CourseTypes.NF));
         }
 
     }

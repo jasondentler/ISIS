@@ -5,8 +5,8 @@ using NUnit.Framework;
 namespace ISIS.Schedule.CourseTests
 {
     [Specification]
-    public class when_adding_an_existing_course_type : 
-        DomainFixture<AddCourseTypeToCourseCommand>
+    public class when_removing_a_nonexistent_course_type : 
+        DomainFixture<RemoveCourseTypeFromCourse>
     {
 
         private const CourseTypes Type = CourseTypes.ACAD;
@@ -14,12 +14,12 @@ namespace ISIS.Schedule.CourseTests
         protected override IEnumerable<object> GivenEvents()
         {
             yield return new CreditCourseCreatedEvent(EventSourceId, "BIOL", "2302");
-            yield return new CourseTypeAddedToCourseEvent(EventSourceId, Type, new[] {Type});
+            yield return new CourseTypeAddedToCourseEvent(EventSourceId, CourseTypes.WECM, new[] {CourseTypes.WECM});
         }
 
-        protected override AddCourseTypeToCourseCommand WhenExecuting()
+        protected override RemoveCourseTypeFromCourse WhenExecuting()
         {
-            return new AddCourseTypeToCourseCommand()
+            return new RemoveCourseTypeFromCourse()
                        {
                            CourseId = EventSourceId,
                            Type = Type

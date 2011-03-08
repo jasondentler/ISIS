@@ -59,6 +59,7 @@
     <Compile Include="Schedule\DeactivateCourseCommand.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\RemoveCourseTypeFromCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">

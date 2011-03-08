@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\CourseTypeRemovedFromCourseEvent.cs" />
     <Compile Include="Schedule\CourseMadeObsoleteEvent.cs" />
     <Compile Include="Schedule\CourseMadePendingEvent.cs" />
     <Compile Include="Schedule\CourseDeactivatedEvent.cs" />

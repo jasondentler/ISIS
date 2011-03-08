@@ -6,8 +6,8 @@ using NUnit.Framework;
 namespace ISIS.Schedule.CourseTests
 {
     [Specification]
-    public class when_adding_a_course_type : 
-        SimpleDomainFixture<AddCourseTypeToCourseCommand, CourseTypeAddedToCourseEvent>
+    public class when_removing_a_course_type : 
+        SimpleDomainFixture<RemoveCourseTypeFromCourse, CourseTypeRemovedFromCourseEvent>
     {
 
         private const CourseTypes Type = CourseTypes.ACAD;
@@ -15,11 +15,13 @@ namespace ISIS.Schedule.CourseTests
         protected override IEnumerable<object> GivenEvents()
         {
             yield return new CreditCourseCreatedEvent(EventSourceId, "BIOL", "2302");
+            yield return new CourseTypeAddedToCourseEvent(EventSourceId, CourseTypes.ACAD, new[] { CourseTypes.ACAD });
+            yield return new CourseTypeAddedToCourseEvent(EventSourceId, CourseTypes.NF, new[] {CourseTypes.NF});
         }
 
-        protected override AddCourseTypeToCourseCommand WhenExecuting()
+        protected override RemoveCourseTypeFromCourse WhenExecuting()
         {
-            return new AddCourseTypeToCourseCommand()
+            return new RemoveCourseTypeFromCourse()
                        {
                            CourseId = EventSourceId,
                            Type = Type
@@ -27,12 +29,12 @@ namespace ISIS.Schedule.CourseTests
         }
 
         [Then]
-        public void then_it_should_create_a_new_CourseTypeAddedToCourseEvent()
+        public void then_it_should_create_a_new_CourseTypeRemovedFromCourseEvent()
         {
             Assert.That(TheEvent.CourseId, Is.EqualTo(EventSourceId));
-            Assert.That(TheEvent.TypeAdded, Is.EqualTo(Type));
+            Assert.That(TheEvent.TypeRemoved, Is.EqualTo(Type));
             Assert.That(TheEvent.CurrentTypes.Count(), Is.EqualTo(1));
-            Assert.That(TheEvent.CurrentTypes, Contains.Item(Type));
+            Assert.That(TheEvent.CurrentTypes, Contains.Item(CourseTypes.NF));
         }
 
 
