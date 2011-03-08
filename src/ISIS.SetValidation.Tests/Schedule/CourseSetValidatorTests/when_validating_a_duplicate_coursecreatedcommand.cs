@@ -6,16 +6,16 @@ namespace ISIS.Schedule.CourseSetValidatorTests
 {
     [Specification]
     public class when_validating_a_duplicate_coursecreatedcommand 
-        : SetValidationFailureFixture<CreateCourseCommand, CourseSet>
+        : SetValidationFailureFixture<CreateCreditCourseCommand, CourseSet>
     {
 
         public Guid CourseId = Guid.NewGuid();
         public string Rubric = "BIOL";
         public string Number = "1301";
         
-        protected override CreateCourseCommand WhenExecuting()
+        protected override CreateCreditCourseCommand WhenExecuting()
         {
-            return new CreateCourseCommand()
+            return new CreateCreditCourseCommand()
                        {
                            CourseId = CourseId,
                            Rubric = Rubric,

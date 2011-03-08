@@ -15,6 +15,7 @@ namespace ISIS.Schedule
             Obsolete
         }
 
+
         private string _cip;
         private string _approvalNumber;
         private string _title;
@@ -40,13 +41,13 @@ namespace ISIS.Schedule
             string title)
             : base(eventSourceId)
         {
-            ApplyEvent(new CourseCreatedEvent(eventSourceId, rubric, number));
+            ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, title));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, title));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
         }
 
-        protected void OnCourseCreated(CourseCreatedEvent @event)
+        protected void OnCourseCreated(CreditCourseCreatedEvent @event)
         {
         }
 

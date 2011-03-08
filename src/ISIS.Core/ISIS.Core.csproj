@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</ProjectGuid>
+    <ProjectGuid>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ISIS</RootNamespace>
-    <AssemblyName>ISIS.Validation</AssemblyName>
+    <AssemblyName>ISIS.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,13 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.2.0.0.0\lib\NET35\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="Ncqrs">
-      <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,37 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Schedule\ChangeApprovalNumberCommandValidator.cs" />
-    <Compile Include="Schedule\ChangeCIPCommandValidator.cs" />
-    <Compile Include="Schedule\ChangeCourseDescriptionCommandValidator.cs" />
-    <Compile Include="Schedule\ChangeCourseTitleCommandValidator.cs" />
-    <Compile Include="Schedule\ChangeCourseLongTitleCommandValidator.cs" />
-    <Compile Include="Schedule\MakeCourseObsoleteCommandValidator.cs" />
-    <Compile Include="Schedule\MakeCoursePendingCommandValidator.cs" />
-    <Compile Include="Schedule\DeactivateCourseCommandValidator.cs" />
-    <Compile Include="Schedule\ActivateCourseCommandValidator.cs" />
-    <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
-    <Compile Include="Schedule\CreateTermCommandValidator.cs" />
-    <Compile Include="Schedule\CreateDepartmentCommandValidator.cs" />
-    <Compile Include="Schedule\CreateCreditCourseCommandValidator.cs" />
-    <Compile Include="MissingCommandValidatorException.cs" />
+    <Compile Include="EnumData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidationCommandInterceptor.cs" />
-    <Compile Include="ValidatorFactory.cs" />
+    <Compile Include="Schedule\CourseTypes.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
-      <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
-      <Name>ISIS.Command</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
-      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
-      <Name>ISIS.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

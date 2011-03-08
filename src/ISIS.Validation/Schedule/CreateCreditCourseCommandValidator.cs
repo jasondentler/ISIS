@@ -7,9 +7,9 @@ namespace ISIS.Schedule
     /// Validation rules for CreateCourseCommand
     /// </summary>
     /// <remarks>Rules based on Texas Common Course Numbering System: http://www.tccns.org/ccn/taxonomy.asp </remarks>
-    public class CreateCourseCommandValidator : AbstractValidator<CreateCourseCommand>
+    public class CreateCreditCourseCommandValidator : AbstractValidator<CreateCreditCourseCommand>
     {
-        public CreateCourseCommandValidator()
+        public CreateCreditCourseCommandValidator()
         {
 
             RuleFor(cmd => cmd.CourseId)
@@ -29,6 +29,10 @@ namespace ISIS.Schedule
             RuleFor(cmd => cmd.Title)
                 .NotEmpty().WithMessage("Title is required")
                 .Matches(@"^.{0,30}$").WithMessage("Title must be no more than 30 characters long.");
+
+            RuleFor(cmd => cmd.Types)
+                .NotEmpty()
+                .WithMessage("You must select at least one course type.");
 
         }
     }

@@ -3,7 +3,7 @@
 namespace ISIS.Schedule
 {
     public class CourseSetValidator
-        : ISetValidator<CreateCourseCommand>
+        : ISetValidator<CreateCreditCourseCommand>
     {
 
         private const string Message = "Your attempt to create the course {0} {1} failed because the course already exists.";
@@ -15,7 +15,7 @@ namespace ISIS.Schedule
             _repository = repository;
         }
 
-        public void Validate(CreateCourseCommand command)
+        public void Validate(CreateCreditCourseCommand command)
         {
             var query = new LookupCourseSet(command.Rubric, command.CourseNumber);
             var results = _repository.Execute(query);

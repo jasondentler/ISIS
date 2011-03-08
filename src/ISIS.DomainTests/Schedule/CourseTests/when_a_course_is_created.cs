@@ -8,7 +8,7 @@ namespace ISIS.Schedule.CourseTests
 {
     [Specification]
     public class when_a_course_is_created : 
-        DomainFixture<CreateCourseCommand>
+        DomainFixture<CreateCreditCourseCommand>
     {
 
         private Guid CourseId = Guid.NewGuid();
@@ -22,9 +22,9 @@ namespace ISIS.Schedule.CourseTests
             return new object[0];
         }
 
-        protected override CreateCourseCommand WhenExecuting()
+        protected override CreateCreditCourseCommand WhenExecuting()
         {
-            return new CreateCourseCommand()
+            return new CreateCreditCourseCommand()
             {
                 CourseId = CourseId,
                 Rubric = Rubric,
@@ -43,7 +43,7 @@ namespace ISIS.Schedule.CourseTests
         public void then_it_should_create_a_new_CourseCreatedEvent()
         {
             var TheEvent = PublishedEvents.Select(pe => pe.Payload)
-                .OfType<CourseCreatedEvent>().Single();
+                .OfType<CreditCourseCreatedEvent>().Single();
             Assert.That(TheEvent.CourseId, Is.EqualTo(CourseId));
             Assert.That(TheEvent.Rubric, Is.EqualTo(Rubric));
             Assert.That(TheEvent.Number, Is.EqualTo(CourseNumber));

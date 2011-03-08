@@ -37,11 +37,11 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         }
 
         [HttpGet, View]
-        public ViewResult Add()
+        public ViewResult CreateCreditCourse()
         {
             var identifierGenerator = NcqrsEnvironment.Get<IUniqueIdentifierGenerator>();
             var courseId = identifierGenerator.GenerateNewId();
-            var cmd = new CreateCourseCommand()
+            var cmd = new CreateCreditCourseCommand()
                           {
                               CourseId = courseId
                           };
@@ -49,10 +49,10 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         }
 
         [HttpPost, Command]
-        public RedirectToRouteResult Add(CreateCourseCommand command)
+        public RedirectToRouteResult CreateCreditCourse(CreateCreditCourseCommand command)
         {
             if (!ModelState.IsValid)
-                return this.RedirectToAction(c => c.Add());
+                return this.RedirectToAction(c => c.CreateCreditCourse());
 
             _commandService.Execute(command);
             return this.RedirectToAction(c => c.Details(command.CourseId));

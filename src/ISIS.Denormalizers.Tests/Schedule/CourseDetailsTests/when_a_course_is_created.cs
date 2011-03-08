@@ -5,7 +5,7 @@ namespace ISIS.Schedule.CourseDetailsTests
 {
     [TestFixture]
     public class when_a_course_is_created
-        : DenormalizerFixture<CourseDetailsDenormalizer, CourseCreatedEvent>
+        : DenormalizerFixture<CourseDetailsDenormalizer, CreditCourseCreatedEvent>
     {
 
         protected override CourseDetailsDenormalizer CreateDenormalizer()
@@ -13,9 +13,9 @@ namespace ISIS.Schedule.CourseDetailsTests
             return Kernel.Get<CourseDetailsDenormalizer>();
         }
 
-        protected override CourseCreatedEvent WhenHandling()
+        protected override CreditCourseCreatedEvent WhenHandling()
         {
-            return new CourseCreatedEvent(EventSourceId, "BIOL", "2302");
+            return new CreditCourseCreatedEvent(EventSourceId, "BIOL", "2302");
         }
 
         [Test]

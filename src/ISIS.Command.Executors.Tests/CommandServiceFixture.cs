@@ -18,7 +18,7 @@ namespace ISIS.Command.Executors.Tests
         public void Command_service_validates_commands()
         {
             var cmdService = NcqrsEnvironment.Get<ICommandService>();
-            cmdService.Execute(new CreateCourseCommand());
+            cmdService.Execute(new CreateCreditCourseCommand());
         }
 
         [Test, ExpectedException(typeof(MissingCommandValidatorException))]

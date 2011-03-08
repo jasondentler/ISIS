@@ -17,7 +17,7 @@ namespace ISIS.Schedule.CourseTests
 
         protected override IEnumerable<object> GivenEvents()
         {
-            yield return new CourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
+            yield return new CreditCourseCreatedEvent(EventSourceId, Rubric, CourseNumber);
         }
 
         protected override ChangeCourseTitleCommand WhenExecuting()

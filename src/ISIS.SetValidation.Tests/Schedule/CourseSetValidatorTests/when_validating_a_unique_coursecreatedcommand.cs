@@ -6,7 +6,7 @@ namespace ISIS.Schedule.CourseSetValidatorTests
 {
     [Specification]
     public class when_validating_a_unique_coursecreatedcommand 
-        : SetValidationSuccessFixture<CreateCourseCommand, CourseSet>
+        : SetValidationSuccessFixture<CreateCreditCourseCommand, CourseSet>
     {
 
         protected override IEnumerable<CourseSet> GivenQueryResults()
@@ -14,9 +14,9 @@ namespace ISIS.Schedule.CourseSetValidatorTests
             return new CourseSet[0];
         }
 
-        protected override CreateCourseCommand WhenExecuting()
+        protected override CreateCreditCourseCommand WhenExecuting()
         {
-            return new CreateCourseCommand()
+            return new CreateCreditCourseCommand()
                        {
                            CourseId = Guid.NewGuid(),
                            Rubric = "BIOL",

@@ -50,7 +50,7 @@
     <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
     <Compile Include="Schedule\MakeCourseObsoleteCommand.cs" />
-    <Compile Include="Schedule\CreateCourseCommand.cs" />
+    <Compile Include="Schedule\CreateCreditCourseCommand.cs" />
     <Compile Include="Schedule\CreateDepartmentCommand.cs" />
     <Compile Include="Schedule\CreateSectionCommand.cs" />
     <Compile Include="Schedule\CreateTermCommand.cs" />
@@ -58,6 +58,12 @@
     <Compile Include="Schedule\DeactivateCourseCommand.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
+      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
+      <Name>ISIS.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

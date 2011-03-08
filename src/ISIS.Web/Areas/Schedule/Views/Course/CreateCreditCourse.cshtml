@@ -1,4 +1,4 @@
-﻿@model ISIS.Schedule.CreateCourseCommand
+﻿@model ISIS.Schedule.CreateCreditCourseCommand
 
 @{
     ViewBag.Title = "Create A New Course";
@@ -39,6 +39,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Title)
             @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Types)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Types,"CourseTypes")
+            @Html.ValidationMessageFor(model => model.Types)
         </div>
 
         <p>

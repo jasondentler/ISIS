@@ -8,7 +8,7 @@ namespace ISIS.Schedule
     {
         public void MapCommands(CommandService commandService)
         {
-            Map.Command<CreateCourseCommand>()
+            Map.Command<CreateCreditCourseCommand>()
                 .ToAggregateRoot<Course>()
                 .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title))
                 .RegisterWith(commandService);

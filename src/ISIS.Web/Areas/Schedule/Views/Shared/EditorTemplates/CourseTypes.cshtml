@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ISIS.Schedule.CourseTypes>
+@{var dictionary = ISIS.EnumData.GetEnumValues(typeof(ISIS.Schedule.CourseTypes));}
+<ul class="enumList">
+    @foreach (var item in dictionary)
+    {
+        <li>
+            @{
+        var name = ViewData.TemplateInfo.GetFullHtmlFieldName("");
+        var id = ViewData.TemplateInfo.GetFullHtmlFieldId(item.Key.ToString());
+            }
+            <input type="checkbox" name="@(name)" id="@(id)" value="@(item.Key)" />
+            <label for="@(id)">@item.Value</label>
+            </li>
+        }
+</ul>
