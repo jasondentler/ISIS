@@ -51,6 +51,10 @@
     <Compile Include="Schedule\Term.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
+      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
+      <Name>ISIS.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
       <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
       <Name>ISIS.Events</Name>

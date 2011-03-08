@@ -21,7 +21,8 @@ namespace ISIS.Schedule.CourseSetValidatorTests
                            CourseId = Guid.NewGuid(),
                            Rubric = "BIOL",
                            CourseNumber = "1301",
-                           Title = "Cuttin' up frogs"
+                           Title = "Cuttin' up frogs",
+                           Types = new[] {CourseTypes.ACAD}
                        };
         }
         

@@ -48,6 +48,7 @@
     <Compile Include="Schedule\CourseLongTitleChangedEvent.cs" />
     <Compile Include="Schedule\CourseApprovalNumberChangedEvent.cs" />
     <Compile Include="Schedule\CourseCIPChangedEvent.cs" />
+    <Compile Include="Schedule\CourseTypeAddedToCourseEvent.cs" />
     <Compile Include="Schedule\CreditCourseCreatedEvent.cs" />
     <Compile Include="Schedule\CourseTitleChangedEvent.cs" />
     <Compile Include="Schedule\DepartmentCreatedEvent.cs" />
@@ -55,7 +56,12 @@
     <Compile Include="Schedule\SectionCreatedEvent.cs" />
     <Compile Include="Schedule\TermCreatedEvent.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
+      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
+      <Name>ISIS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -20,7 +20,8 @@ namespace ISIS.Schedule
                            CourseId = Guid.NewGuid(),
                            Rubric = "BIOL",
                            CourseNumber = "1234",
-                           Title = "Cuttin' up frogs"
+                           Title = "Cuttin' up frogs",
+                           Types = new[] {CourseTypes.ACAD, CourseTypes.TECH}
                        };
         }
 

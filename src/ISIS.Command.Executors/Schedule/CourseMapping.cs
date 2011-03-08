@@ -10,7 +10,7 @@ namespace ISIS.Schedule
         {
             Map.Command<CreateCreditCourseCommand>()
                 .ToAggregateRoot<Course>()
-                .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title))
+                .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Types))
                 .RegisterWith(commandService);
 
             Map.Command<ChangeCIPCommand>()

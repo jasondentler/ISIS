@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Ncqrs.Domain;
 
 namespace ISIS.Schedule
@@ -38,13 +39,16 @@ namespace ISIS.Schedule
             Guid eventSourceId,
             string rubric,
             string number,
-            string title)
+            string title,
+            IEnumerable<CourseTypes> courseTypes)
             : base(eventSourceId)
         {
             ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, title));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, title));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
+            foreach (var courseType in courseTypes)
+                ApplyEvent(new CourseTypeAddedToCourseEvent(eventSourceId, courseType));
         }
 
         protected void OnCourseCreated(CreditCourseCreatedEvent @event)
@@ -177,6 +181,10 @@ namespace ISIS.Schedule
         protected void OnCourseMadeObsolete(CourseMadeObsoleteEvent @event)
         {
             _status = Statuses.Obsolete;
+        }
+
+        protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
+        {
         }
     }
 }
