@@ -67,6 +67,12 @@ namespace ISIS.Schedule
                 .ToCallOn((cmd, course) => course.MakeObsolete())
                 .RegisterWith(commandService);
 
+            Map.Command<AddCourseTypeToCourseCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.AddCourseType(cmd.Type))
+                .RegisterWith(commandService);
+
         }
 
     }

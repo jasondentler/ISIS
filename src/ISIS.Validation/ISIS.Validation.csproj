@@ -51,6 +51,7 @@
     <Compile Include="Schedule\ChangeCourseDescriptionCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseTitleCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommandValidator.cs" />
+    <Compile Include="Schedule\AddCourseTypeToCourseCommandValidator.cs" />
     <Compile Include="Schedule\MakeCourseObsoleteCommandValidator.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommandValidator.cs" />
     <Compile Include="Schedule\DeactivateCourseCommandValidator.cs" />

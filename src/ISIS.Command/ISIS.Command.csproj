@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\AddCourseTypeToCourseCommand.cs" />
     <Compile Include="Schedule\ChangeApprovalNumberCommand.cs" />
     <Compile Include="Schedule\ChangeCIPCommand.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommand.cs" />

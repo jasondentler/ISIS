@@ -22,6 +22,7 @@ namespace ISIS.Schedule
         private string _title;
         private string _longTitle;
         private Statuses _status;
+        private readonly HashSet<CourseTypes> _types = new HashSet<CourseTypes>();
 
         private Course()
         {
@@ -48,7 +49,7 @@ namespace ISIS.Schedule
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, title));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
             foreach (var courseType in courseTypes)
-                ApplyEvent(new CourseTypeAddedToCourseEvent(eventSourceId, courseType));
+                AddCourseType(courseType);
         }
 
         protected void OnCourseCreated(CreditCourseCreatedEvent @event)
@@ -185,6 +186,14 @@ namespace ISIS.Schedule
 
         protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
         {
+            _types.Add(@event.Type);
         }
+
+        public void AddCourseType(CourseTypes type)
+        {
+            if (!_types.Contains(type))
+                ApplyEvent(new CourseTypeAddedToCourseEvent(EventSourceId, type));
+        }
+        
     }
 }

@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\CourseTests\when_adding_an_existing_course_type.cs" />
+    <Compile Include="Schedule\CourseTests\when_a_course_is_created_with_duplicate_course_types.cs" />
+    <Compile Include="Schedule\CourseTests\when_adding_a_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_an_obsolete_course_is_made_obsolete.cs" />
     <Compile Include="Schedule\CourseTests\when_a_course_is_made_obsolete.cs" />
     <Compile Include="Schedule\CourseTests\when_a_pending_course_is_made_pending.cs" />

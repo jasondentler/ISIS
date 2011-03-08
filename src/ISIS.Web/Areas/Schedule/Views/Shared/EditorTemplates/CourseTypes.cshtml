@@ -1,14 +1,36 @@
 ﻿@model IEnumerable<ISIS.Schedule.CourseTypes>
-@{var dictionary = ISIS.EnumData.GetEnumValues(typeof(ISIS.Schedule.CourseTypes));}
+@using ISIS.Schedule;
+@{
+    var dictionary = ISIS.EnumData.GetEnumValues(typeof(CourseTypes));
+    var name = ViewData.TemplateInfo.GetFullHtmlFieldName("");
+    var ms = ViewData.ModelState.ContainsKey(name)
+        ? ViewData.ModelState[name].Value
+        : null;
+    IEnumerable<ISIS.Schedule.CourseTypes> values = new CourseTypes[0];
+    if (ms != null && ms.RawValue != null)
+    {
+        var rawValues = (string[]) ms.RawValue;
+        values = rawValues
+            .Select(v => (CourseTypes) Enum.Parse(typeof(CourseTypes), v));
+    }
+    if (Model != null)
+    {
+        values = values.Union(Model);
+    }
+    values = values.Distinct();
+    var intValues = values.Select(v => Convert.ToInt32(v));
+}
 <ul class="enumList">
     @foreach (var item in dictionary)
     {
         <li>
             @{
-        var name = ViewData.TemplateInfo.GetFullHtmlFieldName("");
         var id = ViewData.TemplateInfo.GetFullHtmlFieldId(item.Key.ToString());
+        var isChecked = (intValues.Contains(item.Key))
+                ? "checked=\"yes\""
+                : string.Empty;
             }
-            <input type="checkbox" name="@(name)" id="@(id)" value="@(item.Key)" />
+            <input type="checkbox" name="@(name)" id="@(id)" value="@(item.Key)" @(isChecked) />
             <label for="@(id)">@item.Value</label>
             </li>
         }
