@@ -1,32 +1,32 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 
 namespace ISIS.Schedule
 {
 
     public enum CourseTypes
     {
-        [Display(Name = "General Academic")]
+        [Description("General Academic")]
         ACAD,
 
-        [Display(Name = "Regular Technical")]
+        [Description("Regular Technical")]
         TECH,
 
-        [Display(Name = "Technical in WECM")]
+        [Description("Technical in WECM")]
         WECM,
 
-        [Display(Name = "Non-funded")]
+        [Description("Non-funded")]
         NF,
 
-        [Display(Name = "Non-reported Lab Course")]
+        [Description("Non-reported Lab Course")]
         NLAB,
 
-        [Display(Name = "Non-funded developmental")]
+        [Description("Non-funded developmental")]
         NFDEV,
 
-        [Display(Name = "Non-funded ROTC")]
+        [Description("Non-funded ROTC")]
         NROTC,
 
-        [Display(Name = "Exempt from Rider 50")]
+        [Description("Exempt from Rider 50")]
         R50
     }
 }

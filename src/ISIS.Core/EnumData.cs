@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace ISIS
@@ -25,9 +26,8 @@ namespace ISIS
         {
             var t = typeof (T);
             var fi = t.GetField(name);
-            var attributes = (DescriptionAttribute[])
-                             fi.GetCustomAttributes(typeof (DescriptionAttribute), false);
 
+            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0 ? attributes[0].Description : name;
         }
 

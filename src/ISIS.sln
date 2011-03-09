@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.SetValidation.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Core", "ISIS.Core\ISIS.Core.csproj", "{695198EA-6AD7-4E16-8C45-38197DCEF6DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIS.Core.Tests", "ISIS.Core.Tests\ISIS.Core.Tests.csproj", "{B197CD95-E863-498F-A1C2-48DFE725463C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -241,6 +243,16 @@ Global
 		{695198EA-6AD7-4E16-8C45-38197DCEF6DE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{695198EA-6AD7-4E16-8C45-38197DCEF6DE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{695198EA-6AD7-4E16-8C45-38197DCEF6DE}.Release|x86.ActiveCfg = Release|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B197CD95-E863-498F-A1C2-48DFE725463C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -253,5 +265,6 @@ Global
 		{7883AE22-9E8D-4B81-A685-6632230D12D5} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 		{7919A8BF-98AD-42B9-B66F-0DF78AD43A3E} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 		{C420E744-448E-4885-BE19-0A328F56E027} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
+		{B197CD95-E863-498F-A1C2-48DFE725463C} = {FF0F8311-6C96-414B-BDB0-F188C702B4CA}
 	EndGlobalSection
 EndGlobal
