@@ -56,12 +56,6 @@ textarea
     background-color: #ffeeee;
 }
 
-.validation-summary-errors
-{
-    font-weight: bold;
-    color: #ff0000;
-}
-
 .validation-summary-valid
 {
     display: none;
@@ -101,4 +95,15 @@ input[type=text], select option
 .enumList
 {
 	list-style-type: none;
+}
+
+.editCommand
+{
+	padding-left: 2em;
+	font-weight: normal;
+}
+
+.editCommand span
+{
+	display: inline-block;
 }

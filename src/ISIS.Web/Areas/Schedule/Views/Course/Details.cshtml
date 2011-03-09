@@ -5,11 +5,6 @@
     ViewBag.Title = "Course Details";
 }
 <div id="commandBar">
-    @(Html.ActionLink<CourseController>(c => c.ChangeTitle(Model.CourseId), "Change Title"))
-    @(Html.ActionLink<CourseController>(c => c.ChangeLongTitle(Model.CourseId), "Change Long Title"))
-    @(Html.ActionLink<CourseController>(c => c.ChangeDescription(Model.CourseId), "Change Description"))
-    @(Html.ActionLink<CourseController>(c => c.AssignCIP(Model.CourseId), "Set CIP"))
-    @(Html.ActionLink<CourseController>(c => c.AssignApprovalNumber(Model.CourseId), "Set Approval Number"))
     @(Html.ActionLink<CourseController>(c => c.Activate(Model.CourseId), "Activate"))
     @(Html.ActionLink<CourseController>(c => c.Deactivate(Model.CourseId), "Deactivate"))
     @(Html.ActionLink<CourseController>(c => c.MakePending(Model.CourseId), "Make Pending"))
@@ -28,22 +23,22 @@
     <div class="display-label">@Html.LabelFor(m => m.Number)</div>
     <div class="display-field">@Html.DisplayFor(m => m.Number)</div>
 
-    <div class="display-label">@Html.LabelFor(m => m.Title)</div>
+    <div class="display-label">@Html.LabelFor(m => m.Title) @(Html.ActionLink<CourseController>(c => c.ChangeTitle(Model.CourseId), "Change", new { @class="editCommand" }))</div>
     <div class="display-field">@Html.DisplayFor(m => m.Title)</div>
 
-    <div class="display-label">@Html.LabelFor(m => m.LongTitle)</div>
+    <div class="display-label">@Html.LabelFor(m => m.LongTitle) @(Html.ActionLink<CourseController>(c => c.ChangeLongTitle(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
     <div class="display-field">@Html.DisplayFor(m => m.LongTitle)</div>
 
-    <div class="display-label">@Html.LabelFor(m => m.Description)</div>
+    <div class="display-label">@Html.LabelFor(m => m.Description) @(Html.ActionLink<CourseController>(c => c.ChangeDescription(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
     <div class="display-field">@(Model.Description ?? "No description set")</div>
 
     <div class="display-label">@Html.LabelFor(m => m.Status)</div>
     <div class="display-field">@Html.DisplayFor(m => m.Status)</div>
 
-    <div class="display-label">@Html.LabelFor(m => m.CIP)</div>
+    <div class="display-label">@Html.LabelFor(m => m.CIP) @(Html.ActionLink<CourseController>(c => c.AssignCIP(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
     <div class="display-field">@(Model.CIP ?? "Unassigned")  </div>
 
-    <div class="display-label">@Html.LabelFor(m => m.ApprovalNumber)</div>
+    <div class="display-label">@Html.LabelFor(m => m.ApprovalNumber) @(Html.ActionLink<CourseController>(c => c.AssignApprovalNumber(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
     <div class="display-field">@(Model.ApprovalNumber ?? "Unassigned")  </div>
 </fieldset>
 
