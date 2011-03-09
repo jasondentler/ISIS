@@ -43,6 +43,7 @@
     <Reference Include="WebMatrix.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\LookupCourseTypesList.cs" />
     <Compile Include="Schedule\CourseDetails.cs" />
     <Compile Include="Schedule\CourseList.cs" />
     <Compile Include="Schedule\CourseSet.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="IReadRepository.cs" />
     <Compile Include="PageOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\CourseTypesList.cs" />
     <Compile Include="Schedule\LookupCourseSet.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +65,9 @@
       <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
       <Name>ISIS.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Schedule\LookupCourseTypesList.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

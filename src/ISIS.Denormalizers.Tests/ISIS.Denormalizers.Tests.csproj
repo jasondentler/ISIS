@@ -88,6 +88,8 @@
     <Compile Include="DenormalizerFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule\CourseSetTests\when_a_course_is_created.cs" />
+    <Compile Include="Schedule\CourseTypesListTests\when_a_course_type_is_removed_from_a_course.cs" />
+    <Compile Include="Schedule\CourseTypesListTests\when_a_course_type_is_added_to_a_course.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
