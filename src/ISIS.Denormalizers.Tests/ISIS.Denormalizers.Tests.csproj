@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_type_is_removed.cs" />
+    <Compile Include="Schedule\CourseDetailsTests\when_a_course_type_is_added.cs" />
     <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_made_obsolete.cs" />
     <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_made_pending.cs" />
     <Compile Include="Schedule\CourseDetailsTests\when_a_course_is_deactivated.cs" />
@@ -88,6 +90,10 @@
     <Compile Include="Schedule\CourseSetTests\when_a_course_is_created.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
+      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
+      <Name>ISIS.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ISIS.Denormalizers\ISIS.Denormalizers.csproj">
       <Project>{F7039764-F60F-4CD7-A2E8-68F989E55036}</Project>
       <Name>ISIS.Denormalizers</Name>

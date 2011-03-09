@@ -82,6 +82,17 @@ namespace ISIS
             return enumData.GetDictionary();
         }
 
+        public static string GetNameForValue(Type enumType, Enum value)
+        {
+            var dictionary = GetEnumValues(enumType);
+            return dictionary[Convert.ToInt32(value)];
+        }
+
+        public static IEnumerable<string> GetNamesForValues(Type enumType, IEnumerable<Enum> values)
+        {
+            return values.Select(e => GetNameForValue(enumType, e));
+        }
+
     }
 
 }

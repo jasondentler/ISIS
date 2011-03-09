@@ -27,5 +27,8 @@ namespace ISIS.Schedule
 
         public CourseStatuses Status { get; set; }
 
+        [Display(Name = "Course Types")]
+        public string CourseTypes { get; set; }
+
     }
 }

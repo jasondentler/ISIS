@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using FluentDML.Dialect;
 using Ncqrs.Eventing.ServiceModel.Bus;
@@ -16,7 +18,9 @@ namespace ISIS.Schedule
         IEventHandler<CourseActivatedEvent>,
         IEventHandler<CourseDeactivatedEvent>,
         IEventHandler<CourseMadePendingEvent>, 
-        IEventHandler<CourseMadeObsoleteEvent>
+        IEventHandler<CourseMadeObsoleteEvent>,
+        IEventHandler<CourseTypeAddedToCourseEvent>,
+        IEventHandler<CourseTypeRemovedFromCourseEvent>
     {
         
         public CourseDetailsDenormalizer(IDialect db)
@@ -94,6 +98,29 @@ namespace ISIS.Schedule
         public void Handle(IPublishedEvent<CourseMadeObsoleteEvent> evnt)
         {
             SetStatus(evnt.Payload.CourseId, CourseStatuses.Obsolete);
+        }
+
+        private void SetCourseTypes(Guid courseId, IEnumerable<CourseTypes> currentCourseTypes)
+        {
+            var enums = currentCourseTypes.Select(ct => (Enum) ct);
+            var courseTypeStrings = EnumData.GetNamesForValues(typeof(CourseTypes), enums);
+            var courseTypesString = string.Join(", ", courseTypeStrings);
+
+            var cmd = Update()
+                .Set(d => d.CourseTypes, courseTypesString)
+                .Where(cd => cd.CourseId == courseId)
+                .ToCommand();
+            Execute(cmd);
+        }
+
+        public void Handle(IPublishedEvent<CourseTypeAddedToCourseEvent> evnt)
+        {
+            SetCourseTypes(evnt.Payload.CourseId, evnt.Payload.CurrentTypes);
+        }
+
+        public void Handle(IPublishedEvent<CourseTypeRemovedFromCourseEvent> evnt)
+        {
+            SetCourseTypes(evnt.Payload.CourseId, evnt.Payload.CurrentTypes);
         }
     }
 }
