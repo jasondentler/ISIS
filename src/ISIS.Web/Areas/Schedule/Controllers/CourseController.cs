@@ -235,5 +235,11 @@ namespace ISIS.Web.Areas.Schedule.Controllers
             return this.RedirectToAction(c => c.Details(command.CourseId));
         }
 
+        [HttpGet, View]
+        public ViewResult ChangeCourseTypes(Guid id)
+        {
+            return View();
+        }
+
     }
 }

@@ -40,5 +40,9 @@
 
     <div class="display-label">@Html.LabelFor(m => m.ApprovalNumber) @(Html.ActionLink<CourseController>(c => c.AssignApprovalNumber(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
     <div class="display-field">@(Model.ApprovalNumber ?? "Unassigned")  </div>
+
+    <div class="display-label">@Html.LabelFor(m => m.CourseTypes) @(Html.ActionLink<CourseController>(c => c.ChangeCourseTypes(Model.CourseId), "Change", new { @class = "editCommand" }))</div>
+    <div class="display-field">@(Model.CourseTypes ?? "None")  </div>
+
 </fieldset>
 
