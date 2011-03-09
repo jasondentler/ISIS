@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using ACC.Web;
 using ISIS.Schedule;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
 using MvcContrib;
+using Ncqrs.Domain;
 
 namespace ISIS.Web.Areas.Schedule.Controllers
 {
@@ -238,8 +240,45 @@ namespace ISIS.Web.Areas.Schedule.Controllers
         [HttpGet, View]
         public ViewResult ChangeCourseTypes(Guid id)
         {
-            return View();
+            var courseTypeLists = _repository.Execute(new LookupCourseTypesList(id));
+            var courseTypes = courseTypeLists.Select(ctl => ctl.CourseType).ToArray();
+            return View(new CourseTypesModel()
+                            {
+                                CourseId = id,
+                                CourseTypes = courseTypes
+                            });
         }
+
+        [HttpPost, Command]
+        public RedirectToRouteResult ChangeCourseTypes(CourseTypesModel model)
+        {
+            if (!ModelState.IsValid)
+                return this.RedirectToAction(c => c.ChangeCourseTypes(model.CourseId));
+
+            var courseTypeLists = _repository.Execute(new LookupCourseTypesList(model.CourseId));
+            var oldCourseTypes = courseTypeLists.Select(ctl => ctl.CourseType).ToArray();
+            var changedCourseTypes = model.CourseTypes.ToArray();
+            var typesToAdd = changedCourseTypes.Except(oldCourseTypes).ToArray();
+            var typesToRemove = oldCourseTypes.Except(changedCourseTypes).ToArray();
+
+            foreach (var type in typesToAdd)
+                _commandService.Execute(new AddCourseTypeToCourseCommand()
+                                            {
+                                                CourseId = model.CourseId,
+                                                Type = type
+                                            });
+
+            foreach (var type in typesToRemove)
+                _commandService.Execute(new RemoveCourseTypeFromCourse()
+                                            {
+                                                CourseId = model.CourseId,
+                                                Type = type
+                                            });
+
+            return this.RedirectToAction(c => c.Details(model.CourseId));
+        }
+
+
 
     }
 }

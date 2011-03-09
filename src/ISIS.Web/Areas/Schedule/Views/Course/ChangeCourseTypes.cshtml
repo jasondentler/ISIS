@@ -1,0 +1,33 @@
+﻿@model ISIS.Schedule.CourseTypesModel
+
+@{
+    ViewBag.Title = "Change Course Types";
+}
+
+<div id="commandBar">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Change Course Types</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseTypes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseTypes, "CourseTypes")
+            @Html.ValidationMessageFor(model => model.CourseTypes)
+        </div>
+
+        <p>
+            <input type="submit" value="Change" />
+        </p>
+    </fieldset>
+}
+

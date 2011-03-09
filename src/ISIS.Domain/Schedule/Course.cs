@@ -187,11 +187,11 @@ namespace ISIS.Schedule
 
         public void AddCourseType(CourseTypes type)
         {
-            if (!_types.Contains(type))
-                ApplyEvent(new CourseTypeAddedToCourseEvent(
-                               EventSourceId,
-                               type,
-                               _types.Union(new[] {type})));
+            if (_types.Contains(type)) return;
+            ApplyEvent(new CourseTypeAddedToCourseEvent(
+                           EventSourceId,
+                           type,
+                           _types.Union(new[] {type}).ToArray()));
         }
 
         protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
@@ -210,7 +210,7 @@ namespace ISIS.Schedule
             ApplyEvent(new CourseTypeRemovedFromCourseEvent(
                            EventSourceId,
                            type,
-                           _types.Except(new[] {type})));
+                           _types.Except(new[] {type}).ToArray()));
         }
 
         protected void OnCourseTypeRemovedFromCourse(CourseTypeRemovedFromCourseEvent @event)
