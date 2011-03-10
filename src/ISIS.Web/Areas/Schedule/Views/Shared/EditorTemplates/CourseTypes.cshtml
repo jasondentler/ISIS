@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<ISIS.Schedule.CourseTypes>
+@{
+    Html.EnableUnobtrusiveJavaScript(false);
+    Html.EnableClientValidation(false);
+  }
 @using ISIS.Schedule;
 @{
     var dictionary = ISIS.EnumData.GetEnumValues(typeof(CourseTypes));
@@ -9,7 +13,7 @@
     IEnumerable<ISIS.Schedule.CourseTypes> values = new CourseTypes[0];
     if (ms != null && ms.RawValue != null)
     {
-        var rawValues = (string[]) ms.RawValue;
+        var rawValues = (IEnumerable<string>) ms.RawValue;
         values = rawValues
             .Select(v => (CourseTypes) Enum.Parse(typeof(CourseTypes), v));
     }
@@ -35,3 +39,4 @@
             </li>
         }
 </ul>
+

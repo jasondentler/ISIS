@@ -6,7 +6,7 @@ namespace ISIS.Schedule
     public enum CourseTypes
     {
         [Description("General Academic")]
-        ACAD,
+        ACAD = 1,
 
         [Description("Regular Technical")]
         TECH,

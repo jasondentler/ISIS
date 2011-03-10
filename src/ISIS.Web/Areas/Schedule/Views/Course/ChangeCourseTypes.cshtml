@@ -1,5 +1,4 @@
 ﻿@model ISIS.Schedule.CourseTypesModel
-
 @{
     ViewBag.Title = "Change Course Types";
 }
@@ -24,7 +23,6 @@
             @Html.EditorFor(model => model.CourseTypes, "CourseTypes")
             @Html.ValidationMessageFor(model => model.CourseTypes)
         </div>
-
         <p>
             <input type="submit" value="Change" />
         </p>

@@ -1,5 +1,5 @@
 ﻿initializeCommandBar = function () {
-    $(".field-validation-error, .validation-summary-errors").addClass("ui-state-error-text");
+    $(".validation-summary-errors").addClass("ui-state-error-text");
     $("#commandBar a, input[type=submit], button").button();
     $("#commandBar").addClass("ui-widget-header ui-corner-all");
     $(".editCommand").prepend('<span class="ui-icon ui-icon-pencil" />');
