@@ -7,9 +7,9 @@ namespace ISIS.Schedule
         public Guid CourseId { get; private set; }
         public string Description { get; private set; }
 
-        public CourseDescriptionChangedEvent(Guid eventSourceId, string description)
+        public CourseDescriptionChangedEvent(Guid courseId, string description)
         {
-            CourseId = eventSourceId;
+            CourseId = courseId;
             Description = description;
         }
     }
