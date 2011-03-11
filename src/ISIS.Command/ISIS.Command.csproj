@@ -52,9 +52,6 @@
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
     <Compile Include="Schedule\MakeCourseObsoleteCommand.cs" />
     <Compile Include="Schedule\CreateCreditCourseCommand.cs" />
-    <Compile Include="Schedule\CreateDepartmentCommand.cs" />
-    <Compile Include="Schedule\CreateSectionCommand.cs" />
-    <Compile Include="Schedule\CreateTermCommand.cs" />
     <Compile Include="Schedule\ActivateCourseCommand.cs" />
     <Compile Include="Schedule\DeactivateCourseCommand.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommand.cs" />

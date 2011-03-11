@@ -2,14 +2,10 @@
 
 namespace ISIS.Schedule
 {
-    public class CourseDeactivatedEvent 
+    public class CourseDeactivatedEvent : IEvent 
     {
 
         public Guid CourseId { get; private set; }
-
-        private CourseDeactivatedEvent()
-        {
-        }
 
         public CourseDeactivatedEvent(Guid courseId)
         {

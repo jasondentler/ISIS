@@ -2,7 +2,7 @@
 
 namespace ISIS.Schedule
 {
-    public class DepartmentCreatedEvent 
+    public class DepartmentCreatedEvent : IEvent 
     {
 
         public Guid DepartmentId { get; set; }

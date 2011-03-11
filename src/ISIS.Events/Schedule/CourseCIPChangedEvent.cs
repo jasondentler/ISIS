@@ -2,7 +2,7 @@
 
 namespace ISIS.Schedule
 {
-    public class CourseCIPChangedEvent 
+    public class CourseCIPChangedEvent : IEvent 
     {
 
         public CourseCIPChangedEvent(Guid courseId, string cip)

@@ -2,7 +2,7 @@
 
 namespace ISIS.Schedule
 {
-    public class SectionCreatedEvent
+    public class SectionCreatedEvent : IEvent 
     {
 
         public Guid SectionId { get; set; }

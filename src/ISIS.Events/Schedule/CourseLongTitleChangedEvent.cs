@@ -2,7 +2,7 @@
 
 namespace ISIS.Schedule
 {
-    public class CourseLongTitleChangedEvent 
+    public class CourseLongTitleChangedEvent : IEvent 
     {
 
         public CourseLongTitleChangedEvent(Guid courseId, string longTitle)

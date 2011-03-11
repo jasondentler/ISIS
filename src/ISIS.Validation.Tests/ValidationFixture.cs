@@ -5,7 +5,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using NUnit.Framework;
 
-namespace ISIS.Validation.Tests
+namespace ISIS
 {
 
     public abstract class ValidationFixture<T> : BaseFixture

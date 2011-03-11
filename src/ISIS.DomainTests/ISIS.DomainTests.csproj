@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllCommandsFixture.cs" />
     <Compile Include="Schedule\CourseTests\when_removing_the_last_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_removing_a_course_type.cs" />
     <Compile Include="Schedule\CourseTests\when_adding_an_existing_course_type.cs" />
@@ -83,9 +84,6 @@
     <Compile Include="ExceptionTestFixture.cs" />
     <Compile Include="SimpleDomainFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schedule\DepartmentTests\when_a_new_department_is_created.cs" />
-    <Compile Include="Schedule\SectionTests\when_a_new_section_is_created.cs" />
-    <Compile Include="Schedule\TermTests\when_a_new_term_is_created.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

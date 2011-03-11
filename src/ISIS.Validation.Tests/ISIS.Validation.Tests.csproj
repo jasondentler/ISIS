@@ -37,6 +37,9 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs.Spec">
+      <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
@@ -50,14 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllCommandsFixture.cs" />
     <Compile Include="Schedule\ChangeApprovalNumberCommandFixture.cs" />
     <Compile Include="Schedule\ChangeCIPCommandFixture.cs" />
     <Compile Include="Schedule\ChangeCourseTitleCommandFixture.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommandFixture.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommandFixture.cs" />
-    <Compile Include="Schedule\CreateSectionCommandFixture.cs" />
-    <Compile Include="Schedule\CreateTermCommandFixture.cs" />
-    <Compile Include="Schedule\CreateDepartmentCommandFixture.cs" />
+    <Compile Include="Schedule\ActivateCourseCommandFixture.cs" />
+    <Compile Include="Schedule\AddCourseTypeToCourseCommandFixture.cs" />
+    <Compile Include="Schedule\RemoveCourseTypeFromCourseFixture.cs" />
+    <Compile Include="Schedule\MakeCoursePendingCommandFixture.cs" />
+    <Compile Include="Schedule\DeactivateCourseCommandFixture.cs" />
+    <Compile Include="Schedule\MakeCourseObsoleteCommandFixture.cs" />
     <Compile Include="Schedule\CreateCreditCourseCommandFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationFixture.cs" />

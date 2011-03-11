@@ -1,6 +1,5 @@
 ﻿using System;
 using FluentValidation;
-using ISIS.Validation.Tests;
 using NUnit.Framework;
 
 namespace ISIS.Schedule

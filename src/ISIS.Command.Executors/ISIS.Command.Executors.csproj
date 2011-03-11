@@ -44,10 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandServiceExtensions.cs" />
-    <Compile Include="Schedule\SectionMapping.cs" />
-    <Compile Include="Schedule\TermMapping.cs" />
     <Compile Include="Schedule\CourseMapping.cs" />
-    <Compile Include="Schedule\DepartmentMapping.cs" />
     <Compile Include="ICommandMapping.cs" />
     <Compile Include="MappingExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

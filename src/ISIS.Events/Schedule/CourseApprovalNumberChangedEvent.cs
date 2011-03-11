@@ -2,14 +2,8 @@
 
 namespace ISIS.Schedule
 {
-    public class CourseApprovalNumberChangedEvent
+    public class CourseApprovalNumberChangedEvent : IEvent 
     {
-
-        private CourseApprovalNumberChangedEvent()
-        {
-            
-        }
-
         public CourseApprovalNumberChangedEvent(Guid courseId, string approvalNumber)
         {
             CourseId = courseId;

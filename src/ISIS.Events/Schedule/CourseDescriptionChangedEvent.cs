@@ -2,7 +2,7 @@
 
 namespace ISIS.Schedule
 {
-    public class CourseDescriptionChangedEvent
+    public class CourseDescriptionChangedEvent : IEvent 
     {
         public Guid CourseId { get; private set; }
         public string Description { get; private set; }

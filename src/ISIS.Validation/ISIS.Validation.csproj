@@ -58,9 +58,6 @@
     <Compile Include="Schedule\MakeCoursePendingCommandValidator.cs" />
     <Compile Include="Schedule\DeactivateCourseCommandValidator.cs" />
     <Compile Include="Schedule\ActivateCourseCommandValidator.cs" />
-    <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
-    <Compile Include="Schedule\CreateTermCommandValidator.cs" />
-    <Compile Include="Schedule\CreateDepartmentCommandValidator.cs" />
     <Compile Include="Schedule\CreateCreditCourseCommandValidator.cs" />
     <Compile Include="MissingCommandValidatorException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
