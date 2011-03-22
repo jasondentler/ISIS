@@ -64,21 +64,38 @@ this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.When("I create an ACAD course BIOL 1301 Introductory Biology");
 #line 8
- testRunner.Then("the course should be created");
+ testRunner.Then("the course is created");
 #line 9
- testRunner.And("the course rubric should be BIOL");
+ testRunner.And("the course rubric is BIOL");
 #line 10
- testRunner.And("the course number should be 1301");
+ testRunner.And("the course number is 1301");
 #line 11
- testRunner.And("the course title should be Introductory Biology");
+ testRunner.And("the course title is Introductory Biology");
 #line 12
- testRunner.And("the course long title should be Introductory Biology");
+ testRunner.And("the course long title is Introductory Biology");
 #line 13
- testRunner.And("the course should be active");
+ testRunner.And("the course is active");
 #line 14
- testRunner.And("the course type should be ACAD");
+ testRunner.And("the course type is ACAD");
 #line 15
  testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a credit course without a course type")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void CreateACreditCourseWithoutACourseType()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a credit course without a course type", new string[] {
+                        "domain"});
+#line 18
+this.ScenarioSetup(scenarioInfo);
+#line 19
+ testRunner.When("I create a course BIOL 1301 Introductory Biology without a course type");
+#line 20
+ testRunner.Then("the command is invalid");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

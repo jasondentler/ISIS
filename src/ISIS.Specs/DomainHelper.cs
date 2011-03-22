@@ -14,7 +14,8 @@ namespace ISIS.Specs
     public static class DomainHelper
     {
 
-        private const string TestedEvents = "testedEvents";
+        private const string ExceptionKey = "caughtException";
+        private const string TestedEventsKey = "testedEvents";
 
         public static void GivenEvent(Guid eventSourceId, object @event)
         {
@@ -32,15 +33,23 @@ namespace ISIS.Specs
 
         public static IEnumerable<UncommittedEvent> When(Action action)
         {
-            IEnumerable<UncommittedEvent> events;
-            using (var context = new EventContext())
+            try
             {
-                action();
-                events = context.Events;
+                IEnumerable<UncommittedEvent> events;
+                using (var context = new EventContext())
+                {
+                    action();
+                    events = context.Events;
+                }
+                ScenarioContext.Current.Set(new HashSet<object>(), TestedEventsKey);
+                ScenarioContext.Current.Set(events);
+                return events;
             }
-            ScenarioContext.Current.Set(new HashSet<object>(), TestedEvents);
-            ScenarioContext.Current.Set(events);
-            return events;
+            catch (Exception e)
+            {
+                ScenarioContext.Current.Set(e, ExceptionKey);
+                return new UncommittedEvent[0];
+            }
         }
 
         public static IEnumerable<UncommittedEvent> WhenExecuting(ICommand command)
@@ -51,6 +60,22 @@ namespace ISIS.Specs
                                 var cmdService = NcqrsEnvironment.Get<ICommandService>();
                                 cmdService.Execute(command);
                             });
+        }
+
+        public static bool HasException()
+        {
+            return ScenarioContext.Current.ContainsKey(ExceptionKey);
+        }
+
+        public static Exception GetException()
+        {
+            return HasException() ? ScenarioContext.Current.Get<Exception>(ExceptionKey) : null;
+        }
+
+        public static T GetException<T>()
+            where T : Exception
+        {
+            return (T) GetException();
         }
 
         public static T GetCommand<T>()
@@ -84,14 +109,14 @@ namespace ISIS.Specs
 
         private static void AddToTestedEvents<T>(IEnumerable<T> @events)
         {
-            var testedEvents = ScenarioContext.Current.Get<HashSet<object>>(TestedEvents);
+            var testedEvents = ScenarioContext.Current.Get<HashSet<object>>(TestedEventsKey);
             foreach (var @event in events)
                 testedEvents.Add(@event);
         }
 
         public static bool AllEventsWereTested()
         {
-            var testedEvents = ScenarioContext.Current.Get<HashSet<object>>(TestedEvents);
+            var testedEvents = ScenarioContext.Current.Get<HashSet<object>>(TestedEventsKey);
             var untestedEvents = GetRawEvents().Except(testedEvents);
             return !untestedEvents.Any();
         }
