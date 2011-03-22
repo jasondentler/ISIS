@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51EC52AA-EA04-435E-8B3E-C93E086C4711}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISIS.Specs</RootNamespace>
+    <AssemblyName>ISIS.Specs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ncqrs">
+      <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Spec">
+      <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\..\tools\SpecFlow\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomainHelper.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="CourseSteps.cs" />
+    <Compile Include="CreateACreditCourse.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateACreditCourse.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CreateACreditCourse.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateACreditCourse.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISIS.Command.Executors\ISIS.Command.Executors.csproj">
+      <Project>{D1C7CD28-1EFD-4511-B49E-2E78CDB3E341}</Project>
+      <Name>ISIS.Command.Executors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Command\ISIS.Command.csproj">
+      <Project>{C9B52BB4-341C-4DA3-A353-32E786CE2F2E}</Project>
+      <Name>ISIS.Command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">
+      <Project>{695198EA-6AD7-4E16-8C45-38197DCEF6DE}</Project>
+      <Name>ISIS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Domain\ISIS.Domain.csproj">
+      <Project>{B41F5BCE-042F-4631-B6CF-3461E4D1AF2E}</Project>
+      <Name>ISIS.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
+      <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
+      <Name>ISIS.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
+      <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>
+      <Name>ISIS.Validation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
