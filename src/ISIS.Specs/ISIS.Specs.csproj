@@ -40,6 +40,10 @@
     <Reference Include="Ncqrs.Spec">
       <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ncqrs\Framework\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ncqrs\Spec\nunit.framework.dll</HintPath>
@@ -56,20 +60,51 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseCIPAndApprovalSteps.cs" />
+    <Compile Include="CourseCIPAndApprovalNumber.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseCIPAndApprovalNumber.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CourseTitleAndDescription.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseTitleAndDescription.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CourseTitleAndDescriptionSteps.cs" />
+    <Compile Include="CourseTypes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseTypes.feature</DependentUpon>
+    </Compile>
+    <Compile Include="CourseTypeSteps.cs" />
     <Compile Include="DomainHelper.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="CourseSteps.cs" />
-    <Compile Include="CreateACreditCourse.feature.cs">
+    <Compile Include="CreateACourse.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CreateACreditCourse.feature</DependentUpon>
+      <DependentUpon>CreateACourse.feature</DependentUpon>
     </Compile>
+    <Compile Include="DomainSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CreateACreditCourse.feature">
+    <None Include="CourseCIPAndApprovalNumber.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CreateACreditCourse.feature.cs</LastGenOutput>
+      <LastGenOutput>CourseCIPAndApprovalNumber.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CourseTitleAndDescription.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseTitleAndDescription.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CourseTypes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseTypes.feature.cs</LastGenOutput>
+    </None>
+    <None Include="CreateACourse.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateACourse.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FluentValidation;
 using ISIS.Schedule;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -18,16 +15,42 @@ namespace ISIS.Specs
             Configuration.Configure();
         }
 
-        private static IEnumerable<CourseTypes> ParseCourseTypes(string courseTypeString)
+        [Given(@"I have created an (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
+        public void GivenIHaveCreatedAnCourse(
+            string courseTypeString,
+            string rubric,
+            string number,
+            string title)
         {
-            return courseTypeString
-                .Split(' ')
-                .Select(s => s.Trim())
-                .Where(s => !string.IsNullOrWhiteSpace(s))
-                .Select(s => Enum.Parse(typeof(CourseTypes), s))
-                .Cast<CourseTypes>();
+            GivenIHaveCreatedACourse(courseTypeString, rubric, number, title);
         }
-        
+
+        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
+        public void GivenIHaveCreatedACourse(
+            string courseTypeString,
+            string rubric,
+            string number,
+            string title)
+        {
+            DomainHelper.GivenEvent(new CreditCourseCreatedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        rubric,
+                                        number));
+            DomainHelper.GivenEvent(new CourseTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        title));
+            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        title));
+            var courseTypes = CourseTypeSteps.ParseCourseTypes(courseTypeString);
+            foreach (var courseType in courseTypes)
+                DomainHelper.GivenEvent(new CourseTypeAddedToCourseEvent(
+                                            DomainHelper.GetEventSourceId(),
+                                            courseType,
+                                            courseTypes));
+        }
+
+
         [When(@"I create an (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
         public void WhenICreateAnCourse(
             string courseTypeString,
@@ -45,10 +68,10 @@ namespace ISIS.Specs
             string number,
             string title)
         {
-            var courseTypes = ParseCourseTypes(courseTypeString);
+            var courseTypes = CourseTypeSteps.ParseCourseTypes(courseTypeString);
             var cmd = new CreateCreditCourseCommand()
                           {
-                              CourseId = Guid.NewGuid(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               Rubric = rubric,
                               CourseNumber = number,
                               Title = title,
@@ -97,47 +120,11 @@ namespace ISIS.Specs
             Assert.That(e.Number, Is.EqualTo(number));
         }
 
-        [Then(@"the course title is (.*)")]
-        public void ThenTheCourseTitleShouldBe(string title)
-        {
-            var e = DomainHelper.GetEvent<CourseTitleChangedEvent>();
-            Assert.That(e.Title, Is.EqualTo(title));
-        }
-
-        [Then(@"the course long title is (.*)")]
-        public void ThenTheCourseLongTitleShouldBe(string longTitle)
-        {
-            var e = DomainHelper.GetEvent<CourseLongTitleChangedEvent>();
-            Assert.That(e.LongTitle, Is.EqualTo(longTitle));
-        }
-
         [Then(@"the course is active")]
         public void ThenTheCourseShouldBeActive()
         {
             var e = DomainHelper.GetEvent<CourseActivatedEvent>();
             Assert.That(e, Is.Not.Null);
-        }
-
-        [Then(@"the course type is (.*)")]
-        public void ThenTheCourseTypeShouldBe(string courseTypes)
-        {
-            var expected = ParseCourseTypes(courseTypes);
-            var events = DomainHelper.GetEvents<CourseTypeAddedToCourseEvent>();
-            var actual = events.Select(e => e.TypeAdded);
-            Assert.That(expected, Is.EqualTo(actual));
-        }
-
-        [Then(@"it should do nothing else")]
-        public void ThenItShouldDoNothingElse()
-        {
-            Assert.That(DomainHelper.AllEventsWereTested(), Is.True);
-        }
-
-        [Then(@"the command is invalid")]
-        public void ThenTheCommandIsInvalid()
-        {
-            var ex = DomainHelper.GetException<ValidationException>();
-            Assert.That(ex, Is.Not.Null);
         }
 
 

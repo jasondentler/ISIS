@@ -1,6 +1,7 @@
-﻿Feature: Create A Credit Course
+﻿Feature: Create A Course
+	In order to manage the course schedule
 	As a scheduler
-	I want to set up a new credit course
+	I want to set up a new course
 
 @domain
 Scenario: Create a credit course
@@ -11,11 +12,8 @@ Scenario: Create a credit course
 	And the course title is Introductory Biology
 	And the course long title is Introductory Biology
 	And the course is active
-	And the course type is ACAD
+	And the ACAD course type is added
+	And the current course type is ACAD
 	And it should do nothing else
 
-@domain
-Scenario: Create a credit course without a course type
-	When I create a course BIOL 1301 Introductory Biology without a course type
-	Then the command is invalid
 

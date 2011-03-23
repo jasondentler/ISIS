@@ -22,6 +22,7 @@ namespace ISIS.Schedule
         private string _approvalNumber;
         private string _title;
         private string _longTitle;
+        private string _description;
         private Statuses _status;
         private readonly HashSet<CourseTypes> _types = new HashSet<CourseTypes>();
 
@@ -35,19 +36,20 @@ namespace ISIS.Schedule
         /// <param name="eventSourceId">Course id</param>
         /// <param name="rubric">Course subject. For example: BIOL</param>
         /// <param name="number">4-digit course number. For example: 2302</param>
-        /// <param name="title">Course title</param>
+        /// <param name="longTitle">Course title</param>
         /// <example>new Course(Guid.NewGuid(), "BIOL","2302","Anatomy and Physiology 1");</example>
         public Course(
             Guid eventSourceId,
             string rubric,
             string number,
-            string title,
+            string longTitle,
             IEnumerable<CourseTypes> courseTypes)
             : base(eventSourceId)
         {
+            var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
             ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
-            ApplyEvent(new CourseTitleChangedEvent(eventSourceId, title));
-            ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, title));
+            ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
+            ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
             foreach (var courseType in courseTypes)
                 AddCourseType(courseType);
@@ -124,6 +126,8 @@ namespace ISIS.Schedule
             if (_longTitle == newLongTitle)
                 return;
             ApplyEvent(new CourseLongTitleChangedEvent(EventSourceId, newLongTitle));
+            var newShortTitle = newLongTitle.Length > 30 ? newLongTitle.Substring(0, 30) : newLongTitle;
+            ApplyEvent(new CourseTitleChangedEvent(EventSourceId, newShortTitle));
         }
 
         protected void OnCourseLongTitleChanged(CourseLongTitleChangedEvent @event)
@@ -133,11 +137,13 @@ namespace ISIS.Schedule
 
         public void ChangeDescription(string newDescription)
         {
-            ApplyEvent(new CourseDescriptionChangedEvent(EventSourceId, newDescription));
+            if (_description != newDescription)
+                ApplyEvent(new CourseDescriptionChangedEvent(EventSourceId, newDescription));
         }
 
         protected void OnCourseDescriptionChanged(CourseDescriptionChangedEvent @event)
         {
+            _description = @event.Description;
         }
 
         public void Activate()

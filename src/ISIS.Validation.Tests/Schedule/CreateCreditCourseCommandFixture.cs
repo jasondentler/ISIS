@@ -96,16 +96,7 @@ namespace ISIS.Schedule
                 Title = ""
             }, cmd => cmd.Title);
         }
-
-        [Test]
-        public void Title_cant_be_over_30_characters()
-        {
-            GetFailure(new CreateCreditCourseCommand()
-            {
-                Title = "123456789012345678901234567890!"
-            }, cmd => cmd.Title);
-        }
-
+        
         [Test]
         public void Types_cant_be_empty()
         {

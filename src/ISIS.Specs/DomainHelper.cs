@@ -7,6 +7,7 @@ using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing;
 using Ncqrs.Eventing.Storage;
 using Ncqrs.Spec;
+using Newtonsoft.Json;
 using TechTalk.SpecFlow;
 
 namespace ISIS.Specs
@@ -14,11 +15,66 @@ namespace ISIS.Specs
     public static class DomainHelper
     {
 
+        private static bool ContainsKey(string key)
+        {
+            return ScenarioContext.Current.ContainsKey(key);
+        }
+
+        private static T Get<T>() where T : class
+        {
+            return ScenarioContext.Current.Get<T>();
+        }
+
+        private static T Get<T>(string key) where T : class
+        {
+            return ScenarioContext.Current.Get<T>(key);
+        }
+
+        private static void Set<T>(T item) where T : class 
+        {
+            ScenarioContext.Current.Set(item);
+        }
+
+        private static void Set<T>(T item, string key) where T : class
+        {
+            ScenarioContext.Current.Set(item, key);
+        }
+
         private const string ExceptionKey = "caughtException";
         private const string TestedEventsKey = "testedEvents";
+        private const string EventSourceIdKey = "eventSourceId";
+
+        private class WrappedValue<T>
+        {
+            public WrappedValue(T guid)
+            {
+                Value = guid;
+            }
+
+            public T Value { get; set; }
+        }
+
+        public static Guid GetEventSourceId()
+        {
+            if (!ContainsKey(EventSourceIdKey))
+            {
+                var id = Guid.NewGuid();
+                Set(new WrappedValue<Guid>(id), EventSourceIdKey);
+                return id;
+            }
+            return Get<WrappedValue<Guid>>(EventSourceIdKey).Value;
+        }
+
+        public static void GivenEvent(object @event)
+        {
+            GivenEvent(GetEventSourceId(), @event);
+        }
 
         public static void GivenEvent(Guid eventSourceId, object @event)
         {
+            Console.Write("\tGiven ");
+            WriteOutObject(@event);
+
             var store = NcqrsEnvironment.Get<IEventStore>();
             var existingEvents = store.ReadFrom(eventSourceId, 0, long.MaxValue);
             long maxEventSequence = 0;
@@ -26,9 +82,17 @@ namespace ISIS.Specs
                 maxEventSequence = existingEvents.Max(e => e.EventSequence);
 
             var stream = Prepare.Events(@event)
-                .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence + 1);
+                .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence);
 
             store.Store(stream);
+        }
+
+        private static void WriteOutObject(object  @event)
+        {
+            var jsonEvent = JsonConvert.SerializeObject(@event);
+            Console.WriteLine("{0}: {1}",
+                              @event.GetType(),
+                              jsonEvent);
         }
 
         public static IEnumerable<UncommittedEvent> When(Action action)
@@ -54,12 +118,26 @@ namespace ISIS.Specs
 
         public static IEnumerable<UncommittedEvent> WhenExecuting(ICommand command)
         {
+            Console.Write("\tWhen ");
+            WriteOutObject(command);
+
             ScenarioContext.Current.Set(command);
-            return When(() =>
-                            {
-                                var cmdService = NcqrsEnvironment.Get<ICommandService>();
-                                cmdService.Execute(command);
-                            });
+            var stream = When(() =>
+                                  {
+                                      var cmdService = NcqrsEnvironment.Get<ICommandService>();
+                                      cmdService.Execute(command);
+                                  });
+            foreach (var e in stream.Select(e => e.Payload))
+            {
+                Console.Write("\tResulting ");
+                WriteOutObject(e);
+            }
+            if (HasException())
+            {
+                Console.Write("\tResulting ");
+                Console.WriteLine(GetException().ToString());
+            }
+            return stream;
         }
 
         public static bool HasException()
@@ -85,7 +163,7 @@ namespace ISIS.Specs
         }
 
 
-        private static IEnumerable<UncommittedEvent> GetEvents()
+        public static IEnumerable<UncommittedEvent> GetEvents()
         {
             return ScenarioContext.Current.Get<IEnumerable<UncommittedEvent>>();
         }

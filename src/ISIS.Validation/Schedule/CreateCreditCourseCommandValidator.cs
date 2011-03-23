@@ -27,8 +27,7 @@ namespace ISIS.Schedule
                 .WithMessage("Course number must be a 4-digit number");
 
             RuleFor(cmd => cmd.Title)
-                .NotEmpty().WithMessage("Title is required")
-                .Matches(@"^.{0,30}$").WithMessage("Title must be no more than 30 characters long.");
+                .NotEmpty().WithMessage("Title is required");
 
             RuleFor(cmd => cmd.Types)
                 .NotEmpty()
