@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using ISIS.Schedule;
 using Ncqrs;
 using Ncqrs.Eventing.Storage;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace ISIS.Specs
+namespace ISIS.Schedule
 {
     [Binding]
     public class CourseTypeSteps
@@ -33,6 +31,7 @@ namespace ISIS.Specs
                 .Where(e => e is CourseTypeAddedToCourseEvent || e is CourseTypeRemovedFromCourseEvent)
                 .Select(e => (dynamic) e)
                 .LastOrDefault();
+
             return mostRecentCourseTypeEvent == null
                        ? new CourseTypes[0]
                        : mostRecentCourseTypeEvent.CurrentTypes;

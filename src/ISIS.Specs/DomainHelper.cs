@@ -10,7 +10,7 @@ using Ncqrs.Spec;
 using Newtonsoft.Json;
 using TechTalk.SpecFlow;
 
-namespace ISIS.Specs
+namespace ISIS
 {
     public static class DomainHelper
     {

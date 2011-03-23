@@ -8,7 +8,7 @@
     <ProjectGuid>{51EC52AA-EA04-435E-8B3E-C93E086C4711}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISIS.Specs</RootNamespace>
+    <RootNamespace>ISIS</RootNamespace>
     <AssemblyName>ISIS.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -60,28 +60,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseCIPAndApprovalSteps.cs" />
-    <Compile Include="CourseCIPAndApprovalNumber.feature.cs">
+    <Compile Include="Schedule\CourseCIPAndApprovalSteps.cs" />
+    <Compile Include="Schedule\CourseCIPAndApprovalNumber.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseCIPAndApprovalNumber.feature</DependentUpon>
     </Compile>
-    <Compile Include="CourseTitleAndDescription.feature.cs">
+    <Compile Include="Schedule\CourseTitleAndDescription.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseTitleAndDescription.feature</DependentUpon>
     </Compile>
-    <Compile Include="CourseTitleAndDescriptionSteps.cs" />
-    <Compile Include="CourseTypes.feature.cs">
+    <Compile Include="Schedule\CourseTitleAndDescriptionSteps.cs" />
+    <Compile Include="Schedule\CourseTypes.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseTypes.feature</DependentUpon>
     </Compile>
-    <Compile Include="CourseTypeSteps.cs" />
+    <Compile Include="Schedule\CourseTypeSteps.cs" />
     <Compile Include="DomainHelper.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="CourseSteps.cs" />
-    <Compile Include="CreateACourse.feature.cs">
+    <Compile Include="Schedule\CourseSteps.cs" />
+    <Compile Include="Schedule\CreateACourse.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateACourse.feature</DependentUpon>
@@ -90,19 +90,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CourseCIPAndApprovalNumber.feature">
+    <None Include="Schedule\CourseCIPAndApprovalNumber.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseCIPAndApprovalNumber.feature.cs</LastGenOutput>
     </None>
-    <None Include="CourseTitleAndDescription.feature">
+    <None Include="Schedule\CourseTitleAndDescription.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseTitleAndDescription.feature.cs</LastGenOutput>
     </None>
-    <None Include="CourseTypes.feature">
+    <None Include="Schedule\CourseTypes.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseTypes.feature.cs</LastGenOutput>
     </None>
-    <None Include="CreateACourse.feature">
+    <None Include="Schedule\CreateACourse.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateACourse.feature.cs</LastGenOutput>
     </None>
@@ -128,6 +128,10 @@
     <ProjectReference Include="..\ISIS.Events\ISIS.Events.csproj">
       <Project>{135ACF78-39A8-49CB-BF46-F300EC737AC1}</Project>
       <Name>ISIS.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ISIS.SetValidation\ISIS.SetValidation.csproj">
+      <Project>{27FD4F3E-AE4E-466F-BD3B-E7D71555DAEC}</Project>
+      <Name>ISIS.SetValidation</Name>
     </ProjectReference>
     <ProjectReference Include="..\ISIS.Validation\ISIS.Validation.csproj">
       <Project>{B1A3CC97-4A9B-443D-A473-C4E4F6CF173D}</Project>

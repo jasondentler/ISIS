@@ -9,7 +9,7 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-namespace ISIS.Specs
+namespace ISIS.Schedule
 {
     using TechTalk.SpecFlow;
     

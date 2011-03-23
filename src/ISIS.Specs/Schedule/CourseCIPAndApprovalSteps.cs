@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
-using ISIS.Schedule;
 
-namespace ISIS.Specs
+namespace ISIS.Schedule
 {
     [Binding]
     public class CourseCIPAndApprovalSteps

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace ISIS.Specs
+namespace ISIS
 {
     [Binding]
     public class DomainSteps

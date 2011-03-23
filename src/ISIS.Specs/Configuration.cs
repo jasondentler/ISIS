@@ -2,7 +2,7 @@
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Config;
 
-namespace ISIS.Specs
+namespace ISIS
 {
     public class Configuration : IEnvironmentConfiguration 
     {

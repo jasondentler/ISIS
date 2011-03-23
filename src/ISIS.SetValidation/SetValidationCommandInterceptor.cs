@@ -13,7 +13,7 @@ namespace ISIS
         {
             _kernel = kernel;
         }
-
+        
         public void OnBeforeBeforeExecutorResolving(CommandContext context)
         {
         }
