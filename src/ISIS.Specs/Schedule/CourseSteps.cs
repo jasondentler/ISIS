@@ -41,7 +41,34 @@ namespace ISIS.Schedule
             string number,
             string title)
         {
-            ScenarioContext.Current.Pending();
+            var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
+
+            DomainHelper.GivenEvent(new ContinuingEducationCourseCreatedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        rubric,
+                                        number));
+            DomainHelper.GivenEvent(new CourseTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        title));
+            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        title));
+            DomainHelper.GivenEvent(new CourseCreditTypeChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        creditType));
+            var courseType = CourseTypes.CE;
+            switch (creditType)
+            {
+                case CreditTypes.ContractTrainingFunded:
+                case CreditTypes.GrantFunded:
+                case CreditTypes.WorkforceFunded:
+                    courseType = CourseTypes.CWECM;
+                    break;
+            }
+            DomainHelper.GivenEvent(new CourseTypeAddedToCourseEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        courseType,
+                                        new[] {courseType}));
         }
         
         [When(@"I create an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]

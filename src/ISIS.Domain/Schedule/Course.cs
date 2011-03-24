@@ -225,6 +225,10 @@ namespace ISIS.Schedule
 
         public void AddCourseType(CourseTypes type)
         {
+            if (!_isCreditCourse)
+                throw new InvalidStateException(
+                    "Your attempt to add the course type failed because this is a Continuing Education course. Course type is determined by credit type.");
+
             if (_courseTypes.Contains(type)) return;
             ApplyEvent(new CourseTypeAddedToCourseEvent(
                            EventSourceId,
@@ -239,6 +243,10 @@ namespace ISIS.Schedule
 
         public void RemoveCourseType(CourseTypes type)
         {
+            if (!_isCreditCourse)
+                throw new InvalidStateException(
+                    "Your attempt to remove the course type failed because this is a Continuing Education course. Course type is determined by credit type.");
+
             if (!_courseTypes.Contains(type)) return;
             
             if (_courseTypes.Count == 1)
