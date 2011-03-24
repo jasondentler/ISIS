@@ -47,6 +47,7 @@
     <Compile Include="Schedule\AddCourseTypeToCourseCommand.cs" />
     <Compile Include="Schedule\ChangeApprovalNumberCommand.cs" />
     <Compile Include="Schedule\ChangeCIPCommand.cs" />
+    <Compile Include="Schedule\ChangeCourseCreditType.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />

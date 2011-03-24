@@ -114,6 +114,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 24
  testRunner.And("the course type is CWECM");
 #line 25
+ testRunner.And("the current course type is CWECM");
+#line 26
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -126,18 +128,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Contract Training Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 28
-this.ScenarioSetup(scenarioInfo);
 #line 29
+this.ScenarioSetup(scenarioInfo);
+#line 30
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 30
- testRunner.When("I change the credit type to Contract Training Non-Funded");
 #line 31
- testRunner.Then("the credit type is Contract Training Non-Funded");
+ testRunner.When("I change the credit type to Contract Training Non-Funded");
 #line 32
- testRunner.And("the course type is CE");
+ testRunner.Then("the credit type is Contract Training Non-Funded");
 #line 33
+ testRunner.And("the course type is CE");
+#line 34
+ testRunner.And("the current course type is CE");
+#line 35
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -150,18 +154,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Special Interests on a CE course", new string[] {
                         "domain"});
-#line 36
+#line 38
 this.ScenarioSetup(scenarioInfo);
-#line 37
+#line 39
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 38
- testRunner.When("I change the credit type to Special Interests");
-#line 39
- testRunner.Then("the credit type is Special Interests");
 #line 40
- testRunner.And("the course type is CE");
+ testRunner.When("I change the credit type to Special Interests");
 #line 41
+ testRunner.Then("the credit type is Special Interests");
+#line 42
+ testRunner.And("the course type is CE");
+#line 43
+ testRunner.And("the current course type is CE");
+#line 44
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -174,18 +180,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Grant Funded on a CE course", new string[] {
                         "domain"});
-#line 44
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 45
+#line 48
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 46
- testRunner.When("I change the credit type to Grant Funded");
-#line 47
- testRunner.Then("the credit type is Grant Funded");
-#line 48
- testRunner.And("the course type is CWECM");
 #line 49
+ testRunner.When("I change the credit type to Grant Funded");
+#line 50
+ testRunner.Then("the credit type is Grant Funded");
+#line 51
+ testRunner.And("the course type is CWECM");
+#line 52
+ testRunner.And("the current course type is CWECM");
+#line 53
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -198,18 +206,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Grant Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 52
+#line 56
 this.ScenarioSetup(scenarioInfo);
-#line 53
+#line 57
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 54
+#line 58
  testRunner.When("I change the credit type to Grant Non-Funded");
-#line 55
+#line 59
  testRunner.Then("the credit type is Grant Non-Funded");
-#line 56
+#line 60
  testRunner.And("the course type is CE");
-#line 57
+#line 61
+ testRunner.And("the current course type is CE");
+#line 62
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -222,18 +232,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Workforce Funded on a CE course", new string[] {
                         "domain"});
-#line 60
+#line 65
 this.ScenarioSetup(scenarioInfo);
-#line 61
+#line 66
  testRunner.Given("I have created a Special Interests course AGEQ 1091 Routine Management of Equine " +
                     "Health");
-#line 62
+#line 67
  testRunner.When("I change the credit type to Workforce Funded");
-#line 63
+#line 68
  testRunner.Then("the credit type is Workforce Funded");
-#line 64
+#line 69
  testRunner.And("the course type is CWECM");
-#line 65
+#line 70
+ testRunner.And("the current course type is CWECM");
+#line 71
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -246,18 +258,20 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Workforce Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 68
+#line 74
 this.ScenarioSetup(scenarioInfo);
-#line 69
+#line 75
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 70
+#line 76
  testRunner.When("I change the credit type to Workforce Non-Funded");
-#line 71
+#line 77
  testRunner.Then("the credit type is Workforce Non-Funded");
-#line 72
+#line 78
  testRunner.And("the course type is CE");
-#line 73
+#line 79
+ testRunner.And("the current course type is CE");
+#line 80
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();

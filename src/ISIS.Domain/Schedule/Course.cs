@@ -17,14 +17,14 @@ namespace ISIS.Schedule
             Obsolete
         }
 
-
+        private bool _isCreditCourse;
         private string _cip;
         private string _approvalNumber;
         private string _title;
         private string _longTitle;
         private string _description;
         private Statuses _status;
-        private readonly HashSet<CourseTypes> _types = new HashSet<CourseTypes>();
+        private readonly HashSet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
 
         private Course()
         {
@@ -47,7 +47,7 @@ namespace ISIS.Schedule
             : base(eventSourceId)
         {
             var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
-            ApplyEvent(new CourseCreatedEvent(eventSourceId, rubric, number));
+            ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
@@ -55,8 +55,40 @@ namespace ISIS.Schedule
                 AddCourseType(courseType);
         }
 
-        protected void OnCourseCreated(CourseCreatedEvent @event)
+        /// <summary>
+        /// Creates a new course section
+        /// </summary>
+        /// <param name="eventSourceId">Course id</param>
+        /// <param name="rubric">Course subject. For example: BIOL</param>
+        /// <param name="number">4-digit course number. For example: 2302</param>
+        /// <param name="longTitle">Course title</param>
+        /// <param name="type">The Credit Type of the course (Grant Funded, Special Interests, etc)</param>
+        /// <example>new Course(Guid.NewGuid(), "MUSI","1001","Music for seniors");</example>
+        public Course(
+            Guid eventSourceId,
+            string rubric,
+            string number,
+            string longTitle,
+            CreditTypes type)
+            : base(eventSourceId)
         {
+            var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
+            ApplyEvent(new ContinuingEducationCourseCreatedEvent(eventSourceId, rubric, number));
+            ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
+            ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
+            ApplyEvent(new CourseActivatedEvent(eventSourceId));
+            ChangeCreditType(type);
+            ApplyEvent(new CourseCEUsChangedEvent(eventSourceId, 0M));
+        }
+
+        protected void OnCreditCourseCreated(CreditCourseCreatedEvent @event)
+        {
+            _isCreditCourse = true;
+        }
+
+        protected void OnContinuingEducationCourseCreated(ContinuingEducationCourseCreatedEvent @event)
+        {
+            _isCreditCourse = false;
         }
 
         /// <summary>
@@ -193,36 +225,82 @@ namespace ISIS.Schedule
 
         public void AddCourseType(CourseTypes type)
         {
-            if (_types.Contains(type)) return;
+            if (_courseTypes.Contains(type)) return;
             ApplyEvent(new CourseTypeAddedToCourseEvent(
                            EventSourceId,
                            type,
-                           _types.Union(new[] {type}).ToArray()));
+                           _courseTypes.Union(new[] {type}).ToArray()));
         }
 
         protected void OnCourseTypeAddedToCourse(CourseTypeAddedToCourseEvent @event)
         {
-            _types.Add(@event.TypeAdded);
+            _courseTypes.Add(@event.TypeAdded);
         }
 
         public void RemoveCourseType(CourseTypes type)
         {
-            if (!_types.Contains(type)) return;
+            if (!_courseTypes.Contains(type)) return;
             
-            if (_types.Count == 1)
+            if (_courseTypes.Count == 1)
                 throw new InvalidStateException(
                     "Your attempt to remove the course type failed because it's the last one. Each course must have at least one course type.");
 
             ApplyEvent(new CourseTypeRemovedFromCourseEvent(
                            EventSourceId,
                            type,
-                           _types.Except(new[] {type}).ToArray()));
+                           _courseTypes.Except(new[] {type}).ToArray()));
         }
 
         protected void OnCourseTypeRemovedFromCourse(CourseTypeRemovedFromCourseEvent @event)
         {
-            _types.Remove(@event.TypeRemoved);
+            _courseTypes.Remove(@event.TypeRemoved);
         }
     
+        public void ChangeCreditType(CreditTypes creditType)
+        {
+            if (_isCreditCourse)
+                throw new InvalidStateException(
+                    "Your attempt to change the credit type failed because this is a credit course. Credit type may only be set on Continuing Education courses.");
+
+
+            ApplyEvent(new CourseCreditTypeChangedEvent(EventSourceId, creditType));
+
+            var newCourseType = CourseTypes.CE;
+            switch (creditType)
+            {
+                case CreditTypes.ContractTrainingFunded:
+                case CreditTypes.GrantFunded:
+                case CreditTypes.WorkforceFunded:
+                    newCourseType = CourseTypes.CWECM;
+                    break;
+            }
+
+            var toAdd = (new[] {newCourseType})
+                .Except(_courseTypes)
+                .ToArray();
+
+            var toRemove = _courseTypes
+                .Except(new[] {newCourseType})
+                .ToArray();
+
+            foreach (var courseType in toAdd)
+                ApplyEvent(new CourseTypeAddedToCourseEvent(EventSourceId,
+                                                            courseType,
+                                                            _courseTypes.Union(new[] {courseType})));
+
+            foreach (var courseType in toRemove)
+                ApplyEvent(new CourseTypeRemovedFromCourseEvent(EventSourceId,
+                                                                courseType,
+                                                                _courseTypes.Except(new[] {courseType})));
+        }
+
+        protected void OnCourseCreditTypeChanged(CourseCreditTypeChangedEvent @event)
+        {
+        }
+
+        protected void OnCourseCEUsChanged(CourseCEUsChangedEvent @event)
+        {
+        }
+
     }
 }

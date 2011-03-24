@@ -13,9 +13,27 @@ namespace ISIS
     {
 
         [Then]
+        public void all_events_are_marked_as_events()
+        {
+            var eventAssembly = typeof (CreditCourseCreatedEvent).Assembly;
+            var unmarkedEventTypes = eventAssembly.GetTypes()
+                .Where(t => t.IsClass
+                            && !t.IsAbstract
+                            && t.Name.EndsWith("Event", StringComparison.InvariantCultureIgnoreCase)
+                            && !typeof (IEvent).IsAssignableFrom(t));
+
+            if (!unmarkedEventTypes.Any()) return;
+
+            var unmarkedEventTypeNames = unmarkedEventTypes
+                .Select(t => t.ToString());
+            Assert.Fail("The following types are not marked with IEvent: {0}",
+                        string.Join("\r\n", unmarkedEventTypeNames));
+        }
+
+        [Then]
         public void all_events_are_checked()
         {
-            var eventAssembly = typeof (CourseCreatedEvent).Assembly;
+            var eventAssembly = typeof (CreditCourseCreatedEvent).Assembly;
             var testAssembly = Assembly.GetExecutingAssembly();
 
             var eventTypes = eventAssembly.GetTypes()

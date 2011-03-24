@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace ISIS.Schedule
@@ -30,7 +27,9 @@ namespace ISIS.Schedule
         [Then(@"the CEUs are (.+)")]
         public void ThenTheCEUsAre(string ceusString)
         {
-            ScenarioContext.Current.Pending();
+            var ceus = decimal.Parse(ceusString);
+            var e = DomainHelper.GetEvent<CourseCEUsChangedEvent>();
+            Assert.That(e.Ceus, Is.EqualTo(ceus));
         }
 
     }

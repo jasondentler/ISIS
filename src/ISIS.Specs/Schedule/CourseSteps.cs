@@ -16,7 +16,7 @@ namespace ISIS.Schedule
             string number,
             string title)
         {
-            DomainHelper.GivenEvent(new CourseCreatedEvent(
+            DomainHelper.GivenEvent(new CreditCourseCreatedEvent(
                                         DomainHelper.GetEventSourceId(),
                                         rubric,
                                         number));
@@ -88,29 +88,48 @@ namespace ISIS.Schedule
             string number,
             string title)
         {
-            ScenarioContext.Current.Pending();
+            var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
+            var cmd = new CreateContinuingEducationCourseCommand()
+                          {
+                              CourseId = DomainHelper.GetEventSourceId(),
+                              Rubric = rubric,
+                              CourseNumber = number,
+                              Title = title,
+                              Type = creditType
+                          };
+            DomainHelper.WhenExecuting(cmd);
         }
 
 
-        [Then(@"the course is created")]
-        public void ThenTheCourseShouldBeCreated()
+        [Then(@"the credit course is created")]
+        public void ThenTheCreditCourseShouldBeCreated()
         {
-            var cmd = DomainHelper.GetCommand<CreateCreditCourseCommand>();
-            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
+            var cmd = DomainHelper.GetCommand();
+            var e = DomainHelper.GetEvent<CreditCourseCreatedEvent>();
+            Assert.That(e.CourseId, Is.EqualTo(cmd.CourseId));
+        }
+
+        [Then(@"the CE course is created")]
+        public void ThenTheCECourseShouldBeCreated()
+        {
+            var cmd = DomainHelper.GetCommand();
+            var e = DomainHelper.GetEvent<ContinuingEducationCourseCreatedEvent>();
             Assert.That(e.CourseId, Is.EqualTo(cmd.CourseId));
         }
 
         [Then(@"the course rubric is (.*)")]
         public void ThenTheCourseRubricShouldBe(string rubric)
         {
-            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
+            var e = (dynamic) DomainHelper.GetEvent<CreditCourseCreatedEvent>()
+                        ?? DomainHelper.GetEvent<ContinuingEducationCourseCreatedEvent>();
             Assert.That(e.Rubric, Is.EqualTo(rubric));
         }
 
         [Then(@"the course number is (.*)")]
         public void ThenTheCourseNumberShouldBe(string number)
         {
-            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditCourseCreatedEvent>()
+                        ?? DomainHelper.GetEvent<ContinuingEducationCourseCreatedEvent>();
             Assert.That(e.Number, Is.EqualTo(number));
         }
 

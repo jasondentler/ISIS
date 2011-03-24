@@ -12,8 +12,6 @@ namespace ISIS.Schedule
     public class CreateContinuingEducationCourseCommandValidator : AbstractValidator<CreateContinuingEducationCourseCommand>
     {
 
-        private static IEnumerable<CreditTypes> _creditTypesValues = Enum.GetValues(typeof (CreditTypes)).Cast<CreditTypes>();
-
         public CreateContinuingEducationCourseCommandValidator()
         {
 
@@ -37,7 +35,7 @@ namespace ISIS.Schedule
                 .NotEmpty().WithMessage("Title is required");
 
             RuleFor(cmd => cmd.Type)
-                .Must((cmd, type) => _creditTypesValues.Contains(type))
+                .Must(type => Enum.IsDefined(typeof (CreditTypes), type))
                 .WithMessage("You must specify a valid credit type.");
 
         }

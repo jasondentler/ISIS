@@ -6,7 +6,7 @@
 @domain
 Scenario: Create a credit course
 	When I create an ACAD course BIOL 1301 Introductory Biology
-	Then the course is created
+	Then the credit course is created
 	And the course rubric is BIOL
 	And the course number is 1301
 	And the course title is Introductory Biology
@@ -19,7 +19,7 @@ Scenario: Create a credit course
 @domain
 Scenario: Create a CE course
 	When I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
-	Then the course is created
+	Then the CE course is created
 	And the course rubric is AGEQ
 	And the course number is 1091
 	And the course title is Routine Management of Equine H

@@ -22,6 +22,7 @@ Scenario: Set the credit type to Contract Training Funded on a CE course
 	When I change the credit type to Contract Training Funded
 	Then the credit type is Contract Training Funded
 	And the course type is CWECM
+	And the current course type is CWECM
 	And it should do nothing else
 
 @domain
@@ -30,6 +31,7 @@ Scenario: Set the credit type to Contract Training Non-Funded on a CE course
 	When I change the credit type to Contract Training Non-Funded
 	Then the credit type is Contract Training Non-Funded
 	And the course type is CE
+	And the current course type is CE
 	And it should do nothing else
 
 @domain
@@ -38,6 +40,7 @@ Scenario: Set the credit type to Special Interests on a CE course
 	When I change the credit type to Special Interests
 	Then the credit type is Special Interests
 	And the course type is CE
+	And the current course type is CE
 	And it should do nothing else
 
 @domain
@@ -46,6 +49,7 @@ Scenario: Set the credit type to Grant Funded on a CE course
 	When I change the credit type to Grant Funded
 	Then the credit type is Grant Funded
 	And the course type is CWECM
+	And the current course type is CWECM
 	And it should do nothing else
 
 @domain
@@ -54,6 +58,7 @@ Scenario: Set the credit type to Grant Non-Funded on a CE course
 	When I change the credit type to Grant Non-Funded
 	Then the credit type is Grant Non-Funded
 	And the course type is CE
+	And the current course type is CE
 	And it should do nothing else
 
 @domain
@@ -62,6 +67,7 @@ Scenario: Set the credit type to Workforce Funded on a CE course
 	When I change the credit type to Workforce Funded
 	Then the credit type is Workforce Funded
 	And the course type is CWECM
+	And the current course type is CWECM
 	And it should do nothing else
 
 @domain
@@ -70,4 +76,5 @@ Scenario: Set the credit type to Workforce Non-Funded on a CE course
 	When I change the credit type to Workforce Non-Funded
 	Then the credit type is Workforce Non-Funded
 	And the course type is CE
+	And the current course type is CE
 	And it should do nothing else

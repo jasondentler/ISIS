@@ -27,6 +27,13 @@ namespace ISIS.Schedule
         NROTC,
 
         [Description("Exempt from Rider 50")]
-        R50
+        R50,
+
+        [Description("CE WECM")]
+        CWECM,
+
+        [Description("CE")]
+        CE
+
     }
 }

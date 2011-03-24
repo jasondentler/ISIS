@@ -65,7 +65,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.When("I create an ACAD course BIOL 1301 Introductory Biology");
 #line 9
- testRunner.Then("the course is created");
+ testRunner.Then("the credit course is created");
 #line 10
  testRunner.And("the course rubric is BIOL");
 #line 11
@@ -98,7 +98,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
  testRunner.When("I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health");
 #line 22
- testRunner.Then("the course is created");
+ testRunner.Then("the CE course is created");
 #line 23
  testRunner.And("the course rubric is AGEQ");
 #line 24

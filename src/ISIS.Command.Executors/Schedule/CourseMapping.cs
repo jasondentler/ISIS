@@ -13,6 +13,11 @@ namespace ISIS.Schedule
                 .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Types))
                 .RegisterWith(commandService);
 
+            Map.Command<CreateContinuingEducationCourseCommand>()
+                .ToAggregateRoot<Course>()
+                .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Type))
+                .RegisterWith(commandService);
+
             Map.Command<ChangeCIPCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
@@ -77,6 +82,12 @@ namespace ISIS.Schedule
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.RemoveCourseType(cmd.Type))
+                .RegisterWith(commandService);
+            
+            Map.Command<ChangeCourseCreditType>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.ChangeCreditType(cmd.Type))
                 .RegisterWith(commandService);
 
         }

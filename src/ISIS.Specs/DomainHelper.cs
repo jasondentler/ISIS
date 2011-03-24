@@ -156,10 +156,15 @@ namespace ISIS
             return (T) GetException();
         }
 
+        public static dynamic GetCommand()
+        {
+            return ScenarioContext.Current.Get<ICommand>();
+        }
+
         public static T GetCommand<T>()
             where T : ICommand
         {
-            return (T) ScenarioContext.Current.Get<ICommand>();
+            return (T) GetCommand();
         }
 
 

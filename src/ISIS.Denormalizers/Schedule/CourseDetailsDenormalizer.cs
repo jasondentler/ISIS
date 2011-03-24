@@ -9,7 +9,7 @@ namespace ISIS.Schedule
 {
     public class CourseDetailsDenormalizer : 
         Denormalizer<CourseDetails>, 
-        IEventHandler<CourseCreatedEvent>,
+        IEventHandler<CreditCourseCreatedEvent>,
         IEventHandler<CourseTitleChangedEvent>,
         IEventHandler<CourseLongTitleChangedEvent>,
         IEventHandler<CourseDescriptionChangedEvent>,
@@ -26,7 +26,7 @@ namespace ISIS.Schedule
         public CourseDetailsDenormalizer(IDialect db)
             : base(db)
         {
-            CreateMap<CourseCreatedEvent>()
+            CreateMap<CreditCourseCreatedEvent>()
                 .ForMember(c => c.Status, mo => mo.UseValue(CourseStatuses.Active));
 
             CreateMap<CourseTitleChangedEvent>();
@@ -50,7 +50,7 @@ namespace ISIS.Schedule
             Execute(cmd);
         }
 
-        public void Handle(IPublishedEvent<CourseCreatedEvent> evnt)
+        public void Handle(IPublishedEvent<CreditCourseCreatedEvent> evnt)
         {
             Upsert(evnt);
         }

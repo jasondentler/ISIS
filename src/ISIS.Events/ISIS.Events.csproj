@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEvent.cs" />
+    <Compile Include="Schedule\ContinuingEducationCourseCreatedEvent.cs" />
+    <Compile Include="Schedule\CourseCEUsChangedEvent.cs" />
+    <Compile Include="Schedule\CourseCreditTypeChangedEvent.cs" />
     <Compile Include="Schedule\CourseTypeRemovedFromCourseEvent.cs" />
     <Compile Include="Schedule\CourseMadeObsoleteEvent.cs" />
     <Compile Include="Schedule\CourseMadePendingEvent.cs" />
@@ -54,7 +57,7 @@
     <Compile Include="Schedule\CourseApprovalNumberChangedEvent.cs" />
     <Compile Include="Schedule\CourseCIPChangedEvent.cs" />
     <Compile Include="Schedule\CourseTypeAddedToCourseEvent.cs" />
-    <Compile Include="Schedule\CourseCreatedEvent.cs" />
+    <Compile Include="Schedule\CreditCourseCreatedEvent.cs" />
     <Compile Include="Schedule\CourseTitleChangedEvent.cs" />
     <Compile Include="Schedule\DepartmentCreatedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
