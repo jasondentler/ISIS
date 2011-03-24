@@ -85,6 +85,43 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a CE course")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void CreateACECourse()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a CE course", new string[] {
+                        "domain"});
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line 21
+ testRunner.When("I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health");
+#line 22
+ testRunner.Then("the course is created");
+#line 23
+ testRunner.And("the course rubric is AGEQ");
+#line 24
+ testRunner.And("the course number is 1091");
+#line 25
+ testRunner.And("the course title is Routine Management of Equine H");
+#line 26
+ testRunner.And("the course long title is Routine Management of Equine Health");
+#line 27
+ testRunner.And("the course is active");
+#line 28
+ testRunner.And("the CWECM course type is added");
+#line 29
+ testRunner.And("the current course type is CWECM");
+#line 30
+ testRunner.And("the credit type is Workforce Funded");
+#line 31
+ testRunner.And("the CEUs are 0");
+#line 32
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

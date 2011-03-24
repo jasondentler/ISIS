@@ -7,25 +7,10 @@ namespace ISIS.Schedule
     [Binding]
     public class CourseSteps 
     {
-        
-        [BeforeScenario("domain")]
-        public void Setup()
-        {
-            Configuration.Configure();
-        }
 
-        [Given(@"I have created an (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
-        public void GivenIHaveCreatedAnCourse(
-            string courseTypeString,
-            string rubric,
-            string number,
-            string title)
-        {
-            GivenIHaveCreatedACourse(courseTypeString, rubric, number, title);
-        }
-
-        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
-        public void GivenIHaveCreatedACourse(
+        [Given(@"I have created an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        public void GivenIHaveCreatedACreditCourse(
             string courseTypeString,
             string rubric,
             string number,
@@ -49,19 +34,19 @@ namespace ISIS.Schedule
                                             courseTypes));
         }
 
-
-        [When(@"I create an (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
-        public void WhenICreateAnCourse(
-            string courseTypeString,
+        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) (.*)")]
+        public void GivenIHaveCreatedContinuingEducationCourse(
+            string creditTypeString,
             string rubric,
             string number,
             string title)
         {
-            WhenICreateACourse(courseTypeString, rubric, number, title);
+            ScenarioContext.Current.Pending();
         }
-
-        [When(@"I create a (.*) course ([A-Z]{4}) (\d{4}) (.*)")]
-        public void WhenICreateACourse(
+        
+        [When(@"I create an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        public void WhenICreateACreditCourse(
             string courseTypeString,
             string rubric,
             string number,
@@ -96,6 +81,16 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) (.*)")]
+        public void WhenICreateAContinuingEducationCourse(
+            string creditTypeString,
+            string rubric,
+            string number,
+            string title)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
 
         [Then(@"the course is created")]
         public void ThenTheCourseShouldBeCreated()
@@ -125,6 +120,9 @@ namespace ISIS.Schedule
             var e = DomainHelper.GetEvent<CourseActivatedEvent>();
             Assert.That(e, Is.Not.Null);
         }
+
+
+
 
 
     }

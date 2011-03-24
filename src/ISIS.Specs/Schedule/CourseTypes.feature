@@ -50,3 +50,17 @@ Scenario: Removing the last course type
 	When I remove the ACAD course type
 	Then the aggregate state is invalid
 	And the error is "Your attempt to remove the course type failed because it's the last one. Each course must have at least one course type."
+
+@domain
+Scenario: Dont allow adding of course types on CE courses
+	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	When I add the CWECM course type
+	Then the aggregate state is invalid
+	And the error is "Your attempt to add the course type failed because this is a Continuing Education course. Course type is determined by credit type."
+
+@domain
+Scenario: Dont allow removing of course types on CE courses
+	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	When I remove the CWECM course type
+	Then the aggregate state is invalid
+	And the error is "Your attempt to remove the course type failed because this is a Continuing Education course. Course type is determined by credit type."

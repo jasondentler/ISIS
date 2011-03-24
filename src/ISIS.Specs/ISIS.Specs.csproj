@@ -60,18 +60,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Schedule\CourseCEUs.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseCEUs.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule\CourseCEUSteps.cs" />
     <Compile Include="Schedule\CourseCIPAndApprovalSteps.cs" />
     <Compile Include="Schedule\CourseCIPAndApprovalNumber.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseCIPAndApprovalNumber.feature</DependentUpon>
     </Compile>
+    <Compile Include="Schedule\CourseCreditTypeSteps.cs" />
     <Compile Include="Schedule\CourseTitleAndDescription.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseTitleAndDescription.feature</DependentUpon>
     </Compile>
     <Compile Include="Schedule\CourseTitleAndDescriptionSteps.cs" />
+    <Compile Include="Schedule\CourseTopicCodes.cs" />
+    <Compile Include="Schedule\CourseTopicCodes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseTopicCodes.feature</DependentUpon>
+    </Compile>
     <Compile Include="Schedule\CourseTypes.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,8 +101,17 @@
     </Compile>
     <Compile Include="DomainSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\CourseCreditTypes.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseCreditTypes.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Schedule\CourseCEUs.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseCEUs.feature.cs</LastGenOutput>
+    </None>
     <None Include="Schedule\CourseCIPAndApprovalNumber.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseCIPAndApprovalNumber.feature.cs</LastGenOutput>
@@ -97,6 +119,10 @@
     <None Include="Schedule\CourseTitleAndDescription.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseTitleAndDescription.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Schedule\CourseTopicCodes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseTopicCodes.feature.cs</LastGenOutput>
     </None>
     <None Include="Schedule\CourseTypes.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -107,6 +133,10 @@
       <LastGenOutput>CreateACourse.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Schedule\CourseCreditTypes.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseCreditTypes.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Command.Executors\ISIS.Command.Executors.csproj">

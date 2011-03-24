@@ -7,6 +7,13 @@ namespace ISIS
     [Binding]
     public class DomainSteps
     {
+
+        [BeforeScenario("domain")]
+        public void Setup()
+        {
+            Configuration.Configure();
+        }
+
         [Then(@"it should do nothing")]
         public void ThenItShouldDoNothing()
         {

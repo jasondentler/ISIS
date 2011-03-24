@@ -198,6 +198,52 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Dont allow adding of course types on CE courses")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void DontAllowAddingOfCourseTypesOnCECourses()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dont allow adding of course types on CE courses", new string[] {
+                        "domain"});
+#line 55
+this.ScenarioSetup(scenarioInfo);
+#line 56
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
+                    "ealth");
+#line 57
+ testRunner.When("I add the CWECM course type");
+#line 58
+ testRunner.Then("the aggregate state is invalid");
+#line 59
+ testRunner.And("the error is \"Your attempt to add the course type failed because this is a Contin" +
+                    "uing Education course. Course type is determined by credit type.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Dont allow removing of course types on CE courses")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void DontAllowRemovingOfCourseTypesOnCECourses()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Dont allow removing of course types on CE courses", new string[] {
+                        "domain"});
+#line 62
+this.ScenarioSetup(scenarioInfo);
+#line 63
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
+                    "ealth");
+#line 64
+ testRunner.When("I remove the CWECM course type");
+#line 65
+ testRunner.Then("the aggregate state is invalid");
+#line 66
+ testRunner.And("the error is \"Your attempt to remove the course type failed because this is a Con" +
+                    "tinuing Education course. Course type is determined by credit type.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion
