@@ -51,6 +51,7 @@
     <Compile Include="Schedule\ChangeCourseLongTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
+    <Compile Include="Schedule\ChangeCourseCEUsCommand.cs" />
     <Compile Include="Schedule\CreateContinuingEducationCourseCommand.cs" />
     <Compile Include="Schedule\MakeCourseObsoleteCommand.cs" />
     <Compile Include="Schedule\CreateCreditCourseCommand.cs" />

@@ -14,6 +14,24 @@ namespace ISIS
     {
 
         [Then]
+        public void all_commands_are_named_properly()
+        {
+            var commandAssembly = typeof(CreateCreditCourseCommand).Assembly;
+            var commandTypes = commandAssembly.GetTypes()
+                .Where(t => t.IsClass
+                            && !t.IsAbstract
+                            && typeof(ICommand).IsAssignableFrom(t));
+            var misnamedCommandTypes = commandTypes
+                .Where(t => !t.Name.EndsWith("Command"));
+
+            if (misnamedCommandTypes.Any())
+                Assert.Fail("The following commands are do not follow the naming convention: {0}",
+                            string.Join("\r\n",
+                                        misnamedCommandTypes
+                                            .Select(t => t.Name)));
+        }
+
+        [Then]
         public void all_commands_are_checked()
         {
             var commandAssembly = typeof(CreateCreditCourseCommand).Assembly;

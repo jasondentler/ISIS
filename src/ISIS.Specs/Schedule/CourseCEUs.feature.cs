@@ -92,7 +92,29 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
  testRunner.Then("the command is invalid");
 #line 18
- testRunner.And("the error is \"CEUs must be a positive number\"");
+ testRunner.And("the error is \"CEUs can\'t be negative\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change CEUs to an unreasonable number")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeCEUsToAnUnreasonableNumber()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change CEUs to an unreasonable number", new string[] {
+                        "domain"});
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 22
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
+                    "ealth");
+#line 23
+ testRunner.When("I change the CEUs to 1000.5");
+#line 24
+ testRunner.Then("the command is invalid");
+#line 25
+ testRunner.And("the error is \"CEUs must be less than 1000\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -104,18 +126,18 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change CEUs to zero", new string[] {
                         "domain"});
-#line 21
+#line 28
 this.ScenarioSetup(scenarioInfo);
-#line 22
+#line 29
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 23
+#line 30
  testRunner.And("I have changed the CEUs to 0.70");
-#line 24
+#line 31
  testRunner.When("I change the CEUs to 0");
-#line 25
+#line 32
  testRunner.Then("the CEUs are 0");
-#line 26
+#line 33
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -128,16 +150,16 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change CEUs to the same number", new string[] {
                         "domain"});
-#line 29
+#line 36
 this.ScenarioSetup(scenarioInfo);
-#line 30
+#line 37
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 31
+#line 38
  testRunner.And("I have changed the CEUs to 0.70");
-#line 32
+#line 39
  testRunner.When("I change the CEUs to 0.70");
-#line 33
+#line 40
  testRunner.Then("it should do nothing");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -150,14 +172,14 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CEUs default to zero", new string[] {
                         "domain"});
-#line 36
+#line 43
 this.ScenarioSetup(scenarioInfo);
-#line 37
+#line 44
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 38
+#line 45
  testRunner.When("I change the CEUs to 0");
-#line 39
+#line 46
  testRunner.Then("it should do nothing");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -170,15 +192,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Credit courses don\'t use CEUs", new string[] {
                         "domain"});
-#line 42
+#line 49
 this.ScenarioSetup(scenarioInfo);
-#line 43
+#line 50
  testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
-#line 44
+#line 51
  testRunner.When("I change the CEUs to 0");
-#line 45
+#line 52
  testRunner.Then("the aggregate state is invalid");
-#line 46
+#line 53
  testRunner.And("the error is \"Your attempt to change the CEUs failed because this is a credit cou" +
                     "rse. CEUs may only be set on Continuing Education courses.\"");
 #line hidden

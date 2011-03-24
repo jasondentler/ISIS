@@ -53,6 +53,7 @@
     <Compile Include="Schedule\ChangeCourseLongTitleCommandValidator.cs" />
     <Compile Include="Schedule\AddCourseTypeToCourseCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseCreditTypeValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseCEUsCommandValidator.cs" />
     <Compile Include="Schedule\CreateContinuingEducationCourseCommandValidator.cs" />
     <Compile Include="Schedule\CourseTypesModelValidator.cs" />
     <Compile Include="Schedule\RemoveCourseTypeFromCourseCommandValidator.cs" />

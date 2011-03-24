@@ -11,7 +11,10 @@ namespace ISIS.Schedule
         public void GivenIHaveChangedTheCEUsTo(
             string ceusString)
         {
-            ScenarioContext.Current.Pending();
+            var ceus = decimal.Parse(ceusString);
+            DomainHelper.GivenEvent(new CourseCEUsChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
+                                        ceus));
         }
 
 
@@ -20,7 +23,14 @@ namespace ISIS.Schedule
         public void WhenIChangeTheCEUsTo(
             string ceusString)
         {
-            ScenarioContext.Current.Pending();
+            var ceus = decimal.Parse(ceusString);
+
+            var cmd = new ChangeCourseCEUsCommand()
+                          {
+                              CourseId = DomainHelper.GetEventSourceId(),
+                              CEUs = ceus
+                          };
+            DomainHelper.WhenExecuting(cmd);
         }
 
 

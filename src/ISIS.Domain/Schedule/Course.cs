@@ -26,6 +26,7 @@ namespace ISIS.Schedule
         private Statuses _status;
         private readonly HashSet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
         private CreditTypes _creditType;
+        private decimal _ceus;
 
         private Course()
         {
@@ -310,8 +311,21 @@ namespace ISIS.Schedule
             _creditType = @event.CreditType;
         }
 
+        public void ChangeCEUs(decimal ceus)
+        {
+            if (_isCreditCourse)
+                throw new InvalidStateException(
+                    "Your attempt to change the CEUs failed because this is a credit course. CEUs may only be set on Continuing Education courses.");
+
+            if (_ceus == ceus)
+                return;
+
+            ApplyEvent(new CourseCEUsChangedEvent(EventSourceId, ceus));
+        }
+
         protected void OnCourseCEUsChanged(CourseCEUsChangedEvent @event)
         {
+            _ceus = @event.Ceus;
         }
 
     }

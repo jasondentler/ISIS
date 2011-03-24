@@ -90,6 +90,12 @@ namespace ISIS.Schedule
                 .ToCallOn((cmd, course) => course.ChangeCreditType(cmd.Type))
                 .RegisterWith(commandService);
 
+            Map.Command<ChangeCourseCEUsCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) => course.ChangeCEUs(cmd.CEUs))
+                .RegisterWith(commandService);
+
         }
 
     }

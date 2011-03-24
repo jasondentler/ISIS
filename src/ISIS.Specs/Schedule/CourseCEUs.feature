@@ -15,7 +15,14 @@ Scenario: Change CEUs to a negative number
 	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
 	When I change the CEUs to -0.10
 	Then the command is invalid
-	And the error is "CEUs must be a positive number"
+	And the error is "CEUs can't be negative"
+
+@domain
+Scenario: Change CEUs to an unreasonable number
+	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	When I change the CEUs to 1000.5
+	Then the command is invalid
+	And the error is "CEUs must be less than 1000"
 
 @domain
 Scenario: Change CEUs to zero
