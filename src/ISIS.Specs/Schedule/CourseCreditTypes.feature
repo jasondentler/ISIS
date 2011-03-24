@@ -16,6 +16,26 @@ Scenario: Set the credit type to the same credit type
 	When I change the credit type to Workforce Funded
 	Then it should do nothing
 
+@domain 
+Scenario: Switch from funded to non-funded credit type
+	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	When I change the credit type to Workforce Non-Funded
+	Then the credit type is Workforce Non-Funded
+	And the CE course type is added
+	And the CWECM course type is removed
+	And the current course type is CE
+	And it should do nothing else
+
+@domain
+Scenario: Switch from non-funded to funded credit type
+	Given I have created a Workforce Non-Funded course AGEQ 1091 Routine Management of Equine Health
+	When I change the credit type to Workforce Funded
+	Then the credit type is Workforce Funded
+	And the CWECM course type is added
+	And the CE course type is removed
+	And the current course type is CWECM
+	And it should do nothing else
+
 @domain
 Scenario: Set the credit type to Contract Training Funded on a CE course
 	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
@@ -23,7 +43,6 @@ Scenario: Set the credit type to Contract Training Funded on a CE course
 	Then the credit type is Contract Training Funded
 	And the course type is CWECM
 	And the current course type is CWECM
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Contract Training Non-Funded on a CE course
@@ -32,7 +51,6 @@ Scenario: Set the credit type to Contract Training Non-Funded on a CE course
 	Then the credit type is Contract Training Non-Funded
 	And the course type is CE
 	And the current course type is CE
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Special Interests on a CE course
@@ -41,7 +59,6 @@ Scenario: Set the credit type to Special Interests on a CE course
 	Then the credit type is Special Interests
 	And the course type is CE
 	And the current course type is CE
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Grant Funded on a CE course
@@ -50,7 +67,6 @@ Scenario: Set the credit type to Grant Funded on a CE course
 	Then the credit type is Grant Funded
 	And the course type is CWECM
 	And the current course type is CWECM
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Grant Non-Funded on a CE course
@@ -59,7 +75,6 @@ Scenario: Set the credit type to Grant Non-Funded on a CE course
 	Then the credit type is Grant Non-Funded
 	And the course type is CE
 	And the current course type is CE
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Workforce Funded on a CE course
@@ -68,7 +83,6 @@ Scenario: Set the credit type to Workforce Funded on a CE course
 	Then the credit type is Workforce Funded
 	And the course type is CWECM
 	And the current course type is CWECM
-	And it should do nothing else
 
 @domain
 Scenario: Set the credit type to Workforce Non-Funded on a CE course
@@ -77,4 +91,3 @@ Scenario: Set the credit type to Workforce Non-Funded on a CE course
 	Then the credit type is Workforce Non-Funded
 	And the course type is CE
 	And the current course type is CE
-	And it should do nothing else

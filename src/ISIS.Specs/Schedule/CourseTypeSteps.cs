@@ -18,7 +18,7 @@ namespace ISIS.Schedule
                 .Split(' ')
                 .Select(s => s.Trim())
                 .Where(s => !String.IsNullOrWhiteSpace(s))
-                .Select(s => Enum.Parse(typeof(CourseTypes), s))
+                .Select(s => Enum.Parse(typeof (CourseTypes), s))
                 .Cast<CourseTypes>();
         }
 
@@ -81,11 +81,10 @@ namespace ISIS.Schedule
         }
 
         [Then(@"the course type is (.*)")]
-        public void ThenTheCourseTypeShouldBe(string courseTypes)
+        public void ThenTheCourseTypeIs(string courseTypes)
         {
-            var expected = ParseCourseTypes(courseTypes);
-            var events = DomainHelper.GetEvents<CourseTypeAddedToCourseEvent>();
-            var actual = events.Select(e => e.TypeAdded);
+            var expected = ParseCourseTypes(courseTypes).ToArray();
+            var actual = GetCurrentCourseType();
             Assert.That(expected, Is.EqualTo(actual));
         }
 
@@ -123,14 +122,7 @@ namespace ISIS.Schedule
 
         private void AssertCurrentCourseTypeIs(IEnumerable<CourseTypes> courseTypes)
         {
-            var @event = DomainHelper.GetEvents()
-                .Select(e => e.Payload)
-                .Where(e => e is CourseTypeAddedToCourseEvent || e is CourseTypeRemovedFromCourseEvent)
-                .Select(e => (dynamic) e)
-                .Last();
-
-            var currentTypes = (IEnumerable<CourseTypes>) @event.CurrentTypes;
-            var actual = currentTypes.Distinct().OrderBy(ct => ct);
+            var actual = GetCurrentCourseType();
             var expected = courseTypes.Distinct().OrderBy(ct => ct);
             Assert.That(actual, Is.EqualTo(expected));
         }

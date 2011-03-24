@@ -25,6 +25,7 @@ namespace ISIS.Schedule
         private string _description;
         private Statuses _status;
         private readonly HashSet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
+        private CreditTypes _creditType;
 
         private Course()
         {
@@ -270,6 +271,8 @@ namespace ISIS.Schedule
                 throw new InvalidStateException(
                     "Your attempt to change the credit type failed because this is a credit course. Credit type may only be set on Continuing Education courses.");
 
+            if (_creditType == creditType)
+                return;
 
             ApplyEvent(new CourseCreditTypeChangedEvent(EventSourceId, creditType));
 
@@ -304,6 +307,7 @@ namespace ISIS.Schedule
 
         protected void OnCourseCreditTypeChanged(CourseCreditTypeChangedEvent @event)
         {
+            _creditType = @event.CreditType;
         }
 
         protected void OnCourseCEUsChanged(CourseCEUsChangedEvent @event)

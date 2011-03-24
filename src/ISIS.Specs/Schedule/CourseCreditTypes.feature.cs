@@ -96,11 +96,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Set the credit type to Contract Training Funded on a CE course")]
+        [NUnit.Framework.DescriptionAttribute("Switch from funded to non-funded credit type")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void SetTheCreditTypeToContractTrainingFundedOnACECourse()
+        public virtual void SwitchFromFundedToNon_FundedCreditType()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Contract Training Funded on a CE course", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Switch from funded to non-funded credit type", new string[] {
                         "domain"});
 #line 20
 this.ScenarioSetup(scenarioInfo);
@@ -108,15 +108,69 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
 #line 22
- testRunner.When("I change the credit type to Contract Training Funded");
+ testRunner.When("I change the credit type to Workforce Non-Funded");
 #line 23
- testRunner.Then("the credit type is Contract Training Funded");
+ testRunner.Then("the credit type is Workforce Non-Funded");
 #line 24
- testRunner.And("the course type is CWECM");
+ testRunner.And("the CE course type is added");
 #line 25
- testRunner.And("the current course type is CWECM");
+ testRunner.And("the CWECM course type is removed");
 #line 26
+ testRunner.And("the current course type is CE");
+#line 27
  testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Switch from non-funded to funded credit type")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void SwitchFromNon_FundedToFundedCreditType()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Switch from non-funded to funded credit type", new string[] {
+                        "domain"});
+#line 30
+this.ScenarioSetup(scenarioInfo);
+#line 31
+ testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 Routine Management of Equi" +
+                    "ne Health");
+#line 32
+ testRunner.When("I change the credit type to Workforce Funded");
+#line 33
+ testRunner.Then("the credit type is Workforce Funded");
+#line 34
+ testRunner.And("the CWECM course type is added");
+#line 35
+ testRunner.And("the CE course type is removed");
+#line 36
+ testRunner.And("the current course type is CWECM");
+#line 37
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Set the credit type to Contract Training Funded on a CE course")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void SetTheCreditTypeToContractTrainingFundedOnACECourse()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Contract Training Funded on a CE course", new string[] {
+                        "domain"});
+#line 40
+this.ScenarioSetup(scenarioInfo);
+#line 41
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
+                    "ealth");
+#line 42
+ testRunner.When("I change the credit type to Contract Training Funded");
+#line 43
+ testRunner.Then("the credit type is Contract Training Funded");
+#line 44
+ testRunner.And("the course type is CWECM");
+#line 45
+ testRunner.And("the current course type is CWECM");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -128,21 +182,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Contract Training Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 29
+#line 48
 this.ScenarioSetup(scenarioInfo);
-#line 30
+#line 49
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 31
+#line 50
  testRunner.When("I change the credit type to Contract Training Non-Funded");
-#line 32
+#line 51
  testRunner.Then("the credit type is Contract Training Non-Funded");
-#line 33
+#line 52
  testRunner.And("the course type is CE");
-#line 34
+#line 53
  testRunner.And("the current course type is CE");
-#line 35
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -154,21 +206,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Special Interests on a CE course", new string[] {
                         "domain"});
-#line 38
+#line 56
 this.ScenarioSetup(scenarioInfo);
-#line 39
+#line 57
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 40
+#line 58
  testRunner.When("I change the credit type to Special Interests");
-#line 41
+#line 59
  testRunner.Then("the credit type is Special Interests");
-#line 42
+#line 60
  testRunner.And("the course type is CE");
-#line 43
+#line 61
  testRunner.And("the current course type is CE");
-#line 44
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -180,21 +230,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Grant Funded on a CE course", new string[] {
                         "domain"});
-#line 47
+#line 64
 this.ScenarioSetup(scenarioInfo);
-#line 48
+#line 65
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 49
+#line 66
  testRunner.When("I change the credit type to Grant Funded");
-#line 50
+#line 67
  testRunner.Then("the credit type is Grant Funded");
-#line 51
+#line 68
  testRunner.And("the course type is CWECM");
-#line 52
+#line 69
  testRunner.And("the current course type is CWECM");
-#line 53
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -206,21 +254,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Grant Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 56
+#line 72
 this.ScenarioSetup(scenarioInfo);
-#line 57
+#line 73
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 58
+#line 74
  testRunner.When("I change the credit type to Grant Non-Funded");
-#line 59
+#line 75
  testRunner.Then("the credit type is Grant Non-Funded");
-#line 60
+#line 76
  testRunner.And("the course type is CE");
-#line 61
+#line 77
  testRunner.And("the current course type is CE");
-#line 62
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -232,21 +278,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Workforce Funded on a CE course", new string[] {
                         "domain"});
-#line 65
+#line 80
 this.ScenarioSetup(scenarioInfo);
-#line 66
+#line 81
  testRunner.Given("I have created a Special Interests course AGEQ 1091 Routine Management of Equine " +
                     "Health");
-#line 67
+#line 82
  testRunner.When("I change the credit type to Workforce Funded");
-#line 68
+#line 83
  testRunner.Then("the credit type is Workforce Funded");
-#line 69
+#line 84
  testRunner.And("the course type is CWECM");
-#line 70
+#line 85
  testRunner.And("the current course type is CWECM");
-#line 71
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -258,21 +302,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set the credit type to Workforce Non-Funded on a CE course", new string[] {
                         "domain"});
-#line 74
+#line 88
 this.ScenarioSetup(scenarioInfo);
-#line 75
+#line 89
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 76
+#line 90
  testRunner.When("I change the credit type to Workforce Non-Funded");
-#line 77
+#line 91
  testRunner.Then("the credit type is Workforce Non-Funded");
-#line 78
+#line 92
  testRunner.And("the course type is CE");
-#line 79
+#line 93
  testRunner.And("the current course type is CE");
-#line 80
- testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

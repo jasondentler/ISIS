@@ -11,7 +11,7 @@ namespace ISIS.Schedule
         [Description("Contract Training Non-Funded")]
         ContractTrainingNonFunded = 2,
 
-        [Description("Special Interests Funded")]
+        [Description("Special Interests")]
         SpecialInterests = 3,
 
         [Description("Grant Funded")]
