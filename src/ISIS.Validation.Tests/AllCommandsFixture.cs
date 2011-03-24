@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using ISIS.Schedule;
 using Ncqrs.Commanding;
-using Ncqrs.Eventing;
 using Ncqrs.Spec;
 using NUnit.Framework;
 
@@ -15,7 +14,7 @@ namespace ISIS
     {
 
         [Then]
-        public void all_events_are_checked()
+        public void all_commands_are_checked()
         {
             var commandAssembly = typeof(CreateCreditCourseCommand).Assembly;
             var testAssembly = Assembly.GetExecutingAssembly();
