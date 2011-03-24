@@ -2,10 +2,10 @@
 
 namespace ISIS.Schedule
 {
-    public class CreditCourseCreatedEvent : IEvent 
+    public class CourseCreatedEvent : IEvent 
     {
 
-        public CreditCourseCreatedEvent(Guid courseId, string rubric, string number)
+        public CourseCreatedEvent(Guid courseId, string rubric, string number)
         {
             CourseId = courseId;
             Rubric = rubric;

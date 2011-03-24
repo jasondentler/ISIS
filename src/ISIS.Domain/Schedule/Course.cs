@@ -47,7 +47,7 @@ namespace ISIS.Schedule
             : base(eventSourceId)
         {
             var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
-            ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
+            ApplyEvent(new CourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
             ApplyEvent(new CourseActivatedEvent(eventSourceId));
@@ -55,7 +55,7 @@ namespace ISIS.Schedule
                 AddCourseType(courseType);
         }
 
-        protected void OnCourseCreated(CreditCourseCreatedEvent @event)
+        protected void OnCourseCreated(CourseCreatedEvent @event)
         {
         }
 

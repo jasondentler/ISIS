@@ -16,7 +16,7 @@ namespace ISIS.Schedule
             string number,
             string title)
         {
-            DomainHelper.GivenEvent(new CreditCourseCreatedEvent(
+            DomainHelper.GivenEvent(new CourseCreatedEvent(
                                         DomainHelper.GetEventSourceId(),
                                         rubric,
                                         number));
@@ -96,21 +96,21 @@ namespace ISIS.Schedule
         public void ThenTheCourseShouldBeCreated()
         {
             var cmd = DomainHelper.GetCommand<CreateCreditCourseCommand>();
-            var e = DomainHelper.GetEvent<CreditCourseCreatedEvent>();
+            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
             Assert.That(e.CourseId, Is.EqualTo(cmd.CourseId));
         }
 
         [Then(@"the course rubric is (.*)")]
         public void ThenTheCourseRubricShouldBe(string rubric)
         {
-            var e = DomainHelper.GetEvent<CreditCourseCreatedEvent>();
+            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
             Assert.That(e.Rubric, Is.EqualTo(rubric));
         }
 
         [Then(@"the course number is (.*)")]
         public void ThenTheCourseNumberShouldBe(string number)
         {
-            var e = DomainHelper.GetEvent<CreditCourseCreatedEvent>();
+            var e = DomainHelper.GetEvent<CourseCreatedEvent>();
             Assert.That(e.Number, Is.EqualTo(number));
         }
 

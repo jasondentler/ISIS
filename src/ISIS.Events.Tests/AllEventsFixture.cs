@@ -15,7 +15,7 @@ namespace ISIS
         [Then]
         public void all_events_are_checked()
         {
-            var eventAssembly = typeof (CreditCourseCreatedEvent).Assembly;
+            var eventAssembly = typeof (CourseCreatedEvent).Assembly;
             var testAssembly = Assembly.GetExecutingAssembly();
 
             var eventTypes = eventAssembly.GetTypes()

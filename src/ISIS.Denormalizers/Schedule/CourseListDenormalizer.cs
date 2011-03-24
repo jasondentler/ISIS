@@ -7,14 +7,14 @@ namespace ISIS.Schedule
 {
     public class CourseListDenormalizer : 
         Denormalizer<CourseList>, 
-        IEventHandler<CreditCourseCreatedEvent>,
+        IEventHandler<CourseCreatedEvent>,
         IEventHandler<CourseTitleChangedEvent>
     {
         
         public CourseListDenormalizer(IDialect db)
             : base(db)
         {
-            CreateMap<CreditCourseCreatedEvent>();
+            CreateMap<CourseCreatedEvent>();
             CreateMap<CourseTitleChangedEvent>();
         }
 
@@ -23,7 +23,7 @@ namespace ISIS.Schedule
             return GetId(c => c.CourseId);
         }
 
-        public void Handle(IPublishedEvent<CreditCourseCreatedEvent> evnt)
+        public void Handle(IPublishedEvent<CourseCreatedEvent> evnt)
         {
             Upsert(evnt);
         }
