@@ -78,13 +78,13 @@ namespace ISIS.Schedule
                 .ToCallOn((cmd, course) => course.AddCourseType(cmd.Type))
                 .RegisterWith(commandService);
 
-            Map.Command<RemoveCourseTypeFromCourse>()
+            Map.Command<RemoveCourseTypeFromCourseCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.RemoveCourseType(cmd.Type))
                 .RegisterWith(commandService);
             
-            Map.Command<ChangeCourseCreditType>()
+            Map.Command<ChangeCourseCreditTypeCommand>()
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.ChangeCreditType(cmd.Type))

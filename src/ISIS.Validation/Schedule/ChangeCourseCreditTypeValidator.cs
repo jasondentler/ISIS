@@ -4,7 +4,7 @@ using FluentValidation;
 namespace ISIS.Schedule
 {
 
-    public class ChangeCourseCreditTypeValidator : AbstractValidator<ChangeCourseCreditType>
+    public class ChangeCourseCreditTypeValidator : AbstractValidator<ChangeCourseCreditTypeCommand>
     {
         public ChangeCourseCreditTypeValidator()
         {

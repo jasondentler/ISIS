@@ -72,7 +72,7 @@ namespace ISIS.Schedule
         public void WhenIRemoveTheCourseType(string courseTypeString)
         {
             var courseTypeToRemove = ParseCourseTypes(courseTypeString).Single();
-            var cmd = new RemoveCourseTypeFromCourse()
+            var cmd = new RemoveCourseTypeFromCourseCommand()
             {
                 CourseId = DomainHelper.GetEventSourceId(),
                 Type = courseTypeToRemove

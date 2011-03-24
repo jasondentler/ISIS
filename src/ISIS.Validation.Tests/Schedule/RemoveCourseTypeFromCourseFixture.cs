@@ -5,16 +5,16 @@ using NUnit.Framework;
 namespace ISIS.Schedule
 {
     [TestFixture]
-    public class RemoveCourseTypeFromCourseFixture : ValidationFixture<RemoveCourseTypeFromCourse>
+    public class RemoveCourseTypeFromCourseFixture : ValidationFixture<RemoveCourseTypeFromCourseCommand>
     {
-        protected override AbstractValidator<RemoveCourseTypeFromCourse> CreateValidator()
+        protected override AbstractValidator<RemoveCourseTypeFromCourseCommand> CreateValidator()
         {
             return new RemoveCourseTypeFromCourseCommandValidator();
         }
 
-        protected override RemoveCourseTypeFromCourse GetValidInstance()
+        protected override RemoveCourseTypeFromCourseCommand GetValidInstance()
         {
-            return new RemoveCourseTypeFromCourse()
+            return new RemoveCourseTypeFromCourseCommand()
                        {
                            CourseId = Guid.NewGuid(),
                            Type = CourseTypes.NROTC
@@ -24,7 +24,7 @@ namespace ISIS.Schedule
         [Test]
         public void CourseId_must_be_specified()
         {
-            GetFailure(new RemoveCourseTypeFromCourse()
+            GetFailure(new RemoveCourseTypeFromCourseCommand()
             {
                 CourseId = default(Guid)
             }, cmd => cmd.CourseId);
@@ -33,7 +33,7 @@ namespace ISIS.Schedule
         [Test]
         public void CourseType_must_be_a_defined_enum_value()
         {
-            GetFailure(new RemoveCourseTypeFromCourse()
+            GetFailure(new RemoveCourseTypeFromCourseCommand()
                            {
                                Type = (CourseTypes) Enum.Parse(typeof (CourseTypes), "-12308932")
                            }, cmd => cmd.CourseId);

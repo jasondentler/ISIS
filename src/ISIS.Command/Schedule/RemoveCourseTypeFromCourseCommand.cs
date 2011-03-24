@@ -3,7 +3,7 @@ using Ncqrs.Commanding;
 
 namespace ISIS.Schedule
 {
-    public class RemoveCourseTypeFromCourse : CommandBase
+    public class RemoveCourseTypeFromCourseCommand : CommandBase
     {
 
         public Guid CourseId { get; set; }

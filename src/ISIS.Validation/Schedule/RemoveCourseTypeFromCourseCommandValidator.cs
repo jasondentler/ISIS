@@ -4,7 +4,7 @@ using FluentValidation;
 namespace ISIS.Schedule
 {
 
-    public class RemoveCourseTypeFromCourseCommandValidator : AbstractValidator<RemoveCourseTypeFromCourse>
+    public class RemoveCourseTypeFromCourseCommandValidator : AbstractValidator<RemoveCourseTypeFromCourseCommand>
     {
         public RemoveCourseTypeFromCourseCommandValidator()
         {

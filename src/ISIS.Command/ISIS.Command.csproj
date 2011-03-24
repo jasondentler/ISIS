@@ -47,7 +47,7 @@
     <Compile Include="Schedule\AddCourseTypeToCourseCommand.cs" />
     <Compile Include="Schedule\ChangeApprovalNumberCommand.cs" />
     <Compile Include="Schedule\ChangeCIPCommand.cs" />
-    <Compile Include="Schedule\ChangeCourseCreditType.cs" />
+    <Compile Include="Schedule\ChangeCourseCreditTypeCommand.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="Schedule\DeactivateCourseCommand.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schedule\RemoveCourseTypeFromCommand.cs" />
+    <Compile Include="Schedule\RemoveCourseTypeFromCourseCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">

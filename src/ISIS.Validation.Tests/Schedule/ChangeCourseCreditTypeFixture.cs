@@ -5,16 +5,16 @@ using NUnit.Framework;
 namespace ISIS.Schedule
 {
     [TestFixture]
-    public class ChangeCourseCreditTypeFixture : ValidationFixture<ChangeCourseCreditType>
+    public class ChangeCourseCreditTypeFixture : ValidationFixture<ChangeCourseCreditTypeCommand>
     {
-        protected override AbstractValidator<ChangeCourseCreditType> CreateValidator()
+        protected override AbstractValidator<ChangeCourseCreditTypeCommand> CreateValidator()
         {
             return new ChangeCourseCreditTypeValidator();
         }
 
-        protected override ChangeCourseCreditType GetValidInstance()
+        protected override ChangeCourseCreditTypeCommand GetValidInstance()
         {
-            return new ChangeCourseCreditType()
+            return new ChangeCourseCreditTypeCommand()
                        {
                            CourseId = Guid.NewGuid(),
                            Type = CreditTypes.WorkforceFunded
@@ -24,7 +24,7 @@ namespace ISIS.Schedule
         [Test]
         public void CourseId_must_be_specified()
         {
-            GetFailure(new ChangeCourseCreditType()
+            GetFailure(new ChangeCourseCreditTypeCommand()
             {
                 CourseId = default(Guid)
             }, cmd => cmd.CourseId);
@@ -33,7 +33,7 @@ namespace ISIS.Schedule
         [Test]
         public void CreditType_must_be_a_defined_enum_value()
         {
-            GetFailure(new ChangeCourseCreditType()
+            GetFailure(new ChangeCourseCreditTypeCommand()
                            {
                                Type = (CreditTypes) Enum.Parse(typeof (CourseTypes), "-12308932")
                            }, cmd => cmd.CourseId);

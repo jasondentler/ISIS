@@ -22,7 +22,7 @@ namespace ISIS.Schedule
             string creditTypeString)
         {
             var creditType = ParseCreditType(creditTypeString);
-            var cmd = new ChangeCourseCreditType()
+            var cmd = new ChangeCourseCreditTypeCommand()
                           {
                               CourseId = DomainHelper.GetEventSourceId(),
                               Type = creditType

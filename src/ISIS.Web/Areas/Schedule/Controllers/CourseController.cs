@@ -269,7 +269,7 @@ namespace ISIS.Web.Areas.Schedule.Controllers
                                             });
 
             foreach (var type in typesToRemove)
-                _commandService.Execute(new RemoveCourseTypeFromCourse()
+                _commandService.Execute(new RemoveCourseTypeFromCourseCommand()
                                             {
                                                 CourseId = model.CourseId,
                                                 Type = type
