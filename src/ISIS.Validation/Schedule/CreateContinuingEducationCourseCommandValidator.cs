@@ -1,5 +1,7 @@
-﻿using FluentValidation;
+﻿using System.Collections.Generic;
+using FluentValidation;
 using System;
+using System.Linq;
 
 namespace ISIS.Schedule
 {
@@ -7,9 +9,12 @@ namespace ISIS.Schedule
     /// Validation rules for CreateCourseCommand
     /// </summary>
     /// <remarks>Rules based on Texas Common Course Numbering System: http://www.tccns.org/ccn/taxonomy.asp </remarks>
-    public class CreateCreditCourseCommandValidator : AbstractValidator<CreateCreditCourseCommand>
+    public class CreateContinuingEducationCourseCommandValidator : AbstractValidator<CreateContinuingEducationCourseCommand>
     {
-        public CreateCreditCourseCommandValidator()
+
+        private static IEnumerable<CreditTypes> _creditTypesValues = Enum.GetValues(typeof (CreditTypes)).Cast<CreditTypes>();
+
+        public CreateContinuingEducationCourseCommandValidator()
         {
 
             RuleFor(cmd => cmd.CourseId)
@@ -25,15 +30,15 @@ namespace ISIS.Schedule
                 .NotEmpty()
                 .Matches(@"^\d{4}$")
                 .WithMessage("Course number must be a 4-digit number")
-                .Matches(@"^\d[1-9]\d{2}$")
-                .WithMessage("For credit courses, the 2nd digit of the course number must not be zero.");
+                .Matches(@"^\d0\d{2}$")
+                .WithMessage("For continuing education courses, the 2nd digit of the course number must be zero.");
 
             RuleFor(cmd => cmd.Title)
                 .NotEmpty().WithMessage("Title is required");
 
-            RuleFor(cmd => cmd.Types)
-                .NotEmpty()
-                .WithMessage("You must select at least one course type.");
+            RuleFor(cmd => cmd.Type)
+                .Must((cmd, type) => _creditTypesValues.Contains(type))
+                .WithMessage("You must specify a valid credit type.");
 
         }
     }

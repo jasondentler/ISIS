@@ -61,6 +61,7 @@
     <Compile Include="Schedule\ChangeCourseDescriptionCommandFixture.cs" />
     <Compile Include="Schedule\ActivateCourseCommandFixture.cs" />
     <Compile Include="Schedule\AddCourseTypeToCourseCommandFixture.cs" />
+    <Compile Include="Schedule\CreateContinuingEducationCourseCommandFixture.cs" />
     <Compile Include="Schedule\RemoveCourseTypeFromCourseFixture.cs" />
     <Compile Include="Schedule\MakeCoursePendingCommandFixture.cs" />
     <Compile Include="Schedule\DeactivateCourseCommandFixture.cs" />

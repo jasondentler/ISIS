@@ -5,29 +5,29 @@ using NUnit.Framework;
 namespace ISIS.Schedule
 {
     [TestFixture]
-    public class CreateCreditCourseCommandFixture : ValidationFixture<CreateCreditCourseCommand>
+    public class CreateContinuingEducationCourseCommandFixture : ValidationFixture<CreateContinuingEducationCourseCommand>
     {
-        protected override AbstractValidator<CreateCreditCourseCommand> CreateValidator()
+        protected override AbstractValidator<CreateContinuingEducationCourseCommand> CreateValidator()
         {
-            return new CreateCreditCourseCommandValidator();
+            return new CreateContinuingEducationCourseCommandValidator();
         }
 
-        protected override CreateCreditCourseCommand GetValidInstance()
+        protected override CreateContinuingEducationCourseCommand GetValidInstance()
         {
-            return new CreateCreditCourseCommand()
+            return new CreateContinuingEducationCourseCommand()
                        {
                            CourseId = Guid.NewGuid(),
                            Rubric = "BIOL",
-                           CourseNumber = "1234",
+                           CourseNumber = "1034",
                            Title = "Cuttin' up frogs",
-                           Types = new[] {CourseTypes.ACAD, CourseTypes.TECH}
+                           Type = CreditTypes.WorkforceFunded
                        };
         }
 
         [Test]
         public void CourseId_must_not_be_default_guid()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
                 CourseId = default(Guid)
             }, cmd => cmd.CourseId);
@@ -37,7 +37,7 @@ namespace ISIS.Schedule
         [Test]
         public void Rubric_must_be_4_characters_long()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
                            {
                                Rubric = "ABC"
                            }, cmd => cmd.Rubric);
@@ -46,7 +46,7 @@ namespace ISIS.Schedule
         [Test]
         public void Rubric_must_contain_all_letters()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
                 Rubric = "ABC1"
             }, cmd => cmd.Rubric);
@@ -55,7 +55,7 @@ namespace ISIS.Schedule
         [Test]
         public void Rubric_must_be_all_uppercase()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
                 Rubric = "ABCd"
             }, cmd => cmd.Rubric);
@@ -64,34 +64,34 @@ namespace ISIS.Schedule
         [Test]
         public void Course_number_must_be_4_digits_long()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
-                CourseNumber = "012"
+                CourseNumber = "002"
             }, cmd => cmd.CourseNumber);
         }
 
         [Test]
         public void Course_number_must_be_all_digits()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
-                CourseNumber = "012A"
+                CourseNumber = "002A"
             }, cmd => cmd.CourseNumber);
         }
 
         [Test]
-        public void The_2nd_digit_of_the_course_number_must_not_be_zero()
+        public void The_2nd_digit_of_the_course_number_must_be_zero()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
-                CourseNumber = "1034"
+                CourseNumber = "1234"
             }, cmd => cmd.CourseNumber);
         }
-        
+
         [Test]
         public void Title_cant_be_null()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
                            {
                                Title = null
                            }, cmd => cmd.Title);
@@ -100,28 +100,19 @@ namespace ISIS.Schedule
         [Test]
         public void Title_cant_be_empty()
         {
-            GetFailure(new CreateCreditCourseCommand()
+            GetFailure(new CreateContinuingEducationCourseCommand()
             {
                 Title = ""
             }, cmd => cmd.Title);
         }
-        
-        [Test]
-        public void Types_cant_be_empty()
-        {
-            GetFailure(new CreateCreditCourseCommand()
-            {
-                Types = new CourseTypes[0]
-            }, cmd => cmd.Types);
-        }
 
         [Test]
-        public void Types_cant_be_null()
+        public void Type_must_be_a_valid_credit_type()
         {
-            GetFailure(new CreateCreditCourseCommand()
-            {
-                Types = null
-            }, cmd => cmd.Types);
+            GetFailure(new CreateContinuingEducationCourseCommand()
+                           {
+                               Type = 0
+                           }, cmd => cmd.Type);
         }
 
     }
