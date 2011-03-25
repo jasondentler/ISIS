@@ -1,4 +1,6 @@
-﻿namespace ISIS.Schedule
+﻿using System;
+
+namespace ISIS.Schedule
 {
 
     public class when_serializing_DepartmentCreatedEvent
@@ -7,7 +9,11 @@
 
         protected override DepartmentCreatedEvent GivenEvent()
         {
-            return new DepartmentCreatedEvent();
+            return new DepartmentCreatedEvent()
+                       {
+                           DepartmentId = Guid.NewGuid(),
+                           Name = "Biology"
+                       };
         }
 
     }

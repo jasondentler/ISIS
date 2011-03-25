@@ -46,6 +46,7 @@
     <Compile Include="Schedule\CourseTypes.cs" />
     <Compile Include="Schedule\CourseTypesModel.cs" />
     <Compile Include="Schedule\CreditTypes.cs" />
+    <Compile Include="Schedule\TopicCodeMemento.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

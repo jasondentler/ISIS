@@ -54,20 +54,21 @@ namespace ISIS
             public T Value { get; set; }
         }
 
-        public static Guid GetEventSourceId()
+        public static Guid GetEventSourceId<T>()
         {
-            if (!ContainsKey(EventSourceIdKey))
+            var key = typeof (T).ToString() + EventSourceIdKey;
+            if (!ContainsKey(key))
             {
                 var id = Guid.NewGuid();
-                Set(new WrappedValue<Guid>(id), EventSourceIdKey);
+                Set(new WrappedValue<Guid>(id), key);
                 return id;
             }
-            return Get<WrappedValue<Guid>>(EventSourceIdKey).Value;
+            return Get<WrappedValue<Guid>>(key).Value;
         }
 
-        public static void GivenEvent(object @event)
+        public static void GivenEvent<T>(object @event)
         {
-            GivenEvent(GetEventSourceId(), @event);
+            GivenEvent(GetEventSourceId<T>(), @event);
         }
 
         public static void GivenEvent(Guid eventSourceId, object @event)

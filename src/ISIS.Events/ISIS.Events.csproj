@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="IEvent.cs" />
     <Compile Include="Schedule\ContinuingEducationCourseCreatedEvent.cs" />
+    <Compile Include="Schedule\CourseTopicCodeChangedEvent.cs" />
+    <Compile Include="Schedule\TopicCodeDescriptionChangedEvent.cs" />
+    <Compile Include="Schedule\TopicCodeAbbreviationChangedEvent.cs" />
     <Compile Include="Schedule\CourseCEUsChangedEvent.cs" />
     <Compile Include="Schedule\CourseCreditTypeChangedEvent.cs" />
     <Compile Include="Schedule\CourseTypeRemovedFromCourseEvent.cs" />
@@ -63,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule\SectionCreatedEvent.cs" />
     <Compile Include="Schedule\TermCreatedEvent.cs" />
+    <Compile Include="Schedule\TopicCodeCreatedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISIS.Core\ISIS.Core.csproj">

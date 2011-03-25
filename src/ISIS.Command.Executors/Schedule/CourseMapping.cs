@@ -1,6 +1,9 @@
-﻿using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs;
+using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
+using Ncqrs.Domain;
+using Ncqrs.Domain.Storage;
 
 namespace ISIS.Schedule
 {
@@ -8,6 +11,7 @@ namespace ISIS.Schedule
     {
         public void MapCommands(CommandService commandService)
         {
+
             Map.Command<CreateCreditCourseCommand>()
                 .ToAggregateRoot<Course>()
                 .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Types))
@@ -94,6 +98,17 @@ namespace ISIS.Schedule
                 .ToAggregateRoot<Course>()
                 .WithId(cmd => cmd.CourseId)
                 .ToCallOn((cmd, course) => course.ChangeCEUs(cmd.CEUs))
+                .RegisterWith(commandService);
+
+            Map.Command<ChangeCourseTopicCodeCommand>()
+                .ToAggregateRoot<Course>()
+                .WithId(cmd => cmd.CourseId)
+                .ToCallOn((cmd, course) =>
+                              {
+                                  var uow = UnitOfWorkContext.Current;
+                                  var topicCode = (TopicCode) uow.GetById(typeof (TopicCode), cmd.TopicCodeId, null);
+                                  course.ChangeTopicCode(topicCode);
+                              })
                 .RegisterWith(commandService);
 
         }

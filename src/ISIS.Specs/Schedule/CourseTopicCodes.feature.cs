@@ -75,21 +75,46 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Change the topic code description")]
+        [NUnit.Framework.DescriptionAttribute("Change the topic code abbreviation")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void ChangeTheTopicCodeDescription()
+        public virtual void ChangeTheTopicCodeAbbreviation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the topic code description", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the topic code abbreviation", new string[] {
                         "domain"});
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
  testRunner.Given("I have created a topic code BANK Banking/Finance");
 #line 16
- testRunner.When("I change the BANK topic code description to Theft");
+ testRunner.When("I change the topic code abbreviation to MONEY");
 #line 17
- testRunner.Then("the topic code description is Banking/Finance");
+ testRunner.Then("the topic code abbreviation is MONEY");
 #line 18
+ testRunner.And("the previous topic code abbreviation is BANK");
+#line 19
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change the topic code description")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeTheTopicCodeDescription()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the topic code description", new string[] {
+                        "domain"});
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("I have created a topic code BANK Banking/Finance");
+#line 24
+ testRunner.When("I change the topic code description to Theft");
+#line 25
+ testRunner.Then("the topic code description is Theft");
+#line 26
+ testRunner.And("the previous topic code description is Banking/Finance");
+#line 27
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -102,16 +127,16 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the topic code on a CE course", new string[] {
                         "domain"});
-#line 21
+#line 30
 this.ScenarioSetup(scenarioInfo);
-#line 22
+#line 31
  testRunner.Given("I have created a topic code BANK Banking/Finance");
-#line 23
+#line 32
  testRunner.And("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 24
+#line 33
  testRunner.When("I change the courses\'s topic code to BANK");
-#line 25
+#line 34
  testRunner.Then("the course\'s topic code is BANK");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -124,18 +149,18 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the topic code on a CE course to the same topic code", new string[] {
                         "domain"});
-#line 28
+#line 37
 this.ScenarioSetup(scenarioInfo);
-#line 29
+#line 38
  testRunner.Given("I have created a topic code BANK Banking/Finance");
-#line 30
+#line 39
  testRunner.And("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
                     "ealth");
-#line 31
- testRunner.And("I have changed the course\'s topic code to BANK");
-#line 32
+#line 40
+ testRunner.And("I have changed the course\'s topic code to BANK Banking/Finance");
+#line 41
  testRunner.When("I change the courses\'s topic code to BANK");
-#line 33
+#line 42
  testRunner.Then("it should do nothing");
 #line hidden
             testRunner.CollectScenarioErrors();

@@ -54,6 +54,10 @@
     <Compile Include="Schedule\AddCourseTypeToCourseCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseCreditTypeValidator.cs" />
     <Compile Include="Schedule\ChangeCourseCEUsCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeTopicCodeAbbreviationCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeTopicCodeDescriptionCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseTopicCodeCommandValidator.cs" />
+    <Compile Include="Schedule\CreateTopicCodeCommandValidator.cs" />
     <Compile Include="Schedule\CreateContinuingEducationCourseCommandValidator.cs" />
     <Compile Include="Schedule\CourseTypesModelValidator.cs" />
     <Compile Include="Schedule\RemoveCourseTypeFromCourseCommandValidator.cs" />

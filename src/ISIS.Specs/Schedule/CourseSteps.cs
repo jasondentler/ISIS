@@ -16,20 +16,20 @@ namespace ISIS.Schedule
             string number,
             string title)
         {
-            DomainHelper.GivenEvent(new CreditCourseCreatedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CreditCourseCreatedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         rubric,
                                         number));
-            DomainHelper.GivenEvent(new CourseTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         title));
-            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         title));
             var courseTypes = CourseTypeSteps.ParseCourseTypes(courseTypeString);
             foreach (var courseType in courseTypes)
-                DomainHelper.GivenEvent(new CourseTypeAddedToCourseEvent(
-                                            DomainHelper.GetEventSourceId(),
+                DomainHelper.GivenEvent<Course>(new CourseTypeAddedToCourseEvent(
+                                            DomainHelper.GetEventSourceId<Course>(),
                                             courseType,
                                             courseTypes));
         }
@@ -43,18 +43,18 @@ namespace ISIS.Schedule
         {
             var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
 
-            DomainHelper.GivenEvent(new ContinuingEducationCourseCreatedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new ContinuingEducationCourseCreatedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         rubric,
                                         number));
-            DomainHelper.GivenEvent(new CourseTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         title));
-            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         title));
-            DomainHelper.GivenEvent(new CourseCreditTypeChangedEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseCreditTypeChangedEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         creditType));
             var courseType = CourseTypes.CE;
             switch (creditType)
@@ -65,8 +65,8 @@ namespace ISIS.Schedule
                     courseType = CourseTypes.CWECM;
                     break;
             }
-            DomainHelper.GivenEvent(new CourseTypeAddedToCourseEvent(
-                                        DomainHelper.GetEventSourceId(),
+            DomainHelper.GivenEvent<Course>(new CourseTypeAddedToCourseEvent(
+                                        DomainHelper.GetEventSourceId<Course>(),
                                         courseType,
                                         new[] {courseType}));
         }
@@ -82,7 +82,7 @@ namespace ISIS.Schedule
             var courseTypes = CourseTypeSteps.ParseCourseTypes(courseTypeString);
             var cmd = new CreateCreditCourseCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId(),
+                              CourseId = DomainHelper.GetEventSourceId<Course>(),
                               Rubric = rubric,
                               CourseNumber = number,
                               Title = title,
@@ -118,7 +118,7 @@ namespace ISIS.Schedule
             var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
             var cmd = new CreateContinuingEducationCourseCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId(),
+                              CourseId = DomainHelper.GetEventSourceId<Course>(),
                               Rubric = rubric,
                               CourseNumber = number,
                               Title = title,

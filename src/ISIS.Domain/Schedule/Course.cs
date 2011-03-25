@@ -27,6 +27,7 @@ namespace ISIS.Schedule
         private readonly HashSet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
         private CreditTypes _creditType;
         private decimal _ceus;
+        private Guid _topicCodeId;
 
         private Course()
         {
@@ -327,6 +328,22 @@ namespace ISIS.Schedule
         {
             _ceus = @event.Ceus;
         }
+
+        public void ChangeTopicCode(TopicCode topicCode)
+        {
+            var memento = topicCode.BuildMemento();
+
+            if (_topicCodeId == memento.Id)
+                return;
+
+            ApplyEvent(new CourseTopicCodeChangedEvent(EventSourceId, memento));
+        }
+
+        protected void OnTopicCodeChanged(CourseTopicCodeChangedEvent @event)
+        {
+            _topicCodeId = @event.TopicCodeId;
+        }
+
 
     }
 }
