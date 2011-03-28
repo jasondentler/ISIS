@@ -10,21 +10,12 @@ namespace ISIS.Schedule
         public string TopicCodeAbbreviation { get; set; }
         public string TopicCodeDescription { get; set; }
 
-        public CourseTopicCodeChangedEvent(
-            Guid courseId, 
-            Guid topicCodeId,
-            string topicCodeAbbreviation,
-            string topicCodeDescription)
+        public CourseTopicCodeChangedEvent(Guid courseId, TopicCodeMemento memento)
         {
             CourseId = courseId;
-            TopicCodeId = topicCodeId;
-            TopicCodeAbbreviation = topicCodeAbbreviation;
-            TopicCodeDescription = topicCodeDescription;
-        }
-
-        public CourseTopicCodeChangedEvent(Guid courseId, TopicCodeMemento memento)
-            : this(courseId, memento.Id, memento.Abbreviation, memento.Description)
-        {
+            TopicCodeId = memento.Id;
+            TopicCodeAbbreviation = memento.Abbreviation;
+            TopicCodeDescription = memento.Description;
         }
 
     }

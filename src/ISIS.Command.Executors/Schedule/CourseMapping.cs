@@ -1,9 +1,7 @@
-﻿using Ncqrs;
-using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
-using Ncqrs.Domain.Storage;
 
 namespace ISIS.Schedule
 {

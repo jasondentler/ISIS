@@ -77,9 +77,10 @@ namespace ISIS.Schedule
             DomainHelper.GivenEvent<Course>(
                 new CourseTopicCodeChangedEvent(
                     DomainHelper.GetEventSourceId<Course>(),
-                    topicCodeId,
-                    topicCodeAbbreviation,
-                    topicCodeDescription));
+                    new TopicCodeMemento(
+                        topicCodeId,
+                        topicCodeAbbreviation,
+                        topicCodeDescription)));
         }
 
         [When(@"I create a topic code ([A-Z]+) (.*)")]

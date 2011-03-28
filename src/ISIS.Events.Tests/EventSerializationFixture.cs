@@ -133,6 +133,7 @@ namespace ISIS
                 if (AreEqual(item.Expected, item.DefaultValue))
                     inconclusiveItems.Add(string.Format("OriginalEvent.{0} == default({1}). This is a poor test value.",
                                                         item.Name, item.Type));
+                Console.WriteLine("{0} {1}", item.Name, item.Type);
                 Assert.That(item.Actual, Is.EqualTo(item.Expected), item.Name);
             }
 

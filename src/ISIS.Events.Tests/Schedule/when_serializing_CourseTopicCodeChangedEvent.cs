@@ -11,10 +11,9 @@ namespace ISIS.Schedule
         {
             return new CourseTopicCodeChangedEvent(
                 Guid.NewGuid(),
-                Guid.NewGuid(),
-                "Abbreviation",
-                "Description"
-                );
+                new TopicCodeMemento(Guid.NewGuid(),
+                                     "Abbreviation",
+                                     "Description"));
         }
 
     }
