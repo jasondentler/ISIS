@@ -74,9 +74,9 @@ namespace ISIS.Schedule
             string topicCodeDescription)
         {
             var topicCodeId = GetTopicCodeId(topicCodeAbbreviation);
-            DomainHelper.GivenEvent<Course>(
+            DomainHelper.GivenEvent(
                 new CourseTopicCodeChangedEvent(
-                    DomainHelper.GetEventSourceId<Course>(),
+                    DomainHelper.GetEventSourceId(),
                     new TopicCodeMemento(
                         topicCodeId,
                         topicCodeAbbreviation,
@@ -140,7 +140,7 @@ namespace ISIS.Schedule
             var topicCodeId = GetTopicCodeId(topicCodeAbbreviation);
             var cmd = new ChangeCourseTopicCodeCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               TopicCodeId = topicCodeId
                           };
             DomainHelper.WhenExecuting(cmd);

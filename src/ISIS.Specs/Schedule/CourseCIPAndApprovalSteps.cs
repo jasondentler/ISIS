@@ -10,11 +10,11 @@ namespace ISIS.Schedule
         [Given(@"I have set the approval number to (\d{10})")]
         public void GivenIHaveSetTheApprovalNumberTo(string approvalNumber)
         {
-            DomainHelper.GivenEvent<Course>(new CourseApprovalNumberChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseApprovalNumberChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         approvalNumber));
-            DomainHelper.GivenEvent<Course>(new CourseCIPChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseCIPChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         approvalNumber.Substring(0, 6)));
         }
 
@@ -22,8 +22,8 @@ namespace ISIS.Schedule
         [Given(@"I have set the CIP to (\d{6})")]
         public void GivenIHaveSetTheCIPTo(string cip)
         {
-            DomainHelper.GivenEvent<Course>(new CourseCIPChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseCIPChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         cip));
         }
 
@@ -33,7 +33,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ChangeApprovalNumberCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               ApprovalNumber = approvalNumber
                           };
             DomainHelper.WhenExecuting(cmd);
@@ -44,7 +44,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ChangeCIPCommand()
             {
-                CourseId = DomainHelper.GetEventSourceId<Course>(),
+                CourseId = DomainHelper.GetEventSourceId(),
                 CIP = cip
             };
             DomainHelper.WhenExecuting(cmd);

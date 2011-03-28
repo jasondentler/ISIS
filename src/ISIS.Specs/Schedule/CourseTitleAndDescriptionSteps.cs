@@ -10,24 +10,24 @@ namespace ISIS.Schedule
         [Given(@"the course long title is (.*)")]
         public void GivenTheCourseLongTitleIs(string longTitle)
         {
-            DomainHelper.GivenEvent<Course>(new CourseLongTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         longTitle));
         }
 
         [Given(@"I have changed the course description to (.*)")]
         public void GivenIHaveChangedTheCourseDescriptionTo(string description)
         {
-            DomainHelper.GivenEvent<Course>(new CourseDescriptionChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseDescriptionChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         description));
         }
 
         [Given(@"I have set the course long title to (.*)")]
         public void GivenIHaveSetTheCourseLongTitleTo(string longTitle)
         {
-            DomainHelper.GivenEvent<Course>(new CourseLongTitleChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseLongTitleChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         longTitle));
         }
 
@@ -37,7 +37,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ChangeCourseTitleCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               NewTitle = title
                           };
             DomainHelper.WhenExecuting(cmd);
@@ -49,7 +49,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ChangeCourseLongTitleCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               NewLongTitle = longTitle
                           };
             DomainHelper.WhenExecuting(cmd);
@@ -60,7 +60,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ChangeCourseDescriptionCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               NewDescription = description
                           };
             DomainHelper.WhenExecuting(cmd);

@@ -54,9 +54,9 @@ namespace ISIS
             public T Value { get; set; }
         }
 
-        public static Guid GetEventSourceId<T>()
+        public static Guid GetEventSourceId()
         {
-            var key = typeof (T).ToString() + EventSourceIdKey;
+            var key = EventSourceIdKey;
             if (!ContainsKey(key))
             {
                 var id = Guid.NewGuid();
@@ -66,9 +66,9 @@ namespace ISIS
             return Get<WrappedValue<Guid>>(key).Value;
         }
 
-        public static void GivenEvent<T>(object @event)
+        public static void GivenEvent(object @event)
         {
-            GivenEvent(GetEventSourceId<T>(), @event);
+            GivenEvent(GetEventSourceId(), @event);
         }
 
         public static void GivenEvent(Guid eventSourceId, object @event)

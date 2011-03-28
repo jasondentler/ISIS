@@ -24,7 +24,7 @@ namespace ISIS.Schedule
             var creditType = ParseCreditType(creditTypeString);
             var cmd = new ChangeCourseCreditTypeCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               Type = creditType
                           };
             DomainHelper.WhenExecuting(cmd);

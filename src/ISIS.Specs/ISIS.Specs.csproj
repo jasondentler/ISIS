@@ -73,6 +73,12 @@
       <DependentUpon>CourseCIPAndApprovalNumber.feature</DependentUpon>
     </Compile>
     <Compile Include="Schedule\CourseCreditTypeSteps.cs" />
+    <Compile Include="Schedule\CourseStatusSteps.cs" />
+    <Compile Include="Schedule\CourseStatus.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CourseStatus.feature</DependentUpon>
+    </Compile>
     <Compile Include="Schedule\CourseTitleAndDescription.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -115,6 +121,10 @@
     <None Include="Schedule\CourseCIPAndApprovalNumber.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseCIPAndApprovalNumber.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Schedule\CourseStatus.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CourseStatus.feature.cs</LastGenOutput>
     </None>
     <None Include="Schedule\CourseTitleAndDescription.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

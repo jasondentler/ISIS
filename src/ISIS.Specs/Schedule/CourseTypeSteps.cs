@@ -25,7 +25,7 @@ namespace ISIS.Schedule
         private static IEnumerable<CourseTypes> GetCurrentCourseType()
         {
             var store = NcqrsEnvironment.Get<IEventStore>();
-            var stream = store.ReadFrom(DomainHelper.GetEventSourceId<Course>(), 0, long.MaxValue);
+            var stream = store.ReadFrom(DomainHelper.GetEventSourceId(), 0, long.MaxValue);
             var mostRecentCourseTypeEvent = stream
                 .Select(e => e.Payload)
                 .Where(e => e is CourseTypeAddedToCourseEvent || e is CourseTypeRemovedFromCourseEvent)
@@ -48,8 +48,8 @@ namespace ISIS.Schedule
                 .OrderBy(ce => ce)
                 .ToArray();
 
-            DomainHelper.GivenEvent<Course>(new CourseTypeAddedToCourseEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseTypeAddedToCourseEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         courseTypeToAdd,
                                         newCourseTypes
                                         ));
@@ -62,7 +62,7 @@ namespace ISIS.Schedule
             var courseTypeToAdd = ParseCourseTypes(courseTypeString).Single();
             var cmd = new AddCourseTypeToCourseCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               Type = courseTypeToAdd
                           };
             DomainHelper.WhenExecuting(cmd);
@@ -74,7 +74,7 @@ namespace ISIS.Schedule
             var courseTypeToRemove = ParseCourseTypes(courseTypeString).Single();
             var cmd = new RemoveCourseTypeFromCourseCommand()
             {
-                CourseId = DomainHelper.GetEventSourceId<Course>(),
+                CourseId = DomainHelper.GetEventSourceId(),
                 Type = courseTypeToRemove
             };
             DomainHelper.WhenExecuting(cmd);

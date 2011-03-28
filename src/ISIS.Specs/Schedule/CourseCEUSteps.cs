@@ -12,8 +12,8 @@ namespace ISIS.Schedule
             string ceusString)
         {
             var ceus = decimal.Parse(ceusString);
-            DomainHelper.GivenEvent<Course>(new CourseCEUsChangedEvent(
-                                        DomainHelper.GetEventSourceId<Course>(),
+            DomainHelper.GivenEvent(new CourseCEUsChangedEvent(
+                                        DomainHelper.GetEventSourceId(),
                                         ceus));
         }
 
@@ -27,7 +27,7 @@ namespace ISIS.Schedule
 
             var cmd = new ChangeCourseCEUsCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId<Course>(),
+                              CourseId = DomainHelper.GetEventSourceId(),
                               CEUs = ceus
                           };
             DomainHelper.WhenExecuting(cmd);
