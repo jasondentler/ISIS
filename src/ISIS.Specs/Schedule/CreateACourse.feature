@@ -30,3 +30,35 @@ Scenario: Create a CE course
 	And the credit type is Workforce Funded
 	And the CEUs are 0
 	And it should do nothing else
+
+@domain
+Scenario: Back date a course creation
+	When I create a backdated Workforce Funded course AGEQ 1091 Routine Management of Equine Health on 3/1/2011
+	Then the CE course is created
+	And the course rubric is AGEQ
+	And the course number is 1091
+	And the course title is Routine Management of Equine H
+	And the course long title is Routine Management of Equine Health
+	And the course is active as of 3/1/2011
+	And the CWECM course type is added
+	And the current course type is CWECM
+	And the credit type is Workforce Funded
+	And the CEUs are 0
+	And it should do nothing else
+
+@domain
+Scenario: Create a CE course with an approval person
+	When I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health approved by Patty H
+	Then the CE course is created
+	And the course rubric is AGEQ
+	And the course number is 1091
+	And the course title is Routine Management of Equine H
+	And the course long title is Routine Management of Equine Health
+	And the course is active
+	And the CWECM course type is added
+	And the current course type is CWECM
+	And the credit type is Workforce Funded
+	And the CEUs are 0
+	And the approval person is Patty H
+	And it should do nothing else
+

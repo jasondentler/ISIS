@@ -112,6 +112,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseCreditTypes.feature</DependentUpon>
     </Compile>
+    <Compile Include="Schedule\Sections.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sections.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Schedule\CourseCEUs.feature">
@@ -146,6 +151,10 @@
     <None Include="Schedule\CourseCreditTypes.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseCreditTypes.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Schedule\Sections.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Sections.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

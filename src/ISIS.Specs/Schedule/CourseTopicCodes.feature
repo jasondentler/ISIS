@@ -40,4 +40,3 @@ Scenario: Change the topic code on a CE course to the same topic code
 	And I have changed the course's topic code to BANK Banking/Finance
 	When I change the courses's topic code to BANK
 	Then it should do nothing
-

@@ -122,6 +122,84 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Back date a course creation")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void BackDateACourseCreation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Back date a course creation", new string[] {
+                        "domain"});
+#line 35
+this.ScenarioSetup(scenarioInfo);
+#line 36
+ testRunner.When("I create a backdated Workforce Funded course AGEQ 1091 Routine Management of Equi" +
+                    "ne Health on 3/1/2011");
+#line 37
+ testRunner.Then("the CE course is created");
+#line 38
+ testRunner.And("the course rubric is AGEQ");
+#line 39
+ testRunner.And("the course number is 1091");
+#line 40
+ testRunner.And("the course title is Routine Management of Equine H");
+#line 41
+ testRunner.And("the course long title is Routine Management of Equine Health");
+#line 42
+ testRunner.And("the course is active as of 3/1/2011");
+#line 43
+ testRunner.And("the CWECM course type is added");
+#line 44
+ testRunner.And("the current course type is CWECM");
+#line 45
+ testRunner.And("the credit type is Workforce Funded");
+#line 46
+ testRunner.And("the CEUs are 0");
+#line 47
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a CE course with an approval person")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void CreateACECourseWithAnApprovalPerson()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a CE course with an approval person", new string[] {
+                        "domain"});
+#line 50
+this.ScenarioSetup(scenarioInfo);
+#line 51
+ testRunner.When("I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health " +
+                    "approved by Patty H");
+#line 52
+ testRunner.Then("the CE course is created");
+#line 53
+ testRunner.And("the course rubric is AGEQ");
+#line 54
+ testRunner.And("the course number is 1091");
+#line 55
+ testRunner.And("the course title is Routine Management of Equine H");
+#line 56
+ testRunner.And("the course long title is Routine Management of Equine Health");
+#line 57
+ testRunner.And("the course is active");
+#line 58
+ testRunner.And("the CWECM course type is added");
+#line 59
+ testRunner.And("the current course type is CWECM");
+#line 60
+ testRunner.And("the credit type is Workforce Funded");
+#line 61
+ testRunner.And("the CEUs are 0");
+#line 62
+ testRunner.And("the approval person is Patty H");
+#line 63
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion
