@@ -112,10 +112,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CourseCreditTypes.feature</DependentUpon>
     </Compile>
-    <Compile Include="Schedule\Sections.feature.cs">
+    <Compile Include="Schedule\CreditSections.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Sections.feature</DependentUpon>
+      <DependentUpon>CreditSections.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule\CESections.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CESections.feature</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +157,13 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CourseCreditTypes.feature.cs</LastGenOutput>
     </None>
-    <None Include="Schedule\Sections.feature">
+    <None Include="Schedule\CreditSections.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Sections.feature.cs</LastGenOutput>
+      <LastGenOutput>CreditSections.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Schedule\CESections.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CESections.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

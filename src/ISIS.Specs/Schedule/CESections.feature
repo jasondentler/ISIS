@@ -1,8 +1,7 @@
-﻿Feature: Sections
+﻿Feature: CE Sections
 	In order to manage the course schedule
 	As a scheduler
 	I want to manage sections
-
 
 @domain
 Scenario: Create a CE section without a topic code
