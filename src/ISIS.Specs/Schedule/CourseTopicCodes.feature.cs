@@ -132,8 +132,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 31
  testRunner.Given("I have created a topic code BANK Banking/Finance");
 #line 32
- testRunner.And("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.And("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 33
  testRunner.When("I change the courses\'s topic code to BANK");
 #line 34
@@ -154,8 +154,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 38
  testRunner.Given("I have created a topic code BANK Banking/Finance");
 #line 39
- testRunner.And("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.And("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 40
  testRunner.And("I have changed the course\'s topic code to BANK Banking/Finance");
 #line 41

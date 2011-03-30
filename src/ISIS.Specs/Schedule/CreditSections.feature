@@ -5,7 +5,7 @@
 	
 @domain
 Scenario: Change the credit section location to CLEM
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -16,7 +16,7 @@ Scenario: Change the credit section location to CLEM
 
 @domain
 Scenario: Change the credit section location from TDCJ back to non-TDCJ
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -28,7 +28,7 @@ Scenario: Change the credit section location from TDCJ back to non-TDCJ
 
 @domain
 Scenario: Change the credit section location to CV
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -39,7 +39,7 @@ Scenario: Change the credit section location to CV
 
 @domain
 Scenario: Change the credit section location to DAR
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -50,7 +50,7 @@ Scenario: Change the credit section location to DAR
 
 @domain
 Scenario: Change the credit section location to J1
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -61,7 +61,7 @@ Scenario: Change the credit section location to J1
 
 @domain
 Scenario: Change the credit section location to J2
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -72,7 +72,7 @@ Scenario: Change the credit section location to J2
 
 @domain
 Scenario: Change the credit section location to J3
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -83,7 +83,7 @@ Scenario: Change the credit section location to J3
 
 @domain
 Scenario: Change the credit section location to TER
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -94,7 +94,7 @@ Scenario: Change the credit section location to TER
 
 @domain
 Scenario: Change the credit section location to R1
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -105,7 +105,7 @@ Scenario: Change the credit section location to R1
 
 @domain
 Scenario: Change the credit section location to R2
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course with term 211FA
@@ -116,7 +116,7 @@ Scenario: Change the credit section location to R2
 
 @domain
 Scenario: Create a credit section without a topic code
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have changed the approval number to 1234567890
 	And I have created a term 211FA from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term 211FA
@@ -126,7 +126,7 @@ Scenario: Create a credit section without a topic code
 	And the section's term is 211FA
 	And the section's start date is 9/1/2011
 	And the section's end date is 11/30/2011
-	And the section's title is Introductory Biology
+	And the section's title is "Introductory Biology"
 	And the section's course type is ACAD
 	And the section's current course type is ACAD
 	And the section's approval number is 1234567890
@@ -136,7 +136,7 @@ Scenario: Create a credit section without a topic code
 
 @domain
 Scenario: Cant create a credit section without an approval number or CIP
-	Given I have created an ACAD course BIOL 1301 Introductory Biology
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a term 211FA from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term 211FA
 	Then the command is invalid

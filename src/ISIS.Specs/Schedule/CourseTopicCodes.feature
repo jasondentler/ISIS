@@ -29,14 +29,14 @@ Scenario: Change the topic code description
 @domain
 Scenario: Change the topic code on a CE course
 	Given I have created a topic code BANK Banking/Finance
-	And I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	And I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	When I change the courses's topic code to BANK
 	Then the course's topic code is BANK
 
 @domain
 Scenario: Change the topic code on a CE course to the same topic code
 	Given I have created a topic code BANK Banking/Finance
-	And I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	And I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the course's topic code to BANK Banking/Finance
 	When I change the courses's topic code to BANK
 	Then it should do nothing

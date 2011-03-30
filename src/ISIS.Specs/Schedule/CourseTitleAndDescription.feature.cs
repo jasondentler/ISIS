@@ -63,12 +63,13 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.When("I create an ACAD course BIOL 1301 Very Very Very Very Long Title For Introductory" +
-                    " Biology");
+ testRunner.When("I create an ACAD course BIOL 1301 \"Very Very Very Very Long Title For Introductor" +
+                    "y Biology\"");
 #line 9
- testRunner.Then("the course title is Very Very Very Very Long Title");
+ testRunner.Then("the course title is \"Very Very Very Very Long Title\"");
 #line 10
- testRunner.And("the course long title is Very Very Very Very Long Title For Introductory Biology");
+ testRunner.And("the course long title is \"Very Very Very Very Long Title For Introductory Biology" +
+                    "\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -83,13 +84,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 14
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 15
- testRunner.When("I change the course title to Biology 101");
+ testRunner.When("I change the course title to \"Biology 101\"");
 #line 16
- testRunner.Then("the course title is Biology 101");
+ testRunner.Then("the course title is \"Biology 101\"");
 #line 17
- testRunner.And("the course long title is Biology 101");
+ testRunner.And("the course long title is \"Biology 101\"");
 #line 18
  testRunner.And("it should do nothing else");
 #line hidden
@@ -106,13 +107,14 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 23
- testRunner.And("the course long title is Very Very Very Very Long Title For Introductory Biology");
+ testRunner.And("the course long title is \"Very Very Very Very Long Title For Introductory Biology" +
+                    "\"");
 #line 24
- testRunner.When("I change the course title to Biology 101");
+ testRunner.When("I change the course title to \"Biology 101\"");
 #line 25
- testRunner.Then("the course title is Biology 101");
+ testRunner.Then("the course title is \"Biology 101\"");
 #line 26
  testRunner.And("it should do nothing else");
 #line hidden
@@ -129,13 +131,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 29
 this.ScenarioSetup(scenarioInfo);
 #line 30
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 31
- testRunner.When("I change the course long title to Long title of Introductory Biology");
+ testRunner.When("I change the course long title to \"Long title of Introductory Biology\"");
 #line 32
- testRunner.Then("the course long title is Long title of Introductory Biology");
+ testRunner.Then("the course long title is \"Long title of Introductory Biology\"");
 #line 33
- testRunner.And("the course title is Long title of Introductory Bio");
+ testRunner.And("the course title is \"Long title of Introductory Bio\"");
 #line 34
  testRunner.And("it should do nothing else");
 #line hidden
@@ -152,13 +154,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 37
 this.ScenarioSetup(scenarioInfo);
 #line 38
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 39
- testRunner.When("I change the course long title to Long title of Introductory Biology");
+ testRunner.When("I change the course long title to \"Long title of Introductory Biology\"");
 #line 40
- testRunner.Then("the course long title is Long title of Introductory Biology");
+ testRunner.Then("the course long title is \"Long title of Introductory Biology\"");
 #line 41
- testRunner.And("the course title is Long title of Introductory Bio");
+ testRunner.And("the course title is \"Long title of Introductory Bio\"");
 #line 42
  testRunner.And("it should do nothing else");
 #line hidden
@@ -175,11 +177,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.ScenarioSetup(scenarioInfo);
 #line 46
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 47
- testRunner.When("I change the course description to Cutting up frogs");
+ testRunner.When("I change the course description to \"Cutting up frogs\"");
 #line 48
- testRunner.Then("the course description is Cutting up frogs");
+ testRunner.Then("the course description is \"Cutting up frogs\"");
 #line 49
  testRunner.And("it should do nothing else");
 #line hidden
@@ -196,11 +198,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 52
 this.ScenarioSetup(scenarioInfo);
 #line 53
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 54
- testRunner.And("I have changed the course description to Cutting up frogs");
+ testRunner.And("I have changed the course description to \"Cutting up frogs\"");
 #line 55
- testRunner.When("I change the course description to Cutting up frogs");
+ testRunner.When("I change the course description to \"Cutting up frogs\"");
 #line 56
  testRunner.Then("it should do nothing");
 #line hidden
@@ -217,9 +219,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 59
 this.ScenarioSetup(scenarioInfo);
 #line 60
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 61
- testRunner.When("I change the course title to Introductory Biology");
+ testRunner.When("I change the course title to \"Introductory Biology\"");
 #line 62
  testRunner.Then("it should do nothing");
 #line hidden
@@ -236,11 +238,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 65
 this.ScenarioSetup(scenarioInfo);
 #line 66
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 67
- testRunner.And("I have set the course long title to Long title of Introductory Biology");
+ testRunner.And("I have set the course long title to \"Long title of Introductory Biology\"");
 #line 68
- testRunner.When("I change the course long title to Long title of Introductory Biology");
+ testRunner.When("I change the course long title to \"Long title of Introductory Biology\"");
 #line 69
  testRunner.Then("it should do nothing");
 #line hidden

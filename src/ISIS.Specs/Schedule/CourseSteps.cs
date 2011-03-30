@@ -8,8 +8,8 @@ namespace ISIS.Schedule
     public class CourseSteps 
     {
 
-        [Given(@"I have created an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
-        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        [Given(@"I have created an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) ""(.*)""")]
+        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) ""(.*)""")]
         public void GivenIHaveCreatedACreditCourse(
             string courseTypeString,
             string rubric,
@@ -34,7 +34,7 @@ namespace ISIS.Schedule
                                             courseTypes));
         }
 
-        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) (.*)")]
+        [Given(@"I have created a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) ""(.*)""")]
         public void GivenIHaveCreatedContinuingEducationCourse(
             string creditTypeString,
             string rubric,
@@ -71,8 +71,8 @@ namespace ISIS.Schedule
                                         new[] {courseType}));
         }
         
-        [When(@"I create an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
-        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) (.*)")]
+        [When(@"I create an (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) ""(.*)""")]
+        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}[1-9]\d{2}) ""(.*)""")]
         public void WhenICreateACreditCourse(
             string courseTypeString,
             string rubric,
@@ -91,7 +91,7 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
-        [When(@"I create a course ([A-Z]{4}) (\d{4}) (.*) without a course type")]
+        [When(@"I create a course ([A-Z]{4}) (\d{4}) ""(.*)"" without a course type")]
         public void WhenICreateACourseWithoutACourseType(
             string rubric,
             string number,
@@ -108,7 +108,7 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
-        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) (.*)")]
+        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) ""(.*)""")]
         public void WhenICreateAContinuingEducationCourse(
             string creditTypeString,
             string rubric,

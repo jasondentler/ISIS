@@ -63,7 +63,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 9
  testRunner.When("I set the CIP to 123456");
 #line 10
@@ -84,7 +84,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 16
  testRunner.When("I set the approval number to 1234567890");
 #line 17
@@ -107,7 +107,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 22
 this.ScenarioSetup(scenarioInfo);
 #line 23
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 24
  testRunner.And("I have set the approval number to 1234567890");
 #line 25
@@ -132,7 +132,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 31
 this.ScenarioSetup(scenarioInfo);
 #line 32
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 33
  testRunner.And("I have set the approval number to 1234567890");
 #line 34
@@ -153,7 +153,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 38
 this.ScenarioSetup(scenarioInfo);
 #line 39
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 40
  testRunner.And("I have set the CIP to 123456");
 #line 41
@@ -174,7 +174,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 45
 this.ScenarioSetup(scenarioInfo);
 #line 46
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 47
  testRunner.And("I have set the CIP to 123456");
 #line 48
@@ -199,7 +199,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 54
 this.ScenarioSetup(scenarioInfo);
 #line 55
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 56
  testRunner.And("I have set the approval number to 1234567890");
 #line 57

@@ -63,7 +63,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 9
  testRunner.And("I have deactivated the course");
 #line 10
@@ -86,7 +86,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 15
 this.ScenarioSetup(scenarioInfo);
 #line 16
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 17
  testRunner.When("I activate the course");
 #line 18
@@ -105,7 +105,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 23
  testRunner.When("I deactivate the course");
 #line 24
@@ -126,7 +126,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 30
  testRunner.And("I have deactivated the course");
 #line 31
@@ -147,7 +147,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 35
 this.ScenarioSetup(scenarioInfo);
 #line 36
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 37
  testRunner.When("I make the course pending");
 #line 38
@@ -168,7 +168,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 42
 this.ScenarioSetup(scenarioInfo);
 #line 43
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 44
  testRunner.And("I have made the course pending");
 #line 45
@@ -189,7 +189,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 49
 this.ScenarioSetup(scenarioInfo);
 #line 50
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 51
  testRunner.When("I make the course obsolete");
 #line 52
@@ -210,7 +210,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 56
 this.ScenarioSetup(scenarioInfo);
 #line 57
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 58
  testRunner.And("I have made the course obsolete");
 #line 59

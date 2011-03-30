@@ -62,8 +62,8 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 9
  testRunner.And("I have changed the approval number to 1234567890");
 #line 10
@@ -83,7 +83,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 17
  testRunner.And("the section\'s end date is not set");
 #line 18
- testRunner.And("the section\'s title is Routine Management of Equine H");
+ testRunner.And("the section\'s title is \"Routine Management of Equine H\"");
 #line 19
  testRunner.And("the section\'s credit type is Workforce Funded");
 #line 20
@@ -116,8 +116,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 30
 this.ScenarioSetup(scenarioInfo);
 #line 31
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 32
  testRunner.And("I have changed the approval number to 1234567890");
 #line 33
@@ -146,8 +146,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 40
 this.ScenarioSetup(scenarioInfo);
 #line 41
- testRunner.Given("I have created a Special Interests course AGEQ 1091 Routine Management of Equine " +
-                    "Health");
+ testRunner.Given("I have created a Special Interests course AGEQ 1091 \"Routine Management of Equine" +
+                    " Health\"");
 #line 42
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 43
@@ -170,8 +170,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 47
 this.ScenarioSetup(scenarioInfo);
 #line 48
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 49
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 50
@@ -195,8 +195,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 55
 this.ScenarioSetup(scenarioInfo);
 #line 56
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 57
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 58
@@ -221,8 +221,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 64
 this.ScenarioSetup(scenarioInfo);
 #line 65
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 66
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 67
@@ -250,8 +250,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 74
 this.ScenarioSetup(scenarioInfo);
 #line 75
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 76
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 77
@@ -278,8 +278,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 84
 this.ScenarioSetup(scenarioInfo);
 #line 85
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 86
  testRunner.And("I have created a term CE211Q1 from 9/1/2011 to 11/30/2011");
 #line 87
@@ -309,8 +309,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 95
 this.ScenarioSetup(scenarioInfo);
 #line 96
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 97
  testRunner.And("I have changed the approval number to 1234567890");
 #line 98
@@ -339,8 +339,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 106
 this.ScenarioSetup(scenarioInfo);
 #line 107
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 108
  testRunner.And("I have changed the approval number to 1234567890");
 #line 109
@@ -368,8 +368,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 116
 this.ScenarioSetup(scenarioInfo);
 #line 117
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 118
  testRunner.And("I have changed the approval number to 1234567890");
 #line 119
@@ -397,8 +397,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 126
 this.ScenarioSetup(scenarioInfo);
 #line 127
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 128
  testRunner.And("I have changed the approval number to 1234567890");
 #line 129
@@ -425,8 +425,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 136
 this.ScenarioSetup(scenarioInfo);
 #line 137
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 138
  testRunner.And("I have changed the approval number to 1234567890");
 #line 139
@@ -453,8 +453,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 146
 this.ScenarioSetup(scenarioInfo);
 #line 147
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 148
  testRunner.And("I have changed the approval number to 1234567890");
 #line 149
@@ -485,8 +485,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 158
 this.ScenarioSetup(scenarioInfo);
 #line 159
- testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equi" +
-                    "ne Health");
+ testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 \"Routine Management of Equ" +
+                    "ine Health\"");
 #line 160
  testRunner.And("I have changed the approval number to 1234567890");
 #line 161
@@ -517,8 +517,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 170
 this.ScenarioSetup(scenarioInfo);
 #line 171
- testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equi" +
-                    "ne Health");
+ testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 \"Routine Management of Equ" +
+                    "ine Health\"");
 #line 172
  testRunner.And("I have changed the approval number to 1234567890");
 #line 173
@@ -545,8 +545,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 180
 this.ScenarioSetup(scenarioInfo);
 #line 181
- testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equi" +
-                    "ne Health");
+ testRunner.Given("I have created a Workforce Non-funded course AGEQ 1091 \"Routine Management of Equ" +
+                    "ine Health\"");
 #line 182
  testRunner.And("I have changed the approval number to 1234567890");
 #line 183

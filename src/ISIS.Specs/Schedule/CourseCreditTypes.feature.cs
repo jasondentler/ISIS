@@ -63,7 +63,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 9
  testRunner.When("I change the credit type to Grant Funded");
 #line 10
@@ -85,8 +85,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 16
  testRunner.When("I change the credit type to Workforce Funded");
 #line 17
@@ -105,8 +105,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
 this.ScenarioSetup(scenarioInfo);
 #line 21
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 22
  testRunner.When("I change the credit type to Workforce Non-Funded");
 #line 23
@@ -133,8 +133,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 30
 this.ScenarioSetup(scenarioInfo);
 #line 31
- testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 Routine Management of Equi" +
-                    "ne Health");
+ testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 \"Routine Management of Equ" +
+                    "ine Health\"");
 #line 32
  testRunner.When("I change the credit type to Workforce Funded");
 #line 33
@@ -161,8 +161,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 40
 this.ScenarioSetup(scenarioInfo);
 #line 41
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 42
  testRunner.When("I change the credit type to Contract Training Funded");
 #line 43
@@ -185,8 +185,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 48
 this.ScenarioSetup(scenarioInfo);
 #line 49
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 50
  testRunner.When("I change the credit type to Contract Training Non-Funded");
 #line 51
@@ -209,8 +209,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 56
 this.ScenarioSetup(scenarioInfo);
 #line 57
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 58
  testRunner.When("I change the credit type to Special Interests");
 #line 59
@@ -233,8 +233,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 64
 this.ScenarioSetup(scenarioInfo);
 #line 65
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 66
  testRunner.When("I change the credit type to Grant Funded");
 #line 67
@@ -257,8 +257,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 72
 this.ScenarioSetup(scenarioInfo);
 #line 73
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 74
  testRunner.When("I change the credit type to Grant Non-Funded");
 #line 75
@@ -281,8 +281,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 80
 this.ScenarioSetup(scenarioInfo);
 #line 81
- testRunner.Given("I have created a Special Interests course AGEQ 1091 Routine Management of Equine " +
-                    "Health");
+ testRunner.Given("I have created a Special Interests course AGEQ 1091 \"Routine Management of Equine" +
+                    " Health\"");
 #line 82
  testRunner.When("I change the credit type to Workforce Funded");
 #line 83
@@ -305,8 +305,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 88
 this.ScenarioSetup(scenarioInfo);
 #line 89
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 90
  testRunner.When("I change the credit type to Workforce Non-Funded");
 #line 91

@@ -63,8 +63,8 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 9
  testRunner.When("I change the CEUs to 0.70");
 #line 10
@@ -85,8 +85,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
 this.ScenarioSetup(scenarioInfo);
 #line 15
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 16
  testRunner.When("I change the CEUs to -0.10");
 #line 17
@@ -107,8 +107,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 23
  testRunner.When("I change the CEUs to 1000.5");
 #line 24
@@ -129,8 +129,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 29
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 30
  testRunner.And("I have changed the CEUs to 0.70");
 #line 31
@@ -153,8 +153,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 36
 this.ScenarioSetup(scenarioInfo);
 #line 37
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 38
  testRunner.And("I have changed the CEUs to 0.70");
 #line 39
@@ -175,8 +175,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 45
  testRunner.When("I change the CEUs to 0");
 #line 46
@@ -195,7 +195,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 49
 this.ScenarioSetup(scenarioInfo);
 #line 50
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 51
  testRunner.When("I change the CEUs to 0");
 #line 52

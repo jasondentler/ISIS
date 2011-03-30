@@ -63,7 +63,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.When("I create an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.When("I create an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 9
  testRunner.Then("the credit course is created");
 #line 10
@@ -71,9 +71,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.And("the course number is 1301");
 #line 12
- testRunner.And("the course title is Introductory Biology");
+ testRunner.And("the course title is \"Introductory Biology\"");
 #line 13
- testRunner.And("the course long title is Introductory Biology");
+ testRunner.And("the course long title is \"Introductory Biology\"");
 #line 14
  testRunner.And("the course is active");
 #line 15
@@ -96,7 +96,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
 this.ScenarioSetup(scenarioInfo);
 #line 21
- testRunner.When("I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health");
+ testRunner.When("I create a Workforce Funded course AGEQ 1091 \"Routine Management of Equine Health" +
+                    "\"");
 #line 22
  testRunner.Then("the CE course is created");
 #line 23
@@ -104,9 +105,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 24
  testRunner.And("the course number is 1091");
 #line 25
- testRunner.And("the course title is Routine Management of Equine H");
+ testRunner.And("the course title is \"Routine Management of Equine H\"");
 #line 26
- testRunner.And("the course long title is Routine Management of Equine Health");
+ testRunner.And("the course long title is \"Routine Management of Equine Health\"");
 #line 27
  testRunner.And("the course is active");
 #line 28
@@ -133,8 +134,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 35
 this.ScenarioSetup(scenarioInfo);
 #line 36
- testRunner.When("I create a backdated Workforce Funded course AGEQ 1091 Routine Management of Equi" +
-                    "ne Health on 3/1/2011");
+ testRunner.When("I create a backdated Workforce Funded course AGEQ 1091 \"Routine Management of Equ" +
+                    "ine Health\" on 3/1/2011");
 #line 37
  testRunner.Then("the CE course is created");
 #line 38
@@ -142,9 +143,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 39
  testRunner.And("the course number is 1091");
 #line 40
- testRunner.And("the course title is Routine Management of Equine H");
+ testRunner.And("the course title is \"Routine Management of Equine H\"");
 #line 41
- testRunner.And("the course long title is Routine Management of Equine Health");
+ testRunner.And("the course long title is \"Routine Management of Equine Health\"");
 #line 42
  testRunner.And("the course is active as of 3/1/2011");
 #line 43
@@ -171,8 +172,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 50
 this.ScenarioSetup(scenarioInfo);
 #line 51
- testRunner.When("I create a Workforce Funded course AGEQ 1091 Routine Management of Equine Health " +
-                    "approved by Patty H");
+ testRunner.When("I create a Workforce Funded course AGEQ 1091 \"Routine Management of Equine Health" +
+                    "\" approved by Patty H");
 #line 52
  testRunner.Then("the CE course is created");
 #line 53
@@ -180,9 +181,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 54
  testRunner.And("the course number is 1091");
 #line 55
- testRunner.And("the course title is Routine Management of Equine H");
+ testRunner.And("the course title is \"Routine Management of Equine H\"");
 #line 56
- testRunner.And("the course long title is Routine Management of Equine Health");
+ testRunner.And("the course long title is \"Routine Management of Equine Health\"");
 #line 57
  testRunner.And("the course is active");
 #line 58

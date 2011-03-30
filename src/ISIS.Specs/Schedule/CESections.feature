@@ -5,7 +5,7 @@
 
 @domain
 Scenario: Create a CE section without a topic code
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term CE211Q1
@@ -15,7 +15,7 @@ Scenario: Create a CE section without a topic code
 	And the section's term is CE211Q1
 	And the section's start date is not set
 	And the section's end date is not set
-	And the section's title is Routine Management of Equine H
+	And the section's title is "Routine Management of Equine H"
 	And the section's credit type is Workforce Funded
 	And the section's course type is CWECM
 	And the section's current course type is CWECM
@@ -28,7 +28,7 @@ Scenario: Create a CE section without a topic code
 
 @domain
 Scenario: Create a CE section with a topic code
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a topic code BANK Banking/Finance
 	And I have changed the course's topic code to BANK Banking/Finance
@@ -38,14 +38,14 @@ Scenario: Create a CE section with a topic code
 
 @domain
 Scenario: Can create a CE section from a special interests course without an approval or CIP
-	Given I have created a Special Interests course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Special Interests course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term CE211Q1
 	Then the section is created
 
 @domain
 Scenario: Cant create a CE section from a non-special interests course without an approval or CIP
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term CE211Q1
 	Then the aggregate state is invalid
@@ -53,7 +53,7 @@ Scenario: Cant create a CE section from a non-special interests course without a
 
 @domain
 Scenario: Change the section number
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the section number to 02
@@ -62,7 +62,7 @@ Scenario: Change the section number
 
 @domain
 Scenario: Change the section number when the section number is taken
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	And I have created a section 02 from the course with term CE211Q1
@@ -72,7 +72,7 @@ Scenario: Change the section number when the section number is taken
 
 @domain
 Scenario: Change the section term
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a term CE211Q2 from 12/1/2011 to 2/28/2012
 	And I have created a section 01 from the course with term CE211Q1
@@ -82,7 +82,7 @@ Scenario: Change the section term
 
 @domain
 Scenario: Change the section term when the section number is taken
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a term CE211Q2 from 12/1/2011 to 2/28/2012
 	And I have created a section 01 from the course with term CE211Q1
@@ -93,7 +93,7 @@ Scenario: Change the section term when the section number is taken
 
 @domain
 Scenario: Change the section dates
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -104,7 +104,7 @@ Scenario: Change the section dates
 
 @domain
 Scenario: Change the section dates where the section dates are before the term
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -114,7 +114,7 @@ Scenario: Change the section dates where the section dates are before the term
 
 @domain
 Scenario: Change the section dates where the section dates are after the term
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -124,7 +124,7 @@ Scenario: Change the section dates where the section dates are after the term
 
 @domain
 Scenario: Change the section location
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -134,7 +134,7 @@ Scenario: Change the section location
 
 @domain
 Scenario: Change the section location to the same location
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -144,7 +144,7 @@ Scenario: Change the section location to the same location
 
 @domain
 Scenario: Change the section credit type to non-funded
-	Given I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -156,7 +156,7 @@ Scenario: Change the section credit type to non-funded
 
 @domain
 Scenario: Change the section credit type to funded
-	Given I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -168,7 +168,7 @@ Scenario: Change the section credit type to funded
 
 @domain
 Scenario: Change the section's CEUs
-	Given I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -178,11 +178,10 @@ Scenario: Change the section's CEUs
 
 @domain
 Scenario: Change the section's title
-	Given I have created a Workforce Non-funded course AGEQ 1091 Routine Management of Equine Health
+	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the section's title to Horses
 	Then the section's title is Horses
 	And it should do nothing else
-

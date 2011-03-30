@@ -62,7 +62,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 9
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 10
@@ -91,7 +91,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 18
 this.ScenarioSetup(scenarioInfo);
 #line 19
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 20
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 21
@@ -122,7 +122,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 30
 this.ScenarioSetup(scenarioInfo);
 #line 31
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 32
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 33
@@ -151,7 +151,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 41
 this.ScenarioSetup(scenarioInfo);
 #line 42
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 43
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 44
@@ -180,7 +180,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 52
 this.ScenarioSetup(scenarioInfo);
 #line 53
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 54
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 55
@@ -209,7 +209,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 63
 this.ScenarioSetup(scenarioInfo);
 #line 64
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 65
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 66
@@ -238,7 +238,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 74
 this.ScenarioSetup(scenarioInfo);
 #line 75
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 76
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 77
@@ -267,7 +267,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 85
 this.ScenarioSetup(scenarioInfo);
 #line 86
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 87
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 88
@@ -296,7 +296,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 96
 this.ScenarioSetup(scenarioInfo);
 #line 97
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 98
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 99
@@ -325,7 +325,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 107
 this.ScenarioSetup(scenarioInfo);
 #line 108
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 109
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 110
@@ -354,7 +354,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 118
 this.ScenarioSetup(scenarioInfo);
 #line 119
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 120
  testRunner.And("I have changed the approval number to 1234567890");
 #line 121
@@ -374,7 +374,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 128
  testRunner.And("the section\'s end date is 11/30/2011");
 #line 129
- testRunner.And("the section\'s title is Introductory Biology");
+ testRunner.And("the section\'s title is \"Introductory Biology\"");
 #line 130
  testRunner.And("the section\'s course type is ACAD");
 #line 131
@@ -401,7 +401,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 138
 this.ScenarioSetup(scenarioInfo);
 #line 139
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 140
  testRunner.And("I have created a term 211FA from 9/1/2011 to 11/30/2011");
 #line 141

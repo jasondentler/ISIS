@@ -63,7 +63,7 @@ namespace ISIS.Schedule
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.When("I create a course BIOL 1301 Introductory Biology without a course type");
+ testRunner.When("I create a course BIOL 1301 \"Introductory Biology\" without a course type");
 #line 9
  testRunner.Then("the command is invalid");
 #line 10
@@ -82,7 +82,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 13
 this.ScenarioSetup(scenarioInfo);
 #line 14
- testRunner.When("I create an ACAD ACAD course BIOL 1301 Introductory Biology");
+ testRunner.When("I create an ACAD ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 15
  testRunner.Then("the current course type is ACAD");
 #line 16
@@ -101,7 +101,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 19
 this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 21
  testRunner.When("I add the NF course type");
 #line 22
@@ -124,7 +124,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 28
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 29
  testRunner.When("I add the ACAD course type");
 #line 30
@@ -143,7 +143,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 33
 this.ScenarioSetup(scenarioInfo);
 #line 34
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 35
  testRunner.And("I have added the NF course type");
 #line 36
@@ -168,7 +168,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 42
 this.ScenarioSetup(scenarioInfo);
 #line 43
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 44
  testRunner.When("I remove the NF course type");
 #line 45
@@ -187,7 +187,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 48
 this.ScenarioSetup(scenarioInfo);
 #line 49
- testRunner.Given("I have created an ACAD course BIOL 1301 Introductory Biology");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 50
  testRunner.When("I remove the ACAD course type");
 #line 51
@@ -209,8 +209,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 55
 this.ScenarioSetup(scenarioInfo);
 #line 56
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 57
  testRunner.When("I add the CWECM course type");
 #line 58
@@ -232,8 +232,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 62
 this.ScenarioSetup(scenarioInfo);
 #line 63
- testRunner.Given("I have created a Workforce Funded course AGEQ 1091 Routine Management of Equine H" +
-                    "ealth");
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
 #line 64
  testRunner.When("I remove the CWECM course type");
 #line 65
