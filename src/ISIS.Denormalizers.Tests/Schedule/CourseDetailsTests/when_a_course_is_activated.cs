@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Ninject;
 using NUnit.Framework;
 
@@ -21,7 +22,7 @@ namespace ISIS.Schedule.CourseDetailsTests
 
         protected override CourseActivatedEvent WhenHandling()
         {
-            return new CourseActivatedEvent(EventSourceId);
+            return new CourseActivatedEvent(EventSourceId, DateTime.Now);
         }
 
         [Test]

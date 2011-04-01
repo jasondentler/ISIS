@@ -47,7 +47,6 @@
     <Compile Include="Schedule\TopicCodeMapping.cs" />
     <Compile Include="Schedule\CourseMapping.cs" />
     <Compile Include="ICommandMapping.cs" />
-    <Compile Include="MappingExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ncqrs;
 using Ncqrs.Domain;
 
 namespace ISIS.Schedule
@@ -8,6 +9,7 @@ namespace ISIS.Schedule
 
     public class Course : AggregateRootMappedByConvention
     {
+        private readonly IClock _clock;
 
         public enum Statuses
         {
@@ -29,8 +31,9 @@ namespace ISIS.Schedule
         private decimal _ceus;
         private Guid _topicCodeId;
 
-        private Course()
+        private Course(IClock clock)
         {
+            _clock = clock;
         }
 
         /// <summary>
@@ -40,20 +43,23 @@ namespace ISIS.Schedule
         /// <param name="rubric">Course subject. For example: BIOL</param>
         /// <param name="number">4-digit course number. For example: 2302</param>
         /// <param name="longTitle">Course title</param>
+        /// <param name="clock">Provides the current date/time</param>
         /// <example>new Course(Guid.NewGuid(), "BIOL","2302","Anatomy and Physiology 1");</example>
         public Course(
             Guid eventSourceId,
             string rubric,
             string number,
             string longTitle,
-            IEnumerable<CourseTypes> courseTypes)
+            IEnumerable<CourseTypes> courseTypes,
+            IClock clock)
             : base(eventSourceId)
         {
+            _clock = clock;
             var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
             ApplyEvent(new CreditCourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
-            ApplyEvent(new CourseActivatedEvent(eventSourceId));
+            ApplyEvent(new CourseActivatedEvent(eventSourceId, clock.UtcNow()));
             foreach (var courseType in courseTypes)
                 AddCourseType(courseType);
         }
@@ -66,20 +72,24 @@ namespace ISIS.Schedule
         /// <param name="number">4-digit course number. For example: 2302</param>
         /// <param name="longTitle">Course title</param>
         /// <param name="type">The Credit Type of the course (Grant Funded, Special Interests, etc)</param>
+        /// <param name="effectiveDate">The date/time that this course is activated</param>
+        /// <param name="clock">Provides the current date/time</param>
         /// <example>new Course(Guid.NewGuid(), "MUSI","1001","Music for seniors");</example>
         public Course(
             Guid eventSourceId,
             string rubric,
             string number,
             string longTitle,
-            CreditTypes type)
+            CreditTypes type,
+            DateTime? effectiveDate,
+            IClock clock)
             : base(eventSourceId)
         {
             var shortTitle = longTitle.Length > 30 ? longTitle.Substring(0, 30) : longTitle;
             ApplyEvent(new ContinuingEducationCourseCreatedEvent(eventSourceId, rubric, number));
             ApplyEvent(new CourseTitleChangedEvent(eventSourceId, shortTitle));
             ApplyEvent(new CourseLongTitleChangedEvent(eventSourceId, longTitle));
-            ApplyEvent(new CourseActivatedEvent(eventSourceId));
+            ApplyEvent(new CourseActivatedEvent(eventSourceId, effectiveDate ?? clock.UtcNow()));
             ChangeCreditType(type);
             ApplyEvent(new CourseCEUsChangedEvent(eventSourceId, 0M));
         }
@@ -184,7 +194,7 @@ namespace ISIS.Schedule
         public void Activate()
         {
             if (_status != Statuses.Active)
-                ApplyEvent(new CourseActivatedEvent(EventSourceId));
+                ApplyEvent(new CourseActivatedEvent(EventSourceId, _clock.UtcNow()));
         }
 
         protected void OnCourseActivated(CourseActivatedEvent @event)
@@ -343,7 +353,6 @@ namespace ISIS.Schedule
         {
             _topicCodeId = @event.TopicCodeId;
         }
-
 
     }
 }

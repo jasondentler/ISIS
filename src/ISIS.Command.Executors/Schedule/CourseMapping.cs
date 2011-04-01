@@ -1,4 +1,5 @@
-﻿using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs;
+using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
@@ -12,12 +13,33 @@ namespace ISIS.Schedule
 
             Map.Command<CreateCreditCourseCommand>()
                 .ToAggregateRoot<Course>()
-                .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Types))
+                .CreateNew(cmd =>
+                               {
+                                   var clock = NcqrsEnvironment.Get<IClock>();
+                                   return new Course(
+                                       cmd.CourseId,
+                                       cmd.Rubric,
+                                       cmd.CourseNumber,
+                                       cmd.Title,
+                                       cmd.Types,
+                                       clock);
+                               })
                 .RegisterWith(commandService);
 
             Map.Command<CreateContinuingEducationCourseCommand>()
                 .ToAggregateRoot<Course>()
-                .CreateNew(cmd => new Course(cmd.CourseId, cmd.Rubric, cmd.CourseNumber, cmd.Title, cmd.Type))
+                .CreateNew(cmd =>
+                               {
+                                   var clock = NcqrsEnvironment.Get<IClock>();
+                                   return new Course(
+                                       cmd.CourseId,
+                                       cmd.Rubric,
+                                       cmd.CourseNumber,
+                                       cmd.Title,
+                                       cmd.Type,
+                                       cmd.EffectiveDate,
+                                       clock);
+                               })
                 .RegisterWith(commandService);
 
             Map.Command<ChangeCIPCommand>()

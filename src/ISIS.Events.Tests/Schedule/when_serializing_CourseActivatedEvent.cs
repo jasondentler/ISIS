@@ -9,7 +9,7 @@ namespace ISIS.Schedule
 
         protected override CourseActivatedEvent GivenEvent()
         {
-            return new CourseActivatedEvent(Guid.NewGuid());
+            return new CourseActivatedEvent(Guid.NewGuid(), DateTime.Now);
         }
 
     }

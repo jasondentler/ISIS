@@ -127,6 +127,29 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I create a backdated (.*) course ([A-Z]{4}) (\d{1}0\d{2}) ""(.*)"" on (\d{1,2}/\d{1,2}/\d{4})")]
+        public void WhenICreateABackdatedCourse(
+            string creditTypeString,
+            string rubric,
+            string number,
+            string title,
+            string effectiveDateString)
+        {
+            var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
+            var effectiveDate = DateTime.Parse(effectiveDateString);
+            var cmd = new CreateContinuingEducationCourseCommand()
+                          {
+                              CourseId = DomainHelper.GetEventSourceId(),
+                              Rubric = rubric,
+                              CourseNumber = number,
+                              Title = title,
+                              Type = creditType,
+                              EffectiveDate = effectiveDate
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
+
+
 
         [Then(@"the credit course is created")]
         public void ThenTheCreditCourseShouldBeCreated()
@@ -159,11 +182,6 @@ namespace ISIS.Schedule
                         ?? DomainHelper.GetEvent<ContinuingEducationCourseCreatedEvent>();
             Assert.That(e.Number, Is.EqualTo(number));
         }
-
-
-
-
-
 
     }
 }

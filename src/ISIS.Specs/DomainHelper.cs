@@ -168,7 +168,6 @@ namespace ISIS
             return (T) GetCommand();
         }
 
-
         public static IEnumerable<UncommittedEvent> GetEvents()
         {
             return ScenarioContext.Current.Get<IEnumerable<UncommittedEvent>>();

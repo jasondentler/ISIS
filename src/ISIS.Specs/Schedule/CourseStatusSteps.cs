@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace ISIS.Schedule
@@ -77,6 +78,16 @@ namespace ISIS.Schedule
             var e = DomainHelper.GetEvent<CourseActivatedEvent>();
             Assert.That(e, Is.Not.Null);
         }
+
+        [Then(@"the course is active as of (\d{1,2}/\d{1,2}/\d{4})")]
+        public void ThenTheCourseIsActiveAsOf(
+            string effectiveDateString)
+        {
+            var effectiveDate = DateTime.Parse(effectiveDateString);
+            var e = DomainHelper.GetEvent<CourseActivatedEvent>();
+            Assert.That(e.EffectiveDate, Is.EqualTo(effectiveDate));
+        }
+
 
         [Then(@"the course is inactive")]
         public void ThenTheCourseIsInactive()

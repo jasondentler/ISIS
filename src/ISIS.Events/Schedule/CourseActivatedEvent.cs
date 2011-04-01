@@ -7,13 +7,12 @@ namespace ISIS.Schedule
 
         public Guid CourseId { get; private set; }
 
-        private CourseActivatedEvent()
-        {
-        }
+        public DateTime EffectiveDate { get; private set; }
 
-        public CourseActivatedEvent(Guid courseId)
+        public CourseActivatedEvent(Guid courseId, DateTime effectiveDate)
         {
             CourseId = courseId;
+            EffectiveDate = effectiveDate;
         }
     }
 }
