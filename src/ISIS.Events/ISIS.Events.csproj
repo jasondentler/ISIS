@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IEvent.cs" />
     <Compile Include="Schedule\ContinuingEducationCourseCreatedEvent.cs" />
+    <Compile Include="Schedule\CourseApprovedEvent.cs" />
     <Compile Include="Schedule\CourseTopicCodeChangedEvent.cs" />
     <Compile Include="Schedule\TopicCodeDescriptionChangedEvent.cs" />
     <Compile Include="Schedule\TopicCodeAbbreviationChangedEvent.cs" />

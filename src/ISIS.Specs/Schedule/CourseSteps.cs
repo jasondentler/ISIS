@@ -149,6 +149,26 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I create a (.*) course ([A-Z]{4}) (\d{1}0\d{2}) ""(.*)"" approved by (.*)")]
+        public void WhenICreateACourseApprovedBy(
+            string creditTypeString,
+            string rubric,
+            string number,
+            string title,
+            string approvedBy)
+        {
+            var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
+            var cmd = new CreateContinuingEducationCourseCommand()
+            {
+                CourseId = DomainHelper.GetEventSourceId(),
+                Rubric = rubric,
+                CourseNumber = number,
+                Title = title,
+                Type = creditType,
+                ApprovedBy = approvedBy
+            };
+            DomainHelper.WhenExecuting(cmd);
+        }
 
 
         [Then(@"the credit course is created")]
@@ -182,6 +202,15 @@ namespace ISIS.Schedule
                         ?? DomainHelper.GetEvent<ContinuingEducationCourseCreatedEvent>();
             Assert.That(e.Number, Is.EqualTo(number));
         }
+
+        [Then(@"the approval person is (.*)")]
+        public void ThenTheApprovalPersonIs(
+            string approvalPerson)
+        {
+            var e = DomainHelper.GetEvent<CourseApprovedEvent>();
+            Assert.That(e.ApprovedBy, Is.EqualTo(approvalPerson));
+        }
+
 
     }
 }

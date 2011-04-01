@@ -83,6 +83,7 @@ namespace ISIS.Schedule
             string longTitle,
             CreditTypes type,
             DateTime? effectiveDate,
+            string approvedBy,
             IClock clock)
             : base(eventSourceId)
         {
@@ -93,6 +94,8 @@ namespace ISIS.Schedule
             ApplyEvent(new CourseActivatedEvent(eventSourceId, effectiveDate ?? clock.UtcNow()));
             ChangeCreditType(type);
             ApplyEvent(new CourseCEUsChangedEvent(eventSourceId, 0M));
+            if (!string.IsNullOrWhiteSpace(approvedBy))
+                ApplyEvent(new CourseApprovedEvent(eventSourceId, approvedBy));
         }
 
         protected void OnCreditCourseCreated(CreditCourseCreatedEvent @event)
@@ -353,6 +356,10 @@ namespace ISIS.Schedule
         protected void OnTopicCodeChanged(CourseTopicCodeChangedEvent @event)
         {
             _topicCodeId = @event.TopicCodeId;
+        }
+
+        protected void OnApproved(CourseApprovedEvent @event)
+        {
         }
 
     }

@@ -38,6 +38,7 @@ namespace ISIS.Schedule
                                        cmd.Title,
                                        cmd.Type,
                                        cmd.EffectiveDate,
+                                       cmd.ApprovedBy,
                                        clock);
                                })
                 .RegisterWith(commandService);

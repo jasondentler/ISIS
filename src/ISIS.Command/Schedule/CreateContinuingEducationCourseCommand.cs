@@ -19,6 +19,8 @@ namespace ISIS.Schedule
         public CreditTypes Type { get; set; }
 
         public DateTime? EffectiveDate { get; set; }
-        
+
+        public string ApprovedBy { get; set; }
+
     }
 }
