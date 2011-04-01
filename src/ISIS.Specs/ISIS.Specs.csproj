@@ -37,6 +37,9 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\lib\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs.Config.Ninject">
+      <HintPath>..\..\lib\ncqrs\Extensions\Ncqrs.Config.Ninject\Ncqrs.Config.Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="Ncqrs.Spec">
       <HintPath>..\..\lib\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
     </Reference>
@@ -46,7 +49,7 @@
     </Reference>
     <Reference Include="Ninject, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ninject.2.2.1.0\lib\.NetFramework 4.0\Ninject.dll</HintPath>
+      <HintPath>..\..\lib\ncqrs\Extensions\Ncqrs.Config.Ninject\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -64,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NcqrsModule.cs" />
     <Compile Include="Schedule\CourseCEUs.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,7 +106,6 @@
     </Compile>
     <Compile Include="Schedule\CourseTypeSteps.cs" />
     <Compile Include="DomainHelper.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="Schedule\CourseSteps.cs" />
     <Compile Include="Schedule\CreateACourse.feature.cs">
       <AutoGen>True</AutoGen>

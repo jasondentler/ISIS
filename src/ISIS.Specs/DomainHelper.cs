@@ -83,7 +83,7 @@ namespace ISIS
                 maxEventSequence = existingEvents.Max(e => e.EventSequence);
 
             var stream = Prepare.Events(@event)
-                .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence);
+                .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int) maxEventSequence + 1);
 
             store.Store(stream);
         }

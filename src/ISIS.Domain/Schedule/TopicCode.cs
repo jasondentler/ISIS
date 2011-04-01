@@ -9,6 +9,7 @@ namespace ISIS.Schedule
         private string _abbreviation;
         private string _description;
 
+        [Inject]
         private TopicCode()
         {
         }

@@ -4,6 +4,7 @@ using FluentDML.Mapping;
 using FluentDML.NHibernateAdapter;
 using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
+using Ncqrs.Config.Ninject;
 using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Storage;
@@ -33,12 +34,11 @@ namespace ISIS.Web
                 .InSingletonScope();
 
             Kernel.Bind<IAggregateRootCreationStrategy>()
-                .To<SimpleAggregateRootCreationStrategy>()
+                .To<NinjectAggregateRootCreationStrategy>()
                 .InSingletonScope();
 
             Kernel.Bind<IDomainRepository>()
-                .ToMethod(ctx =>
-                          new DomainRepository(Kernel.Get<IAggregateRootCreationStrategy>()))
+                .To<DomainRepository>()
                 .InSingletonScope();
 
             Kernel.Bind<ICommandServiceInterceptor>()

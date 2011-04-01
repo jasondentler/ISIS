@@ -1,4 +1,7 @@
 ﻿using FluentValidation;
+using Ncqrs;
+using Ncqrs.Config.Ninject;
+using Ninject;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -11,7 +14,9 @@ namespace ISIS
         [BeforeScenario("domain")]
         public void Setup()
         {
-            Configuration.Configure();
+            if (NcqrsEnvironment.IsConfigured) return;
+            var kernel = new StandardKernel(NcqrsModule.GetSettings(), new NcqrsModule());
+            NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
         }
 
         [Then(@"it should do nothing")]

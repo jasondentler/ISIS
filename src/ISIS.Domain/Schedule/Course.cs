@@ -31,6 +31,7 @@ namespace ISIS.Schedule
         private decimal _ceus;
         private Guid _topicCodeId;
 
+        [Inject]
         private Course(IClock clock)
         {
             _clock = clock;
