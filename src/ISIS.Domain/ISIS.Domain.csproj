@@ -47,6 +47,8 @@
     <Compile Include="Schedule\Course.cs" />
     <Compile Include="InvalidStateException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\Section.cs" />
+    <Compile Include="Schedule\Term.cs" />
     <Compile Include="Schedule\TopicCode.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -129,6 +129,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CESections.feature</DependentUpon>
     </Compile>
+    <Compile Include="Schedule\SectionSteps.cs" />
+    <Compile Include="TermSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schedule\CourseCEUs.feature">

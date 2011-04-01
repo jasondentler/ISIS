@@ -66,7 +66,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 10
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 11
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 12
@@ -95,11 +95,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 21
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 22
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 23
- testRunner.And("I have changed the location to CLEM");
+ testRunner.And("I have set the location to CLEM");
 #line 24
  testRunner.When("I change the section location to ACC");
 #line 25
@@ -126,7 +126,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 32
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 33
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 34
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 35
@@ -155,7 +155,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 43
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 44
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 45
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 46
@@ -184,7 +184,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 54
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 55
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 56
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 57
@@ -213,7 +213,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 65
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 66
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 67
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 68
@@ -242,7 +242,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 76
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 77
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 78
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 79
@@ -271,7 +271,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 87
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 88
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 89
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 90
@@ -300,7 +300,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 98
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 99
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 100
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 101
@@ -329,7 +329,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 109
  testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 110
- testRunner.And("I have created a term 211FA from 8/25/2011 to 12/7/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 111
  testRunner.And("I have created a section 01 from the course with term 211FA");
 #line 112
@@ -356,11 +356,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 119
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 120
- testRunner.And("I have changed the approval number to 1234567890");
+ testRunner.And("I have set the approval number to 1234567890");
 #line 121
- testRunner.And("I have created a term 211FA from 9/1/2011 to 11/30/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
 #line 122
- testRunner.When("I create section 01 from the course with term 211FA");
+ testRunner.When("I create section 01 from the course and term");
 #line 123
  testRunner.Then("the section\'s rubric is BIOL");
 #line 124
@@ -403,7 +403,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 139
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 140
- testRunner.And("I have created a term 211FA from 9/1/2011 to 11/30/2011");
+ testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
 #line 141
  testRunner.When("I create section 01 from the course with term 211FA");
 #line 142

@@ -11,25 +11,25 @@ namespace ISIS.Schedule
         [Given(@"I have deactivated the course")]
         public void GivenIHaveDeactivatedTheCourse()
         {
-            DomainHelper.GivenEvent(
+            DomainHelper.GivenEvent<Course>(
                 new CourseDeactivatedEvent(
-                    DomainHelper.GetEventSourceId()));
+                    DomainHelper.GetEventSourceId<Course>()));
         }
 
         [Given(@"I have made the course obsolete")]
         public void GivenIHaveMadeTheCourseObsolete()
         {
-            DomainHelper.GivenEvent(
+            DomainHelper.GivenEvent<Course>(
                 new CourseMadeObsoleteEvent(
-                    DomainHelper.GetEventSourceId()));
+                    DomainHelper.GetEventSourceId<Course>()));
         }
 
         [Given(@"I have made the course pending")]
         public void GivenIHaveMadeTheCoursePending()
         {
-            DomainHelper.GivenEvent(
+            DomainHelper.GivenEvent<Course>(
                 new CourseMadePendingEvent(
-                    DomainHelper.GetEventSourceId()));
+                    DomainHelper.GetEventSourceId<Course>()));
         }
 
         [When(@"I activate the course")]
@@ -37,7 +37,7 @@ namespace ISIS.Schedule
         {
             var cmd = new ActivateCourseCommand()
                           {
-                              CourseId = DomainHelper.GetEventSourceId()
+                              CourseId = DomainHelper.GetEventSourceId<Course>()
                           };
             DomainHelper.WhenExecuting(cmd);
         }
@@ -47,7 +47,7 @@ namespace ISIS.Schedule
         {
             var cmd = new DeactivateCourseCommand()
             {
-                CourseId = DomainHelper.GetEventSourceId()
+                CourseId = DomainHelper.GetEventSourceId<Course>()
             };
             DomainHelper.WhenExecuting(cmd);
         }
@@ -57,7 +57,7 @@ namespace ISIS.Schedule
         {
             var cmd = new MakeCoursePendingCommand()
             {
-                CourseId = DomainHelper.GetEventSourceId()
+                CourseId = DomainHelper.GetEventSourceId<Course>()
             };
             DomainHelper.WhenExecuting(cmd);
         }
@@ -67,7 +67,7 @@ namespace ISIS.Schedule
         {
             var cmd = new MakeCourseObsoleteCommand()
             {
-                CourseId = DomainHelper.GetEventSourceId()
+                CourseId = DomainHelper.GetEventSourceId<Course>()
             };
             DomainHelper.WhenExecuting(cmd);
         }

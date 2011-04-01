@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandServiceExtensions.cs" />
+    <Compile Include="Schedule\SectionMapping.cs" />
     <Compile Include="Schedule\TopicCodeMapping.cs" />
     <Compile Include="Schedule\CourseMapping.cs" />
     <Compile Include="ICommandMapping.cs" />
