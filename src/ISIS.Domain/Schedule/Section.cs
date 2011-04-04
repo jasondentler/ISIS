@@ -6,6 +6,7 @@ namespace ISIS.Schedule
     public class Section : AggregateRootMappedByConvention
     {
         private Guid _topicCodeId;
+        private Guid _locationId;
 
         [Inject]
         private Section()
@@ -18,10 +19,18 @@ namespace ISIS.Schedule
             var termData = term.BuildMememto();
             var courseData = course.BuildMemento();
 
-            if (string.IsNullOrEmpty(courseData.ApprovalNumber) &&
+            if (courseData.IsCredit &&
+                string.IsNullOrEmpty(courseData.ApprovalNumber) &&
                 string.IsNullOrEmpty(courseData.CIP))
                 throw new InvalidStateException(
                     "Your attempt to create the section failed. Set approval number or CIP at the course level first.");
+
+            if (!courseData.IsCredit &&
+                courseData.CreditType != CreditTypes.SpecialInterests &&
+                string.IsNullOrEmpty(courseData.ApprovalNumber) &&
+                string.IsNullOrEmpty(courseData.CIP))
+                throw new InvalidStateException(
+                    "Your attempt to create a section failed. The course doesn't have an approval number or CIP, and it's not a special interests course.");
 
             ApplyEvent(new SectionCreatedEvent(
                 sectionId, 
@@ -56,6 +65,9 @@ namespace ISIS.Schedule
 
             var locationData = location.BuildMemento();
 
+            if (locationData.LocationId == _locationId)
+                return;
+
             ApplyEvent(new SectionLocationChangedEvent(
                            EventSourceId,
                            locationData.LocationId,
@@ -84,6 +96,7 @@ namespace ISIS.Schedule
 
         protected void OnLocationChanged(SectionLocationChangedEvent @event)
         {
+            _locationId = @event.LocationId;
         }
 
         public void ChangeTopicCode(TopicCode topicCode)

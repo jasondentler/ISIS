@@ -7,6 +7,7 @@ namespace ISIS.Schedule
     public class CourseCIPAndApprovalSteps
     {
 
+        [Given(@"I have changed the approval number to (\d{10})")]
         [Given(@"I have set the approval number to (\d{10})")]
         public void GivenIHaveSetTheApprovalNumberTo(string approvalNumber)
         {

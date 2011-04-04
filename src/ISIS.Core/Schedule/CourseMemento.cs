@@ -14,6 +14,7 @@ namespace ISIS.Schedule
         private readonly IEnumerable<CourseTypes> _courseTypes;
         private readonly string _approvalNumber;
         private readonly string _cip;
+        private readonly CreditTypes _creditType;
 
         public CourseMemento(
             Guid id,
@@ -24,7 +25,8 @@ namespace ISIS.Schedule
             bool isCredit,
             IEnumerable<CourseTypes> courseTypes,
             string approvalNumber,
-            string cip)
+            string cip,
+            CreditTypes creditType)
         {
             _id = id;
             _rubric = rubric;
@@ -35,6 +37,7 @@ namespace ISIS.Schedule
             _courseTypes = courseTypes;
             _approvalNumber = approvalNumber;
             _cip = cip;
+            _creditType = creditType;
         }
 
         public Guid Id { get { return _id; } }
@@ -46,6 +49,7 @@ namespace ISIS.Schedule
         public bool IsCredit { get { return _isCredit; } }
         public string ApprovalNumber { get { return _approvalNumber; } }
         public string CIP { get { return _cip; } }
+        public CreditTypes CreditType { get { return _creditType; }}
 
     }
 }

@@ -379,7 +379,8 @@ namespace ISIS.Schedule
                 _isCreditCourse,
                 _courseTypes.ToArray(),
                 _approvalNumber,
-                _cip);
+                _cip,
+                _creditType);
         }
     }
 }

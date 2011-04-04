@@ -10,6 +10,27 @@ namespace ISIS.Schedule
     public class CourseTopicCodeSteps
     {
         
+        public static Guid GetTDCTopicCodeId()
+        {
+            Guid tdcjTopiCodeId;
+            if (DomainHelper.IdExists<TopicCode>("A"))
+            {
+                tdcjTopiCodeId = DomainHelper.GetId<TopicCode>("A");
+            }
+            else
+            {
+                tdcjTopiCodeId = Guid.NewGuid();
+                DomainHelper.SetId<TopicCode>(tdcjTopiCodeId, "A");
+                DomainHelper.GivenEvent(tdcjTopiCodeId,
+                                        new TopicCodeCreatedEvent(
+                                            tdcjTopiCodeId,
+                                            "A",
+                                            "Academic TDC Course Code"));
+
+            }
+            return tdcjTopiCodeId;
+        }
+
         [Given(@"I have created a topic code ([A-Z]+) (.*)")]
         public void GivenIHaveCreatedATopicCode(
             string abbreviation,

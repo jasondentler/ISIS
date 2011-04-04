@@ -20,7 +20,8 @@ namespace ISIS.Schedule
         {
             var id = DomainHelper.GetId<Section>();
             var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
-            var tdcjTopicCode = DomainHelper.GetId<TopicCode>("A");
+
+            var tdcjTopicCode = CourseTopicCodeSteps.GetTDCTopicCodeId();
 
             DomainHelper.GivenEvent<Section>(
                 new SectionLocationChangedEvent(
@@ -112,19 +113,35 @@ namespace ISIS.Schedule
         public void WhenICreateSection(
             string sectionNumber)
         {
-            var courseId = DomainHelper.GetId<Course>();
             var termId = DomainHelper.GetId<Term>();
+            CreateSection(sectionNumber, termId);
+        }
+
+        [When(@"I create section ([^\s]+) from the course with term ([^\s]+)")]
+        public void WhenICreateSectionFromTheCourseWithTerm(
+            string sectionNumber,
+            string termAbbreviation)
+        {
+            var termId = DomainHelper.GetId<Term>(termAbbreviation);
+            CreateSection(sectionNumber, termId);
+        }
+
+        private void CreateSection(
+            string sectionNumber,
+            Guid termId)
+        {
+            var courseId = DomainHelper.GetId<Course>();
 
             var id = Guid.NewGuid();
             DomainHelper.SetId<Section>(id, termId.ToString(), courseId.ToString(), sectionNumber);
 
             var cmd = new CreateSectionCommand()
-                          {
-                              SectionId = id,
-                              CourseId = courseId,
-                              TermId = termId,
-                              SectionNumber = sectionNumber
-                          };
+            {
+                SectionId = id,
+                CourseId = courseId,
+                TermId = termId,
+                SectionNumber = sectionNumber
+            };
             DomainHelper.WhenExecuting(cmd);
         }
 
@@ -133,7 +150,8 @@ namespace ISIS.Schedule
             string locationAbbreviation)
         {
             var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
-            var tdcjTopiCodeId = DomainHelper.GetId<TopicCode>("A");
+
+            var tdcjTopiCodeId = CourseTopicCodeSteps.GetTDCTopicCodeId();
 
             var cmd = new ChangeSectionLocationCommand()
                           {
@@ -313,6 +331,14 @@ namespace ISIS.Schedule
             Assert.That(e.TopicCodeAbbreviation, Is.EqualTo(topicCodeAbbreviation));
             Assert.That(e.TopicCodeDescription, Is.EqualTo(topicCodeDescription));
         }
+
+        [Then(@"the section is created")]
+        public void ThenTheSectionIsCreated()
+        {
+            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            Assert.That(e, Is.Not.Null);
+        }
+
 
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace ISIS.Schedule
@@ -11,6 +8,7 @@ namespace ISIS.Schedule
     {
 
         [Given(@"I have created a location ([^\s]+) (.*)")]
+        [Given(@"I have created the location ([^\s]+) (.*)")]
         public void GivenIHaveCreatedALocation(
             string abbreviation,
             string name)

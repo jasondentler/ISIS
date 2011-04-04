@@ -72,6 +72,12 @@ namespace ISIS
             return Get<WrappedValue<Guid>>(key).Value;
         }
 
+        public static bool IdExists<T>(params string[] naturalId)
+        {
+            var key = typeof(T) + string.Join(" ", naturalId);
+            return ScenarioContext.Current.ContainsKey(key);
+        }
+
         public static void GivenEvent<T>(object @event)
         {
             GivenEvent(GetEventSourceId<T>(), @event);
