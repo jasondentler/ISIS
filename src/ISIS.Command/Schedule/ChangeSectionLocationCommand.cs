@@ -9,6 +9,7 @@ namespace ISIS.Schedule
 
         public Guid SectionId { get;  set; }
         public Guid LocationId { get; set; }
+        public Guid TDCJTopicCodeId { get; set; }
 
     }
 

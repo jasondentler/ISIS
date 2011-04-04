@@ -12,13 +12,13 @@ namespace ISIS.Schedule
         public SectionLocationChangedEvent(
             Guid sectionId,
             Guid locationId,
-            string abbreviation,
-            string name)
+            string locationAbbreviation,
+            string locationName)
         {
             SectionId = sectionId;
             LocationId = locationId;
-            LocationAbbreviation = abbreviation;
-            LocationName = name;
+            LocationAbbreviation = locationAbbreviation;
+            LocationName = locationName;
         }
 
 

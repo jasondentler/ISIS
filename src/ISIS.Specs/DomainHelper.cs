@@ -203,11 +203,11 @@ namespace ISIS
                 testedEvents.Add(@event);
         }
 
-        public static bool AllEventsWereTested()
+        public static IEnumerable<object> GetUntestedEvents()
         {
             var testedEvents = ScenarioContext.Current.Get<HashSet<object>>(TestedEventsKey);
             var untestedEvents = GetRawEvents().Except(testedEvents);
-            return !untestedEvents.Any();
+            return untestedEvents.ToArray();
         }
 
     }

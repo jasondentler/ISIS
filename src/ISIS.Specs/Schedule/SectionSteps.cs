@@ -20,6 +20,7 @@ namespace ISIS.Schedule
         {
             var id = DomainHelper.GetId<Section>();
             var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
+            var tdcjTopicCode = DomainHelper.GetId<TopicCode>("A");
 
             DomainHelper.GivenEvent<Section>(
                 new SectionLocationChangedEvent(
@@ -27,6 +28,28 @@ namespace ISIS.Schedule
                     locationId,
                     locationAbbreviation,
                     locationName));
+
+            switch (locationAbbreviation)
+            {
+                case "CLEM":
+                case "CV":
+                case "DAR":
+                case "J1":
+                case "J2":
+                case "J3":
+                case "R1":
+                case "R2":
+                case "TER":
+                    DomainHelper.GivenEvent(
+                        id,
+                        new SectionTopicCodeChangedEvent(
+                            id,
+                            tdcjTopicCode,
+                            "A",
+                            "Academic TDC Course Code"));
+                    break;
+            }
+
         }
 
 
@@ -110,10 +133,12 @@ namespace ISIS.Schedule
             string locationAbbreviation)
         {
             var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
+            var tdcjTopiCodeId = DomainHelper.GetId<TopicCode>("A");
 
             var cmd = new ChangeSectionLocationCommand()
                           {
                               LocationId = locationId,
+                              TDCJTopicCodeId = tdcjTopiCodeId,
                               SectionId = DomainHelper.GetId<Section>()
                           };
             DomainHelper.WhenExecuting(cmd);
@@ -270,14 +295,23 @@ namespace ISIS.Schedule
         [Then(@"the topic code is blank")]
         public void ThenTheTopicCodeIsBlank()
         {
-            ScenarioContext.Current.Pending();
+            var e = DomainHelper.GetEvent<SectionTopicCodeRemovedEvent>();
+            Assert.That(e, Is.Not.Null);
         }
 
-        [Then(@"the topic code is ([A-Z0-9]+)")]
+        [Then(@"the topic code is ([A-Z0-9]+) (.*)")]
         public void ThenTheTopicCodeIs(
-            string topicCodeAbbreviation)
+            string topicCodeAbbreviation,
+            string topicCodeDescription)
         {
-            ScenarioContext.Current.Pending();
+            var topicCodeId = DomainHelper.GetId<TopicCode>(topicCodeAbbreviation);
+
+            var e = DomainHelper.GetEvent<SectionTopicCodeChangedEvent>();
+
+            Assert.That(e, Is.Not.Null);
+            Assert.That(e.TopicCodeId, Is.EqualTo(topicCodeId));
+            Assert.That(e.TopicCodeAbbreviation, Is.EqualTo(topicCodeAbbreviation));
+            Assert.That(e.TopicCodeDescription, Is.EqualTo(topicCodeDescription));
         }
 
     }

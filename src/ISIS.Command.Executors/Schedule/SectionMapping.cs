@@ -27,7 +27,8 @@ namespace ISIS.Schedule
                               {
                                   var uow = UnitOfWorkContext.Current;
                                   var location = uow.GetById<Location>(cmd.LocationId);
-                                  section.ChangeLocation(location);
+                                  var tdcjTopicCode = uow.GetById<TopicCode>(cmd.TDCJTopicCodeId);
+                                  section.ChangeLocation(location, tdcjTopicCode);
                               })
                 .RegisterWith(commandService);
         }

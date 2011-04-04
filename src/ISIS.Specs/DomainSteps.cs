@@ -1,9 +1,12 @@
 ﻿using FluentValidation;
 using Ncqrs;
 using Ncqrs.Config.Ninject;
+using Newtonsoft.Json;
 using Ninject;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
+using System.Linq;
+
 
 namespace ISIS
 {
@@ -28,7 +31,19 @@ namespace ISIS
         [Then(@"it should do nothing else")]
         public void ThenItShouldDoNothingElse()
         {
-            Assert.That(DomainHelper.AllEventsWereTested(), Is.True);
+            var untestedEvents = DomainHelper.GetUntestedEvents();
+
+            var data = untestedEvents.Select(e =>
+                                             string.Format("{0}: {1}",
+                                                           e.GetType().ToString(),
+                                                           JsonConvert.SerializeObject(e)));
+
+            var dataString = string.Join(",\r\n", data);
+
+            var msg = string.Format("The following events weren't checked by the scenario: \r\n{0}",
+                                    dataString);
+
+            Assert.That(untestedEvents, Is.Empty, msg);
         }
 
         [Then(@"the command is invalid")]

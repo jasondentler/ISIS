@@ -9,59 +9,15 @@ namespace ISIS.Schedule
     [Binding]
     public class CourseTopicCodeSteps
     {
-
-        private Dictionary<string, Guid> GetMap()
-        {
-            var ctx = ScenarioContext.Current;
-            if (!ctx.ContainsKey("topicCodeMap"))
-            {
-                var map = new Dictionary<string, Guid>();
-                ctx["topicCodeMap"] = map;
-                return map;
-            }
-            return ctx.Get<Dictionary<string, Guid>>("topicCodeMap");
-        }
-
-        private void AddTopicCode(Guid id, string abbreviation)
-        {
-            GetMap().Add(abbreviation, id);
-        }
-
-        private void RemoveTopicCode(string abbreviation)
-        {
-            GetMap().Remove(abbreviation);
-        }
-
-        private void RemoveTopicCode(Guid id)
-        {
-            GetMap().Remove(GetTopicCodeAbbreviation(id));
-        }
-
-        private string GetTopicCodeAbbreviation(Guid id)
-        {
-            return GetMap()
-                .Where(item => item.Value == id)
-                .Select(item => item.Key)
-                .Single();
-        }
-
-        private Guid GetTopicCodeId(string abbreviation)
-        {
-            return GetMap()[abbreviation];
-        }
-
-        private Guid GetTheTopicCodeId()
-        {
-            return GetMap().Single().Value;
-        }
-
+        
         [Given(@"I have created a topic code ([A-Z]+) (.*)")]
         public void GivenIHaveCreatedATopicCode(
             string abbreviation,
             string description)
         {
             var id = Guid.NewGuid();
-            AddTopicCode(id, abbreviation);
+            DomainHelper.SetId<TopicCode>(id, abbreviation);
+
             DomainHelper.GivenEvent(id, new TopicCodeCreatedEvent(
                 id, 
                 abbreviation, 
@@ -73,7 +29,8 @@ namespace ISIS.Schedule
             string topicCodeAbbreviation,
             string topicCodeDescription)
         {
-            var topicCodeId = GetTopicCodeId(topicCodeAbbreviation);
+            var topicCodeId = DomainHelper.GetId<TopicCode>(topicCodeAbbreviation);
+
             DomainHelper.GivenEvent<Course>(
                 new CourseTopicCodeChangedEvent(
                     DomainHelper.GetEventSourceId<Course>(),
@@ -101,14 +58,14 @@ namespace ISIS.Schedule
                 .Cast<TopicCodeCreatedEvent>()
                 .Single();
 
-            AddTopicCode(@event.TopicCodeId, @event.Abbreviation);
+            DomainHelper.SetId<TopicCode>(@event.TopicCodeId, abbreviation);
         }
 
         [When(@"I change the topic code abbreviation to (.*)")]
         public void WhenIChangeTheTopicCodeAbbreviation(
             string newAbbreviation)
         {
-            var topicCodeId = GetTheTopicCodeId();
+            var topicCodeId = DomainHelper.GetId<TopicCode>();
 
             var cmd = new ChangeTopicCodeAbbreviationCommand()
                           {
@@ -117,15 +74,15 @@ namespace ISIS.Schedule
                           };
             DomainHelper.WhenExecuting(cmd);
 
-            RemoveTopicCode(topicCodeId);
-            AddTopicCode(topicCodeId, newAbbreviation);
+            DomainHelper.SetId<TopicCode>(topicCodeId, newAbbreviation);
         }
 
         [When(@"I change the topic code description to (.*)")]
         public void WhenIChangeTheTopicCodeDescriptionTo(
             string topicCodeDescription)
         {
-            var topicCodeId = GetTheTopicCodeId();
+            var topicCodeId = DomainHelper.GetId<TopicCode>();
+
             var cmd = new ChangeTopicCodeDescriptionCommand()
                           {
                               TopicCodeId = topicCodeId,
@@ -137,7 +94,8 @@ namespace ISIS.Schedule
         [When(@"I change the courses's topic code to ([A-Z]+)")]
         public void WhenIChangeTheCoursesSTopicCodeTo(string topicCodeAbbreviation)
         {
-            var topicCodeId = GetTopicCodeId(topicCodeAbbreviation);
+            var topicCodeId = DomainHelper.GetId<TopicCode>(topicCodeAbbreviation);
+
             var cmd = new ChangeCourseTopicCodeCommand()
                           {
                               CourseId = DomainHelper.GetEventSourceId<Course>(),
@@ -191,7 +149,8 @@ namespace ISIS.Schedule
         [Then(@"the course's topic code is (.*)")]
         public void ThenTheCourseSTopicCodeIs(string topicCodeAbbreviation)
         {
-            var topicCodeId = GetTopicCodeId(topicCodeAbbreviation);
+            var topicCodeId = DomainHelper.GetId<TopicCode>(topicCodeAbbreviation);
+
             var e = DomainHelper.GetEvent<CourseTopicCodeChangedEvent>();
             Assert.That(e.TopicCodeId, Is.EqualTo(topicCodeId));
             Assert.That(e.TopicCodeAbbreviation, Is.EqualTo(topicCodeAbbreviation));
