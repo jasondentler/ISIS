@@ -30,6 +30,8 @@ namespace ISIS.Schedule
         private CreditTypes _creditType;
         private decimal _ceus;
         private Guid _topicCodeId;
+        private string _rubric;
+        private string _courseNumber;
 
         [Inject]
         private Course(IClock clock)
@@ -101,11 +103,15 @@ namespace ISIS.Schedule
         protected void OnCreditCourseCreated(CreditCourseCreatedEvent @event)
         {
             _isCreditCourse = true;
+            _rubric = @event.Rubric;
+            _courseNumber = @event.Number;
         }
 
         protected void OnContinuingEducationCourseCreated(ContinuingEducationCourseCreatedEvent @event)
         {
             _isCreditCourse = false;
+            _rubric = @event.Rubric;
+            _courseNumber = @event.Number;
         }
 
         /// <summary>
@@ -362,5 +368,18 @@ namespace ISIS.Schedule
         {
         }
 
+        public CourseMemento BuildMemento()
+        {
+            return new CourseMemento(
+                EventSourceId,
+                _rubric,
+                _courseNumber,
+                _title,
+                _longTitle,
+                _isCreditCourse,
+                _courseTypes.ToArray(),
+                _approvalNumber,
+                _cip);
+        }
     }
 }

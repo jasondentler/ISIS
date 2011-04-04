@@ -9,13 +9,21 @@ namespace ISIS.Schedule
 
         protected override SectionCreatedEvent GivenEvent()
         {
-            return new SectionCreatedEvent()
-                       {
-                           CourseId = Guid.NewGuid(),
-                           SectionId = Guid.NewGuid(),
-                           SectionNumber = "01",
-                           TermId = Guid.NewGuid()
-                       };
+            return new SectionCreatedEvent(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "BIOL",
+                "1301",
+                Guid.NewGuid(),
+                "211FA",
+                "Fall 2011",
+                "01",
+                DateTime.Today,
+                DateTime.Today.AddDays(16*7),
+                "Introductory Biology",
+                new[] {CourseTypes.ACAD},
+                "1234567890",
+                "123456");
         }
 
     }

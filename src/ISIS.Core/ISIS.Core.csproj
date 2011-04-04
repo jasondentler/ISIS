@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="EnumData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\CourseMemento.cs" />
     <Compile Include="Schedule\CourseTypes.cs" />
     <Compile Include="Schedule\CourseTypesModel.cs" />
     <Compile Include="Schedule\CreditTypes.cs" />
+    <Compile Include="Schedule\TermMemento.cs" />
     <Compile Include="Schedule\TopicCodeMemento.cs" />
   </ItemGroup>
   <ItemGroup />

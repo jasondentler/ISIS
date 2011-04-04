@@ -9,11 +9,12 @@ namespace ISIS.Schedule
 
         protected override TermCreatedEvent GivenEvent()
         {
-            return new TermCreatedEvent()
-                       {
-                           TermId = Guid.NewGuid(),
-                           Name = "Spring 2011"
-                       };
+            return new TermCreatedEvent(Guid.NewGuid(),
+                                        "Fall 2011",
+                                        "211FA",
+                                        DateTime.Today.AddMonths(-2),
+                                        DateTime.Today.AddMonths(2));
+
         }
 
     }

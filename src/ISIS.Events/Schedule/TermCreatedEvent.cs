@@ -13,8 +13,8 @@ namespace ISIS.Schedule
 
         public TermCreatedEvent(
             Guid termId,
-            string name,
             string abbreviation,
+            string name,
             DateTime start,
             DateTime end)
         {

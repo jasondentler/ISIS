@@ -68,7 +68,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 11
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 12
  testRunner.When("I change the section location to CLEM");
 #line 13
@@ -97,7 +97,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 22
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 23
  testRunner.And("I have set the location to CLEM");
 #line 24
@@ -128,7 +128,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 33
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 34
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 35
  testRunner.When("I change the section location to CV");
 #line 36
@@ -157,7 +157,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 44
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 45
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 46
  testRunner.When("I change the section location to DAR");
 #line 47
@@ -186,7 +186,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 55
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 56
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 57
  testRunner.When("I change the section location to J1");
 #line 58
@@ -215,7 +215,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 66
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 67
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 68
  testRunner.When("I change the section location to J2");
 #line 69
@@ -244,7 +244,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 77
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 78
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 79
  testRunner.When("I change the section location to J3");
 #line 80
@@ -273,7 +273,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 88
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 89
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 90
  testRunner.When("I change the section location to TER");
 #line 91
@@ -302,7 +302,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 99
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 100
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 101
  testRunner.When("I change the section location to R1");
 #line 102
@@ -331,7 +331,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 110
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
 #line 111
- testRunner.And("I have created a section 01 from the course with term 211FA");
+ testRunner.And("I have created a section 01 from the course and term");
 #line 112
  testRunner.When("I change the section location to R2");
 #line 113
@@ -362,30 +362,32 @@ this.ScenarioSetup(scenarioInfo);
 #line 122
  testRunner.When("I create section 01 from the course and term");
 #line 123
- testRunner.Then("the section\'s rubric is BIOL");
+ testRunner.Then("the section\'s course is BIOL 1301");
 #line 124
- testRunner.And("the section\'s course number is 1301");
-#line 125
- testRunner.And("the section\'s section number is 01");
-#line 126
  testRunner.And("the section\'s term is 211FA");
+#line 125
+ testRunner.And("the section\'s rubric is BIOL");
+#line 126
+ testRunner.And("the section\'s course number is 1301");
 #line 127
- testRunner.And("the section\'s start date is 9/1/2011");
+ testRunner.And("the section\'s section number is 01");
 #line 128
- testRunner.And("the section\'s end date is 11/30/2011");
+ testRunner.And("the section\'s term abbreviation is 211FA");
 #line 129
- testRunner.And("the section\'s title is \"Introductory Biology\"");
+ testRunner.And("the section\'s term name is Fall 2011");
 #line 130
- testRunner.And("the section\'s course type is ACAD");
+ testRunner.And("the section\'s start date is 9/1/2011");
 #line 131
- testRunner.And("the section\'s current course type is ACAD");
+ testRunner.And("the section\'s end date is 11/30/2011");
 #line 132
- testRunner.And("the section\'s approval number is 1234567890");
+ testRunner.And("the section\'s title is \"Introductory Biology\"");
 #line 133
- testRunner.And("the section\'s CIP is 123456");
+ testRunner.And("the section\'s course type is ACAD");
 #line 134
- testRunner.And("the location is blank");
+ testRunner.And("the section\'s approval number is 1234567890");
 #line 135
+ testRunner.And("the section\'s CIP is 123456");
+#line 136
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -398,17 +400,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cant create a credit section without an approval number or CIP", new string[] {
                         "domain"});
-#line 138
-this.ScenarioSetup(scenarioInfo);
 #line 139
- testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
+this.ScenarioSetup(scenarioInfo);
 #line 140
- testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 141
- testRunner.When("I create section 01 from the course with term 211FA");
+ testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
 #line 142
- testRunner.Then("the command is invalid");
+ testRunner.When("I create section 01 from the course and term");
 #line 143
+ testRunner.Then("the aggregate state is invalid");
+#line 144
  testRunner.And("the error is \"Your attempt to create the section failed. Set approval number or C" +
                     "IP at the course level first.\"");
 #line hidden

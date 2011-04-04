@@ -130,7 +130,12 @@
       <DependentUpon>CESections.feature</DependentUpon>
     </Compile>
     <Compile Include="Schedule\SectionSteps.cs" />
-    <Compile Include="TermSteps.cs" />
+    <Compile Include="Schedule\Terms.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Terms.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule\TermSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schedule\CourseCEUs.feature">
@@ -173,6 +178,10 @@
     <None Include="Schedule\CESections.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CESections.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Schedule\Terms.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Terms.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
