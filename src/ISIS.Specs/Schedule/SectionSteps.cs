@@ -13,6 +13,23 @@ namespace ISIS.Schedule
     public class SectionSteps
     {
 
+        [Given(@"I have set the section location to ([^\s]+) (.*)")]
+        public void GivenIHaveSetTheLocationTo(
+            string locationAbbreviation,
+            string locationName)
+        {
+            var id = DomainHelper.GetId<Section>();
+            var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
+
+            DomainHelper.GivenEvent<Section>(
+                new SectionLocationChangedEvent(
+                    id,
+                    locationId,
+                    locationAbbreviation,
+                    locationName));
+        }
+
+
         [Given(@"I have created a section (.*) from the course and term")]
         public void GivenIHaveCreatedASectionFromTheCourseAndTerm(
             string sectionNumber)
@@ -87,6 +104,21 @@ namespace ISIS.Schedule
                           };
             DomainHelper.WhenExecuting(cmd);
         }
+
+        [When(@"I change the section location to ([^\s]+)")]
+        public void WhenIChangeTheSectionLocationTo(
+            string locationAbbreviation)
+        {
+            var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
+
+            var cmd = new ChangeSectionLocationCommand()
+                          {
+                              LocationId = locationId,
+                              SectionId = DomainHelper.GetId<Section>()
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
+
 
 
         [Then(@"the section's term is (.*)")]
@@ -208,5 +240,45 @@ namespace ISIS.Schedule
             Assert.That(e.CIP, Is.EqualTo(cip));
         }
 
-   }
+        [Then(@"the section location is (.*)")]
+        public void ThenTheSectionLocationIs(
+            string locationAbbreviation)
+        {
+            var locationId = DomainHelper.GetId<Location>(locationAbbreviation);
+
+            var e = DomainHelper.GetEvent<SectionLocationChangedEvent>();
+            Assert.That(e.LocationId, Is.EqualTo(locationId));
+        }
+
+        [Then(@"the section location abbreviation is ([^\s]+)")]
+        public void ThenTheSectionLocationAbbreviationIs(
+            string locationAbbreviation)
+        {
+            var e = DomainHelper.GetEvent<SectionLocationChangedEvent>();
+            Assert.That(e.LocationAbbreviation, Is.EqualTo(locationAbbreviation));
+        }
+
+        [Then(@"the section location name is (.*)")]
+        public void ThenTheSectionLocationNameIs(
+            string locationName)
+        {
+            var e = DomainHelper.GetEvent<SectionLocationChangedEvent>();
+            Assert.That(e.LocationName, Is.EqualTo(locationName));
+        }
+
+
+        [Then(@"the topic code is blank")]
+        public void ThenTheTopicCodeIsBlank()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"the topic code is ([A-Z0-9]+)")]
+        public void ThenTheTopicCodeIs(
+            string topicCodeAbbreviation)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+    }
 }

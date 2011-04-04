@@ -43,5 +43,20 @@ namespace ISIS.Schedule
         {
         }
 
+        public void ChangeLocation(Location location)
+        {
+            var locationData = location.BuildMemento();
+
+            ApplyEvent(new SectionLocationChangedEvent(
+                           EventSourceId,
+                           locationData.LocationId,
+                           locationData.Abbreviation,
+                           locationData.Name));
+        }
+
+        protected void OnLocationChanged(SectionLocationChangedEvent @event)
+        {
+        }
+
     }
 }

@@ -53,12 +53,12 @@ namespace ISIS.Schedule
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Change the credit section location to CLEM")]
-        [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void ChangeTheCreditSectionLocationToCLEM()
+        [NUnit.Framework.DescriptionAttribute("Change the credit section location")]
+        [NUnit.Framework.CategoryAttribute("domain:")]
+        public virtual void ChangeTheCreditSectionLocation()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to CLEM", new string[] {
-                        "domain"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location", new string[] {
+                        "domain:"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -70,12 +70,47 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.And("I have created a section 01 from the course and term");
 #line 12
- testRunner.When("I change the section location to CLEM");
+ testRunner.And("I have created a location ACC Main Campus");
 #line 13
- testRunner.Then("the section location is CLEM");
+ testRunner.When("I change the section location to ACC");
 #line 14
- testRunner.And("the topic code is A");
+ testRunner.Then("the section location is ACC");
 #line 15
+ testRunner.And("the section location abbreviation is ACC");
+#line 16
+ testRunner.And("the section location name is Main Campus");
+#line 17
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change the credit section location to CLEM")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeTheCreditSectionLocationToCLEM()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to CLEM", new string[] {
+                        "domain"});
+#line 20
+this.ScenarioSetup(scenarioInfo);
+#line 21
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
+#line 22
+ testRunner.And("I have created a topic code A Academic TDC Course Code");
+#line 23
+ testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
+#line 24
+ testRunner.And("I have created a section 01 from the course and term");
+#line 25
+ testRunner.And("I have created a location CLEM Clemens Unit");
+#line 26
+ testRunner.When("I change the section location to CLEM");
+#line 27
+ testRunner.Then("the section location is CLEM");
+#line 28
+ testRunner.And("the topic code is A");
+#line 29
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -88,25 +123,29 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location from TDCJ back to non-TDCJ", new string[] {
                         "domain"});
-#line 18
+#line 32
 this.ScenarioSetup(scenarioInfo);
-#line 19
+#line 33
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 20
+#line 34
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 21
+#line 35
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 22
+#line 36
  testRunner.And("I have created a section 01 from the course and term");
-#line 23
- testRunner.And("I have set the location to CLEM");
-#line 24
+#line 37
+ testRunner.And("I have created a location CLEM Clemens Unit");
+#line 38
+ testRunner.And("I have created a location ACC Main Campus");
+#line 39
+ testRunner.And("I have set the section location to CLEM Clemens Unit");
+#line 40
  testRunner.When("I change the section location to ACC");
-#line 25
+#line 41
  testRunner.Then("the section location is ACC");
-#line 26
+#line 42
  testRunner.And("the topic code is blank");
-#line 27
+#line 43
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -119,23 +158,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to CV", new string[] {
                         "domain"});
-#line 30
+#line 46
 this.ScenarioSetup(scenarioInfo);
-#line 31
+#line 47
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 32
+#line 48
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 33
+#line 49
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 34
+#line 50
  testRunner.And("I have created a section 01 from the course and term");
-#line 35
+#line 51
+ testRunner.And("I have created a location CV Carol Vance");
+#line 52
  testRunner.When("I change the section location to CV");
-#line 36
+#line 53
  testRunner.Then("the section location is CV");
-#line 37
+#line 54
  testRunner.And("the topic code is A");
-#line 38
+#line 55
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -148,23 +189,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to DAR", new string[] {
                         "domain"});
-#line 41
+#line 58
 this.ScenarioSetup(scenarioInfo);
-#line 42
+#line 59
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 43
+#line 60
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 44
+#line 61
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 45
+#line 62
  testRunner.And("I have created a section 01 from the course and term");
-#line 46
+#line 63
+ testRunner.And("I have created a location DAR Darrington Unit");
+#line 64
  testRunner.When("I change the section location to DAR");
-#line 47
+#line 65
  testRunner.Then("the section location is DAR");
-#line 48
+#line 66
  testRunner.And("the topic code is A");
-#line 49
+#line 67
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -177,23 +220,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to J1", new string[] {
                         "domain"});
-#line 52
+#line 70
 this.ScenarioSetup(scenarioInfo);
-#line 53
+#line 71
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 54
+#line 72
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 55
+#line 73
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 56
+#line 74
  testRunner.And("I have created a section 01 from the course and term");
-#line 57
+#line 75
+ testRunner.And("I have created a location J1 Jester 1 Unit");
+#line 76
  testRunner.When("I change the section location to J1");
-#line 58
+#line 77
  testRunner.Then("the section location is J1");
-#line 59
+#line 78
  testRunner.And("the topic code is A");
-#line 60
+#line 79
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -206,23 +251,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to J2", new string[] {
                         "domain"});
-#line 63
+#line 82
 this.ScenarioSetup(scenarioInfo);
-#line 64
+#line 83
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 65
+#line 84
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 66
+#line 85
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 67
+#line 86
  testRunner.And("I have created a section 01 from the course and term");
-#line 68
+#line 87
+ testRunner.And("I have created a location J2 Jester 2 Unit");
+#line 88
  testRunner.When("I change the section location to J2");
-#line 69
+#line 89
  testRunner.Then("the section location is J2");
-#line 70
+#line 90
  testRunner.And("the topic code is A");
-#line 71
+#line 91
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -235,23 +282,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to J3", new string[] {
                         "domain"});
-#line 74
+#line 94
 this.ScenarioSetup(scenarioInfo);
-#line 75
+#line 95
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 76
+#line 96
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 77
+#line 97
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 78
+#line 98
  testRunner.And("I have created a section 01 from the course and term");
-#line 79
+#line 99
+ testRunner.And("I have created a location J3 Jester 3 Unit");
+#line 100
  testRunner.When("I change the section location to J3");
-#line 80
+#line 101
  testRunner.Then("the section location is J3");
-#line 81
+#line 102
  testRunner.And("the topic code is A");
-#line 82
+#line 103
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -264,23 +313,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to TER", new string[] {
                         "domain"});
-#line 85
+#line 106
 this.ScenarioSetup(scenarioInfo);
-#line 86
+#line 107
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 87
+#line 108
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 88
+#line 109
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 89
+#line 110
  testRunner.And("I have created a section 01 from the course and term");
-#line 90
+#line 111
+ testRunner.And("I have created a location TER T. C. Terrell Unit");
+#line 112
  testRunner.When("I change the section location to TER");
-#line 91
+#line 113
  testRunner.Then("the section location is TER");
-#line 92
+#line 114
  testRunner.And("the topic code is A");
-#line 93
+#line 115
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -293,23 +344,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to R1", new string[] {
                         "domain"});
-#line 96
+#line 118
 this.ScenarioSetup(scenarioInfo);
-#line 97
+#line 119
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 98
+#line 120
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 99
+#line 121
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 100
+#line 122
  testRunner.And("I have created a section 01 from the course and term");
-#line 101
+#line 123
+ testRunner.And("I have created a location R1 Ramsey 1 Unit");
+#line 124
  testRunner.When("I change the section location to R1");
-#line 102
+#line 125
  testRunner.Then("the section location is R1");
-#line 103
+#line 126
  testRunner.And("the topic code is A");
-#line 104
+#line 127
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -322,23 +375,25 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the credit section location to R2", new string[] {
                         "domain"});
-#line 107
+#line 130
 this.ScenarioSetup(scenarioInfo);
-#line 108
+#line 131
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 109
+#line 132
  testRunner.And("I have created a topic code A Academic TDC Course Code");
-#line 110
+#line 133
  testRunner.And("I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011");
-#line 111
+#line 134
  testRunner.And("I have created a section 01 from the course and term");
-#line 112
+#line 135
+ testRunner.And("I have created a location R2 Stringfellow Unit");
+#line 136
  testRunner.When("I change the section location to R2");
-#line 113
+#line 137
  testRunner.Then("the section location is R2");
-#line 114
+#line 138
  testRunner.And("the topic code is A");
-#line 115
+#line 139
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -351,43 +406,43 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a credit section without a topic code", new string[] {
                         "domain"});
-#line 118
+#line 142
 this.ScenarioSetup(scenarioInfo);
-#line 119
+#line 143
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 120
+#line 144
  testRunner.And("I have set the approval number to 1234567890");
-#line 121
+#line 145
  testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
-#line 122
+#line 146
  testRunner.When("I create section 01 from the course and term");
-#line 123
+#line 147
  testRunner.Then("the section\'s course is BIOL 1301");
-#line 124
+#line 148
  testRunner.And("the section\'s term is 211FA");
-#line 125
+#line 149
  testRunner.And("the section\'s rubric is BIOL");
-#line 126
+#line 150
  testRunner.And("the section\'s course number is 1301");
-#line 127
+#line 151
  testRunner.And("the section\'s section number is 01");
-#line 128
+#line 152
  testRunner.And("the section\'s term abbreviation is 211FA");
-#line 129
+#line 153
  testRunner.And("the section\'s term name is Fall 2011");
-#line 130
+#line 154
  testRunner.And("the section\'s start date is 9/1/2011");
-#line 131
+#line 155
  testRunner.And("the section\'s end date is 11/30/2011");
-#line 132
+#line 156
  testRunner.And("the section\'s title is \"Introductory Biology\"");
-#line 133
+#line 157
  testRunner.And("the section\'s course type is ACAD");
-#line 134
+#line 158
  testRunner.And("the section\'s approval number is 1234567890");
-#line 135
+#line 159
  testRunner.And("the section\'s CIP is 123456");
-#line 136
+#line 160
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -400,17 +455,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cant create a credit section without an approval number or CIP", new string[] {
                         "domain"});
-#line 139
+#line 163
 this.ScenarioSetup(scenarioInfo);
-#line 140
+#line 164
  testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
-#line 141
+#line 165
  testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
-#line 142
+#line 166
  testRunner.When("I create section 01 from the course and term");
-#line 143
+#line 167
  testRunner.Then("the aggregate state is invalid");
-#line 144
+#line 168
  testRunner.And("the error is \"Your attempt to create the section failed. Set approval number or C" +
                     "IP at the course level first.\"");
 #line hidden

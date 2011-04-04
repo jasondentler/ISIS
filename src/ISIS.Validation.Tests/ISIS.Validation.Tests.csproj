@@ -66,6 +66,7 @@
     <Compile Include="Schedule\ChangeTopicCodeAbbreviationCommandFixture.cs" />
     <Compile Include="Schedule\ChangeTopicCodeDescriptionCommandFixture.cs" />
     <Compile Include="Schedule\ChangeCourseTopicCodeCommandFixture.cs" />
+    <Compile Include="Schedule\ChangeSectionLocationCommandFixture.cs" />
     <Compile Include="Schedule\CreateTermCommandFixture.cs" />
     <Compile Include="Schedule\CreateSectionCommandFixture.cs" />
     <Compile Include="Schedule\CreateTopicCodeCommandFixture.cs" />

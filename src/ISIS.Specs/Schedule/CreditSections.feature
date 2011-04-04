@@ -3,12 +3,26 @@
 	As a scheduler
 	I want to manage sections
 	
+@domain:
+Scenario: Change the credit section location
+	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
+	And I have created a topic code A Academic TDC Course Code
+	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
+	And I have created a section 01 from the course and term
+	And I have created a location ACC Main Campus
+	When I change the section location to ACC
+	Then the section location is ACC
+	And the section location abbreviation is ACC
+	And the section location name is Main Campus
+	And it should do nothing else
+
 @domain
 Scenario: Change the credit section location to CLEM
 	Given I have created an ACAD course BIOL 1301 "Introductory Biology"
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location CLEM Clemens Unit
 	When I change the section location to CLEM
 	Then the section location is CLEM
 	And the topic code is A
@@ -20,7 +34,9 @@ Scenario: Change the credit section location from TDCJ back to non-TDCJ
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
-	And I have set the location to CLEM
+	And I have created a location CLEM Clemens Unit
+	And I have created a location ACC Main Campus
+	And I have set the section location to CLEM Clemens Unit
 	When I change the section location to ACC
 	Then the section location is ACC
 	And the topic code is blank
@@ -32,6 +48,7 @@ Scenario: Change the credit section location to CV
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location CV Carol Vance
 	When I change the section location to CV
 	Then the section location is CV
 	And the topic code is A
@@ -43,6 +60,7 @@ Scenario: Change the credit section location to DAR
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location DAR Darrington Unit
 	When I change the section location to DAR
 	Then the section location is DAR
 	And the topic code is A
@@ -54,6 +72,7 @@ Scenario: Change the credit section location to J1
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location J1 Jester 1 Unit
 	When I change the section location to J1
 	Then the section location is J1
 	And the topic code is A
@@ -65,6 +84,7 @@ Scenario: Change the credit section location to J2
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location J2 Jester 2 Unit
 	When I change the section location to J2
 	Then the section location is J2
 	And the topic code is A
@@ -76,6 +96,7 @@ Scenario: Change the credit section location to J3
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location J3 Jester 3 Unit
 	When I change the section location to J3
 	Then the section location is J3
 	And the topic code is A
@@ -87,6 +108,7 @@ Scenario: Change the credit section location to TER
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location TER T. C. Terrell Unit
 	When I change the section location to TER
 	Then the section location is TER
 	And the topic code is A
@@ -98,6 +120,7 @@ Scenario: Change the credit section location to R1
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location R1 Ramsey 1 Unit
 	When I change the section location to R1
 	Then the section location is R1
 	And the topic code is A
@@ -109,6 +132,7 @@ Scenario: Change the credit section location to R2
 	And I have created a topic code A Academic TDC Course Code
 	And I have created a term 211FA Fall 2011 from 8/25/2011 to 12/7/2011
 	And I have created a section 01 from the course and term
+	And I have created a location R2 Stringfellow Unit
 	When I change the section location to R2
 	Then the section location is R2
 	And the topic code is A

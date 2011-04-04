@@ -14,11 +14,22 @@ namespace ISIS.Schedule
                 .CreateNew(cmd =>
                                {
                                    var uow = UnitOfWorkContext.Current;
-                                   var course = (Course) uow.GetById(typeof (Course), cmd.CourseId, null);
-                                   var term = (Term)uow.GetById(typeof(Term), cmd.TermId, null);
+                                   var course = uow.GetById<Course>(cmd.CourseId);
+                                   var term = uow.GetById<Term>(cmd.TermId);
                                    return new Section(cmd.SectionId, term, course, cmd.SectionNumber);
                                })
                                .RegisterWith(commandService);
+
+            Map.Command<ChangeSectionLocationCommand>()
+                .ToAggregateRoot<Section>()
+                .WithId(cmd => cmd.SectionId)
+                .ToCallOn((cmd, section) =>
+                              {
+                                  var uow = UnitOfWorkContext.Current;
+                                  var location = uow.GetById<Location>(cmd.LocationId);
+                                  section.ChangeLocation(location);
+                              })
+                .RegisterWith(commandService);
         }
 
     }

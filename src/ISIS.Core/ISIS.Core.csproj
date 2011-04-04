@@ -47,6 +47,7 @@
     <Compile Include="Schedule\CourseTypes.cs" />
     <Compile Include="Schedule\CourseTypesModel.cs" />
     <Compile Include="Schedule\CreditTypes.cs" />
+    <Compile Include="Schedule\LocationMemento.cs" />
     <Compile Include="Schedule\TermMemento.cs" />
     <Compile Include="Schedule\TopicCodeMemento.cs" />
   </ItemGroup>

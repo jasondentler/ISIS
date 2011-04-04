@@ -129,6 +129,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CESections.feature</DependentUpon>
     </Compile>
+    <Compile Include="Schedule\LocationSteps.cs" />
     <Compile Include="Schedule\SectionSteps.cs" />
     <Compile Include="Schedule\Terms.feature.cs">
       <AutoGen>True</AutoGen>
