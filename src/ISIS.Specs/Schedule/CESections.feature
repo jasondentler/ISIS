@@ -61,7 +61,7 @@ Scenario: Change the section number
 	Then the section number is 02
 	And it should do nothing else
 
-@domain
+@domain @ignore
 Scenario: Change the section number when the section number is taken
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890

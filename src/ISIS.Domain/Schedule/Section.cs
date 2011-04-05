@@ -213,6 +213,14 @@ namespace ISIS.Schedule
                            sectionNumber));
         }
 
+
+        public void ChangeCEUs(decimal ceus)
+        {
+            ApplyEvent(new SectionCEUsChangedEvent(
+                           EventSourceId,
+                           ceus));
+        }
+
         protected void OnCreated(SectionCreatedEvent @event)
         {
             _termId = @event.TermId;

@@ -228,6 +228,19 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the section's CEUs to (.*)")]
+        public void WhenIChangeTheSectionSCEUsTo(
+            string ceusString)
+        {
+            var ceus = decimal.Parse(ceusString);
+            var cmd = new ChangeSectionCEUsCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              CEUs = ceus
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
+
 
         [Then(@"the section's term is (.*)")]
         public void ThenTheSectionSTermIs(

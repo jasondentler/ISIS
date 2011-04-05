@@ -216,10 +216,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Change the section number when the section number is taken")]
         [NUnit.Framework.CategoryAttribute("domain")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void ChangeTheSectionNumberWhenTheSectionNumberIsTaken()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section number when the section number is taken", new string[] {
-                        "domain"});
+                        "domain",
+                        "ignore"});
 #line 65
 this.ScenarioSetup(scenarioInfo);
 #line 66
