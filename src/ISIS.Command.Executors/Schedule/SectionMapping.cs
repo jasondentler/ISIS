@@ -37,6 +37,18 @@ namespace ISIS.Schedule
                 .WithId(cmd => cmd.SectionId)
                 .ToCallOn((cmd, section) => section.ChangeCreditType(cmd.CreditType))
                 .RegisterWith(commandService);
+
+            Map.Command<ChangeSectionDatesCommand>()
+                .ToAggregateRoot<Section>()
+                .WithId(cmd => cmd.SectionId)
+                .ToCallOn((cmd, section) => section.ChangeDates(cmd.StartDate, cmd.EndDate))
+                .RegisterWith(commandService);
+
+            Map.Command<ChangeSectionNumberCommand>()
+                .ToAggregateRoot<Section>()
+                .WithId(cmd => cmd.SectionId)
+                .ToCallOn((cmd, section) => section.ChangeSectionNumber(cmd.SectionNumber))
+                .RegisterWith(commandService);
         }
 
 

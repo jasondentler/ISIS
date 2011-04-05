@@ -52,11 +52,13 @@
     <Compile Include="Schedule\ChangeCourseTitleCommand.cs" />
     <Compile Include="Schedule\ChangeCourseDescriptionCommand.cs" />
     <Compile Include="Schedule\ChangeCourseCEUsCommand.cs" />
+    <Compile Include="Schedule\ChangeSectionDatesCommand.cs" />
     <Compile Include="Schedule\ChangeTopicCodeAbbreviationCommand.cs" />
     <Compile Include="Schedule\ChangeTopicCodeDescriptionCommand.cs" />
     <Compile Include="Schedule\ChangeCourseTopicCodeCommand.cs" />
     <Compile Include="Schedule\ChangeSectionLocationCommand.cs" />
     <Compile Include="Schedule\ChangeSectionCreditTypeCommand.cs" />
+    <Compile Include="Schedule\ChangeSectionNumberCommand.cs" />
     <Compile Include="Schedule\CreateContinuingEducationCourseCommand.cs" />
     <Compile Include="Schedule\CreateSectionCommand.cs" />
     <Compile Include="Schedule\CreateTermCommand.cs" />

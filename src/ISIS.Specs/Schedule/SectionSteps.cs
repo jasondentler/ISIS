@@ -199,6 +199,34 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the start date to (.*) and the end date to (.*)")]
+        public void WhenIChangeTheSectoinDates(
+            string startDateString,
+            string endDateString)
+        {
+            var start = DateTime.Parse(startDateString);
+            var end = DateTime.Parse(endDateString);
+
+            var cmd = new ChangeSectionDatesCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              StartDate = start,
+                              EndDate = end
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
+
+        [When(@"I change the section number to (.*)")]
+        public void WhenIChangeTheSectionNumberTo(
+            string sectionNumber)
+        {
+            var cmd = new ChangeSectionNumberCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              SectionNumber = sectionNumber
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
 
 
         [Then(@"the section's term is (.*)")]
@@ -276,6 +304,7 @@ namespace ISIS.Schedule
         }
 
         [Then(@"the section's start date is (\d.*)")]
+        [Then(@"the section start date is (\d.*)")]
         public void ThenTheSectionSStartDateIs(
             string startDateString)
         {
@@ -286,6 +315,7 @@ namespace ISIS.Schedule
         }
 
         [Then(@"the section's end date is (\d.*)")]
+        [Then(@"the section end date is (\d.*)")]
         public void ThenTheSectionSEndDateIs(
             string endDateString)
         {
@@ -486,6 +516,17 @@ namespace ISIS.Schedule
             var e = DomainHelper.GetEvent<SectionCEUsChangedEvent>();
             Assert.That(e.CEUs, Is.EqualTo(ceus));
         }
-        
+
+        [Then(@"the section number is (.*)")]
+        public void ThenTheSectionNumberIs(
+            string sectionNumber)
+        {
+            var e = (dynamic) DomainHelper.GetEvent<SectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<SectionNumberChangedEvent>();
+
+            Assert.That(e.SectionNumber, Is.EqualTo(sectionNumber));
+        }
+
+
     }
 }

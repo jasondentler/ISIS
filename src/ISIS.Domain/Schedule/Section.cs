@@ -9,6 +9,7 @@ namespace ISIS.Schedule
     {
         private Guid _topicCodeId;
         private Guid _locationId;
+        private Guid _termId;
         private ISet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
         private CreditTypes _creditType;
 
@@ -47,10 +48,7 @@ namespace ISIS.Schedule
                            sectionNumber));
 
             if (courseData.IsCredit)
-                ApplyEvent(new SectionDatesChangedEvent(
-                               sectionId,
-                               termData.Start,
-                               termData.End));
+                ChangeDates(termData.Start, termData.End);
 
             ApplyEvent(new SectionTitleChangedEvent(
                            sectionId,
@@ -192,8 +190,32 @@ namespace ISIS.Schedule
                                _courseTypes.Except(new[] {courseType}).ToArray()));
         }
 
+        public void ChangeDates(DateTime startDate, DateTime endDate)
+        {
+            var uow = UnitOfWorkContext.Current;
+            var term = uow.GetById<Term>(_termId);
+            var termData = term.BuildMememto();
+
+            if (endDate < termData.Start || startDate > termData.End)
+                throw new InvalidStateException("Your attempt to create a section failed. The section census date is outside the term dates.");
+
+            ApplyEvent(new SectionDatesChangedEvent(
+                           EventSourceId,
+                           startDate,
+                           endDate));
+        }
+
+
+        public void ChangeSectionNumber(string sectionNumber)
+        {
+            ApplyEvent(new SectionNumberChangedEvent(
+                           EventSourceId,
+                           sectionNumber));
+        }
+
         protected void OnCreated(SectionCreatedEvent @event)
         {
+            _termId = @event.TermId;
         }
 
         protected void OnDatesChanged(SectionDatesChangedEvent @event)
@@ -250,6 +272,9 @@ namespace ISIS.Schedule
             _locationId = @event.LocationId;
         }
 
+        protected void OnSectionNumberChanged(SectionNumberChangedEvent @event)
+        {
+        }
 
     }
 }

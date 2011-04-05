@@ -362,7 +362,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 117
  testRunner.When("I change the start date to 7/1/2011 and the end date to 8/1/2011");
 #line 118
- testRunner.Then("the command is invalid");
+ testRunner.Then("the aggregate state is invalid");
 #line 119
  testRunner.And("the error is \"Your attempt to create a section failed. The section census date is" +
                     " outside the term dates.\"");
@@ -393,7 +393,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 128
  testRunner.When("I change the start date to 12/1/2011 and the end date to 12/25/2011");
 #line 129
- testRunner.Then("the command is invalid");
+ testRunner.Then("the aggregate state is invalid");
 #line 130
  testRunner.And("the error is \"Your attempt to create a section failed. The section census date is" +
                     " outside the term dates.\"");

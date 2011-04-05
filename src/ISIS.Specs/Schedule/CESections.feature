@@ -115,7 +115,7 @@ Scenario: Change the section dates where the section dates are before the term
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the start date to 7/1/2011 and the end date to 8/1/2011
-	Then the command is invalid
+	Then the aggregate state is invalid
 	And the error is "Your attempt to create a section failed. The section census date is outside the term dates."
 
 @domain
@@ -126,7 +126,7 @@ Scenario: Change the section dates where the section dates are after the term
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the start date to 12/1/2011 and the end date to 12/25/2011
-	Then the command is invalid
+	Then the aggregate state is invalid
 	And the error is "Your attempt to create a section failed. The section census date is outside the term dates."
 
 @domain

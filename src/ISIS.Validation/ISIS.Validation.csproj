@@ -59,6 +59,8 @@
     <Compile Include="Schedule\ChangeCourseTopicCodeCommandValidator.cs" />
     <Compile Include="Schedule\ChangeSectionLocationCommandValidator.cs" />
     <Compile Include="Schedule\ChangeSectionCreditTypeCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeSectionDatesCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeSectionNumberCommandValidator.cs" />
     <Compile Include="Schedule\CreateTermCommandValidator.cs" />
     <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
     <Compile Include="Schedule\CreateTopicCodeCommandValidator.cs" />
