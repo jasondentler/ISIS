@@ -55,6 +55,12 @@ namespace ISIS.Schedule
                 .WithId(cmd => cmd.SectionId)
                 .ToCallOn((cmd, section) => section.ChangeCEUs(cmd.CEUs))
                 .RegisterWith(commandService);
+
+            Map.Command<ChangeSectionTitleCommand>()
+                .ToAggregateRoot<Section>()
+                .WithId(cmd => cmd.SectionId)
+                .ToCallOn((cmd, section) => section.ChangeTitle(cmd.NewTitle))
+                .RegisterWith(commandService);
         }
 
 

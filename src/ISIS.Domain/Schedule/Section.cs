@@ -12,6 +12,7 @@ namespace ISIS.Schedule
         private Guid _termId;
         private ISet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
         private CreditTypes _creditType;
+        private string _title;
 
         [Inject]
         private Section()
@@ -221,6 +222,14 @@ namespace ISIS.Schedule
                            ceus));
         }
 
+        public void ChangeTitle(string newTitle)
+        {
+            ApplyEvent(new SectionTitleChangedEvent(
+                           EventSourceId,
+                           _title,
+                           newTitle));
+        }
+
         protected void OnCreated(SectionCreatedEvent @event)
         {
             _termId = @event.TermId;
@@ -232,6 +241,7 @@ namespace ISIS.Schedule
 
         protected void OnTitleChanged(SectionTitleChangedEvent @event)
         {
+            _title = @event.Title;
         }
 
         protected void OnApprovalNumberChanged(SectionApprovalNumberChangedEvent @event)

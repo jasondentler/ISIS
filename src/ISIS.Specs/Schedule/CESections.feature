@@ -206,6 +206,6 @@ Scenario: Change the section's title
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course and term
-	When I change the section's title to Horses
-	Then the section's title is Horses
+	When I change the section's title to "Horses"
+	Then the section's title is "Horses"
 	And it should do nothing else

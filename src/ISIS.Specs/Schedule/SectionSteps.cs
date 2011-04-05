@@ -241,6 +241,19 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the section's title to ""(.*)""")]
+        public void WhenIChangeTheSectionSTitleTo(
+            string title)
+        {
+            var cmd = new ChangeSectionTitleCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              NewTitle = title
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
+
+
 
         [Then(@"the section's term is (.*)")]
         public void ThenTheSectionSTermIs(

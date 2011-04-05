@@ -71,6 +71,7 @@
     <Compile Include="Schedule\ChangeSectionDatesCommandFixture.cs" />
     <Compile Include="Schedule\ChangeSectionNumberCommandFixture.cs" />
     <Compile Include="Schedule\ChangeSectionCEUsCommandFixture.cs" />
+    <Compile Include="Schedule\ChangeSectionTitleCommandFixture.cs" />
     <Compile Include="Schedule\CreateTermCommandFixture.cs" />
     <Compile Include="Schedule\CreateSectionCommandFixture.cs" />
     <Compile Include="Schedule\CreateTopicCodeCommandFixture.cs" />

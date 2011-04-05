@@ -612,9 +612,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 208
  testRunner.And("I have created a section 01 from the course and term");
 #line 209
- testRunner.When("I change the section\'s title to Horses");
+ testRunner.When("I change the section\'s title to \"Horses\"");
 #line 210
- testRunner.Then("the section\'s title is Horses");
+ testRunner.Then("the section\'s title is \"Horses\"");
 #line 211
  testRunner.And("it should do nothing else");
 #line hidden
