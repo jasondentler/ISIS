@@ -100,7 +100,7 @@ namespace ISIS
             store.Store(stream);
         }
 
-        private static void WriteOutObject(object  @event)
+        public static void WriteOutObject(object  @event)
         {
             var jsonEvent = JsonConvert.SerializeObject(@event);
             Console.WriteLine("{0}: {1}",

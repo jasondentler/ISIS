@@ -17,13 +17,7 @@ namespace ISIS.Schedule
                 Guid.NewGuid(),
                 "211FA",
                 "Fall 2011",
-                "01",
-                DateTime.Today,
-                DateTime.Today.AddDays(16*7),
-                "Introductory Biology",
-                new[] {CourseTypes.ACAD},
-                "1234567890",
-                "123456");
+                "01");
         }
 
     }

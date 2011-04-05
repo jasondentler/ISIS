@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 using Ncqrs;
 using Ncqrs.Config.Ninject;
 using Newtonsoft.Json;
@@ -14,10 +15,15 @@ namespace ISIS
     public class DomainSteps
     {
 
-        [BeforeScenario("domain")]
+        [BeforeScenario]
         public void Setup()
         {
-            if (NcqrsEnvironment.IsConfigured) return;
+            if (NcqrsEnvironment.IsConfigured)
+            {
+                Console.WriteLine("Environment already configured.");
+                return;
+            }
+            Console.WriteLine("Configuring environment.");
             var kernel = new StandardKernel(NcqrsModule.GetSettings(), new NcqrsModule());
             NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
         }

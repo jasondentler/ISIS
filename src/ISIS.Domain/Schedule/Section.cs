@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Ncqrs.Domain;
 
 namespace ISIS.Schedule
@@ -7,6 +9,7 @@ namespace ISIS.Schedule
     {
         private Guid _topicCodeId;
         private Guid _locationId;
+        private ISet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
 
         [Inject]
         private Section()
@@ -33,24 +36,63 @@ namespace ISIS.Schedule
                     "Your attempt to create a section failed. The course doesn't have an approval number or CIP, and it's not a special interests course.");
 
             ApplyEvent(new SectionCreatedEvent(
-                sectionId, 
-                courseData.Id,
-                courseData.Rubric,
-                courseData.CourseNumber,
-                termData.Id,
-                termData.Abbreviation,
-                termData.Name,
-                sectionNumber,
-                termData.Start,
-                termData.End,
-                courseData.Title,
-                courseData.CourseTypes,
-                courseData.ApprovalNumber,
-                courseData.CIP));
-        }
+                           sectionId,
+                           courseData.Id,
+                           courseData.Rubric,
+                           courseData.CourseNumber,
+                           termData.Id,
+                           termData.Abbreviation,
+                           termData.Name,
+                           sectionNumber));
 
-        protected void OnCreated(SectionCreatedEvent @event)
-        {
+            if (courseData.IsCredit)
+                ApplyEvent(new SectionDatesChangedEvent(
+                               sectionId,
+                               termData.Start,
+                               termData.End));
+
+            ApplyEvent(new SectionTitleChangedEvent(
+                           sectionId,
+                           null,
+                           courseData.Title));
+
+            if (!string.IsNullOrEmpty(courseData.ApprovalNumber))
+                ApplyEvent(new SectionApprovalNumberChangedEvent(
+                               sectionId, courseData.ApprovalNumber));
+
+            if (!string.IsNullOrEmpty(courseData.CIP))
+                ApplyEvent(new SectionCIPChangedEvent(
+                               sectionId, courseData.CIP));
+
+            foreach (var courseType in courseData.CourseTypes)
+                ApplyEvent(new SectionCourseTypeAddedEvent(
+                               sectionId,
+                               courseType,
+                               _courseTypes.Union(new[] {courseType}).Distinct()));
+
+            if (courseData.CreditType != default(CreditTypes))
+                ApplyEvent(new SectionCreditTypeChangedEvent(
+                               sectionId,
+                               courseData.CreditType));
+
+            ApplyEvent(new SectionMadePendingEvent(sectionId));
+
+            if (!courseData.IsCredit)
+                ApplyEvent(new SectionCEUsChangedEvent(
+                               sectionId, courseData.CEUs));
+
+            if (courseData.TopicCodeId != default(Guid))
+            {
+                var uow = UnitOfWorkContext.Current;
+                var topicCode = uow.GetById<TopicCode>(courseData.TopicCodeId);
+                var topicCodeData = topicCode.BuildMemento();
+                ApplyEvent(new SectionTopicCodeChangedEvent(
+                               sectionId,
+                               topicCodeData.Id,
+                               topicCodeData.Abbreviation,
+                               topicCodeData.Description));
+            }
+
         }
 
         public void ChangeLocation(Location location, TopicCode tdcjTopicCode)
@@ -94,11 +136,6 @@ namespace ISIS.Schedule
 
         }
 
-        protected void OnLocationChanged(SectionLocationChangedEvent @event)
-        {
-            _locationId = @event.LocationId;
-        }
-
         public void ChangeTopicCode(TopicCode topicCode)
         {
 
@@ -123,6 +160,43 @@ namespace ISIS.Schedule
                            topicCodeData.Description));
         }
 
+        protected void OnCreated(SectionCreatedEvent @event)
+        {
+        }
+
+        protected void OnDatesChanged(SectionDatesChangedEvent @event)
+        {
+        }
+
+        protected void OnTitleChanged(SectionTitleChangedEvent @event)
+        {
+        }
+
+        protected void OnApprovalNumberChanged(SectionApprovalNumberChangedEvent @event)
+        {
+        }
+
+        protected void OnCIPChanged(SectionCIPChangedEvent @event)
+        {
+        }
+
+        protected void OnCourseTypeAdded(SectionCourseTypeAddedEvent @event)
+        {
+            _courseTypes.Add(@event.CourseTypeAdded);
+        }
+
+        protected void OnCreditTypeChanged(SectionCreditTypeChangedEvent @event)
+        {
+        }
+
+        protected void OnMadePending(SectionMadePendingEvent @event)
+        {
+        }
+
+        protected void OnCEUsChanged(SectionCEUsChangedEvent @event)
+        {
+        }
+
         protected void OnTopicCodeRemoved(SectionTopicCodeRemovedEvent @event)
         {
             _topicCodeId = default(Guid);
@@ -132,6 +206,12 @@ namespace ISIS.Schedule
         {
             _topicCodeId = @event.TopicCodeId;
         }
+
+        protected void OnLocationChanged(SectionLocationChangedEvent @event)
+        {
+            _locationId = @event.LocationId;
+        }
+
 
 
     }

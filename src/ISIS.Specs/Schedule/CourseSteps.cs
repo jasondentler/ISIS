@@ -24,8 +24,8 @@ namespace ISIS.Schedule
                                         rubric,
                                         number));
             DomainHelper.GivenEvent(id, new CourseTitleChangedEvent(
-                                        id,
-                                        title));
+                                            id,
+                                            title.Substring(0, title.Length > 30 ? 30 : title.Length)));
             DomainHelper.GivenEvent(id, new CourseLongTitleChangedEvent(
                                         id,
                                         title));
@@ -54,8 +54,8 @@ namespace ISIS.Schedule
                                         rubric,
                                         number));
             DomainHelper.GivenEvent(id, new CourseTitleChangedEvent(
-                                        id,
-                                        title));
+                                            id,
+                                            title.Substring(0, title.Length > 30 ? 30 : title.Length)));
             DomainHelper.GivenEvent(id, new CourseLongTitleChangedEvent(
                                         id,
                                         title));

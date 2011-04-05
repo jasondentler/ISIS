@@ -14,12 +14,6 @@ namespace ISIS.Schedule
         public string TermAbbreviation { get; private set; }
         public string TermName { get; private set; }
         public string SectionNumber { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
-        public string Title { get; private set; }
-        public IEnumerable<CourseTypes> CourseTypes { get; private set; }
-        public string ApprovalNumber { get; private set; }
-        public string CIP { get; private set; }
 
         public SectionCreatedEvent(
             Guid sectionId,
@@ -29,13 +23,7 @@ namespace ISIS.Schedule
             Guid termId,
             string termAbbreviation,
             string termName,
-            String sectionNumber,
-            DateTime startDate,
-            DateTime endDate,
-            string title,
-            IEnumerable<CourseTypes> courseTypes,
-            string approvalNumber,
-            string cip)
+            String sectionNumber)
         {
             CourseId = courseId;
             Rubric = rubric;
@@ -44,12 +32,6 @@ namespace ISIS.Schedule
             TermAbbreviation = termAbbreviation;
             TermName = termName;
             SectionNumber = sectionNumber;
-            StartDate = startDate;
-            EndDate = endDate;
-            Title = title;
-            CourseTypes = courseTypes;
-            ApprovalNumber = approvalNumber;
-            CIP = cip;
             SectionId = sectionId;
         }
 

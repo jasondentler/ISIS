@@ -34,7 +34,7 @@ Scenario: Create a CE section with a topic code
 	And I have changed the course's topic code to BANK Banking/Finance
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term CE211Q1
-	And the section's topic code is BANK
+	Then the section's topic code is BANK
 
 @domain
 Scenario: Can create a CE section from a special interests course without an approval or CIP
@@ -54,6 +54,7 @@ Scenario: Cant create a CE section from a non-special interests course without a
 @domain
 Scenario: Change the section number
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the section number to 02
@@ -63,6 +64,7 @@ Scenario: Change the section number
 @domain
 Scenario: Change the section number when the section number is taken
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	And I have created a section 02 from the course with term CE211Q1
@@ -73,6 +75,7 @@ Scenario: Change the section number when the section number is taken
 @domain
 Scenario: Change the section term
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012
 	And I have created a section 01 from the course with term CE211Q1
@@ -83,6 +86,7 @@ Scenario: Change the section term
 @domain
 Scenario: Change the section term when the section number is taken
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012
 	And I have created a section 01 from the course with term CE211Q1
@@ -95,6 +99,7 @@ Scenario: Change the section term when the section number is taken
 Scenario: Change the section dates
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the start date to 10/1/2011 and the end date to 11/1/2011
@@ -106,6 +111,7 @@ Scenario: Change the section dates
 Scenario: Change the section dates where the section dates are before the term
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
+	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
 	When I change the start date to 7/1/2011 and the end date to 8/1/2011
@@ -115,6 +121,7 @@ Scenario: Change the section dates where the section dates are before the term
 @domain
 Scenario: Change the section dates where the section dates are after the term
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course with term CE211Q1
@@ -146,7 +153,7 @@ Scenario: Change the section location to the same location
 	
 @domain
 Scenario: Changing the location of a CE section to a TDCJ location doesn't change the topic code
-	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
+	Given I have created a Workforce Non-Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created the topic code A Academic TDC Course Code
@@ -171,7 +178,7 @@ Scenario: Change the section credit type to non-funded
 
 @domain
 Scenario: Change the section credit type to funded
-	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
+	Given I have created a Workforce Non-Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course and term
@@ -183,7 +190,7 @@ Scenario: Change the section credit type to funded
 
 @domain
 Scenario: Change the section's CEUs
-	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
+	Given I have created a Workforce Non-Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course and term
@@ -193,7 +200,7 @@ Scenario: Change the section's CEUs
 
 @domain
 Scenario: Change the section's title
-	Given I have created a Workforce Non-funded course AGEQ 1091 "Routine Management of Equine Health"
+	Given I have created a Workforce Non-Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course and term

@@ -380,7 +380,9 @@ namespace ISIS.Schedule
                 _courseTypes.ToArray(),
                 _approvalNumber,
                 _cip,
-                _creditType);
+                _creditType,
+                _ceus,
+                _topicCodeId);
         }
     }
 }
