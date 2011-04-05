@@ -57,6 +57,10 @@
     <Compile Include="EventSerializationFixture.cs" />
     <Compile Include="JsonEventSerializationFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\when_serializing_SectionCourseTypeRemovedEvent.cs" />
+    <Compile Include="Schedule\when_serializing_SectionCEUsChangedEvent.cs" />
+    <Compile Include="Schedule\when_serializing_SectionMadePendingEvent.cs" />
+    <Compile Include="Schedule\when_serializing_SectionCreditTypeChangedEvent.cs" />
     <Compile Include="Schedule\when_serializing_SectionCIPChangedEvent.cs" />
     <Compile Include="Schedule\when_serializing_SectionApprovalNumberChangedEvent.cs" />
     <Compile Include="Schedule\when_serializing_SectionCourseTypeAddedEvent.cs" />

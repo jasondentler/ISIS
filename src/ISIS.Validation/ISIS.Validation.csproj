@@ -52,12 +52,13 @@
     <Compile Include="Schedule\ChangeCourseTitleCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseLongTitleCommandValidator.cs" />
     <Compile Include="Schedule\AddCourseTypeToCourseCommandValidator.cs" />
-    <Compile Include="Schedule\ChangeCourseCreditTypeValidator.cs" />
+    <Compile Include="Schedule\ChangeCourseCreditTypeCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseCEUsCommandValidator.cs" />
     <Compile Include="Schedule\ChangeTopicCodeAbbreviationCommandValidator.cs" />
     <Compile Include="Schedule\ChangeTopicCodeDescriptionCommandValidator.cs" />
     <Compile Include="Schedule\ChangeCourseTopicCodeCommandValidator.cs" />
     <Compile Include="Schedule\ChangeSectionLocationCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeSectionCreditTypeCommandValidator.cs" />
     <Compile Include="Schedule\CreateTermCommandValidator.cs" />
     <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
     <Compile Include="Schedule\CreateTopicCodeCommandValidator.cs" />

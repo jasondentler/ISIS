@@ -9,7 +9,7 @@ namespace ISIS.Schedule
     {
         protected override AbstractValidator<ChangeCourseCreditTypeCommand> CreateValidator()
         {
-            return new ChangeCourseCreditTypeValidator();
+            return new ChangeCourseCreditTypeCommandValidator();
         }
 
         protected override ChangeCourseCreditTypeCommand GetValidInstance()
@@ -36,7 +36,7 @@ namespace ISIS.Schedule
             GetFailure(new ChangeCourseCreditTypeCommand()
                            {
                                Type = (CreditTypes) Enum.Parse(typeof (CourseTypes), "-12308932")
-                           }, cmd => cmd.CourseId);
+                           }, cmd => cmd.Type);
         }
 
 

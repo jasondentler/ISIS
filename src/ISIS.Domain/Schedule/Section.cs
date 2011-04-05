@@ -10,6 +10,7 @@ namespace ISIS.Schedule
         private Guid _topicCodeId;
         private Guid _locationId;
         private ISet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
+        private CreditTypes _creditType;
 
         [Inject]
         private Section()
@@ -70,10 +71,7 @@ namespace ISIS.Schedule
                                courseType,
                                _courseTypes.Union(new[] {courseType}).Distinct()));
 
-            if (courseData.CreditType != default(CreditTypes))
-                ApplyEvent(new SectionCreditTypeChangedEvent(
-                               sectionId,
-                               courseData.CreditType));
+            ChangeCreditType(courseData.CreditType);
 
             ApplyEvent(new SectionMadePendingEvent(sectionId));
 
@@ -160,6 +158,40 @@ namespace ISIS.Schedule
                            topicCodeData.Description));
         }
 
+        public void ChangeCreditType(CreditTypes creditType)
+        {
+
+            if (creditType == _creditType)
+                return;
+
+            ApplyEvent(new SectionCreditTypeChangedEvent(
+                           EventSourceId,
+                           creditType));
+
+
+            var newCourseType = CourseTypes.CE;
+            switch (creditType)
+            {
+                case CreditTypes.ContractTrainingFunded:
+                case CreditTypes.GrantFunded:
+                case CreditTypes.WorkforceFunded:
+                    newCourseType = CourseTypes.CWECM;
+                    break;
+            }
+
+            ApplyEvent(new SectionCourseTypeAddedEvent(
+                           EventSourceId,
+                           newCourseType,
+                           _courseTypes.Union(new[] {newCourseType}).Distinct()));
+
+
+            foreach (var courseType in _courseTypes.Except(new[] { newCourseType }).ToArray())
+                ApplyEvent(new SectionCourseTypeRemovedEvent(
+                               EventSourceId,
+                               courseType,
+                               _courseTypes.Except(new[] {courseType}).ToArray()));
+        }
+
         protected void OnCreated(SectionCreatedEvent @event)
         {
         }
@@ -185,8 +217,14 @@ namespace ISIS.Schedule
             _courseTypes.Add(@event.CourseTypeAdded);
         }
 
+        protected void OnCourseTypeRemoved(SectionCourseTypeRemovedEvent @event)
+        {
+            _courseTypes.Remove(@event.CourseTypeRemoved);
+        }
+
         protected void OnCreditTypeChanged(SectionCreditTypeChangedEvent @event)
         {
+            _creditType = @event.CreditType;
         }
 
         protected void OnMadePending(SectionMadePendingEvent @event)
@@ -211,7 +249,6 @@ namespace ISIS.Schedule
         {
             _locationId = @event.LocationId;
         }
-
 
 
     }

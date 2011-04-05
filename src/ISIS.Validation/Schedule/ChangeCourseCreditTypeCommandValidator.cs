@@ -4,9 +4,9 @@ using FluentValidation;
 namespace ISIS.Schedule
 {
 
-    public class ChangeCourseCreditTypeValidator : AbstractValidator<ChangeCourseCreditTypeCommand>
+    public class ChangeCourseCreditTypeCommandValidator : AbstractValidator<ChangeCourseCreditTypeCommand>
     {
-        public ChangeCourseCreditTypeValidator()
+        public ChangeCourseCreditTypeCommandValidator()
         {
             RuleFor(cmd => cmd.CourseId)
                 .NotEqual(default(Guid))

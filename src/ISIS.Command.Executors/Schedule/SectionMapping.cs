@@ -18,7 +18,7 @@ namespace ISIS.Schedule
                                    var term = uow.GetById<Term>(cmd.TermId);
                                    return new Section(cmd.SectionId, term, course, cmd.SectionNumber);
                                })
-                               .RegisterWith(commandService);
+                .RegisterWith(commandService);
 
             Map.Command<ChangeSectionLocationCommand>()
                 .ToAggregateRoot<Section>()
@@ -31,7 +31,14 @@ namespace ISIS.Schedule
                                   section.ChangeLocation(location, tdcjTopicCode);
                               })
                 .RegisterWith(commandService);
+
+            Map.Command<ChangeSectionCreditTypeCommand>()
+                .ToAggregateRoot<Section>()
+                .WithId(cmd => cmd.SectionId)
+                .ToCallOn((cmd, section) => section.ChangeCreditType(cmd.CreditType))
+                .RegisterWith(commandService);
         }
+
 
     }
 }

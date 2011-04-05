@@ -170,10 +170,11 @@ Scenario: Change the section credit type to non-funded
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	And I have created a section 01 from the course and term
-	When I change the section credit type to Workforce Non-funded
-	Then the section credit type should be Workforce Non-funded
-	And the section course type should be CE
-	And the section current course type should be CE
+	When I change the section credit type to Workforce Non-Funded
+	Then the section credit type should be Workforce Non-Funded
+	And the course type CE is added to the section
+	And the course type CWECM is removed from the section
+	And the section's current course type is CE
 	And it should do nothing else
 
 @domain
@@ -184,8 +185,9 @@ Scenario: Change the section credit type to funded
 	And I have created a section 01 from the course and term
 	When I change the section credit type to Workforce Funded
 	Then the section credit type should be Workforce Funded
-	And the section course type should be CWECM
-	And the section current course type should be CWECM
+	And the course type CWECM is added to the section
+	And the course type CE is removed from the section
+	And the section's current course type is CWECM
 	And it should do nothing else
 
 @domain

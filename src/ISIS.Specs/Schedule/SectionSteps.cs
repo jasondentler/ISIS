@@ -5,7 +5,6 @@ using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing.Storage;
-using Ncqrs.Spec;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -15,7 +14,7 @@ namespace ISIS.Schedule
     public class SectionSteps
     {
 
-        [TechTalk.SpecFlow.Given(@"I have set the section location to ([^\s]+) (.*)")]
+        [Given(@"I have set the section location to ([^\s]+) (.*)")]
         public void GivenIHaveSetTheLocationTo(
             string locationAbbreviation,
             string locationName)
@@ -56,7 +55,7 @@ namespace ISIS.Schedule
         }
 
 
-        [TechTalk.SpecFlow.Given(@"I have created a section (.*) from the course and term")]
+        [Given(@"I have created a section (.*) from the course and term")]
         public void GivenIHaveCreatedASectionFromTheCourseAndTerm(
             string sectionNumber)
         {
@@ -66,7 +65,7 @@ namespace ISIS.Schedule
                 sectionNumber, courseId, termId);
         }
 
-        [TechTalk.SpecFlow.Given(@"I have created a section (.*) from the course with term (.*)")]
+        [Given(@"I have created a section (.*) from the course with term (.*)")]
         public void GivenIHaveCreatedASectionFromTheCourseWithTerm(
             string sectionNumber,
             string termAbbreviation)
@@ -98,7 +97,7 @@ namespace ISIS.Schedule
                           };
 
             var commandService = NcqrsEnvironment.Get<ICommandService>();
-            using (var ctx = new EventContext())
+            using (var ctx = new Ncqrs.Spec.EventContext())
             {
                 commandService.Execute(cmd);
                 foreach (var @event in ctx.Events.Select(e => e.Payload))
@@ -185,9 +184,24 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the section credit type to (.*)")]
+        public void WhenIChangeTheSectionCreditTypeTo(
+            string creditTypeString)
+        {
+            var creditType = CourseCreditTypeSteps.ParseCreditType(creditTypeString);
+
+            var cmd = new ChangeSectionCreditTypeCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              CreditType = creditType
+                          };
+
+            DomainHelper.WhenExecuting(cmd);
+        }
 
 
-        [TechTalk.SpecFlow.Then(@"the section's term is (.*)")]
+
+        [Then(@"the section's term is (.*)")]
         public void ThenTheSectionSTermIs(
             string termAbbreviation)
         {
@@ -197,7 +211,7 @@ namespace ISIS.Schedule
             Assert.That(e.TermId, Is.EqualTo(termId));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's term name is (.*)")]
+        [Then(@"the section's term name is (.*)")]
         public void ThenTheSectionSTermNameIs(
             string termName)
         {
@@ -206,7 +220,7 @@ namespace ISIS.Schedule
         }
 
 
-        [TechTalk.SpecFlow.Then(@"the section's term abbreviation is (.*)")]
+        [Then(@"the section's term abbreviation is (.*)")]
         public void ThenTheSectionSTermAbbreviationIs(
             string termAbbreviation)
         {
@@ -214,7 +228,7 @@ namespace ISIS.Schedule
             Assert.That(e.TermAbbreviation, Is.EqualTo(termAbbreviation));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's course is ([^\s]+) ([^\s]+)")]
+        [Then(@"the section's course is ([^\s]+) ([^\s]+)")]
         public void ThenTheSectionSCourseIs(
             string rubric,
             string courseNumber)
@@ -227,7 +241,7 @@ namespace ISIS.Schedule
 
 
 
-        [TechTalk.SpecFlow.Then(@"the section's rubric is (.*)")]
+        [Then(@"the section's rubric is (.*)")]
         public void ThenTheSectionSRubricIs(
             string rubric)
         {
@@ -235,7 +249,7 @@ namespace ISIS.Schedule
             Assert.That(e.Rubric, Is.EqualTo(rubric));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's course number is (.*)")]
+        [Then(@"the section's course number is (.*)")]
         public void ThenTheSectionSCourseNumberIs(
             string courseNumber)
         {
@@ -243,7 +257,7 @@ namespace ISIS.Schedule
             Assert.That(e.CourseNumber, Is.EqualTo(courseNumber));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's section number is (.*)")]
+        [Then(@"the section's section number is (.*)")]
         public void ThenTheSectionSSectionNumberIs(
             string sectionNumber)
         {
@@ -251,8 +265,8 @@ namespace ISIS.Schedule
             Assert.That(e.SectionNumber, Is.EqualTo(sectionNumber));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's start date is not set")]
-        [TechTalk.SpecFlow.Then(@"the section's end date is not set")]
+        [Then(@"the section's start date is not set")]
+        [Then(@"the section's end date is not set")]
         public void ThenTheSectionsDatesAreNotSet()
         {
             var datesChangedEvents = DomainHelper
@@ -261,7 +275,7 @@ namespace ISIS.Schedule
             Assert.That(datesChangedEvents, Is.Empty);
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's start date is (\d.*)")]
+        [Then(@"the section's start date is (\d.*)")]
         public void ThenTheSectionSStartDateIs(
             string startDateString)
         {
@@ -271,7 +285,7 @@ namespace ISIS.Schedule
             Assert.That(e.Start, Is.EqualTo(startDate));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's end date is (\d.*)")]
+        [Then(@"the section's end date is (\d.*)")]
         public void ThenTheSectionSEndDateIs(
             string endDateString)
         {
@@ -281,7 +295,7 @@ namespace ISIS.Schedule
             Assert.That(e.End, Is.EqualTo(endDate));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's title is ""(.*)""")]
+        [Then(@"the section's title is ""(.*)""")]
         public void ThenTheSectionSTitleIs(
             string sectionTitle)
         {
@@ -289,7 +303,7 @@ namespace ISIS.Schedule
             Assert.That(e.Title, Is.EqualTo(sectionTitle));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's course type is (.*)")]
+        [Then(@"the section's course type is (.*)")]
         public void ThenTheSectionSCourseTypeIs(
             string sectionCourseType)
         {
@@ -301,7 +315,39 @@ namespace ISIS.Schedule
             Assert.That(e.CourseTypeAdded, Is.EqualTo(courseTypes.Single()));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's current course type is (.*)")]
+
+        [Then(@"the course type ([^\s]+) is added to the section")]
+        public void ThenTheCourseTypeIsAddedToTheSection(
+            string sectionCourseType)
+        {
+            var courseType = CourseTypeSteps.ParseCourseTypes(sectionCourseType).Single();
+
+            var @event = DomainHelper
+                .GetEvents<SectionCourseTypeAddedEvent>()
+                .Where(e => e.CourseTypeAdded == courseType)
+                .Single();
+
+            Assert.That(@event.CourseTypeAdded, Is.EqualTo(courseType));
+        }
+
+
+        [Then(@"the course type ([^\s]+) is removed from the section")]
+        public void ThenTheCourseTypeIsRemovedFromTheSection(
+            string sectionCourseType)
+        {
+            var courseType = CourseTypeSteps.ParseCourseTypes(sectionCourseType).Single();
+
+            var @event = DomainHelper
+                .GetEvents<SectionCourseTypeRemovedEvent>()
+                .Where(e => e.CourseTypeRemoved == courseType)
+                .Single();
+
+            Assert.That(@event.CourseTypeRemoved, Is.EqualTo(courseType));
+        }
+
+
+        [Then(@"the section course type should be (.*)")]
+        [Then(@"the section's current course type is (.*)")]
         public void ThenTheSectionSCurrentCourseTypeIs(
             string sectionCourseType)
         {
@@ -317,7 +363,7 @@ namespace ISIS.Schedule
         }
 
 
-        [TechTalk.SpecFlow.Then(@"the section's approval number is (.*)")]
+        [Then(@"the section's approval number is (.*)")]
         public void ThenTheSectionSApprovalNumberIs(
             string approvalNumber)
         {
@@ -325,7 +371,7 @@ namespace ISIS.Schedule
             Assert.That(e.ApprovalNumber, Is.EqualTo(approvalNumber));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's CIP is (.*)")]
+        [Then(@"the section's CIP is (.*)")]
         public void ThenTheSectionSCIPIs(
             string cip)
         {
@@ -333,7 +379,7 @@ namespace ISIS.Schedule
             Assert.That(e.CIP, Is.EqualTo(cip));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section location is (.*)")]
+        [Then(@"the section location is (.*)")]
         public void ThenTheSectionLocationIs(
             string locationAbbreviation)
         {
@@ -343,7 +389,7 @@ namespace ISIS.Schedule
             Assert.That(e.LocationId, Is.EqualTo(locationId));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section location abbreviation is ([^\s]+)")]
+        [Then(@"the section location abbreviation is ([^\s]+)")]
         public void ThenTheSectionLocationAbbreviationIs(
             string locationAbbreviation)
         {
@@ -351,7 +397,7 @@ namespace ISIS.Schedule
             Assert.That(e.LocationAbbreviation, Is.EqualTo(locationAbbreviation));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section location name is (.*)")]
+        [Then(@"the section location name is (.*)")]
         public void ThenTheSectionLocationNameIs(
             string locationName)
         {
@@ -360,14 +406,14 @@ namespace ISIS.Schedule
         }
 
 
-        [TechTalk.SpecFlow.Then(@"the topic code is blank")]
+        [Then(@"the topic code is blank")]
         public void ThenTheTopicCodeIsBlank()
         {
             var e = DomainHelper.GetEvent<SectionTopicCodeRemovedEvent>();
             Assert.That(e, Is.Not.Null);
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's topic code is ([A-Z0-9]+)")]
+        [Then(@"the section's topic code is ([A-Z0-9]+)")]
         public void ThenTheSectionSTopicCodeIs(
             string topicCodeAbbreviation)
         {
@@ -380,7 +426,7 @@ namespace ISIS.Schedule
             Assert.That(e.TopicCodeAbbreviation, Is.EqualTo(topicCodeAbbreviation));
         }
 
-        [TechTalk.SpecFlow.Then(@"the topic code is ([A-Z0-9]+) (.*)")]
+        [Then(@"the topic code is ([A-Z0-9]+) (.*)")]
         public void ThenTheTopicCodeIs(
             string topicCodeAbbreviation,
             string topicCodeDescription)
@@ -395,14 +441,16 @@ namespace ISIS.Schedule
             Assert.That(e.TopicCodeDescription, Is.EqualTo(topicCodeDescription));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section is created")]
+        [Then(@"the section is created")]
         public void ThenTheSectionIsCreated()
         {
             var e = DomainHelper.GetEvent<SectionCreatedEvent>();
             Assert.That(e, Is.Not.Null);
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's credit type is (.*)")]
+
+        [Then(@"the section credit type should be (.*)")]
+        [Then(@"the section's credit type is (.*)")]
         public void ThenTheSectionSCreditTypeIs(
             string creditTypeString)
         {
@@ -412,14 +460,14 @@ namespace ISIS.Schedule
             Assert.That(e.CreditType, Is.EqualTo(creditType));
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's status is pending")]
+        [Then(@"the section's status is pending")]
         public void ThenTheSectionSStatusIsPending()
         {
             var e = DomainHelper.GetEvent<SectionMadePendingEvent>();
             Assert.That(e, Is.Not.Null);
         }
 
-        [TechTalk.SpecFlow.Then(@"the location is blank")]
+        [Then(@"the location is blank")]
         public void ThenTheLocationIsBlank()
         {
             var events = DomainHelper
@@ -429,8 +477,8 @@ namespace ISIS.Schedule
             Assert.That(events, Is.Empty);
         }
 
-        [TechTalk.SpecFlow.Then(@"the section's CEUs is ([^\s]+)")]
-        [TechTalk.SpecFlow.Then(@"the section's CEUs are ([^\s]+)")]
+        [Then(@"the section's CEUs is ([^\s]+)")]
+        [Then(@"the section's CEUs are ([^\s]+)")]
         public void ThenTheSectionSCEUsIs(
             string ceusString)
         {

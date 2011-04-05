@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="IEvent.cs" />
     <Compile Include="Schedule\ContinuingEducationCourseCreatedEvent.cs" />
+    <Compile Include="Schedule\SectionCourseTypeRemovedEvent.cs" />
     <Compile Include="Schedule\SectionCEUsChangedEvent.cs" />
     <Compile Include="Schedule\SectionMadePendingEvent.cs" />
     <Compile Include="Schedule\SectionCreditTypeChangedEvent.cs" />
