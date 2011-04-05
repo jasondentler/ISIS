@@ -279,10 +279,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Change the section term when the section number is taken")]
         [NUnit.Framework.CategoryAttribute("domain")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void ChangeTheSectionTermWhenTheSectionNumberIsTaken()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section term when the section number is taken", new string[] {
-                        "domain"});
+                        "domain",
+                        "ignore"});
 #line 87
 this.ScenarioSetup(scenarioInfo);
 #line 88
@@ -310,12 +312,14 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Change the section dates")]
+        [NUnit.Framework.DescriptionAttribute("When changing the section term, an active section should be made pending")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void ChangeTheSectionDates()
+        [NUnit.Framework.IgnoreAttribute()]
+        public virtual void WhenChangingTheSectionTermAnActiveSectionShouldBeMadePending()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section dates", new string[] {
-                        "domain"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When changing the section term, an active section should be made pending", new string[] {
+                        "domain",
+                        "ignore"});
 #line 99
 this.ScenarioSetup(scenarioInfo);
 #line 100
@@ -324,18 +328,92 @@ this.ScenarioSetup(scenarioInfo);
 #line 101
  testRunner.And("I have changed the approval number to 1234567890");
 #line 102
- testRunner.And("I have changed the approval number to 1234567890");
-#line 103
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
+#line 103
+ testRunner.And("I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012");
 #line 104
  testRunner.And("I have created a section 01 from the course with term CE211Q1");
 #line 105
- testRunner.When("I change the start date to 10/1/2011 and the end date to 11/1/2011");
+ testRunner.And("I have activated the section");
 #line 106
- testRunner.Then("the section start date is 10/1/2011");
+ testRunner.When("I change the section\'s term to CE211Q2");
 #line 107
- testRunner.And("the section end date is 11/1/2011");
+ testRunner.Then("the section\'s term is CE211Q2");
 #line 108
+ testRunner.And("the section\'s start date is blank");
+#line 109
+ testRunner.And("the section\'s end date is blank");
+#line 110
+ testRunner.And("the section\'s status is pending");
+#line 111
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("When changing the section term, if the section has dates, remove them")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void WhenChangingTheSectionTermIfTheSectionHasDatesRemoveThem()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When changing the section term, if the section has dates, remove them", new string[] {
+                        "domain"});
+#line 114
+this.ScenarioSetup(scenarioInfo);
+#line 115
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
+#line 116
+ testRunner.And("I have changed the approval number to 1234567890");
+#line 117
+ testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
+#line 118
+ testRunner.And("I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012");
+#line 119
+ testRunner.And("I have created a section 01 from the course with term CE211Q1");
+#line 120
+ testRunner.And("I have changed the section start date to 10/1/2011 and the end date to 11/1/2011");
+#line 121
+ testRunner.When("I change the section\'s term to CE211Q2");
+#line 122
+ testRunner.Then("the section\'s term is CE211Q2");
+#line 123
+ testRunner.And("the section\'s start date is blank");
+#line 124
+ testRunner.And("the section\'s end date is blank");
+#line 125
+ testRunner.And("it should do nothing else");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change the section dates")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeTheSectionDates()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section dates", new string[] {
+                        "domain"});
+#line 130
+this.ScenarioSetup(scenarioInfo);
+#line 131
+ testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
+                    "Health\"");
+#line 132
+ testRunner.And("I have changed the approval number to 1234567890");
+#line 133
+ testRunner.And("I have changed the approval number to 1234567890");
+#line 134
+ testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
+#line 135
+ testRunner.And("I have created a section 01 from the course with term CE211Q1");
+#line 136
+ testRunner.When("I change the start date to 10/1/2011 and the end date to 11/1/2011");
+#line 137
+ testRunner.Then("the section start date is 10/1/2011");
+#line 138
+ testRunner.And("the section end date is 11/1/2011");
+#line 139
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -348,24 +426,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section dates where the section dates are before the term", new string[] {
                         "domain"});
-#line 111
+#line 142
 this.ScenarioSetup(scenarioInfo);
-#line 112
+#line 143
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
                     "Health\"");
-#line 113
+#line 144
  testRunner.And("I have changed the approval number to 1234567890");
-#line 114
+#line 145
  testRunner.And("I have changed the approval number to 1234567890");
-#line 115
+#line 146
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 116
+#line 147
  testRunner.And("I have created a section 01 from the course with term CE211Q1");
-#line 117
+#line 148
  testRunner.When("I change the start date to 7/1/2011 and the end date to 8/1/2011");
-#line 118
+#line 149
  testRunner.Then("the aggregate state is invalid");
-#line 119
+#line 150
  testRunner.And("the error is \"Your attempt to create a section failed. The section census date is" +
                     " outside the term dates.\"");
 #line hidden
@@ -379,24 +457,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section dates where the section dates are after the term", new string[] {
                         "domain"});
-#line 122
+#line 153
 this.ScenarioSetup(scenarioInfo);
-#line 123
+#line 154
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
                     "Health\"");
-#line 124
+#line 155
  testRunner.And("I have changed the approval number to 1234567890");
-#line 125
+#line 156
  testRunner.And("I have changed the approval number to 1234567890");
-#line 126
+#line 157
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 127
+#line 158
  testRunner.And("I have created a section 01 from the course with term CE211Q1");
-#line 128
+#line 159
  testRunner.When("I change the start date to 12/1/2011 and the end date to 12/25/2011");
-#line 129
+#line 160
  testRunner.Then("the aggregate state is invalid");
-#line 130
+#line 161
  testRunner.And("the error is \"Your attempt to create a section failed. The section census date is" +
                     " outside the term dates.\"");
 #line hidden
@@ -410,24 +488,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section location", new string[] {
                         "domain"});
-#line 133
+#line 164
 this.ScenarioSetup(scenarioInfo);
-#line 134
+#line 165
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
                     "Health\"");
-#line 135
+#line 166
  testRunner.And("I have changed the approval number to 1234567890");
-#line 136
+#line 167
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 137
+#line 168
  testRunner.And("I have created a section 01 from the course and term");
-#line 138
+#line 169
  testRunner.And("I have created the location ACC Main Campus");
-#line 139
+#line 170
  testRunner.When("I change the section location to ACC");
-#line 140
+#line 171
  testRunner.Then("the section location is ACC");
-#line 141
+#line 172
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -440,24 +518,24 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section location to the same location", new string[] {
                         "domain"});
-#line 144
+#line 175
 this.ScenarioSetup(scenarioInfo);
-#line 145
+#line 176
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
                     "Health\"");
-#line 146
+#line 177
  testRunner.And("I have changed the approval number to 1234567890");
-#line 147
+#line 178
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 148
+#line 179
  testRunner.And("I have created a section 01 from the course and term");
-#line 149
+#line 180
  testRunner.And("I have created the location ACC Main Campus");
-#line 150
+#line 181
  testRunner.And("I have set the section location to ACC Main Campus");
-#line 151
+#line 182
  testRunner.When("I change the section location to ACC");
-#line 152
+#line 183
  testRunner.Then("it should do nothing");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -472,26 +550,26 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Changing the location of a CE section to a TDCJ location doesn\'t change the topic" +
                     " code", new string[] {
                         "domain"});
-#line 155
+#line 186
 this.ScenarioSetup(scenarioInfo);
-#line 156
+#line 187
  testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 \"Routine Management of Equ" +
                     "ine Health\"");
-#line 157
+#line 188
  testRunner.And("I have changed the approval number to 1234567890");
-#line 158
+#line 189
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 159
+#line 190
  testRunner.And("I have created the topic code A Academic TDC Course Code");
-#line 160
+#line 191
  testRunner.And("I have created the location CLEM Clemson Unit");
-#line 161
+#line 192
  testRunner.And("I have created a section 01 from the course and term");
-#line 162
+#line 193
  testRunner.When("I change the section\'s location to CLEM");
-#line 163
+#line 194
  testRunner.Then("the section\'s location should be CLEM");
-#line 164
+#line 195
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -504,28 +582,28 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section credit type to non-funded", new string[] {
                         "domain"});
-#line 168
+#line 199
 this.ScenarioSetup(scenarioInfo);
-#line 169
+#line 200
  testRunner.Given("I have created a Workforce Funded course AGEQ 1091 \"Routine Management of Equine " +
                     "Health\"");
-#line 170
+#line 201
  testRunner.And("I have changed the approval number to 1234567890");
-#line 171
+#line 202
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 172
+#line 203
  testRunner.And("I have created a section 01 from the course and term");
-#line 173
+#line 204
  testRunner.When("I change the section credit type to Workforce Non-Funded");
-#line 174
+#line 205
  testRunner.Then("the section credit type should be Workforce Non-Funded");
-#line 175
+#line 206
  testRunner.And("the course type CE is added to the section");
-#line 176
+#line 207
  testRunner.And("the course type CWECM is removed from the section");
-#line 177
+#line 208
  testRunner.And("the section\'s current course type is CE");
-#line 178
+#line 209
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -538,28 +616,28 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section credit type to funded", new string[] {
                         "domain"});
-#line 181
+#line 212
 this.ScenarioSetup(scenarioInfo);
-#line 182
+#line 213
  testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 \"Routine Management of Equ" +
                     "ine Health\"");
-#line 183
+#line 214
  testRunner.And("I have changed the approval number to 1234567890");
-#line 184
+#line 215
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 185
+#line 216
  testRunner.And("I have created a section 01 from the course and term");
-#line 186
+#line 217
  testRunner.When("I change the section credit type to Workforce Funded");
-#line 187
+#line 218
  testRunner.Then("the section credit type should be Workforce Funded");
-#line 188
+#line 219
  testRunner.And("the course type CWECM is added to the section");
-#line 189
+#line 220
  testRunner.And("the course type CE is removed from the section");
-#line 190
+#line 221
  testRunner.And("the section\'s current course type is CWECM");
-#line 191
+#line 222
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -572,22 +650,22 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section\'s CEUs", new string[] {
                         "domain"});
-#line 194
+#line 225
 this.ScenarioSetup(scenarioInfo);
-#line 195
+#line 226
  testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 \"Routine Management of Equ" +
                     "ine Health\"");
-#line 196
+#line 227
  testRunner.And("I have changed the approval number to 1234567890");
-#line 197
+#line 228
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 198
+#line 229
  testRunner.And("I have created a section 01 from the course and term");
-#line 199
+#line 230
  testRunner.When("I change the section\'s CEUs to 0.70");
-#line 200
+#line 231
  testRunner.Then("the section\'s CEUs is 0.70");
-#line 201
+#line 232
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -600,22 +678,22 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change the section\'s title", new string[] {
                         "domain"});
-#line 204
+#line 235
 this.ScenarioSetup(scenarioInfo);
-#line 205
+#line 236
  testRunner.Given("I have created a Workforce Non-Funded course AGEQ 1091 \"Routine Management of Equ" +
                     "ine Health\"");
-#line 206
+#line 237
  testRunner.And("I have changed the approval number to 1234567890");
-#line 207
+#line 238
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
-#line 208
+#line 239
  testRunner.And("I have created a section 01 from the course and term");
-#line 209
+#line 240
  testRunner.When("I change the section\'s title to \"Horses\"");
-#line 210
+#line 241
  testRunner.Then("the section\'s title is \"Horses\"");
-#line 211
+#line 242
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();

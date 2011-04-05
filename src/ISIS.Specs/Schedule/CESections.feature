@@ -83,7 +83,7 @@ Scenario: Change the section term
 	Then the section's term is CE211Q2
 	And it should do nothing else
 
-@domain
+@domain @ignore
 Scenario: Change the section term when the section number is taken
 	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
@@ -94,6 +94,37 @@ Scenario: Change the section term when the section number is taken
 	When I change the section's term to CE211Q2
 	Then the command is invalid
 	And the error is "Your attempt to create a section failed. That section number is already used."
+
+@domain @ignore
+Scenario: When changing the section term, an active section should be made pending
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
+	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
+	And I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012
+	And I have created a section 01 from the course with term CE211Q1
+	And I have activated the section
+	When I change the section's term to CE211Q2
+	Then the section's term is CE211Q2
+	And the section's start date is blank
+	And the section's end date is blank
+	And the section's status is pending
+	And it should do nothing else
+
+@domain
+Scenario: When changing the section term, if the section has dates, remove them
+	Given I have created a Workforce Funded course AGEQ 1091 "Routine Management of Equine Health"
+	And I have changed the approval number to 1234567890
+	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
+	And I have created a term CE211Q2 CE Q2 2011 from 12/1/2011 to 2/28/2012
+	And I have created a section 01 from the course with term CE211Q1
+	And I have changed the section start date to 10/1/2011 and the end date to 11/1/2011
+	When I change the section's term to CE211Q2
+	Then the section's term is CE211Q2
+	And the section's start date is blank
+	And the section's end date is blank
+	And it should do nothing else
+
+
 
 @domain
 Scenario: Change the section dates

@@ -13,6 +13,7 @@ namespace ISIS.Schedule
         private ISet<CourseTypes> _courseTypes = new HashSet<CourseTypes>();
         private CreditTypes _creditType;
         private string _title;
+        private bool _hasDates;
 
         [Inject]
         private Section()
@@ -230,6 +231,22 @@ namespace ISIS.Schedule
                            newTitle));
         }
 
+
+        public void ChangeTerm(Term term)
+        {
+            var termData = term.BuildMememto();
+
+            ApplyEvent(new SectionTermChangedEvent(
+                           EventSourceId,
+                           termData.Id,
+                           termData.Abbreviation,
+                           termData.Name));
+
+            if (_hasDates)
+                ApplyEvent(new SectionDatesRemovedEvent(
+                               EventSourceId));
+        }
+
         protected void OnCreated(SectionCreatedEvent @event)
         {
             _termId = @event.TermId;
@@ -237,6 +254,12 @@ namespace ISIS.Schedule
 
         protected void OnDatesChanged(SectionDatesChangedEvent @event)
         {
+            _hasDates = true;
+        }
+
+        protected void OnDatedRemoved(SectionDatesRemovedEvent @event)
+        {
+            _hasDates = false;
         }
 
         protected void OnTitleChanged(SectionTitleChangedEvent @event)
@@ -292,6 +315,11 @@ namespace ISIS.Schedule
 
         protected void OnSectionNumberChanged(SectionNumberChangedEvent @event)
         {
+        }
+
+        protected void OnTermChanged(SectionTermChangedEvent @event)
+        {
+            _termId = @event.TermId;
         }
 
     }

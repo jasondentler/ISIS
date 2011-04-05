@@ -61,6 +61,7 @@
     <Compile Include="Schedule\ChangeSectionNumberCommand.cs" />
     <Compile Include="Schedule\ChangeSectionCEUsCommand.cs" />
     <Compile Include="Schedule\ChangeSectionTitleCommand.cs" />
+    <Compile Include="Schedule\ChangeSectionTermCommand.cs" />
     <Compile Include="Schedule\CreateContinuingEducationCourseCommand.cs" />
     <Compile Include="Schedule\CreateSectionCommand.cs" />
     <Compile Include="Schedule\CreateTermCommand.cs" />

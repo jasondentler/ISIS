@@ -63,6 +63,7 @@
     <Compile Include="Schedule\ChangeSectionNumberCommandValidator.cs" />
     <Compile Include="Schedule\ChangeSectionCEUsCommandValidator.cs" />
     <Compile Include="Schedule\ChangeSectionTitleCommandValidator.cs" />
+    <Compile Include="Schedule\ChangeSectionTermCommandValidator.cs" />
     <Compile Include="Schedule\CreateTermCommandValidator.cs" />
     <Compile Include="Schedule\CreateSectionCommandValidator.cs" />
     <Compile Include="Schedule\CreateTopicCodeCommandValidator.cs" />

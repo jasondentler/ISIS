@@ -167,6 +167,22 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [Given(@"I have changed the section start date to (.*) and the end date to (.*)")]
+        public void GivenIHaveChangedTheSectionDates(
+            string startDateString,
+            string endDateString)
+        {
+            var startDate = DateTime.Parse(startDateString);
+            var endDate = DateTime.Parse(endDateString);
+
+            DomainHelper.GivenEvent<Section>(
+                new SectionDatesChangedEvent(
+                    DomainHelper.GetId<Section>(),
+                    startDate,
+                    endDate));
+        }
+
+
         [When(@"I change the section location to ([^\s]+)")]
         public void WhenIChangeTheSectionLocationTo(
             string locationAbbreviation)
@@ -253,6 +269,19 @@ namespace ISIS.Schedule
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the section's term to (.*)")]
+        public void WhenIChangeTheSectionSTermTo(
+            string termAbbreviation)
+        {
+            var termId = DomainHelper.GetId<Term>(termAbbreviation);
+
+            var cmd = new ChangeSectionTermCommand()
+                          {
+                              SectionId = DomainHelper.GetId<Section>(),
+                              TermId = termId
+                          };
+            DomainHelper.WhenExecuting(cmd);
+        }
 
 
         [Then(@"the section's term is (.*)")]
@@ -261,7 +290,9 @@ namespace ISIS.Schedule
         {
             var termId = DomainHelper.GetId<Term>(termAbbreviation);
 
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic) DomainHelper.GetEvent<SectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<SectionTermChangedEvent>();
+
             Assert.That(e.TermId, Is.EqualTo(termId));
         }
 
@@ -327,6 +358,14 @@ namespace ISIS.Schedule
                 .GetEvents<SectionDatesChangedEvent>()
                 .ToArray();
             Assert.That(datesChangedEvents, Is.Empty);
+        }
+
+        [Then(@"the section's start date is blank")]
+        [Then(@"the section's end date is blank")]
+        public void ThenTheSectionsDatesAreBlank()
+        {
+            var e = DomainHelper.GetEvent<SectionDatesRemovedEvent>();
+            Assert.That(e, Is.Not.Null);
         }
 
         [Then(@"the section's start date is (\d.*)")]
