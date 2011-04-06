@@ -7,6 +7,7 @@ namespace ISIS.Schedule
 {
     public class Section : AggregateRootMappedByConvention
     {
+        private bool _isCredit;
         private Guid _topicCodeId;
         private Guid _locationId;
         private Guid _termId;
@@ -39,15 +40,27 @@ namespace ISIS.Schedule
                 throw new InvalidStateException(
                     "Your attempt to create a section failed. The course doesn't have an approval number or CIP, and it's not a special interests course.");
 
-            ApplyEvent(new SectionCreatedEvent(
-                           sectionId,
-                           courseData.Id,
-                           courseData.Rubric,
-                           courseData.CourseNumber,
-                           termData.Id,
-                           termData.Abbreviation,
-                           termData.Name,
-                           sectionNumber));
+            var createEvent = courseData.IsCredit
+                                  ? (IEvent) new CreditSectionCreatedEvent(
+                                                 sectionId,
+                                                 courseData.Id,
+                                                 courseData.Rubric,
+                                                 courseData.CourseNumber,
+                                                 termData.Id,
+                                                 termData.Abbreviation,
+                                                 termData.Name,
+                                                 sectionNumber)
+                                  : new ContinuingEducationSectionCreatedEvent(
+                                        sectionId,
+                                        courseData.Id,
+                                        courseData.Rubric,
+                                        courseData.CourseNumber,
+                                        termData.Id,
+                                        termData.Abbreviation,
+                                        termData.Name,
+                                        sectionNumber);
+
+            ApplyEvent(createEvent);
 
             if (courseData.IsCredit)
                 ChangeDates(termData.Start, termData.End);
@@ -247,9 +260,16 @@ namespace ISIS.Schedule
                                EventSourceId));
         }
 
-        protected void OnCreated(SectionCreatedEvent @event)
+        protected void OnCreditCreated(CreditSectionCreatedEvent @event)
         {
             _termId = @event.TermId;
+            _isCredit = true;
+        }
+
+        protected void OnCECreated(ContinuingEducationSectionCreatedEvent @event)
+        {
+            _termId = @event.TermId;
+            _isCredit = false;
         }
 
         protected void OnDatesChanged(SectionDatesChangedEvent @event)

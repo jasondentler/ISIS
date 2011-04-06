@@ -509,34 +509,36 @@ this.ScenarioSetup(scenarioInfo);
 #line 185
  testRunner.When("I create section 01 from the course and term");
 #line 186
- testRunner.Then("the section\'s course is BIOL 1301");
+ testRunner.Then("the credit section is created");
 #line 187
- testRunner.And("the section\'s term is 211FA");
+ testRunner.And("the section\'s course is BIOL 1301");
 #line 188
- testRunner.And("the section\'s rubric is BIOL");
+ testRunner.And("the section\'s term is 211FA");
 #line 189
- testRunner.And("the section\'s course number is 1301");
+ testRunner.And("the section\'s rubric is BIOL");
 #line 190
- testRunner.And("the section\'s section number is 01");
+ testRunner.And("the section\'s course number is 1301");
 #line 191
- testRunner.And("the section\'s term abbreviation is 211FA");
+ testRunner.And("the section\'s section number is 01");
 #line 192
- testRunner.And("the section\'s term name is Fall 2011");
+ testRunner.And("the section\'s term abbreviation is 211FA");
 #line 193
- testRunner.And("the section\'s start date is 9/1/2011");
+ testRunner.And("the section\'s term name is Fall 2011");
 #line 194
- testRunner.And("the section\'s end date is 11/30/2011");
+ testRunner.And("the section\'s start date is 9/1/2011");
 #line 195
- testRunner.And("the section\'s title is \"Introductory Biology\"");
+ testRunner.And("the section\'s end date is 11/30/2011");
 #line 196
- testRunner.And("the section\'s course type is ACAD");
+ testRunner.And("the section\'s title is \"Introductory Biology\"");
 #line 197
- testRunner.And("the section\'s approval number is 1234567890");
+ testRunner.And("the section\'s course type is ACAD");
 #line 198
- testRunner.And("the section\'s CIP is 123456");
+ testRunner.And("the section\'s approval number is 1234567890");
 #line 199
- testRunner.And("the section\'s status is pending");
+ testRunner.And("the section\'s CIP is 123456");
 #line 200
+ testRunner.And("the section\'s status is pending");
+#line 201
  testRunner.And("it should do nothing else");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -549,17 +551,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cant create a credit section without an approval number or CIP", new string[] {
                         "domain"});
-#line 203
-this.ScenarioSetup(scenarioInfo);
 #line 204
- testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
+this.ScenarioSetup(scenarioInfo);
 #line 205
- testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
+ testRunner.Given("I have created an ACAD course BIOL 1301 \"Introductory Biology\"");
 #line 206
- testRunner.When("I create section 01 from the course and term");
+ testRunner.And("I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011");
 #line 207
- testRunner.Then("the aggregate state is invalid");
+ testRunner.When("I create section 01 from the course and term");
 #line 208
+ testRunner.Then("the aggregate state is invalid");
+#line 209
  testRunner.And("the error is \"Your attempt to create the section failed. Set approval number or C" +
                     "IP at the course level first.\"");
 #line hidden

@@ -153,7 +153,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 43
  testRunner.When("I create section 01 from the course with term CE211Q1");
 #line 44
- testRunner.Then("the section is created");
+ testRunner.Then("the CE section is created");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -560,15 +560,15 @@ this.ScenarioSetup(scenarioInfo);
 #line 189
  testRunner.And("I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011");
 #line 190
- testRunner.And("I have created the topic code A Academic TDC Course Code");
+ testRunner.And("I have created a topic code A Academic TDC Course Code");
 #line 191
  testRunner.And("I have created the location CLEM Clemson Unit");
 #line 192
  testRunner.And("I have created a section 01 from the course and term");
 #line 193
- testRunner.When("I change the section\'s location to CLEM");
+ testRunner.When("I change the section location to CLEM");
 #line 194
- testRunner.Then("the section\'s location should be CLEM");
+ testRunner.Then("the section\'s location is CLEM");
 #line 195
  testRunner.And("it should do nothing else");
 #line hidden

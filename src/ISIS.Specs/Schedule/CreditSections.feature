@@ -183,7 +183,8 @@ Scenario: Create a credit section without a topic code
 	And I have set the approval number to 1234567890
 	And I have created a term 211FA Fall 2011 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course and term
-	Then the section's course is BIOL 1301
+	Then the credit section is created 
+	And the section's course is BIOL 1301
 	And the section's term is 211FA
 	And the section's rubric is BIOL
 	And the section's course number is 1301

@@ -4,12 +4,12 @@ namespace ISIS.Schedule
 {
 
     public class when_serializing_SectionCreatedEvent
-        : JsonEventSerializationFixture<SectionCreatedEvent>
+        : JsonEventSerializationFixture<CreditSectionCreatedEvent>
     {
 
-        protected override SectionCreatedEvent GivenEvent()
+        protected override CreditSectionCreatedEvent GivenEvent()
         {
-            return new SectionCreatedEvent(
+            return new CreditSectionCreatedEvent(
                 Guid.NewGuid(),
                 Guid.NewGuid(),
                 "BIOL",

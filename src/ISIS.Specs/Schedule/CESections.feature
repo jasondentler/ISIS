@@ -41,7 +41,7 @@ Scenario: Can create a CE section from a special interests course without an app
 	Given I have created a Special Interests course AGEQ 1091 "Routine Management of Equine Health"
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
 	When I create section 01 from the course with term CE211Q1
-	Then the section is created
+	Then the CE section is created
 
 @domain
 Scenario: Cant create a CE section from a non-special interests course without an approval or CIP
@@ -187,11 +187,11 @@ Scenario: Changing the location of a CE section to a TDCJ location doesn't chang
 	Given I have created a Workforce Non-Funded course AGEQ 1091 "Routine Management of Equine Health"
 	And I have changed the approval number to 1234567890
 	And I have created a term CE211Q1 CE Q1 2011 from 9/1/2011 to 11/30/2011
-	And I have created the topic code A Academic TDC Course Code
+	And I have created a topic code A Academic TDC Course Code
 	And I have created the location CLEM Clemson Unit
 	And I have created a section 01 from the course and term
-	When I change the section's location to CLEM
-	Then the section's location should be CLEM
+	When I change the section location to CLEM
+	Then the section's location is CLEM
 	And it should do nothing else 
 
 

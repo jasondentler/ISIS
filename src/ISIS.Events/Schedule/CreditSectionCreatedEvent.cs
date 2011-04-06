@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ISIS.Schedule
 {
-    public class SectionCreatedEvent : IEvent 
+    public class CreditSectionCreatedEvent : IEvent 
     {
 
         public Guid SectionId { get; private set; }
@@ -15,7 +15,7 @@ namespace ISIS.Schedule
         public string TermName { get; private set; }
         public string SectionNumber { get; private set; }
 
-        public SectionCreatedEvent(
+        public CreditSectionCreatedEvent(
             Guid sectionId,
             Guid courseId,
             string rubric,

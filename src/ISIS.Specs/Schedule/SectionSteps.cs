@@ -184,6 +184,7 @@ namespace ISIS.Schedule
 
 
         [When(@"I change the section location to ([^\s]+)")]
+        [When(@"I change the section's location to ([^\s]+)")]
         public void WhenIChangeTheSectionLocationTo(
             string locationAbbreviation)
         {
@@ -290,7 +291,8 @@ namespace ISIS.Schedule
         {
             var termId = DomainHelper.GetId<Term>(termAbbreviation);
 
-            var e = (dynamic) DomainHelper.GetEvent<SectionCreatedEvent>()
+            var e = ((dynamic) DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                     ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>())
                     ?? DomainHelper.GetEvent<SectionTermChangedEvent>();
 
             Assert.That(e.TermId, Is.EqualTo(termId));
@@ -300,7 +302,8 @@ namespace ISIS.Schedule
         public void ThenTheSectionSTermNameIs(
             string termName)
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.TermName, Is.EqualTo(termName));
         }
 
@@ -309,7 +312,8 @@ namespace ISIS.Schedule
         public void ThenTheSectionSTermAbbreviationIs(
             string termAbbreviation)
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.TermAbbreviation, Is.EqualTo(termAbbreviation));
         }
 
@@ -320,7 +324,8 @@ namespace ISIS.Schedule
         {
             var courseId = DomainHelper.GetId<Course>(rubric, courseNumber);
 
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.CourseId, Is.EqualTo(courseId));
         }
 
@@ -330,7 +335,8 @@ namespace ISIS.Schedule
         public void ThenTheSectionSRubricIs(
             string rubric)
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic) DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.Rubric, Is.EqualTo(rubric));
         }
 
@@ -338,7 +344,8 @@ namespace ISIS.Schedule
         public void ThenTheSectionSCourseNumberIs(
             string courseNumber)
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.CourseNumber, Is.EqualTo(courseNumber));
         }
 
@@ -346,7 +353,8 @@ namespace ISIS.Schedule
         public void ThenTheSectionSSectionNumberIs(
             string sectionNumber)
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>()
+                    ?? DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
             Assert.That(e.SectionNumber, Is.EqualTo(sectionNumber));
         }
 
@@ -475,6 +483,7 @@ namespace ISIS.Schedule
         }
 
         [Then(@"the section location is (.*)")]
+        [Then(@"the section's location is (.*)")]
         public void ThenTheSectionLocationIs(
             string locationAbbreviation)
         {
@@ -536,11 +545,18 @@ namespace ISIS.Schedule
             Assert.That(e.TopicCodeDescription, Is.EqualTo(topicCodeDescription));
         }
 
-        [Then(@"the section is created")]
-        public void ThenTheSectionIsCreated()
+        [Then(@"the credit section is created")]
+        public void ThenTheCreditSectionIsCreated()
         {
-            var e = DomainHelper.GetEvent<SectionCreatedEvent>();
-            Assert.That(e, Is.Not.Null);
+            var e = (dynamic)DomainHelper.GetEvent<CreditSectionCreatedEvent>();
+            Assert.True(e != null);
+        }
+
+        [Then(@"the CE section is created")]
+        public void ThenTheCESectionIsCreated()
+        {
+            var e = (dynamic)DomainHelper.GetEvent<ContinuingEducationSectionCreatedEvent>();
+            Assert.True(e != null);
         }
 
 
@@ -586,7 +602,7 @@ namespace ISIS.Schedule
         public void ThenTheSectionNumberIs(
             string sectionNumber)
         {
-            var e = (dynamic) DomainHelper.GetEvent<SectionCreatedEvent>()
+            var e = (dynamic) DomainHelper.GetEvent<CreditSectionCreatedEvent>()
                     ?? DomainHelper.GetEvent<SectionNumberChangedEvent>();
 
             Assert.That(e.SectionNumber, Is.EqualTo(sectionNumber));
