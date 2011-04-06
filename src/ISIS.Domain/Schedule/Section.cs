@@ -127,23 +127,24 @@ namespace ISIS.Schedule
                            locationData.Abbreviation,
                            locationData.Name));
 
-            switch (locationData.Abbreviation)
-            {
-                case "CLEM":
-                case "CV":
-                case "DAR":
-                case "J1":
-                case "J2":
-                case "J3":
-                case "R1":
-                case "R2":
-                case "TER":
-                    ChangeTopicCode(tdcjTopicCode);
-                    break;
-                default:
-                    ChangeTopicCode(null);
-                    break;
-            }
+            if (_isCredit)
+                switch (locationData.Abbreviation)
+                {
+                    case "CLEM":
+                    case "CV":
+                    case "DAR":
+                    case "J1":
+                    case "J2":
+                    case "J3":
+                    case "R1":
+                    case "R2":
+                    case "TER":
+                        ChangeTopicCode(tdcjTopicCode);
+                        break;
+                    default:
+                        ChangeTopicCode(null);
+                        break;
+                }
 
         }
 
